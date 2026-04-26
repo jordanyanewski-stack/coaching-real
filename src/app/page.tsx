@@ -1,65 +1,386 @@
 import Image from "next/image";
+import { T, onDark, PHOTO_URL, GRADIENT_TEXT, SiteNav, SiteFooter } from "@/app/_shared";
 
+// ─── Data (home-page only) ────────────────────────────────────────────
+const mvv = [
+  {
+    numeral: "I",
+    title: "Мисия",
+    body: "Да те свържем с клиентите, които имат нужда точно от теб - и да ти покажем как да изградиш бизнес, воден от ценности, без да предаваш себе си. Coaching Real съществува, защото призванието ти заслужава и прехрана.",
+  },
+  {
+    numeral: "II",
+    title: "Визия",
+    body: "Свят, в който коучове, терапевти и холистични лидери процъфтяват финансово, без да компрометират душата си. Coaching Real е мостът между призванието и устойчивия успех.",
+  },
+  {
+    numeral: "III",
+    title: "Ценности",
+    body: null,
+    values: [
+      { title: "Автентичност", desc: "Тук си такъв, какъвто си - и точно такъв привличаш правилните клиенти." },
+      { title: "Стойност на всяка крачка", desc: "Всяко послание и взаимодействие носи реална полза - за теб и за тях." },
+      { title: "Лидерство с кураж", desc: "Да водиш изисква смелост. Ние те подкрепяме да я намериш и задържиш." },
+      { title: "Почтеност без компромис", desc: "Продавай с достойнство. Ценуй себе си. Оставай верен на думата си." },
+      { title: "Отговорност към влиянието", desc: "Силата ти да променяш животи е дар - учим те да го носиш с грижа." },
+    ],
+  },
+];
+
+
+// ─── Page ────────────────────────────────────────────────────────────
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+    <div style={{ fontFamily: "var(--font-mv, sans-serif)" }}>
+      <SiteNav />
+      <HeroSection />
+      <MVVSection />
+      <CTASection />
+      <SiteFooter />
     </div>
   );
 }
+
+/* ─── HERO ─────────────────────────────────────────────────────────── */
+function HeroSection() {
+  return (
+    <section
+      className="relative min-h-screen flex flex-col justify-center px-6 md:px-16 lg:px-24 pt-24 pb-20 overflow-hidden"
+      style={{ backgroundColor: T.surfaceBase }}
+    >
+      {/* Animated gradient orbs */}
+      <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          inset: 0,
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      >
+        <div style={{
+          position: "absolute",
+          top: "-5%",
+          right: "-5%",
+          width: "52%",
+          aspectRatio: "1",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, #6b150e 0%, transparent 70%)",
+          animation: "heroOrbA 10s ease-in-out infinite",
+          filter: "blur(80px)",
+        }} />
+        <div style={{
+          position: "absolute",
+          bottom: "0%",
+          right: "5%",
+          width: "35%",
+          aspectRatio: "1",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, #6b150e 0%, transparent 70%)",
+          animation: "heroOrbB 13s ease-in-out infinite",
+          filter: "blur(100px)",
+        }} />
+      </div>
+
+      <div className="relative z-10 max-w-6xl mx-auto w-full grid lg:grid-cols-[1.15fr_1fr] gap-12 lg:gap-16 items-center">
+
+        {/* Left - text */}
+        <div>
+          <div className="animate-fade-up">
+            <span className="mv-tag mv-tag-dark">За коучове · терапевти · холистични лидери</span>
+          </div>
+
+          <h1
+            className="animate-fade-up delay-100 mt-6"
+            style={{
+              fontSize: "clamp(3.5rem, 8vw, 6.5rem)",
+              fontWeight: 900,
+              lineHeight: 0.95,
+              letterSpacing: "-0.03em",
+              color: onDark.primary,
+            }}
+          >
+            <span className="block">Изгради</span>
+            <span className="block">бизнес</span>
+            <span
+              className="block"
+              style={{
+                background: "linear-gradient(135deg, #6b150e 0%, #c94535 55%, #e85050 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                filter: "drop-shadow(0 0 12px rgba(200,60,40,0.3)) drop-shadow(0 0 30px rgba(200,60,40,0.12))",
+              }}
+            >с душа.</span>
+          </h1>
+
+          <p
+            className="animate-fade-up delay-200 mt-8"
+            style={{
+              fontSize: "16px",
+              color: onDark.secondary,
+              lineHeight: 1.75,
+              maxWidth: "480px",
+            }}
+          >
+            Ти помагаш на хора. Знаеш, че работата ти има стойност. Но клиентите
+            не идват сами - и идеята да &ldquo;продаваш&rdquo; те кара да се
+            чувстваш неудобно. Coaching Real ти показва как да изградиш устойчив
+            бизнес с автентично послание, без манипулация и без да предаваш себе си.
+          </p>
+
+          <div className="animate-fade-up delay-300 flex flex-wrap gap-4 mt-10">
+            <a href="/programs" className="mv-btn mv-btn-primary">
+              Запази безплатна сесия →
+            </a>
+            <a href="/stanislava" className="mv-btn mv-btn-outline-dark">
+              Кой стои зад Coaching Real
+            </a>
+          </div>
+        </div>
+
+        {/* Right - photo */}
+        <div
+          className="animate-fade-in delay-200 hidden lg:block relative"
+          style={{ height: "560px" }}
+        >
+          <div
+            className="h-full w-full overflow-hidden"
+            style={{
+              position: "relative",
+              borderRadius: T.radiusSm,
+              border: "1.5px solid #6b150e",
+            }}
+          >
+            <Image
+              src={PHOTO_URL}
+              alt="Станислава Павлова - основател на Coaching Real"
+              fill
+              style={{ objectFit: "cover", objectPosition: "top center" }}
+              sizes="(max-width: 1024px) 0px, 50vw"
+              priority
+            />
+          </div>
+          {/* Floating badge */}
+          <div
+            className="absolute bottom-5 left-5 right-5 px-5 py-4"
+            style={{
+              backgroundColor: "rgba(0,0,0,0.82)",
+              backdropFilter: "blur(16px)",
+              borderRadius: T.radiusSm,
+              border: "1px solid rgba(107,21,14,0.4)",
+            }}
+          >
+            <p style={{ fontSize: "11px", fontWeight: 700, color: onDark.accent, letterSpacing: "0.1em", textTransform: "uppercase" }}>
+              Основател на Coaching Real
+            </p>
+            <p style={{ fontSize: "14px", color: onDark.secondary, marginTop: "3px", fontWeight: 500 }}>
+              Станислава Павлова · Единственият Ikigai коуч в България
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  );
+}
+
+/* ─── MISSION / VISION / VALUES ─────────────────────────────────────── */
+function MVVSection() {
+  const values = mvv[2];
+  return (
+    <section
+      className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
+      style={{ backgroundColor: T.surfaceRaised }}
+    >
+      {/* Subtle red gradient tint */}
+      <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          inset: 0,
+          background:
+            "radial-gradient(ellipse 70% 60% at 0% 110%, rgba(107,21,14,0.07) 0%, transparent 70%)," +
+            "radial-gradient(ellipse 50% 40% at 100% 0%, rgba(107,21,14,0.05) 0%, transparent 65%)",
+          pointerEvents: "none",
+        }}
+      />
+
+      <div className="relative max-w-6xl mx-auto">
+        {/* Section header */}
+        <div className="mb-16">
+          <span className="mv-tag mv-tag-light">Защо съществуваме</span>
+          <h2
+            className="mt-5"
+            style={{
+              fontSize: "clamp(1.8rem, 4vw, 3rem)",
+              fontWeight: 800,
+              color: T.textPrimary,
+              lineHeight: 1.15,
+              letterSpacing: "-0.02em",
+            }}
+          >
+            Изградено на{" "}
+            <span style={{ ...GRADIENT_TEXT }}>ясна основа</span>
+          </h2>
+        </div>
+
+        {/* 3-column grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          {/* I - Mission  &  II - Vision */}
+          {mvv.slice(0, 2).map((item) => (
+            <div
+              key={item.numeral}
+              className="p-8 flex flex-col gap-5"
+              style={{
+                backgroundColor: T.surfaceStrong,
+                borderRadius: T.radiusSm,
+                borderTop: `3px solid ${T.purple}`,
+              }}
+            >
+              <span
+                style={{
+                  fontSize: "clamp(2.5rem, 5vw, 4rem)",
+                  fontWeight: 900,
+                  ...GRADIENT_TEXT,
+                  lineHeight: 1,
+                  opacity: 0.22,
+                  letterSpacing: "-0.03em",
+                  display: "block",
+                }}
+              >
+                {item.numeral}
+              </span>
+              <div>
+                <h3
+                  style={{
+                    fontSize: "20px",
+                    fontWeight: 800,
+                    ...GRADIENT_TEXT,
+                    marginBottom: "10px",
+                    letterSpacing: "-0.01em",
+                  }}
+                >
+                  {item.title}
+                </h3>
+                <p style={{ fontSize: "14px", color: T.textSecondary, lineHeight: 1.75 }}>
+                  {item.body}
+                </p>
+              </div>
+            </div>
+          ))}
+
+          {/* III - Values */}
+          <div
+            className="p-8 flex flex-col gap-5"
+            style={{
+              backgroundColor: T.surfaceStrong,
+              borderRadius: T.radiusSm,
+              borderTop: `3px solid ${T.purple}`,
+            }}
+          >
+            <span
+              style={{
+                fontSize: "clamp(2.5rem, 5vw, 4rem)",
+                fontWeight: 900,
+                ...GRADIENT_TEXT,
+                lineHeight: 1,
+                opacity: 0.22,
+                letterSpacing: "-0.03em",
+                display: "block",
+              }}
+            >
+              {values.numeral}
+            </span>
+            <div>
+              <h3
+                style={{
+                  fontSize: "20px",
+                  fontWeight: 800,
+                  ...GRADIENT_TEXT,
+                  marginBottom: "14px",
+                  letterSpacing: "-0.01em",
+                }}
+              >
+                {values.title}
+              </h3>
+              <div className="flex flex-col gap-4">
+                {values.values!.map((v) => (
+                  <div key={v.title}>
+                    <p style={{ fontSize: "14px", fontWeight: 700, ...GRADIENT_TEXT, marginBottom: "2px" }}>
+                      {v.title}
+                    </p>
+                    <p style={{ fontSize: "13px", color: T.textSecondary, lineHeight: 1.65 }}>
+                      {v.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
+/* ─── CTA ───────────────────────────────────────────────────────────── */
+function CTASection() {
+  return (
+    <section
+      id="cta"
+      className="px-6 md:px-16 lg:px-24 py-24 md:py-32"
+      style={{ backgroundColor: T.purple }}
+    >
+      <div className="max-w-3xl mx-auto text-center">
+        <span
+          className="mv-tag inline-block mb-8"
+          style={{ backgroundColor: "rgba(255,255,255,0.15)", color: "#ffffff" }}
+        >
+          Безплатна стратегическа сесия
+        </span>
+
+        <h2
+          style={{
+            fontSize: "clamp(1.6rem, 4vw, 2.8rem)",
+            fontWeight: 900,
+            color: "#ffffff",
+            lineHeight: 1.15,
+            letterSpacing: "-0.02em",
+          }}
+        >
+          Знаеш, че помагаш. Нека научим света да те намери.
+        </h2>
+
+        <p
+          className="mt-5"
+          style={{
+            fontSize: "clamp(1rem, 2vw, 1.2rem)",
+            color: "rgba(255,255,255,0.82)",
+            lineHeight: 1.65,
+          }}
+        >
+          Запази 45-минутна безплатна сесия със Станислава Павлова.
+        </p>
+        <p
+          className="mt-2"
+          style={{ fontSize: "15px", color: "rgba(255,255,255,0.65)", lineHeight: 1.65 }}
+        >
+          Разбираш точно какво те спира и излизаш с конкретен следващ план - без продажбен натиск.
+        </p>
+
+        <a
+          href="/programs"
+          className="mv-btn mv-btn-white mt-10 inline-flex"
+          style={{ fontSize: "16px", padding: "16px 40px" }}
+        >
+          Запази своята безплатна сесия →
+        </a>
+      </div>
+    </section>
+  );
+}
+
