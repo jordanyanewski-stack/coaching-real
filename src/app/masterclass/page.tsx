@@ -989,9 +989,15 @@ function AboutSection() {
       className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
       style={{ backgroundColor: "#ffffff" }}
     >
-      <div className="reveal relative max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+      <div className="reveal relative max-w-6xl mx-auto">
+        {/* Tag - above image on all screens */}
+        <div className="mb-5">
+          <span className="mv-tag mv-tag-light">Коя съм аз?</span>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
         {/* Photo */}
-        <div className="hidden lg:block relative" style={{ height: "500px" }}>
+        <div className="relative" style={{ height: "340px" }}>
           <div
             className="h-full w-full overflow-hidden"
             style={{ position: "relative", borderRadius: "14px", border: "1px solid rgba(107,21,14,0.1)", boxShadow: "0 8px 32px rgba(107,21,14,0.07)" }}
@@ -1001,16 +1007,15 @@ function AboutSection() {
               alt="Станислава Павлова - бизнес ментор и стратег"
               fill
               style={{ objectFit: "cover", objectPosition: "top center" }}
-              sizes="(max-width: 1024px) 0px, 50vw"
+              sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </div>
         </div>
 
         {/* Text */}
         <div>
-          <span className="mv-tag mv-tag-light">Коя съм аз?</span>
           <h2
-            className="mt-5"
+            className="mt-0"
             style={{
               fontSize: "clamp(1.8rem, 4vw, 2.8rem)",
               fontWeight: 800,
@@ -1098,6 +1103,7 @@ function AboutSection() {
               - Станислава Павлова
             </p>
           </blockquote>
+        </div>
         </div>
       </div>
     </section>
