@@ -13,7 +13,7 @@ const SEASON2_EPISODES: Episode[] = [
   { id: "s2e11", videoId: "tb3LtL9lvMo", season: 2, episode: 11, title: "Тайната на изобилието" },
   { id: "s2e10", videoId: "jxH7AznilYw", season: 2, episode: 10, title: "Какво казва лицето ти?" },
   { id: "s2e9",  videoId: "OslQxmKc1YE", season: 2, episode: 9,  title: "Невидимите сценарии" },
-  { id: "s2e8",  videoId: "3rqswzYxKuw", season: 2, episode: 8,  title: "Свободна да бъда" },
+  { id: "s2e8",  videoId: "3rqswzYxKuw", season: 2, episode: 8,  title: "Свободна да бъда", thumbnail: "/ep-8.jpg" },
   { id: "s2e7",  videoId: "RocJOD8wOAA", season: 2, episode: 7,  title: "Енергиен Лайф Коучинг" },
   { id: "s2e6",  videoId: "OGLnyAo_vuk", season: 2, episode: 6,  title: "Справяне с травмите чрез Спинална Енергетика" },
   { id: "s2e5",  videoId: "ot3rEHO36Rw", season: 2, episode: 5,  title: "Здраве и изцеление със системата на Норбеков" },

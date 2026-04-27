@@ -10,6 +10,7 @@ export type Episode = {
   episode: number;
   title: string;
   featured?: boolean;
+  thumbnail?: string;
 };
 
 export function PodcastPlayer({
@@ -302,6 +303,7 @@ function FeaturedSection({
             <div className="relative overflow-hidden" style={{ minHeight: "220px" }}>
               <EpisodeThumbnail
                 videoId={episode.videoId}
+                localSrc={episode.thumbnail}
                 alt={episode.title}
                 style={{
                   width: "100%",
@@ -470,6 +472,7 @@ function EpisodeCard({
       <div className="relative overflow-hidden" style={{ aspectRatio: "16/9" }}>
         <EpisodeThumbnail
           videoId={episode.videoId}
+          localSrc={episode.thumbnail}
           alt={episode.title}
           style={{
             width: "100%",

@@ -9,17 +9,24 @@ const PLACEHOLDER_WIDTH = 120;
 
 export function EpisodeThumbnail({
   videoId,
+  localSrc,
   alt,
   className,
   style,
 }: {
   videoId: string;
+  localSrc?: string;
   alt: string;
   className?: string;
   style?: React.CSSProperties;
 }) {
   const [sizeIdx, setSizeIdx] = useState(0);
   const [allFailed, setAllFailed] = useState(false);
+
+  if (localSrc) {
+    // eslint-disable-next-line @next/next/no-img-element
+    return <img src={localSrc} alt={alt} className={className} style={style} />;
+  }
 
   const advance = () => {
     if (sizeIdx < SIZES.length - 1) {
