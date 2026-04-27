@@ -1,10 +1,12 @@
 import Image from "next/image";
-import { T, onDark, PHOTO_URL, GRADIENT_TEXT, SiteNav, SiteFooter } from "@/app/_shared";
+import { T, onDark, PHOTO_URL, GRADIENT_TEXT, LOGO_URL, SiteFooter } from "@/app/_shared";
+import { FAQAccordion } from "./faq-accordion";
+import { ScrollReveal } from "./scroll-reveal";
 
 export const metadata = {
   title: "12 Дни Мастъркласове® - 12 Измерения на Твоята Мисия | Coaching Real",
   description:
-    "Пренареди своя онлайн бизнес за 2026-та. 12 трансформиращи мастъркласа на запис за жени предприемачи в помагащите професии. €97 (вместо €197).",
+    "Пренареди своя онлайн бизнес за 2026-та. 12 трансформиращи мастъркласа на живо за жени предприемачи в помагащите професии. €97 (вместо €197).",
 };
 
 /* ─── DATA ──────────────────────────────────────────────────────────── */
@@ -56,16 +58,16 @@ const faqs = [
     a: "Само €97 (намалено от €197). Ограничени места на тази цена.",
   },
   {
-    q: "Колко време имам достъп до записите?",
-    a: "Достъпът е постоянен - веднъж закупени, мастъркласовете са твои завинаги.",
+    q: "Ще има ли запис след събитието?",
+    a: "Мастъркласовете са на живо. Препоръчваме присъствие в реално време за пълно преживяване и възможност за въпроси.",
   },
   {
     q: "Кога се провеждат мастъркласовете?",
-    a: "Форматът е на запис - гледаш в удобно за теб време, без задължителни присъствени часове.",
+    a: "Всеки ден в продължение на 12 дни - точните дати и часове ще получиш веднага след записването.",
   },
   {
     q: "Каква е продължителността на всеки мастърклас?",
-    a: "Всеки мастърклас е 30–40 минути концентрирана стойност, структурирана за бърза приложимост.",
+    a: "Всеки мастърклас е 30–40 минути концентрирана стойност на живо, с възможност за въпроси.",
   },
   {
     q: "Подходящо ли е, ако съм начинаеща или напреднала?",
@@ -73,11 +75,11 @@ const faqs = [
   },
   {
     q: "Това серия уебинари ли е?",
-    a: "Не - това е практична, стъпка-по-стъпка система за действие, не пасивно слушане.",
+    a: "Не - това е практична, стъпка-по-стъпка система за действие на живо, не пасивно слушане.",
   },
   {
     q: "Как да се запиша?",
-    a: "Кликни на бутона по-долу, попълни поръчката и получи незабавен достъп.",
+    a: "Кликни на бутона по-долу, попълни регистрацията и получи потвърждение с всички детайли.",
   },
 ];
 
@@ -180,11 +182,42 @@ function IconQuote() {
   );
 }
 
+/* ─── CAMPAIGN HEADER ───────────────────────────────────────────────── */
+function CampaignHeader() {
+  return (
+    <header
+      className="absolute top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-10 py-4"
+      style={{
+        backgroundColor: "transparent",
+      }}
+    >
+      <a href="/" style={{ flexShrink: 0, display: "flex", alignItems: "center" }}>
+        <Image
+          src={LOGO_URL}
+          alt="Coaching Real"
+          width={0}
+          height={0}
+          sizes="100vw"
+          style={{ height: "40px", width: "auto", display: "block" }}
+        />
+      </a>
+      <a
+        href="#enroll"
+        className="mv-btn mv-btn-primary"
+        style={{ padding: "10px 22px", fontSize: "14px", flexShrink: 0 }}
+      >
+        Запиши се сега
+      </a>
+    </header>
+  );
+}
+
 /* ─── PAGE ──────────────────────────────────────────────────────────── */
 export default function MasterclassPage() {
   return (
     <div style={{ fontFamily: "var(--font-mv, sans-serif)" }}>
-      <SiteNav />
+      <ScrollReveal />
+      <CampaignHeader />
       <HeroSection />
       <ForWhomSection />
       <WhyNowSection />
@@ -202,65 +235,83 @@ export default function MasterclassPage() {
 function HeroSection() {
   return (
     <section
-      className="relative min-h-screen flex flex-col justify-center px-6 md:px-16 lg:px-24 pt-24 pb-20 overflow-hidden"
-      style={{ backgroundColor: "#0f0808" }}
+      className="mc-hero relative min-h-screen flex flex-col justify-center px-6 md:px-16 lg:px-24 pt-28 pb-20"
+      style={{ backgroundColor: "#faf8f5" }}
     >
-      {/* Ambient light orbs */}
-      <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: 0 }}>
+      {/* Background animation */}
+      <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: 0, overflow: "hidden" }}>
+        {/* Orb top-right */}
         <div
+          className="mc-orb"
           style={{
             position: "absolute",
             top: "-10%",
-            right: "-8%",
+            right: "-10%",
             width: "55%",
             aspectRatio: "1",
             borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(107,21,14,0.55) 0%, transparent 65%)",
-            filter: "blur(90px)",
-            animation: "heroOrbA 10s ease-in-out infinite",
+            background: "radial-gradient(circle, rgba(107,21,14,0.09) 0%, transparent 65%)",
+            filter: "blur(70px)",
           }}
         />
+        {/* Orb bottom-left */}
         <div
           style={{
             position: "absolute",
-            bottom: "5%",
+            bottom: "0%",
             left: "-5%",
             width: "40%",
             aspectRatio: "1",
             borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(107,21,14,0.35) 0%, transparent 65%)",
-            filter: "blur(100px)",
-            animation: "heroOrbB 13s ease-in-out infinite",
+            background: "radial-gradient(circle, rgba(201,69,53,0.07) 0%, transparent 65%)",
+            filter: "blur(80px)",
+            animation: "mcOrbB 14s ease-in-out infinite 2s",
           }}
         />
+        {/* Orb center */}
         <div
           style={{
             position: "absolute",
-            top: "40%",
-            left: "30%",
-            width: "30%",
+            top: "30%",
+            left: "35%",
+            width: "35%",
             aspectRatio: "1",
             borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(180,50,30,0.12) 0%, transparent 70%)",
-            filter: "blur(120px)",
+            background: "radial-gradient(circle, rgba(107,21,14,0.05) 0%, transparent 65%)",
+            filter: "blur(90px)",
+            animation: "mcOrbC 18s ease-in-out infinite 5s",
+          }}
+        />
+        {/* Dot grid */}
+        <div
+          className="mc-dots"
+          style={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage: "radial-gradient(circle, rgba(107,21,14,0.12) 1px, transparent 1px)",
+            backgroundSize: "32px 32px",
+            maskImage: "radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%)",
+            WebkitMaskImage: "radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%)",
           }}
         />
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto w-full grid lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-16 items-center">
+      <div className="mc-hero-content max-w-6xl mx-auto w-full grid lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-16 items-center">
         {/* Left - text */}
         <div>
           <div className="animate-fade-up">
-            <span className="mv-tag mv-tag-dark">Мастъркласове® · 12 дни на запис</span>
+            <span className="mv-tag mv-tag-light" style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
+              <span style={{ position: "relative", display: "inline-flex", alignItems: "center", justifyContent: "center", width: "16px", height: "16px", flexShrink: 0 }}>
+                <span className="mc-pulse-ring" style={{ position: "absolute", width: "8px", height: "8px", borderRadius: "50%", backgroundColor: "#c94535" }} />
+                <span style={{ position: "relative", width: "8px", height: "8px", borderRadius: "50%", backgroundColor: "#c94535", flexShrink: 0 }} />
+              </span>
+              за терапевти, коучове, лечители, астролози
+            </span>
           </div>
 
           <h1
             className="animate-fade-up delay-100 mt-6"
-            style={{
-              lineHeight: 1,
-              letterSpacing: "-0.03em",
-              color: onDark.primary,
-            }}
+            style={{ lineHeight: 1, letterSpacing: "-0.03em" }}
           >
             <span
               className="block"
@@ -271,7 +322,6 @@ function HeroSection() {
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
-                filter: "drop-shadow(0 0 14px rgba(200,60,40,0.35)) drop-shadow(0 0 32px rgba(200,60,40,0.14))",
               }}
             >
               12 ИЗМЕРЕНИЯ
@@ -281,7 +331,7 @@ function HeroSection() {
               style={{
                 fontSize: "clamp(1.4rem, 3vw, 2.4rem)",
                 fontWeight: 700,
-                color: "rgba(255,255,255,0.88)",
+                color: T.textPrimary,
                 marginTop: "6px",
               }}
             >
@@ -292,7 +342,7 @@ function HeroSection() {
               style={{
                 fontSize: "clamp(0.9rem, 1.8vw, 1.3rem)",
                 fontWeight: 600,
-                color: "rgba(255,255,255,0.38)",
+                color: T.textSecondary,
                 letterSpacing: "0.05em",
                 textTransform: "uppercase",
                 marginTop: "12px",
@@ -304,10 +354,10 @@ function HeroSection() {
 
           <p
             className="animate-fade-up delay-200 mt-6"
-            style={{ fontSize: "16px", color: onDark.secondary, lineHeight: 1.8, maxWidth: "480px" }}
+            style={{ fontSize: "16px", color: T.textSecondary, lineHeight: 1.8, maxWidth: "480px" }}
           >
             Пренареди своя онлайн бизнес за 2026-та. Създай яснота, посока
-            и предвидим план за растеж - 12 трансформиращи теми на запис,
+            и предвидим план за растеж - 12 трансформиращи теми,
             които ще сложат край на хаоса.
           </p>
 
@@ -318,7 +368,7 @@ function HeroSection() {
                 style={{
                   fontSize: "clamp(2rem, 4.5vw, 3rem)",
                   fontWeight: 900,
-                  color: "#ffffff",
+                  color: T.textPrimary,
                   lineHeight: 1,
                   letterSpacing: "-0.03em",
                 }}
@@ -329,9 +379,9 @@ function HeroSection() {
                 <span
                   style={{
                     fontSize: "16px",
-                    color: onDark.muted,
+                    color: T.textSecondary,
                     textDecoration: "line-through",
-                    textDecorationColor: "rgba(255,255,255,0.3)",
+                    textDecorationColor: "rgba(0,0,0,0.25)",
                     fontWeight: 600,
                   }}
                 >
@@ -339,16 +389,16 @@ function HeroSection() {
                 </span>
                 <span
                   className="flex items-center gap-1.5"
-                  style={{ fontSize: "12px", color: "#e87070", fontWeight: 700, letterSpacing: "0.04em" }}
+                  style={{ fontSize: "12px", color: "#6b150e", fontWeight: 700, letterSpacing: "0.04em" }}
                 >
                   <span
                     style={{
                       width: 7,
                       height: 7,
                       borderRadius: "50%",
-                      backgroundColor: "#e85050",
+                      backgroundColor: "#c94535",
                       display: "inline-block",
-                      boxShadow: "0 0 0 2px rgba(232,80,80,0.28)",
+                      boxShadow: "0 0 0 2px rgba(201,69,53,0.22)",
                       flexShrink: 0,
                     }}
                   />
@@ -362,69 +412,80 @@ function HeroSection() {
               className="mv-btn mv-btn-primary"
               style={{ fontSize: "16px", padding: "16px 40px" }}
             >
-              Записвам се за 12-те мастъркласа →
+              Искам да се включа →
             </a>
           </div>
         </div>
 
-        {/* Right - specialists grid */}
-        <div className="animate-fade-in delay-200">
+        {/* Right - photo */}
+        <div className="mc-hero-visual animate-fade-in delay-200 hidden lg:flex items-center justify-center">
           <div
             style={{
-              backgroundColor: "rgba(255,255,255,0.04)",
-              borderRadius: T.radiusSm,
-              border: "1px solid rgba(255,255,255,0.09)",
-              padding: "24px",
+              position: "relative",
+              width: "420px",
+              height: "420px",
+              borderRadius: "50%",
+              padding: "4px",
+              background: "linear-gradient(135deg, #6b150e, #c94535, #e85050, #6b150e)",
+              boxShadow: "none",
             }}
           >
-            <p
+            <div
               style={{
-                fontSize: "11px",
-                fontWeight: 700,
-                color: onDark.muted,
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                marginBottom: "14px",
+                position: "relative",
+                width: "100%",
+                height: "100%",
+                borderRadius: "50%",
+                overflow: "hidden",
               }}
             >
-              Специално за жени предприемачи в
-            </p>
-            <div className="grid grid-cols-2 gap-2">
-              {specialists.map(({ Icon, label }) => (
-                <div
-                  key={label}
-                  className="flex items-center gap-3 px-3 py-2.5"
-                  style={{
-                    backgroundColor: "rgba(255,255,255,0.05)",
-                    borderRadius: "8px",
-                    border: "1px solid rgba(255,255,255,0.07)",
-                  }}
-                >
-                  <div
-                    style={{
-                      width: "30px",
-                      height: "30px",
-                      borderRadius: "7px",
-                      backgroundColor: "rgba(107,21,14,0.25)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      flexShrink: 0,
-                    }}
-                  >
-                    <Icon color="#e87070" />
-                  </div>
-                  <span style={{ fontSize: "13px", color: onDark.secondary, fontWeight: 500 }}>{label}</span>
-                </div>
-              ))}
+              <Image
+                src="/stasi-4.jpg"
+                alt="Станислава Павлова"
+                fill
+                style={{ objectFit: "cover", objectPosition: "top center" }}
+                sizes="420px"
+                priority
+              />
             </div>
-            <p
-              className="text-center mt-4"
-              style={{ fontSize: "13px", color: "#e87070", fontWeight: 600 }}
-            >
-              трансформиращите и помагащите професии
-            </p>
           </div>
+        </div>
+      </div>
+
+      {/* Scroll prompt */}
+      <div
+        aria-hidden
+        className="mc-scroll-prompt"
+        style={{
+          position: "absolute",
+          bottom: "32px",
+          left: "50%",
+          transform: "translateX(-50%)",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "6px",
+          opacity: 0.45,
+        }}
+      >
+        <span style={{ fontSize: "10px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#6b150e" }}>
+          Скролни надолу
+        </span>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "2px" }}>
+          <svg
+            className="mc-scroll-chevron"
+            width="16" height="10" viewBox="0 0 16 10" fill="none"
+            stroke="#6b150e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"
+          >
+            <path d="M1 1l7 7 7-7" />
+          </svg>
+          <svg
+            className="mc-scroll-chevron mc-scroll-chevron-2"
+            width="16" height="10" viewBox="0 0 16 10" fill="none"
+            stroke="#6b150e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"
+          >
+            <path d="M1 1l7 7 7-7" />
+          </svg>
         </div>
       </div>
     </section>
@@ -436,20 +497,9 @@ function ForWhomSection() {
   return (
     <section
       className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
-      style={{ backgroundColor: T.surfaceRaised }}
+      style={{ backgroundColor: "#ffffff" }}
     >
-      <div
-        aria-hidden
-        style={{
-          position: "absolute",
-          inset: 0,
-          background:
-            "radial-gradient(ellipse 55% 45% at 0% 50%, rgba(107,21,14,0.04) 0%, transparent 65%)," +
-            "radial-gradient(ellipse 40% 40% at 100% 100%, rgba(107,21,14,0.03) 0%, transparent 65%)",
-          pointerEvents: "none",
-        }}
-      />
-      <div className="relative max-w-5xl mx-auto grid lg:grid-cols-[1fr_1.1fr] gap-14 lg:gap-20 items-start">
+      <div className="reveal relative max-w-5xl mx-auto grid lg:grid-cols-[1fr_1.1fr] gap-14 lg:gap-20 items-start">
         {/* Left */}
         <div>
           <span className="mv-tag mv-tag-light">За кого е?</span>
@@ -466,11 +516,22 @@ function ForWhomSection() {
             Специално за жени предприемачи в{" "}
             <span style={{ ...GRADIENT_TEXT }}>трансформиращите професии</span>
           </h2>
-          <p className="mt-5" style={{ fontSize: "15px", color: T.textSecondary, lineHeight: 1.85 }}>
-            Терапевти, коучове, констелатори, нутриционисти, психолози,
-            НЛП практици, астролози и консултанти - всяка жена с мисия,
-            готова да изгради реален онлайн бизнес.
-          </p>
+          <div className="mt-5 flex flex-wrap gap-2">
+            {specialists.map(({ Icon, label }) => (
+              <div
+                key={label}
+                className="flex items-center gap-2 px-3 py-2"
+                style={{
+                  backgroundColor: T.surfaceStrong,
+                  borderRadius: "8px",
+                  border: "1px solid rgba(107,21,14,0.1)",
+                }}
+              >
+                <Icon color="#6b150e" />
+                <span style={{ fontSize: "13px", color: T.textPrimary, fontWeight: 500 }}>{label}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Right - checklist */}
@@ -531,64 +592,64 @@ function ForWhomSection() {
 
 /* ─── WHY NOW ───────────────────────────────────────────────────────── */
 function WhyNowSection() {
+  const pillars = [
+    { num: "01", label: "По-добра структура",     desc: "Систематичен подход вместо хаотично публикуване." },
+    { num: "02", label: "По-добро позициониране", desc: "Ясно послание, което резонира с идеалния ти клиент." },
+    { num: "03", label: "По-добра оферта",         desc: "Продукт, заради който клиентите те търсят сами." },
+  ];
+
   return (
     <section
       className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
-      style={{ backgroundColor: "#1a1010" }}
+      style={{ backgroundColor: "#faf8f5" }}
     >
-      <div
-        aria-hidden
-        style={{
-          position: "absolute",
-          inset: 0,
-          background:
-            "radial-gradient(ellipse 80% 55% at 50% 0%, rgba(180,60,40,0.18) 0%, transparent 60%)," +
-            "radial-gradient(ellipse 60% 50% at 100% 100%, rgba(107,21,14,0.12) 0%, transparent 65%)",
-          pointerEvents: "none",
-        }}
-      />
-      <div className="relative max-w-4xl mx-auto">
-        <span className="mv-tag mv-tag-dark">Защо точно сега?</span>
-        <h2
-          className="mt-5"
-          style={{
-            fontSize: "clamp(1.8rem, 4vw, 3rem)",
-            fontWeight: 800,
-            color: onDark.primary,
-            lineHeight: 1.15,
-            letterSpacing: "-0.02em",
-          }}
-        >
-          Защо 2026-та ще бъде{" "}
-          <span
-            style={{
-              background: "linear-gradient(135deg, #6b150e 0%, #c94535 55%, #e85050 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
-          >
-            решаваща година?
-          </span>
-        </h2>
+      <div className="reveal relative max-w-5xl mx-auto">
 
-        {/* Quote-style insight card */}
+        {/* Header row */}
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14">
+          <div>
+            <span className="mv-tag mv-tag-light">Защо точно сега?</span>
+            <h2
+              className="mt-5"
+              style={{
+                fontSize: "clamp(1.8rem, 4vw, 3rem)",
+                fontWeight: 800,
+                color: T.textPrimary,
+                lineHeight: 1.1,
+                letterSpacing: "-0.02em",
+                maxWidth: "520px",
+              }}
+            >
+              Защо 2026-та ще бъде{" "}
+              <span style={{ ...GRADIENT_TEXT }}>решаваща година?</span>
+            </h2>
+          </div>
+          <a
+            href="#enroll"
+            className="mv-btn mv-btn-primary self-start lg:self-auto shrink-0"
+            style={{ fontSize: "14px", padding: "12px 28px" }}
+          >
+            Искам да се включа →
+          </a>
+        </div>
+
+        {/* Pull quote */}
         <div
-          className="mt-10 p-8 md:p-10"
+          className="relative p-8 md:p-10 mb-10"
           style={{
-            backgroundColor: "rgba(255,255,255,0.04)",
-            borderRadius: "14px",
-            border: "1px solid rgba(255,255,255,0.09)",
+            backgroundColor: "#ffffff",
+            borderRadius: "16px",
+            borderLeft: "4px solid #c94535",
+            boxShadow: "0 2px 20px rgba(107,21,14,0.06)",
           }}
         >
-          <IconQuote />
           <p
-            className="mt-4"
             style={{
               fontSize: "clamp(1rem, 2vw, 1.2rem)",
-              color: onDark.secondary,
+              color: T.textSecondary,
               lineHeight: 1.9,
               fontStyle: "italic",
+              maxWidth: "720px",
             }}
           >
             Ако усещаш, че онлайн пространството се променя - права си.
@@ -596,60 +657,71 @@ function WhyNowSection() {
             а конкуренцията вече не е в обема, а в качеството. Интуитивното
             публикуване и стратегията „ще видим каквото стане" вече не работят.
           </p>
+          <p
+            className="mt-5"
+            style={{ fontSize: "13px", fontWeight: 700, ...GRADIENT_TEXT, letterSpacing: "0.04em" }}
+          >
+            — Станислава Павлова
+          </p>
         </div>
 
-        {/* 3 pillars */}
-        <div className="grid md:grid-cols-3 gap-4 mt-8">
-          {[
-            { label: "По-добра структура",       desc: "Систематичен подход вместо хаотично публикуване." },
-            { label: "По-добро позициониране",   desc: "Ясно послание, което резонира с идеалния ти клиент." },
-            { label: "По-добра оферта",           desc: "Продукт, заради който клиентите те търсят сами." },
-          ].map(({ label, desc }, i) => (
+        {/* Pillars */}
+        <div className="grid md:grid-cols-3 gap-4">
+          {pillars.map(({ num, label, desc }) => (
             <div
-              key={i}
-              className="p-6"
+              key={num}
+              className="group p-6 flex flex-col gap-3"
               style={{
-                backgroundColor: "rgba(107,21,14,0.14)",
-                borderRadius: "10px",
-                border: "1px solid rgba(107,21,14,0.3)",
+                backgroundColor: "#ffffff",
+                borderRadius: "14px",
+                border: "1px solid rgba(107,21,14,0.08)",
+                transition: "box-shadow 0.2s, border-color 0.2s",
               }}
             >
-              <p
+              <span
                 style={{
-                  fontSize: "15px",
-                  fontWeight: 800,
-                  color: "#ffffff",
-                  marginBottom: "8px",
-                  letterSpacing: "-0.01em",
+                  fontSize: "11px",
+                  fontWeight: 900,
+                  letterSpacing: "0.12em",
+                  ...GRADIENT_TEXT,
                 }}
               >
+                {num}
+              </span>
+              <p style={{ fontSize: "16px", fontWeight: 800, color: T.textPrimary, letterSpacing: "-0.01em" }}>
                 {label}
               </p>
-              <p style={{ fontSize: "13px", color: onDark.secondary, lineHeight: 1.7 }}>{desc}</p>
+              <p style={{ fontSize: "13px", color: T.textSecondary, lineHeight: 1.7 }}>{desc}</p>
             </div>
           ))}
         </div>
 
-        <p
-          className="mt-8"
+        {/* Closing statement */}
+        <div
+          className="mt-10 flex items-center gap-4 px-6 py-5"
           style={{
-            fontSize: "clamp(1rem, 2vw, 1.15rem)",
-            color: onDark.primary,
-            lineHeight: 1.85,
-            fontWeight: 600,
+            backgroundColor: "#ffffff",
+            borderRadius: "12px",
+            border: "1px solid rgba(107,21,14,0.08)",
           }}
         >
-          2026-та е годината не за „повече", а за по-добре.{" "}
-          <span style={{ color: "#e87070" }}>
-            Тези 12 дни са пространството, в което ще го постигнеш.
-          </span>
-        </p>
-
-        <div className="mt-10">
-          <a href="#enroll" className="mv-btn mv-btn-primary" style={{ fontSize: "16px", padding: "16px 40px" }}>
-            Готова съм да вляза в 12-те мастъркласа →
-          </a>
+          <div
+            style={{
+              width: "4px",
+              alignSelf: "stretch",
+              borderRadius: "4px",
+              background: "linear-gradient(180deg, #6b150e, #e85050)",
+              flexShrink: 0,
+            }}
+          />
+          <p style={{ fontSize: "15px", color: T.textPrimary, lineHeight: 1.7, fontWeight: 600 }}>
+            2026-та е годината не за „повече", а за по-добре.{" "}
+            <span style={{ ...GRADIENT_TEXT }}>
+              Тези 12 дни са пространството, в което ще го постигнеш.
+            </span>
+          </p>
         </div>
+
       </div>
     </section>
   );
@@ -660,18 +732,9 @@ function SolutionSection() {
   return (
     <section
       className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
-      style={{ backgroundColor: T.surfaceStrong }}
+      style={{ backgroundColor: "#ffffff" }}
     >
-      <div
-        aria-hidden
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: "radial-gradient(ellipse 60% 50% at 100% 50%, rgba(107,21,14,0.04) 0%, transparent 65%)",
-          pointerEvents: "none",
-        }}
-      />
-      <div className="relative max-w-5xl mx-auto grid lg:grid-cols-2 gap-14 items-start">
+      <div className="reveal relative max-w-5xl mx-auto grid lg:grid-cols-2 gap-14 items-start">
         {/* Left - context */}
         <div>
           <span className="mv-tag mv-tag-light">Различният подход</span>
@@ -779,18 +842,9 @@ function CurriculumSection() {
   return (
     <section
       className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
-      style={{ backgroundColor: T.surfaceRaised }}
+      style={{ backgroundColor: "#faf8f5" }}
     >
-      <div
-        aria-hidden
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: "radial-gradient(ellipse 55% 45% at 50% 0%, rgba(107,21,14,0.04) 0%, transparent 65%)",
-          pointerEvents: "none",
-        }}
-      />
-      <div className="relative max-w-6xl mx-auto">
+      <div className="reveal relative max-w-6xl mx-auto">
         <div className="text-center mb-14">
           <span className="mv-tag mv-tag-light">Твоята пътна карта</span>
           <h2
@@ -814,74 +868,104 @@ function CurriculumSection() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {curriculum.map((item, i) => (
-            <div
-              key={i}
-              className="flex gap-4 p-5"
-              style={{
-                backgroundColor: T.surfaceStrong,
-                borderRadius: "10px",
-                border: "1px solid rgba(107,21,14,0.08)",
-                transition: "border-color 0.2s, box-shadow 0.2s",
-              }}
-            >
-              {/* Day number */}
-              <div
-                style={{
-                  flexShrink: 0,
-                  width: "36px",
-                  height: "36px",
-                  borderRadius: "9px",
-                  background: "linear-gradient(135deg, #6b150e 0%, #c94535 100%)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginTop: "1px",
-                }}
-              >
-                <span
-                  style={{
-                    fontSize: "12px",
-                    fontWeight: 900,
-                    color: "#ffffff",
-                    lineHeight: 1,
-                    letterSpacing: "-0.01em",
-                  }}
-                >
-                  {i + 1}
-                </span>
-              </div>
+        {/* Timeline */}
+        <div className="relative max-w-3xl mx-auto">
+          {/* Center line */}
+          <div
+            aria-hidden
+            style={{
+              position: "absolute",
+              left: "50%",
+              top: 0,
+              bottom: 0,
+              width: "2px",
+              transform: "translateX(-50%)",
+              background: "linear-gradient(180deg, transparent 0%, #c94535 8%, #c94535 92%, transparent 100%)",
+              opacity: 0.25,
+            }}
+          />
 
-              <div>
-                <p
-                  style={{
-                    fontSize: "11px",
-                    fontWeight: 700,
-                    color: "#6b150e",
-                    letterSpacing: "0.08em",
-                    textTransform: "uppercase",
-                    marginBottom: "3px",
-                  }}
+          <div className="flex flex-col gap-8">
+            {curriculum.map((item, i) => {
+              const isLeft = i % 2 === 0;
+              return (
+                <div
+                  key={i}
+                  className="relative grid"
+                  style={{ gridTemplateColumns: "1fr 40px 1fr", alignItems: "center", gap: "0" }}
                 >
-                  Ден {i + 1}
-                </p>
-                <h3
-                  style={{
-                    fontSize: "14px",
-                    fontWeight: 700,
-                    color: T.textPrimary,
-                    lineHeight: 1.3,
-                    letterSpacing: "-0.01em",
-                    marginBottom: "5px",
-                  }}
-                >
-                  {item.title}
-                </h3>
-                <p style={{ fontSize: "12px", color: T.textSecondary, lineHeight: 1.65 }}>{item.desc}</p>
-              </div>
-            </div>
-          ))}
+                  {/* Left slot */}
+                  <div style={{ paddingRight: "28px", display: "flex", justifyContent: "flex-end" }}>
+                    {isLeft && (
+                      <div
+                        className="p-5 w-full"
+                        style={{
+                          backgroundColor: "#ffffff",
+                          borderRadius: "12px",
+                          border: "1px solid rgba(107,21,14,0.08)",
+                          boxShadow: "0 2px 12px rgba(107,21,14,0.05)",
+                          maxWidth: "320px",
+                        }}
+                      >
+                        <p style={{ fontSize: "10px", fontWeight: 700, color: "#c94535", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "4px" }}>
+                          Ден {i + 1}
+                        </p>
+                        <h3 style={{ fontSize: "15px", fontWeight: 700, color: T.textPrimary, letterSpacing: "-0.01em", marginBottom: "6px" }}>
+                          {item.title}
+                        </h3>
+                        <p style={{ fontSize: "12px", color: T.textSecondary, lineHeight: 1.65 }}>{item.desc}</p>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Center dot */}
+                  <div style={{ display: "flex", justifyContent: "center", position: "relative", zIndex: 1 }}>
+                    <div
+                      style={{
+                        width: "36px",
+                        height: "36px",
+                        borderRadius: "50%",
+                        background: "linear-gradient(135deg, #6b150e 0%, #c94535 100%)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        flexShrink: 0,
+                        boxShadow: "0 0 0 4px #faf8f5, 0 0 0 5px rgba(201,69,53,0.2)",
+                      }}
+                    >
+                      <span style={{ fontSize: "11px", fontWeight: 900, color: "#ffffff", lineHeight: 1 }}>
+                        {i + 1}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Right slot */}
+                  <div style={{ paddingLeft: "28px" }}>
+                    {!isLeft && (
+                      <div
+                        className="p-5"
+                        style={{
+                          backgroundColor: "#ffffff",
+                          borderRadius: "12px",
+                          border: "1px solid rgba(107,21,14,0.08)",
+                          boxShadow: "0 2px 12px rgba(107,21,14,0.05)",
+                          maxWidth: "320px",
+                        }}
+                      >
+                        <p style={{ fontSize: "10px", fontWeight: 700, color: "#c94535", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "4px" }}>
+                          Ден {i + 1}
+                        </p>
+                        <h3 style={{ fontSize: "15px", fontWeight: 700, color: T.textPrimary, letterSpacing: "-0.01em", marginBottom: "6px" }}>
+                          {item.title}
+                        </h3>
+                        <p style={{ fontSize: "12px", color: T.textSecondary, lineHeight: 1.65 }}>{item.desc}</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         <div className="text-center mt-14">
@@ -903,25 +987,14 @@ function AboutSection() {
   return (
     <section
       className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
-      style={{ backgroundColor: "#100808" }}
+      style={{ backgroundColor: "#ffffff" }}
     >
-      <div
-        aria-hidden
-        style={{
-          position: "absolute",
-          inset: 0,
-          background:
-            "radial-gradient(ellipse 70% 55% at 0% 50%, rgba(107,21,14,0.2) 0%, transparent 60%)," +
-            "radial-gradient(ellipse 50% 40% at 100% 0%, rgba(180,50,30,0.1) 0%, transparent 65%)",
-          pointerEvents: "none",
-        }}
-      />
-      <div className="relative max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+      <div className="reveal relative max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
         {/* Photo */}
         <div className="hidden lg:block relative" style={{ height: "500px" }}>
           <div
             className="h-full w-full overflow-hidden"
-            style={{ position: "relative", borderRadius: "14px", border: "1.5px solid rgba(107,21,14,0.3)" }}
+            style={{ position: "relative", borderRadius: "14px", border: "1px solid rgba(107,21,14,0.1)", boxShadow: "0 8px 32px rgba(107,21,14,0.07)" }}
           >
             <Image
               src={PHOTO_URL}
@@ -935,13 +1008,13 @@ function AboutSection() {
 
         {/* Text */}
         <div>
-          <span className="mv-tag mv-tag-dark">Коя съм аз?</span>
+          <span className="mv-tag mv-tag-light">Коя съм аз?</span>
           <h2
             className="mt-5"
             style={{
               fontSize: "clamp(1.8rem, 4vw, 2.8rem)",
               fontWeight: 800,
-              color: onDark.primary,
+              color: T.textPrimary,
               lineHeight: 1.1,
               letterSpacing: "-0.02em",
             }}
@@ -952,10 +1025,7 @@ function AboutSection() {
             style={{
               fontSize: "13px",
               fontWeight: 700,
-              background: "linear-gradient(135deg, #6b150e 0%, #c94535 55%, #e85050 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
+              ...GRADIENT_TEXT,
               marginTop: "6px",
               letterSpacing: "0.04em",
               textTransform: "uppercase",
@@ -964,7 +1034,7 @@ function AboutSection() {
             Бизнес ментор · Стратег · Създател на системата KickSTART
           </p>
 
-          <p className="mt-6" style={{ fontSize: "16px", color: onDark.secondary, lineHeight: 1.85 }}>
+          <p className="mt-6" style={{ fontSize: "16px", color: T.textSecondary, lineHeight: 1.85 }}>
             Помагам на жени в помагащите професии да изградят, структурират и
             скалират своя онлайн бизнес с яснота, женска енергия и стабилност.
           </p>
@@ -973,16 +1043,16 @@ function AboutSection() {
           <div
             className="mt-8 p-6"
             style={{
-              backgroundColor: "rgba(107,21,14,0.18)",
+              backgroundColor: "#faf8f5",
               borderRadius: "12px",
-              border: "1px solid rgba(107,21,14,0.35)",
+              border: "1px solid rgba(107,21,14,0.1)",
             }}
           >
             <p
               style={{
                 fontSize: "11px",
                 fontWeight: 700,
-                color: "#e87070",
+                ...GRADIENT_TEXT,
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
                 marginBottom: "10px",
@@ -990,18 +1060,15 @@ function AboutSection() {
             >
               Стойността, която получаваш
             </p>
-            <p style={{ fontSize: "15px", color: onDark.secondary, lineHeight: 1.85 }}>
+            <p style={{ fontSize: "15px", color: T.textSecondary, lineHeight: 1.85 }}>
               Реалната стойност на тези мастъркласове надвишава{" "}
-              <strong style={{ color: "#ffffff" }}>€1000</strong> като
+              <strong style={{ color: T.textPrimary }}>€1000</strong> като
               натрупано ноу-хау, структура и бизнес посока. Днес получаваш
               целия пакет за{" "}
               <strong
                 style={{
                   fontSize: "20px",
-                  background: "linear-gradient(135deg, #c94535 0%, #e85050 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
+                  ...GRADIENT_TEXT,
                 }}
               >
                 €97
@@ -1014,7 +1081,7 @@ function AboutSection() {
             className="mt-6 pl-5"
             style={{ borderLeft: "3px solid #6b150e" }}
           >
-            <p style={{ fontSize: "15px", color: onDark.secondary, lineHeight: 1.8, fontStyle: "italic" }}>
+            <p style={{ fontSize: "15px", color: T.textSecondary, lineHeight: 1.8, fontStyle: "italic" }}>
               &ldquo;Мисията ми е да покажа, че духовността и бизнесът не се
               изключват - те се допълват. Когато съчетаеш мисията със структура,
               резултатите идват естествено.&rdquo;
@@ -1023,7 +1090,7 @@ function AboutSection() {
               style={{
                 fontSize: "13px",
                 fontWeight: 700,
-                color: "#e87070",
+                ...GRADIENT_TEXT,
                 marginTop: "10px",
                 letterSpacing: "0.02em",
               }}
@@ -1042,18 +1109,9 @@ function FAQSection() {
   return (
     <section
       className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
-      style={{ backgroundColor: T.surfaceStrong }}
+      style={{ backgroundColor: "#faf8f5" }}
     >
-      <div
-        aria-hidden
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(107,21,14,0.04) 0%, transparent 65%)",
-          pointerEvents: "none",
-        }}
-      />
-      <div className="relative max-w-3xl mx-auto">
+      <div className="reveal relative max-w-3xl mx-auto">
         <div className="text-center mb-12">
           <span className="mv-tag mv-tag-light">Чести въпроси</span>
           <h2
@@ -1071,61 +1129,7 @@ function FAQSection() {
           </h2>
         </div>
 
-        <div className="flex flex-col gap-3">
-          {faqs.map((item, i) => (
-            <details
-              key={i}
-              style={{
-                backgroundColor: T.surfaceRaised,
-                borderRadius: "10px",
-                border: "1px solid rgba(107,21,14,0.1)",
-                overflow: "hidden",
-              }}
-            >
-              <summary
-                style={{
-                  padding: "18px 20px",
-                  fontSize: "15px",
-                  fontWeight: 700,
-                  color: T.textPrimary,
-                  lineHeight: 1.4,
-                  cursor: "pointer",
-                  listStyle: "none",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  gap: "12px",
-                }}
-              >
-                {item.q}
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  stroke="#6b150e"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  style={{ flexShrink: 0 }}
-                >
-                  <path d="M4 6l4 4 4-4" />
-                </svg>
-              </summary>
-              <div
-                style={{
-                  padding: "0 20px 18px",
-                  borderTop: "1px solid rgba(107,21,14,0.08)",
-                  marginTop: "0",
-                }}
-              >
-                <p style={{ fontSize: "14px", color: T.textSecondary, lineHeight: 1.8, paddingTop: "14px" }}>
-                  {item.a}
-                </p>
-              </div>
-            </details>
-          ))}
-        </div>
+        <FAQAccordion faqs={faqs} />
       </div>
     </section>
   );
@@ -1137,24 +1141,10 @@ function FinalCTASection() {
     <section
       id="enroll"
       className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
-      style={{ backgroundColor: "#0f0808" }}
+      style={{ backgroundColor: "#ffffff" }}
     >
-      <div
-        aria-hidden
-        style={{
-          position: "absolute",
-          inset: 0,
-          background:
-            "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(107,21,14,0.3) 0%, transparent 65%)," +
-            "radial-gradient(ellipse 40% 30% at 20% 80%, rgba(180,50,30,0.14) 0%, transparent 65%)",
-          pointerEvents: "none",
-        }}
-      />
-      <div className="relative max-w-3xl mx-auto text-center">
-        <span
-          className="mv-tag inline-block mb-8"
-          style={{ backgroundColor: "rgba(255,255,255,0.1)", color: "#e87070" }}
-        >
+      <div className="reveal relative max-w-3xl mx-auto text-center">
+        <span className="mv-tag mv-tag-light inline-block mb-8">
           Твоят нов бизнес цикъл за 2026-та
         </span>
 
@@ -1162,20 +1152,20 @@ function FinalCTASection() {
           style={{
             fontSize: "clamp(1.8rem, 4vw, 3rem)",
             fontWeight: 900,
-            color: "#ffffff",
+            color: T.textPrimary,
             lineHeight: 1.15,
             letterSpacing: "-0.02em",
           }}
         >
           12 дни. 12 теми.{" "}
-          <span style={{ color: "#e85050" }}>
+          <span style={{ ...GRADIENT_TEXT }}>
             12 стъпки, които ще те подредят отвътре навън.
           </span>
         </h2>
 
         <p
           className="mt-5"
-          style={{ fontSize: "16px", color: onDark.secondary, lineHeight: 1.8 }}
+          style={{ fontSize: "16px", color: T.textSecondary, lineHeight: 1.8 }}
         >
           Започва с теб. Завършва с ясен план за растеж, готов за изпълнение.
         </p>
@@ -1184,15 +1174,15 @@ function FinalCTASection() {
         <div
           className="mt-10 mb-10 inline-flex flex-col items-center gap-2 px-10 py-6"
           style={{
-            backgroundColor: "rgba(255,255,255,0.06)",
+            backgroundColor: "#faf8f5",
             borderRadius: "14px",
-            border: "1px solid rgba(255,255,255,0.1)",
+            border: "1px solid rgba(107,21,14,0.1)",
           }}
         >
           <span
             style={{
               fontSize: "13px",
-              color: onDark.muted,
+              color: T.textSecondary,
               letterSpacing: "0.08em",
               textTransform: "uppercase",
             }}
@@ -1204,7 +1194,7 @@ function FinalCTASection() {
               style={{
                 fontSize: "clamp(2.4rem, 5vw, 3.6rem)",
                 fontWeight: 900,
-                color: "#ffffff",
+                color: T.textPrimary,
                 lineHeight: 1,
                 letterSpacing: "-0.03em",
               }}
@@ -1215,9 +1205,9 @@ function FinalCTASection() {
               style={{
                 fontSize: "18px",
                 fontWeight: 600,
-                color: onDark.muted,
+                color: T.textSecondary,
                 textDecoration: "line-through",
-                textDecorationColor: "rgba(255,255,255,0.25)",
+                textDecorationColor: "rgba(0,0,0,0.25)",
               }}
             >
               €197
@@ -1229,13 +1219,13 @@ function FinalCTASection() {
                 width: 7,
                 height: 7,
                 borderRadius: "50%",
-                backgroundColor: "#e85050",
+                backgroundColor: "#c94535",
                 display: "inline-block",
-                boxShadow: "0 0 0 2px rgba(232,80,80,0.28)",
+                boxShadow: "0 0 0 2px rgba(201,69,53,0.22)",
                 flexShrink: 0,
               }}
             />
-            <span style={{ fontSize: "12px", color: "#e87070", fontWeight: 700, letterSpacing: "0.04em" }}>
+            <span style={{ fontSize: "12px", color: "#6b150e", fontWeight: 700, letterSpacing: "0.04em" }}>
               Ограничени места
             </span>
           </div>
@@ -1249,8 +1239,8 @@ function FinalCTASection() {
           >
             Да - Готова съм да вляза →
           </a>
-          <p style={{ fontSize: "13px", color: onDark.muted }}>
-            Сигурна транзакция · Незабавен достъп до всички 12 мастъркласа
+          <p style={{ fontSize: "13px", color: T.textSecondary }}>
+            Сигурна транзакция · Получаваш потвърждение с всички детайли
           </p>
         </div>
       </div>

@@ -112,7 +112,7 @@ export function SiteFooter() {
   ];
 
   return (
-    <footer style={{ backgroundColor: "#0a0a0a", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+    <footer style={{ backgroundColor: "#faf8f5", borderTop: "1px solid rgba(107,21,14,0.08)" }}>
       <div className="px-6 md:px-16 lg:px-24 py-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
         <a href="/" style={{ flexShrink: 0, display: "flex", alignItems: "center" }}>
           <Image src={LOGO_URL} alt="Coaching Real" width={0} height={0} sizes="100vw" style={{ height: "36px", width: "auto" }} />
@@ -125,11 +125,11 @@ export function SiteFooter() {
               href={l.href}
               style={{
                 fontSize: "13px",
-                color: onDark.muted,
+                color: "rgba(15,19,26,0.5)",
                 textDecoration: "none",
                 transition: "color var(--mv-duration-fast)",
               }}
-              className="hover:text-white"
+              className="hover:text-[#0f131a]"
             >
               {l.label}
             </a>
@@ -139,21 +139,21 @@ export function SiteFooter() {
 
       <div
         className="px-6 md:px-16 lg:px-24 py-5 flex flex-col md:flex-row justify-between items-center gap-4"
-        style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}
+        style={{ borderTop: "1px solid rgba(107,21,14,0.06)" }}
       >
         <div className="flex flex-wrap gap-x-5 gap-y-2">
           {legalLinks.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              style={{ fontSize: "12px", color: "rgba(255,255,255,0.28)", textDecoration: "none" }}
-              className="hover:text-white/60"
+              style={{ fontSize: "12px", color: "rgba(15,19,26,0.35)", textDecoration: "none" }}
+              className="hover:text-[#0f131a]/60"
             >
               {l.label}
             </a>
           ))}
         </div>
-        <p style={{ fontSize: "12px", color: "rgba(255,255,255,0.22)" }}>
+        <p style={{ fontSize: "12px", color: "rgba(15,19,26,0.3)" }}>
           Coaching Real Live, All rights reserved
         </p>
       </div>

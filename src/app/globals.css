@@ -1,4 +1,8 @@
 @import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
@@ -61,8 +65,8 @@
   /* Mindvalley semantic color tokens */
   --mv-text-primary: #0f131a;
   --mv-text-secondary: #595e67;
-  --mv-purple: #6b150e;
-  --mv-purple-dark: #4a0e09;
+  --mv-purple: #c94535;
+  --mv-purple-dark: #a8372a;
   --mv-purple-light: #e87070; /* accessible on dark bg: ~7:1 on #000 */
   --mv-surface-base: #000000;
   --mv-surface-dark: #0c0c0e;
@@ -201,11 +205,20 @@
 .mv-btn:active { transform: scale(0.97); }
 
 /* Primary — purple bg, white text (10.8:1) ✅ */
+@keyframes btnPulse {
+  0%   { box-shadow: 0 0 0 0  rgba(201, 69, 53, 0.45); }
+  35%  { box-shadow: 0 0 0 8px rgba(201, 69, 53, 0);    }
+  100% { box-shadow: 0 0 0 8px rgba(201, 69, 53, 0);    }
+}
 .mv-btn-primary {
   background-color: var(--mv-purple);
   color: #ffffff;
+  animation: btnPulse 2.8s ease-out infinite;
 }
-.mv-btn-primary:hover { background-color: var(--mv-purple-dark); }
+.mv-btn-primary:hover {
+  background-color: var(--mv-purple-dark);
+  animation: none;
+}
 
 /* Outline dark — on dark bg */
 .mv-btn-outline-dark {
@@ -349,3 +362,103 @@
   border-top: 1px solid rgba(0,0,0,0.08);
   margin: 2.5rem 0;
 }
+
+/* ─── Masterclass campaign hero hover ───────────────────────────────── */
+.mc-hero {
+  position: relative;
+  overflow: hidden;
+}
+.mc-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 55% 45%, rgba(107,21,14,0.07) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+.mc-hero:hover::before {
+  opacity: 1;
+}
+.mc-hero-content {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
+}
+.mc-hero:hover .mc-hero-content {
+  transform: translateY(-5px);
+}
+.mc-hero-visual {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), filter 0.5s ease;
+}
+.mc-hero:hover .mc-hero-visual {
+  transform: translateY(-3px) scale(1.015);
+  filter: drop-shadow(0 24px 40px rgba(107,21,14,0.14));
+}
+@keyframes mcOrb {
+  0%, 100% { transform: scale(1)    translate(0,    0);    opacity: 0.30; }
+  50%      { transform: scale(1.18) translate(3%,  -5%);   opacity: 0.45; }
+}
+@keyframes mcOrbB {
+  0%, 100% { transform: scale(1)    translate(0,    0);    opacity: 0.25; }
+  40%      { transform: scale(1.12) translate(-4%,  6%);   opacity: 0.40; }
+  70%      { transform: scale(0.92) translate(5%,   2%);   opacity: 0.20; }
+}
+@keyframes mcOrbC {
+  0%, 100% { transform: scale(1)    translate(0,    0);    opacity: 0.20; }
+  33%      { transform: scale(1.15) translate(6%,  -4%);   opacity: 0.35; }
+  66%      { transform: scale(0.88) translate(-5%,  6%);   opacity: 0.15; }
+}
+@keyframes mcDots {
+  0%, 100% { opacity: 0.40; transform: translateY(0px); }
+  50%      { opacity: 0.65; transform: translateY(-6px); }
+}
+.mc-orb {
+  animation: mcOrb 9s ease-in-out infinite;
+}
+.mc-dots {
+  animation: mcDots 10s ease-in-out infinite;
+}
+@keyframes mcScrollChevron {
+  0%, 100% { opacity: 0; transform: translateY(-4px); }
+  50%       { opacity: 1; transform: translateY(2px);  }
+}
+@keyframes mcScrollFloat {
+  0%, 100% { opacity: 0.45; transform: translateX(-50%) translateY(0px);   }
+  50%       { opacity: 0.65; transform: translateX(-50%) translateY(-5px);  }
+}
+.mc-scroll-chevron {
+  animation: mcScrollChevron 1.6s ease-in-out infinite;
+}
+.mc-scroll-chevron-2 {
+  animation: mcScrollChevron 1.6s ease-in-out infinite 0.3s;
+}
+.mc-scroll-prompt {
+  animation: mcScrollFloat 3s ease-in-out infinite;
+}
+
+@keyframes mcPulse {
+  0%   { transform: scale(1);   opacity: 0.6; }
+  100% { transform: scale(2.8); opacity: 0;   }
+}
+.mc-pulse-ring {
+  animation: mcPulse 1.6s ease-out infinite;
+}
+
+/* ── Scroll reveal ─────────────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
