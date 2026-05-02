@@ -141,9 +141,11 @@ const socialLinks = [
     label: "Spotify",
     href: "https://open.spotify.com/show/0KxtbyciihHNzSI8qAGB6c?si=85f441d70222430a",
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
         <circle cx="12" cy="12" r="10" />
-        <path fill="#faf8f5" d="M16.63 13.27c-2.64-1.57-6.57-1.71-8.94-0.95a0.77 0.77 0 1 1-0.45-1.48c2.73-0.83 7.27-0.67 10.14 1.1a0.77 0.77 0 0 1-0.75 1.33zm0.22-2.78c-3.06-1.82-7.7-1.88-10.48-1.04a0.93 0.93 0 1 1-0.54-1.78c3.16-0.96 8.4-0.88 11.72 1.2a0.93 0.93 0 0 1-0.7 1.62zm0.09-2.87c-3.66-2.18-9.7-2.38-13.19-1.31a1.11 1.11 0 1 1-0.65-2.13c4-1.22 10.68-0.99 14.9 1.52a1.11 1.11 0 0 1-1.06 1.92z" />
+        <path d="M8 13.5c2.5-1 5.5-1 8 0" />
+        <path d="M7 10.5c3-1.2 7-1.2 10 0" />
+        <path d="M9.5 16.5c1.5-.5 3.5-.5 5 0" />
       </svg>
     ),
   },
