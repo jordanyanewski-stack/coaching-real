@@ -95,7 +95,7 @@ function IconCheck({ dark = false }: { dark?: boolean }) {
     <svg width="11" height="9" viewBox="0 0 11 9" fill="none">
       <path
         d="M1 4.5L4 7.5L10 1"
-        stroke={dark ? '#ffffff' : '#6b150e'}
+        stroke={dark ? '#ffffff' : '#70150E'}
         strokeWidth="1.7"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -106,13 +106,13 @@ function IconCheck({ dark = false }: { dark?: boolean }) {
 
 function IconQuote() {
   return (
-    <svg width="36" height="28" viewBox="0 0 36 28" fill="#6b150e" opacity="0.18">
+    <svg width="36" height="28" viewBox="0 0 36 28" fill="#70150E" opacity="0.18">
       <path d="M0 28V16.8C0 12.267 1.067 8.533 3.2 5.6 5.467 2.667 8.933.8 13.6 0l1.6 3.2C11.067 4.267 8.8 6.133 7.6 8.8 6.533 11.2 6.133 13.6 6.4 16H14V28H0Zm22 0V16.8c0-4.533 1.067-8.267 3.2-11.2C27.467 2.667 30.933.8 35.6 0L37.2 3.2c-4.133 1.067-6.4 2.933-6.8 5.6C29.333 11.2 29 13.6 29.2 16H36V28H22Z" />
     </svg>
   );
 }
 
-function IconCompass({ color = '#6b150e' }: { color?: string }) {
+function IconCompass({ color = '#70150E' }: { color?: string }) {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="12" cy="12" r="10" />
@@ -121,7 +121,7 @@ function IconCompass({ color = '#6b150e' }: { color?: string }) {
   );
 }
 
-function IconMap({ color = '#6b150e' }: { color?: string }) {
+function IconMap({ color = '#70150E' }: { color?: string }) {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21" />
@@ -131,7 +131,7 @@ function IconMap({ color = '#6b150e' }: { color?: string }) {
   );
 }
 
-function IconZap({ color = '#6b150e' }: { color?: string }) {
+function IconZap({ color = '#70150E' }: { color?: string }) {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
@@ -139,7 +139,7 @@ function IconZap({ color = '#6b150e' }: { color?: string }) {
   );
 }
 
-function IconHeart({ color = '#6b150e' }: { color?: string }) {
+function IconHeart({ color = '#70150E' }: { color?: string }) {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
@@ -147,7 +147,7 @@ function IconHeart({ color = '#6b150e' }: { color?: string }) {
   );
 }
 
-function IconUsers({ color = '#6b150e' }: { color?: string }) {
+function IconUsers({ color = '#70150E' }: { color?: string }) {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
@@ -158,7 +158,7 @@ function IconUsers({ color = '#6b150e' }: { color?: string }) {
   );
 }
 
-function IconClock({ color = '#6b150e' }: { color?: string }) {
+function IconClock({ color = '#70150E' }: { color?: string }) {
   return (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="12" cy="12" r="10" />
@@ -167,7 +167,7 @@ function IconClock({ color = '#6b150e' }: { color?: string }) {
   );
 }
 
-function IconMapPin({ color = '#6b150e' }: { color?: string }) {
+function IconMapPin({ color = '#70150E' }: { color?: string }) {
   return (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
       <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
@@ -176,7 +176,7 @@ function IconMapPin({ color = '#6b150e' }: { color?: string }) {
   );
 }
 
-function IconLaptop({ color = '#6b150e' }: { color?: string }) {
+function IconLaptop({ color = '#70150E' }: { color?: string }) {
   return (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
       <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
@@ -185,7 +185,7 @@ function IconLaptop({ color = '#6b150e' }: { color?: string }) {
   );
 }
 
-function IconStar({ color = '#6b150e' }: { color?: string }) {
+function IconStar({ color = '#70150E' }: { color?: string }) {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
@@ -216,7 +216,7 @@ function HeroSection() {
   return (
     <section
       className="relative min-h-screen flex flex-col justify-center px-6 md:px-16 lg:px-24 pt-24 pb-20 overflow-hidden"
-      style={{ backgroundColor: '#0f0808' }}
+      style={{ backgroundColor: '#faf8f5' }}
     >
       <div aria-hidden style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
         <div style={{
@@ -235,7 +235,7 @@ function HeroSection() {
         {/* Left */}
         <div>
           <div className="animate-fade-up">
-            <span className="mv-tag mv-tag-dark">Уъркшоп · 1 ден · Живо и онлайн</span>
+            <span className="mv-tag mv-tag-light">Уъркшоп · 1 ден · Живо и онлайн</span>
           </div>
 
           <h1 className="animate-fade-up delay-100 mt-6" style={{ lineHeight: 0.95, letterSpacing: '-0.03em' }}>
@@ -244,7 +244,7 @@ function HeroSection() {
               style={{
                 fontSize: 'clamp(3.2rem, 8vw, 6rem)',
                 fontWeight: 900,
-                background: 'linear-gradient(135deg, #6b150e 0%, #c94535 55%, #e85050 100%)',
+                background: 'linear-gradient(135deg, #70150E 0%, #c94535 55%, #e85050 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -258,7 +258,7 @@ function HeroSection() {
               style={{
                 fontSize: 'clamp(1rem, 2.4vw, 1.45rem)',
                 fontWeight: 700,
-                color: 'rgba(255,255,255,0.78)',
+                color: 'rgba(15,19,26,0.65)',
                 letterSpacing: '-0.01em',
                 lineHeight: 1.3,
               }}
@@ -301,7 +301,7 @@ function HeroSection() {
             <a href="#order" className="mv-btn mv-btn-primary" style={{ fontSize: '15px', padding: '14px 28px' }}>
               Резервирай на живо (€77) →
             </a>
-            <a href="#order" className="mv-btn mv-btn-outline-dark" style={{ fontSize: '15px', padding: '14px 28px' }}>
+            <a href="#order" className="mv-btn mv-btn-outline-light" style={{ fontSize: '15px', padding: '14px 28px' }}>
               Резервирай онлайн (€50)
             </a>
           </div>
@@ -317,9 +317,9 @@ function HeroSection() {
         <div className="animate-fade-in delay-200 hidden lg:block">
           <div
             style={{
-              backgroundColor: 'rgba(255,255,255,0.04)',
+              backgroundColor: 'rgba(112,21,14,0.04)',
               borderRadius: T.radiusSm,
-              border: '1px solid rgba(255,255,255,0.09)',
+              border: '1px solid rgba(112,21,14,0.08)',
               padding: '28px',
             }}
           >
@@ -344,9 +344,9 @@ function HeroSection() {
                   key={type}
                   className="flex gap-3 items-center px-3 py-2.5"
                   style={{
-                    backgroundColor: 'rgba(255,255,255,0.05)',
+                    backgroundColor: 'rgba(112,21,14,0.04)',
                     borderRadius: '8px',
-                    border: '1px solid rgba(255,255,255,0.07)',
+                    border: '1px solid rgba(112,21,14,0.06)',
                   }}
                 >
                   <span style={{ flexShrink: 0, display: 'flex' }}>
@@ -361,7 +361,7 @@ function HeroSection() {
             </div>
 
             {/* Quick highlights */}
-            <div className="mt-6 pt-5" style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+            <div className="mt-6 pt-5" style={{ borderTop: '1px solid rgba(112,21,14,0.07)' }}>
               <p style={{
                 fontSize: '11px', fontWeight: 700, color: onDark.muted,
                 letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '12px',
@@ -439,7 +439,7 @@ function IntroSection() {
               >
                 <span style={{
                   flexShrink: 0, width: '22px', height: '22px', borderRadius: '50%',
-                  background: 'linear-gradient(135deg, #6b150e 0%, #c94535 100%)',
+                  background: 'linear-gradient(135deg, #70150E 0%, #c94535 100%)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '1px',
                 }}>
                   <IconCheck dark />
@@ -533,7 +533,7 @@ function AudienceSection() {
             >
               <span style={{
                 flexShrink: 0, width: '24px', height: '24px', borderRadius: '50%',
-                background: 'linear-gradient(135deg, #6b150e 0%, #c94535 100%)',
+                background: 'linear-gradient(135deg, #70150E 0%, #c94535 100%)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '1px',
               }}>
                 <IconCheck dark />
@@ -558,7 +558,7 @@ function ResultsSection() {
   return (
     <section
       className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
-      style={{ backgroundColor: '#1a1010' }}
+      style={{ backgroundColor: '#faf8f5' }}
     >
       <div
         aria-hidden
@@ -571,7 +571,7 @@ function ResultsSection() {
         }}
       />
       <div className="relative max-w-5xl mx-auto">
-        <span className="mv-tag mv-tag-dark">Какво ще постигнеш</span>
+        <span className="mv-tag mv-tag-light">Какво ще постигнеш</span>
         <h2
           className="mt-5"
           style={{
@@ -581,7 +581,7 @@ function ResultsSection() {
         >
           След KICKDAY спираш да мислиш за{' '}
           <span style={{
-            background: 'linear-gradient(135deg, #6b150e 0%, #c94535 55%, #e85050 100%)',
+            background: 'linear-gradient(135deg, #70150E 0%, #c94535 55%, #e85050 100%)',
             WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
           }}>
             &ldquo;някой ден&rdquo;
@@ -597,9 +597,9 @@ function ResultsSection() {
               key={i}
               className="flex gap-4 p-6"
               style={{
-                backgroundColor: 'rgba(255,255,255,0.04)',
+                backgroundColor: 'rgba(112,21,14,0.04)',
                 borderRadius: '12px',
-                border: '1px solid rgba(255,255,255,0.08)',
+                border: '1px solid rgba(112,21,14,0.07)',
               }}
             >
               <div style={{
@@ -700,7 +700,7 @@ function ScheduleSection() {
               <div className="flex flex-col items-center" style={{ flexShrink: 0, width: '20px' }}>
                 <div style={{
                   width: '12px', height: '12px', borderRadius: '50%', flexShrink: 0,
-                  background: 'linear-gradient(135deg, #6b150e 0%, #c94535 100%)',
+                  background: 'linear-gradient(135deg, #70150E 0%, #c94535 100%)',
                   border: '2px solid rgba(107,21,14,0.25)',
                   marginTop: '4px',
                 }} />
@@ -723,8 +723,8 @@ function ScheduleSection() {
                     border: '1px solid rgba(107,21,14,0.12)',
                   }}
                 >
-                  <IconClock color="#6b150e" />
-                  <span style={{ fontSize: '11px', fontWeight: 700, color: '#6b150e', letterSpacing: '0.06em' }}>
+                  <IconClock color="#70150E" />
+                  <span style={{ fontSize: '11px', fontWeight: 700, color: '#70150E', letterSpacing: '0.06em' }}>
                     {time}
                   </span>
                 </div>
@@ -756,7 +756,7 @@ function DifferenceSection() {
   return (
     <section
       className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
-      style={{ backgroundColor: '#100808' }}
+      style={{ backgroundColor: '#faf8f5' }}
     >
       <div
         aria-hidden
@@ -769,7 +769,7 @@ function DifferenceSection() {
         }}
       />
       <div className="relative max-w-5xl mx-auto">
-        <span className="mv-tag mv-tag-dark">Защо KICKDAY</span>
+        <span className="mv-tag mv-tag-light">Защо KICKDAY</span>
         <h2
           className="mt-5"
           style={{
@@ -779,7 +779,7 @@ function DifferenceSection() {
         >
           Не е просто{' '}
           <span style={{
-            background: 'linear-gradient(135deg, #6b150e 0%, #c94535 55%, #e85050 100%)',
+            background: 'linear-gradient(135deg, #70150E 0%, #c94535 55%, #e85050 100%)',
             WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
           }}>
             поредното събитие
@@ -796,9 +796,9 @@ function DifferenceSection() {
               key={i}
               className="flex gap-5 p-7"
               style={{
-                backgroundColor: 'rgba(255,255,255,0.04)',
+                backgroundColor: 'rgba(112,21,14,0.04)',
                 borderRadius: '14px',
-                border: '1px solid rgba(255,255,255,0.08)',
+                border: '1px solid rgba(112,21,14,0.07)',
               }}
             >
               <div style={{
@@ -885,13 +885,13 @@ function PricingSection() {
             <div
               className="px-7 py-5"
               style={{
-                background: 'linear-gradient(135deg, #6b150e 0%, #c94535 100%)',
+                background: 'linear-gradient(135deg, #70150E 0%, #c94535 100%)',
               }}
             >
-              <p style={{ fontSize: '11px', fontWeight: 700, color: 'rgba(255,255,255,0.7)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '4px' }}>
+              <p style={{ fontSize: '11px', fontWeight: 700, color: 'rgba(15,19,26,0.6)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '4px' }}>
                 На живо
               </p>
-              <p style={{ fontSize: '15px', fontWeight: 700, color: '#ffffff' }}>
+              <p style={{ fontSize: '15px', fontWeight: 700, color: 'var(--mv-text-primary)' }}>
                 Интерпред – VIP зала, гр. София
               </p>
             </div>
@@ -910,7 +910,7 @@ function PricingSection() {
                 <span style={{ fontSize: '14px', color: T.textSecondary, textDecoration: 'line-through', fontWeight: 500 }}>
                   €128
                 </span>
-                <span style={{ fontSize: '11px', fontWeight: 700, color: '#6b150e', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+                <span style={{ fontSize: '11px', fontWeight: 700, color: '#70150E', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
                   Ранна цена
                 </span>
               </div>
@@ -927,7 +927,7 @@ function PricingSection() {
                   <div key={i} className="flex gap-3 items-center">
                     <span style={{
                       flexShrink: 0, width: '20px', height: '20px', borderRadius: '50%',
-                      background: 'linear-gradient(135deg, #6b150e 0%, #c94535 100%)',
+                      background: 'linear-gradient(135deg, #70150E 0%, #c94535 100%)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                     }}>
                       <IconCheck dark />
@@ -999,7 +999,7 @@ function PricingSection() {
                   <div key={i} className="flex gap-3 items-center">
                     <span style={{
                       flexShrink: 0, width: '20px', height: '20px', borderRadius: '50%',
-                      background: 'linear-gradient(135deg, #6b150e 0%, #c94535 100%)',
+                      background: 'linear-gradient(135deg, #70150E 0%, #c94535 100%)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                     }}>
                       <IconCheck dark />
@@ -1033,7 +1033,7 @@ function FinalCTASection() {
   return (
     <section
       className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
-      style={{ backgroundColor: '#0f0808' }}
+      style={{ backgroundColor: '#faf8f5' }}
     >
       <div
         aria-hidden
@@ -1050,7 +1050,7 @@ function FinalCTASection() {
         {/* Personal message from Stanislava */}
         <div
           className="grid lg:grid-cols-[auto_1fr] gap-8 items-start mb-16 pb-16"
-          style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}
+          style={{ borderBottom: '1px solid rgba(112,21,14,0.07)' }}
         >
           {/* Photo */}
           <div className="hidden lg:block" style={{ flexShrink: 0 }}>
@@ -1098,13 +1098,13 @@ function FinalCTASection() {
         <div className="text-center">
           <span
             className="mv-tag inline-block mb-8"
-            style={{ backgroundColor: 'rgba(255,255,255,0.1)', color: '#e87070' }}
+            style={{ backgroundColor: 'rgba(112,21,14,0.08)', color: '#e87070' }}
           >
             Готова ли си за следващото ниво?
           </span>
 
           <h2 style={{
-            fontSize: 'clamp(1.8rem, 4vw, 3rem)', fontWeight: 900, color: '#ffffff',
+            fontSize: 'clamp(1.8rem, 4vw, 3rem)', fontWeight: 900, color: 'var(--mv-text-primary)',
             lineHeight: 1.15, letterSpacing: '-0.02em',
           }}>
             Запиши се сега и{' '}
@@ -1119,21 +1119,21 @@ function FinalCTASection() {
           <div
             className="mt-10 mb-10 inline-flex flex-col sm:flex-row items-center gap-6 px-10 py-6"
             style={{
-              backgroundColor: 'rgba(255,255,255,0.06)', borderRadius: '14px',
-              border: '1px solid rgba(255,255,255,0.1)',
+              backgroundColor: 'rgba(112,21,14,0.05)', borderRadius: '14px',
+              border: '1px solid rgba(112,21,14,0.08)',
             }}
           >
             <div className="text-center">
               <p style={{ fontSize: '11px', color: onDark.muted, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '4px' }}>На живо · Ранна цена</p>
               <div className="flex items-baseline justify-center gap-2">
-                <span style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 900, color: '#ffffff', lineHeight: 1, letterSpacing: '-0.03em' }}>€77</span>
+                <span style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 900, color: 'var(--mv-text-primary)', lineHeight: 1, letterSpacing: '-0.03em' }}>€77</span>
                 <span style={{ fontSize: '14px', fontWeight: 600, color: onDark.muted, textDecoration: 'line-through', textDecorationColor: 'rgba(255,255,255,0.25)' }}>€128</span>
               </div>
             </div>
-            <div style={{ width: '1px', height: '48px', backgroundColor: 'rgba(255,255,255,0.12)' }} className="hidden sm:block" />
+            <div style={{ width: '1px', height: '48px', backgroundColor: 'rgba(112,21,14,0.09)' }} className="hidden sm:block" />
             <div className="text-center">
               <p style={{ fontSize: '11px', color: onDark.muted, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '4px' }}>Онлайн</p>
-              <span style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 900, color: '#ffffff', lineHeight: 1, letterSpacing: '-0.03em' }}>€50</span>
+              <span style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 900, color: 'var(--mv-text-primary)', lineHeight: 1, letterSpacing: '-0.03em' }}>€50</span>
             </div>
           </div>
 
@@ -1147,7 +1147,7 @@ function FinalCTASection() {
             </a>
             <a
               href="#order"
-              className="mv-btn mv-btn-outline-dark"
+              className="mv-btn mv-btn-outline-light"
               style={{ fontSize: '17px', padding: '18px 44px' }}
             >
               Онлайн място (€50)

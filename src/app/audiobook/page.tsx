@@ -90,7 +90,7 @@ const bonuses = [
 ];
 
 /* ─── SPECIALIST SVG ICONS ──────────────────────────────────────────── */
-function IconBrain({ color = "#6b150e" }: { color?: string }) {
+function IconBrain({ color = "#70150E" }: { color?: string }) {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z" />
@@ -99,7 +99,7 @@ function IconBrain({ color = "#6b150e" }: { color?: string }) {
   );
 }
 
-function IconHeart({ color = "#6b150e" }: { color?: string }) {
+function IconHeart({ color = "#70150E" }: { color?: string }) {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
@@ -108,7 +108,7 @@ function IconHeart({ color = "#6b150e" }: { color?: string }) {
   );
 }
 
-function IconTarget({ color = "#6b150e" }: { color?: string }) {
+function IconTarget({ color = "#70150E" }: { color?: string }) {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="12" cy="12" r="10" />
@@ -118,7 +118,7 @@ function IconTarget({ color = "#6b150e" }: { color?: string }) {
   );
 }
 
-function IconMoon({ color = "#6b150e" }: { color?: string }) {
+function IconMoon({ color = "#70150E" }: { color?: string }) {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
@@ -127,7 +127,7 @@ function IconMoon({ color = "#6b150e" }: { color?: string }) {
   );
 }
 
-function IconLotus({ color = "#6b150e" }: { color?: string }) {
+function IconLotus({ color = "#70150E" }: { color?: string }) {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <path d="M12 22V12" />
@@ -140,7 +140,7 @@ function IconLotus({ color = "#6b150e" }: { color?: string }) {
   );
 }
 
-function IconLeaf({ color = "#6b150e" }: { color?: string }) {
+function IconLeaf({ color = "#70150E" }: { color?: string }) {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
@@ -150,7 +150,7 @@ function IconLeaf({ color = "#6b150e" }: { color?: string }) {
 }
 
 /* ─── LEARN SECTION ICONS ───────────────────────────────────────────── */
-function IconPackage({ color = "#6b150e" }: { color?: string }) {
+function IconPackage({ color = "#70150E" }: { color?: string }) {
   return (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
@@ -160,7 +160,7 @@ function IconPackage({ color = "#6b150e" }: { color?: string }) {
   );
 }
 
-function IconUserCheck({ color = "#6b150e" }: { color?: string }) {
+function IconUserCheck({ color = "#70150E" }: { color?: string }) {
   return (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
@@ -170,7 +170,7 @@ function IconUserCheck({ color = "#6b150e" }: { color?: string }) {
   );
 }
 
-function IconPeople({ color = "#6b150e" }: { color?: string }) {
+function IconPeople({ color = "#70150E" }: { color?: string }) {
   return (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
@@ -181,7 +181,7 @@ function IconPeople({ color = "#6b150e" }: { color?: string }) {
   );
 }
 
-function IconAward({ color = "#6b150e" }: { color?: string }) {
+function IconAward({ color = "#70150E" }: { color?: string }) {
   return (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="12" cy="8" r="6" />
@@ -191,7 +191,7 @@ function IconAward({ color = "#6b150e" }: { color?: string }) {
 }
 
 /* ─── BONUS ICONS ───────────────────────────────────────────────────── */
-function IconConsult({ color = "rgba(255,255,255,0.9)" }: { color?: string }) {
+function IconConsult({ color = "rgba(15,19,26,0.75)" }: { color?: string }) {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <path d="M17 18a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2" />
@@ -203,7 +203,7 @@ function IconConsult({ color = "rgba(255,255,255,0.9)" }: { color?: string }) {
   );
 }
 
-function IconCompass({ color = "rgba(255,255,255,0.9)" }: { color?: string }) {
+function IconCompass({ color = "rgba(15,19,26,0.75)" }: { color?: string }) {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="12" cy="12" r="10" />
@@ -218,7 +218,7 @@ function IconCheck({ dark = false }: { dark?: boolean }) {
     <svg width="11" height="9" viewBox="0 0 11 9" fill="none">
       <path
         d="M1 4.5L4 7.5L10 1"
-        stroke={dark ? "#ffffff" : "#6b150e"}
+        stroke={dark ? "#ffffff" : "#70150E"}
         strokeWidth="1.7"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -238,7 +238,7 @@ function IconLock() {
 
 function IconQuote() {
   return (
-    <svg width="36" height="28" viewBox="0 0 36 28" fill="#6b150e" opacity="0.18">
+    <svg width="36" height="28" viewBox="0 0 36 28" fill="#70150E" opacity="0.18">
       <path d="M0 28V16.8C0 12.267 1.067 8.533 3.2 5.6 5.467 2.667 8.933.8 13.6 0l1.6 3.2C11.067 4.267 8.8 6.133 7.6 8.8 6.533 11.2 6.133 13.6 6.4 16H14V28H0Zm22 0V16.8c0-4.533 1.067-8.267 3.2-11.2C27.467 2.667 30.933.8 35.6 0L37.2 3.2c-4.133 1.067-6.4 2.933-6.8 5.6C29.333 11.2 29 13.6 29.2 16H36V28H22Z" />
     </svg>
   );
@@ -267,7 +267,7 @@ function HeroSection() {
   return (
     <section
       className="relative min-h-screen flex flex-col justify-center px-6 md:px-16 lg:px-24 pt-24 pb-20 overflow-hidden"
-      style={{ backgroundColor: "#0f0808" }}
+      style={{ backgroundColor: "#faf8f5" }}
     >
       {/* Ambient light */}
       <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: 0 }}>
@@ -315,7 +315,7 @@ function HeroSection() {
         {/* Left - text */}
         <div>
           <div className="animate-fade-up">
-            <span className="mv-tag mv-tag-dark">Аудиокнига · KickSTART</span>
+            <span className="mv-tag mv-tag-light">Аудиокнига · KickSTART</span>
           </div>
 
           <h1
@@ -332,7 +332,7 @@ function HeroSection() {
             <span
               className="block"
               style={{
-                background: "linear-gradient(135deg, #6b150e 0%, #c94535 55%, #e85050 100%)",
+                background: "linear-gradient(135deg, #70150E 0%, #c94535 55%, #e85050 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -360,7 +360,7 @@ function HeroSection() {
                 style={{
                   fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
                   fontWeight: 900,
-                  color: "#ffffff",
+                  color: "var(--mv-text-primary)",
                   lineHeight: 1,
                   letterSpacing: "-0.03em",
                 }}
@@ -384,9 +384,9 @@ function HeroSection() {
           {/* Specialists */}
           <div
             style={{
-              backgroundColor: "rgba(255,255,255,0.04)",
+              backgroundColor: "rgba(112,21,14,0.04)",
               borderRadius: T.radiusSm,
-              border: "1px solid rgba(255,255,255,0.09)",
+              border: "1px solid rgba(112,21,14,0.08)",
               padding: "24px",
             }}
           >
@@ -408,9 +408,9 @@ function HeroSection() {
                   key={label}
                   className="flex items-center gap-3 px-3 py-2.5"
                   style={{
-                    backgroundColor: "rgba(255,255,255,0.05)",
+                    backgroundColor: "rgba(112,21,14,0.04)",
                     borderRadius: "8px",
-                    border: "1px solid rgba(255,255,255,0.07)",
+                    border: "1px solid rgba(112,21,14,0.06)",
                   }}
                 >
                   <div
@@ -440,7 +440,7 @@ function HeroSection() {
                 key={i}
                 className="flex gap-3 items-start p-4"
                 style={{
-                  backgroundColor: "rgba(255,255,255,0.04)",
+                  backgroundColor: "rgba(112,21,14,0.04)",
                   borderRadius: "10px",
                   border: "1px solid rgba(107,21,14,0.25)",
                 }}
@@ -484,7 +484,7 @@ function LearnSection() {
     <section
       id="buy"
       className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
-      style={{ backgroundColor: "#1a1010" }}
+      style={{ backgroundColor: "#faf8f5" }}
     >
       <div
         aria-hidden
@@ -500,7 +500,7 @@ function LearnSection() {
       <div className="relative max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-4">
-          <span className="mv-tag mv-tag-dark">Открий доказаната система</span>
+          <span className="mv-tag mv-tag-light">Открий доказаната система</span>
           <h2
             className="mt-5"
             style={{
@@ -514,7 +514,7 @@ function LearnSection() {
             Методиката, помогнала на{" "}
             <span
               style={{
-                background: "linear-gradient(135deg, #6b150e 0%, #c94535 55%, #e85050 100%)",
+                background: "linear-gradient(135deg, #70150E 0%, #c94535 55%, #e85050 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -527,7 +527,7 @@ function LearnSection() {
             className="mt-5 mx-auto"
             style={{ fontSize: "16px", color: onDark.secondary, lineHeight: 1.8, maxWidth: "560px" }}
           >
-            Само СЕГА за <strong style={{ color: "#ffffff" }}>25.00 €</strong>{" "}
+            Само СЕГА за <strong style={{ color: "var(--mv-text-primary)" }}>25.00 €</strong>{" "}
             <span style={{ color: onDark.muted, fontSize: "14px" }}>/ 48.90 лв.</span> ще научиш:
           </p>
         </div>
@@ -538,9 +538,9 @@ function LearnSection() {
               key={i}
               className="flex gap-5 p-6"
               style={{
-                backgroundColor: "rgba(255,255,255,0.06)",
+                backgroundColor: "rgba(112,21,14,0.05)",
                 borderRadius: T.radiusSm,
-                border: "1px solid rgba(255,255,255,0.1)",
+                border: "1px solid rgba(112,21,14,0.08)",
               }}
             >
               <div
@@ -639,7 +639,7 @@ function WhyDifferentSection() {
               width: "52px",
               height: "52px",
               borderRadius: "12px",
-              background: "linear-gradient(135deg, #6b150e 0%, #c94535 100%)",
+              background: "linear-gradient(135deg, #70150E 0%, #c94535 100%)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -749,7 +749,7 @@ function ForWhomSection() {
                   width: "24px",
                   height: "24px",
                   borderRadius: "50%",
-                  background: "linear-gradient(135deg, #6b150e 0%, #c94535 100%)",
+                  background: "linear-gradient(135deg, #70150E 0%, #c94535 100%)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -833,7 +833,7 @@ function AboutSection() {
             className="mt-8 p-6"
             style={{
               backgroundColor: T.surfaceStrong,
-              borderLeft: "3px solid #6b150e",
+              borderLeft: "3px solid #70150E",
               borderRadius: "0 10px 10px 0",
             }}
           >
@@ -846,7 +846,7 @@ function AboutSection() {
               style={{
                 fontSize: "13px",
                 fontWeight: 700,
-                color: "#6b150e",
+                color: "#70150E",
                 marginTop: "12px",
                 letterSpacing: "0.02em",
               }}
@@ -869,7 +869,7 @@ function TestimonialsSection() {
   return (
     <section
       className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
-      style={{ backgroundColor: "#100808" }}
+      style={{ backgroundColor: "#faf8f5" }}
     >
       <div
         aria-hidden
@@ -884,7 +884,7 @@ function TestimonialsSection() {
       />
       <div className="relative max-w-5xl mx-auto">
         <div className="text-center mb-14">
-          <span className="mv-tag mv-tag-dark">Резултатите говорят сами</span>
+          <span className="mv-tag mv-tag-light">Резултатите говорят сами</span>
           <h2
             className="mt-5"
             style={{
@@ -898,7 +898,7 @@ function TestimonialsSection() {
             Какво казват{" "}
             <span
               style={{
-                background: "linear-gradient(135deg, #6b150e 0%, #c94535 55%, #e85050 100%)",
+                background: "linear-gradient(135deg, #70150E 0%, #c94535 55%, #e85050 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -915,9 +915,9 @@ function TestimonialsSection() {
               key={i}
               className="flex flex-col justify-between p-8"
               style={{
-                backgroundColor: "rgba(255,255,255,0.05)",
+                backgroundColor: "rgba(112,21,14,0.04)",
                 borderRadius: "14px",
-                border: "1px solid rgba(255,255,255,0.09)",
+                border: "1px solid rgba(112,21,14,0.08)",
               }}
             >
               <div>
@@ -929,13 +929,13 @@ function TestimonialsSection() {
                   &ldquo;{t.quote}&rdquo;
                 </p>
               </div>
-              <div className="flex items-center gap-3 mt-8 pt-6" style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+              <div className="flex items-center gap-3 mt-8 pt-6" style={{ borderTop: "1px solid rgba(112,21,14,0.07)" }}>
                 <div
                   style={{
                     width: "40px",
                     height: "40px",
                     borderRadius: "50%",
-                    background: "linear-gradient(135deg, #6b150e 0%, #c94535 100%)",
+                    background: "linear-gradient(135deg, #70150E 0%, #c94535 100%)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -1015,7 +1015,7 @@ function BonusesSection() {
                       width: "48px",
                       height: "48px",
                       borderRadius: "12px",
-                      background: "linear-gradient(135deg, #6b150e 0%, #c94535 100%)",
+                      background: "linear-gradient(135deg, #70150E 0%, #c94535 100%)",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
@@ -1029,7 +1029,7 @@ function BonusesSection() {
                       style={{
                         fontSize: "11px",
                         fontWeight: 700,
-                        color: "#6b150e",
+                        color: "#70150E",
                         letterSpacing: "0.1em",
                         textTransform: "uppercase",
                         marginBottom: "3px",
@@ -1111,13 +1111,13 @@ function BonusesSection() {
             <p style={{ fontSize: "11px", fontWeight: 700, color: "rgba(255,255,255,0.55)", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "6px" }}>
               Обща стойност на офертата
             </p>
-            <p style={{ fontSize: "clamp(1.4rem, 3vw, 2rem)", fontWeight: 900, color: "#ffffff", letterSpacing: "-0.02em" }}>
+            <p style={{ fontSize: "clamp(1.4rem, 3vw, 2rem)", fontWeight: 900, color: "var(--mv-text-primary)", letterSpacing: "-0.02em" }}>
               Над <span style={{ textDecoration: "line-through", opacity: 0.6 }}>625 €</span>
             </p>
           </div>
           <div className="text-center md:text-right">
             <p style={{ fontSize: "12px", color: "rgba(255,255,255,0.6)", marginBottom: "4px" }}>Само сега за</p>
-            <p style={{ fontSize: "clamp(2rem, 4vw, 2.8rem)", fontWeight: 900, color: "#ffffff", lineHeight: 1, letterSpacing: "-0.03em" }}>
+            <p style={{ fontSize: "clamp(2rem, 4vw, 2.8rem)", fontWeight: 900, color: "var(--mv-text-primary)", lineHeight: 1, letterSpacing: "-0.03em" }}>
               25.00 €
             </p>
             <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.65)", marginTop: "3px" }}>/ 48.90 лв.</p>
@@ -1133,7 +1133,7 @@ function FinalCTASection() {
   return (
     <section
       className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
-      style={{ backgroundColor: "#0f0808" }}
+      style={{ backgroundColor: "#faf8f5" }}
     >
       <div
         aria-hidden
@@ -1149,7 +1149,7 @@ function FinalCTASection() {
       <div className="relative max-w-3xl mx-auto text-center">
         <span
           className="mv-tag inline-block mb-8"
-          style={{ backgroundColor: "rgba(255,255,255,0.1)", color: "#e87070" }}
+          style={{ backgroundColor: "rgba(112,21,14,0.08)", color: "#e87070" }}
         >
           Готов/а ли си да започнеш?
         </span>
@@ -1158,7 +1158,7 @@ function FinalCTASection() {
           style={{
             fontSize: "clamp(1.8rem, 4vw, 3rem)",
             fontWeight: 900,
-            color: "#ffffff",
+            color: "var(--mv-text-primary)",
             lineHeight: 1.15,
             letterSpacing: "-0.02em",
           }}
@@ -1173,9 +1173,9 @@ function FinalCTASection() {
         <div
           className="mt-10 mb-10 inline-flex flex-col items-center gap-2 px-10 py-6"
           style={{
-            backgroundColor: "rgba(255,255,255,0.06)",
+            backgroundColor: "rgba(112,21,14,0.05)",
             borderRadius: "14px",
-            border: "1px solid rgba(255,255,255,0.1)",
+            border: "1px solid rgba(112,21,14,0.08)",
           }}
         >
           <span style={{ fontSize: "13px", color: onDark.muted, letterSpacing: "0.08em", textTransform: "uppercase" }}>
@@ -1186,7 +1186,7 @@ function FinalCTASection() {
               style={{
                 fontSize: "clamp(2.4rem, 5vw, 3.6rem)",
                 fontWeight: 900,
-                color: "#ffffff",
+                color: "var(--mv-text-primary)",
                 lineHeight: 1,
                 letterSpacing: "-0.03em",
               }}

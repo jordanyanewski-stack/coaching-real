@@ -111,7 +111,7 @@ export default function CookiesPage() {
         <Section>
           <p>Ако имате въпроси относно употребата на бисквитки на нашия уебсайт, можете да се свържете с нас на:</p>
           <ul>
-            <li>Електронна поща: <a href="mailto:info@coachingreallive.com" style={{ color: "#6b150e" }}>info@coachingreallive.com</a></li>
+            <li>Електронна поща: <a href="mailto:info@coachingreallive.com" style={{ color: "#70150E" }}>info@coachingreallive.com</a></li>
             <li>Адрес: с.Мещица, ул.Ген.Гурко 16, общ.Перник, област София, п.к. 2353</li>
           </ul>
         </Section>

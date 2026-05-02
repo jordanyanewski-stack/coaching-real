@@ -14,10 +14,10 @@ export const T = {
 } as const;
 
 export const onDark = {
-  primary:   "#ffffff",
-  secondary: "rgba(255,255,255,0.68)",
-  muted:     "rgba(255,255,255,0.60)",
-  accent:    "#6b150e",
+  primary:   "var(--mv-text-primary)",
+  secondary: "var(--mv-text-secondary)",
+  muted:     "rgba(15,19,26,0.5)",
+  accent:    "#70150E",
 } as const;
 
 export const PHOTO_URL = "/stasi-1.jpg";
@@ -25,7 +25,7 @@ export const PHOTO_URL = "/stasi-1.jpg";
 export const LOGO_URL = "/CR-logo.png";
 
 export const GRADIENT_TEXT = {
-  background: "linear-gradient(135deg, #6b150e 0%, #c94535 55%, #e85050 100%)",
+  background: "linear-gradient(135deg, #70150E 0%, #c94535 55%, #e85050 100%)",
   WebkitBackgroundClip: "text" as const,
   WebkitTextFillColor: "transparent" as const,
   backgroundClip: "text" as const,
@@ -213,7 +213,7 @@ export function SiteFooter() {
                   justifyContent: "center",
                   transition: "color 0.15s",
                 }}
-                className="hover:text-[#6b150e]"
+                className="hover:text-[#70150E]"
               >
                 {icon}
               </a>

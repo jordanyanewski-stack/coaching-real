@@ -3,7 +3,7 @@ import { T, onDark, PHOTO_URL, stats, GRADIENT_TEXT, SiteNav, SiteFooter } from 
 
 const DARK_BG = {
   background:
-    "linear-gradient(160deg, #150b0a 0%, #0d0707 55%, #140a09 100%)",
+    "#faf8f5",
 } as const;
 
 export const metadata = {
@@ -52,7 +52,7 @@ function HeroSection() {
 
         {/* Left */}
         <div>
-          <span className="mv-tag mv-tag-dark animate-fade-up">Твоят ментор</span>
+          <span className="mv-tag mv-tag-light animate-fade-up">Твоят ментор</span>
 
           <h1
             className="animate-fade-up delay-100 mt-6"
@@ -68,7 +68,7 @@ function HeroSection() {
             <span
               className="block"
               style={{
-                background: "linear-gradient(135deg, #6b150e 0%, #c94535 55%, #e85050 100%)",
+                background: "linear-gradient(135deg, #70150E 0%, #c94535 55%, #e85050 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -104,7 +104,7 @@ function HeroSection() {
         <div className="animate-fade-in delay-200 hidden lg:flex flex-col gap-5">
           <div
             className="overflow-hidden"
-            style={{ position: "relative", height: "480px", borderRadius: T.radiusSm, border: "1.5px solid #6b150e" }}
+            style={{ position: "relative", height: "480px", borderRadius: T.radiusSm, border: "1.5px solid #70150E" }}
           >
             <Image
               src="/stasi-2.jpg"
@@ -183,7 +183,7 @@ function WhySection() {
       style={{ ...DARK_BG }}
     >
       <div className="max-w-3xl mx-auto text-center">
-        <span className="mv-tag mv-tag-dark">Защо правя това, което правя</span>
+        <span className="mv-tag mv-tag-light">Защо правя това, което правя</span>
         <h2
           className="mt-6"
           style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.4rem)", fontWeight: 800, color: onDark.primary, lineHeight: 1.2, letterSpacing: "-0.02em" }}
@@ -303,7 +303,7 @@ function AudienceSection() {
     >
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <span className="mv-tag mv-tag-dark">С кого работя</span>
+          <span className="mv-tag mv-tag-light">С кого работя</span>
           <h2
             className="mt-6"
             style={{ fontSize: "clamp(1.6rem, 4vw, 2.8rem)", fontWeight: 800, color: onDark.primary, lineHeight: 1.2, letterSpacing: "-0.02em" }}
@@ -490,7 +490,7 @@ function ApproachSection() {
     >
       <div className="max-w-6xl mx-auto">
         <div className="mb-14">
-          <span className="mv-tag mv-tag-dark">Моят подход</span>
+          <span className="mv-tag mv-tag-light">Моят подход</span>
           <h2
             className="mt-6"
             style={{ fontSize: "clamp(1.6rem, 4vw, 2.8rem)", fontWeight: 800, color: onDark.primary, lineHeight: 1.2, letterSpacing: "-0.02em" }}
@@ -633,7 +633,7 @@ function ResultsSection() {
     >
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
-          <span className="mv-tag mv-tag-dark">Резултати</span>
+          <span className="mv-tag mv-tag-light">Резултати</span>
           <h2
             className="mt-6"
             style={{ fontSize: "clamp(1.6rem, 4vw, 2.8rem)", fontWeight: 800, color: onDark.primary, lineHeight: 1.2, letterSpacing: "-0.02em" }}

@@ -121,7 +121,7 @@ export default function PrivacyPage() {
         <Section>
           <p>Искане за упражняване на правата може да бъде подадено:</p>
           <ul>
-            <li>По електронен път на: <a href="mailto:info@coachingreallive.com" style={{ color: "#6b150e" }}>info@coachingreallive.com</a></li>
+            <li>По електронен път на: <a href="mailto:info@coachingreallive.com" style={{ color: "#70150E" }}>info@coachingreallive.com</a></li>
             <li>Във офиса на БИЗНЕС МАЙНД КОУЧИНГ: с.Мещица, ул.Ген.Гурко 16, общ.Перник, област София, п.к. 2353</li>
           </ul>
           <p>БИЗНЕС МАЙНД КОУЧИНГ предоставя информация относно действията, предприети във връзка с искане за упражняване на правата Ви, в срок от един месец от получаване на искането.</p>
@@ -130,7 +130,7 @@ export default function PrivacyPage() {
         <H2>Промени в настоящата Политика</H2>
         <Section>
           <p>Тази политика за защита на лична информация може да бъде променяна във времето. Такива промени ще влязат в сила незабавно след тяхното оповестяване.</p>
-          <p>Ако имате въпроси, можете да се обърнете към БИЗНЕС МАЙНД КОУЧИНГ на: <a href="mailto:info@coachingreallive.com" style={{ color: "#6b150e" }}>info@coachingreallive.com</a></p>
+          <p>Ако имате въпроси, можете да се обърнете към БИЗНЕС МАЙНД КОУЧИНГ на: <a href="mailto:info@coachingreallive.com" style={{ color: "#70150E" }}>info@coachingreallive.com</a></p>
         </Section>
       </main>
       <SiteFooter />

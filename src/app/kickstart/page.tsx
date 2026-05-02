@@ -97,7 +97,7 @@ function HeroSection() {
             width: "52%",
             aspectRatio: "1",
             borderRadius: "50%",
-            background: "radial-gradient(circle, #6b150e 0%, transparent 70%)",
+            background: "radial-gradient(circle, #70150E 0%, transparent 70%)",
             animation: "heroOrbA 10s ease-in-out infinite",
             filter: "blur(80px)",
           }}
@@ -110,7 +110,7 @@ function HeroSection() {
             width: "35%",
             aspectRatio: "1",
             borderRadius: "50%",
-            background: "radial-gradient(circle, #6b150e 0%, transparent 70%)",
+            background: "radial-gradient(circle, #70150E 0%, transparent 70%)",
             animation: "heroOrbB 13s ease-in-out infinite",
             filter: "blur(100px)",
           }}
@@ -121,7 +121,7 @@ function HeroSection() {
         {/* Left - text */}
         <div>
           <div className="animate-fade-up">
-            <span className="mv-tag mv-tag-dark">CPD UK Сертифицирана · 12-седмична програма</span>
+            <span className="mv-tag mv-tag-light">CPD UK Сертифицирана · 12-седмична програма</span>
           </div>
 
           <h1
@@ -138,7 +138,7 @@ function HeroSection() {
             <span
               className="block"
               style={{
-                background: "linear-gradient(135deg, #6b150e 0%, #c94535 55%, #e85050 100%)",
+                background: "linear-gradient(135deg, #70150E 0%, #c94535 55%, #e85050 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -163,7 +163,7 @@ function HeroSection() {
             <a href="#waitlist" className="mv-btn mv-btn-primary" style={{ fontSize: "16px", padding: "16px 36px" }}>
               Кандидатствай за място →
             </a>
-            <a href="#modules" className="mv-btn mv-btn-outline-dark">
+            <a href="#modules" className="mv-btn mv-btn-outline-light">
               Виж програмата
             </a>
           </div>
@@ -204,7 +204,7 @@ function HeroSection() {
             className="h-full w-full overflow-hidden"
             style={{
               borderRadius: T.radiusSm,
-              border: "1.5px solid #6b150e",
+              border: "1.5px solid #70150E",
             }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -296,7 +296,7 @@ function ForWhomSection() {
                 }}
               >
                 <svg width="11" height="9" viewBox="0 0 11 9" fill="none">
-                  <path d="M1 4.5L4 7.5L10 1" stroke="#6b150e" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M1 4.5L4 7.5L10 1" stroke="#70150E" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </span>
               <p style={{ fontSize: "15px", color: T.textPrimary, lineHeight: 1.65, fontWeight: 500 }}>{item}</p>
@@ -314,7 +314,7 @@ function ModulesSection() {
     <section
       id="modules"
       className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
-      style={{ backgroundColor: "#1a1010" }}
+      style={{ backgroundColor: "#faf8f5" }}
     >
       <div
         aria-hidden
@@ -329,7 +329,7 @@ function ModulesSection() {
       />
       <div className="relative max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <span className="mv-tag mv-tag-dark">Програма · 12 седмици</span>
+          <span className="mv-tag mv-tag-light">Програма · 12 седмици</span>
           <h2
             className="mt-5"
             style={{
@@ -343,7 +343,7 @@ function ModulesSection() {
             Какво ще получиш{" "}
             <span
               style={{
-                background: "linear-gradient(135deg, #6b150e 0%, #c94535 55%, #e85050 100%)",
+                background: "linear-gradient(135deg, #70150E 0%, #c94535 55%, #e85050 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -367,7 +367,7 @@ function ModulesSection() {
               key={mod.num}
               className="p-7 flex flex-col gap-4"
               style={{
-                backgroundColor: "rgba(255,255,255,0.06)",
+                backgroundColor: "rgba(112,21,14,0.05)",
                 borderRadius: T.radiusSm,
                 border: "1px solid rgba(255,255,255,0.11)",
               }}
@@ -411,7 +411,7 @@ function ModulesSection() {
 /* ─── Format card SVG icons ─────────────────────────────────────────── */
 function IconCalendar() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6b150e" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#70150E" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <rect x="3" y="4" width="18" height="18" rx="2" />
       <path d="M16 2v4M8 2v4M3 10h18" />
       <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01" />
@@ -420,7 +420,7 @@ function IconCalendar() {
 }
 function IconMonitor() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6b150e" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#70150E" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <rect x="2" y="3" width="20" height="14" rx="2" />
       <path d="M8 21h8M12 17v4" />
     </svg>
@@ -428,7 +428,7 @@ function IconMonitor() {
 }
 function IconGlobe() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6b150e" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#70150E" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="12" cy="12" r="10" />
       <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
     </svg>
@@ -436,14 +436,14 @@ function IconGlobe() {
 }
 function IconChat() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6b150e" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#70150E" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
     </svg>
   );
 }
 function IconBook() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(15,19,26,0.75)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
       <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
     </svg>
@@ -451,14 +451,14 @@ function IconBook() {
 }
 function IconLightning() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(15,19,26,0.75)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
     </svg>
   );
 }
 function IconSparkle() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(15,19,26,0.75)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z" />
     </svg>
   );
@@ -575,7 +575,7 @@ function HowItWorksSection() {
             style={{
               fontSize: "clamp(1.4rem, 3vw, 2rem)",
               fontWeight: 800,
-              color: "#ffffff",
+              color: "var(--mv-text-primary)",
               lineHeight: 1.2,
               letterSpacing: "-0.02em",
               marginBottom: "28px",
@@ -593,7 +593,7 @@ function HowItWorksSection() {
                   style={{
                     backgroundColor: "rgba(0,0,0,0.18)",
                     borderRadius: "10px",
-                    border: "1px solid rgba(255,255,255,0.1)",
+                    border: "1px solid rgba(112,21,14,0.08)",
                   }}
                 >
                   <div
@@ -601,7 +601,7 @@ function HowItWorksSection() {
                       width: "36px",
                       height: "36px",
                       borderRadius: "8px",
-                      backgroundColor: "rgba(255,255,255,0.12)",
+                      backgroundColor: "rgba(112,21,14,0.09)",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
@@ -611,7 +611,7 @@ function HowItWorksSection() {
                     <BonusIcon />
                   </div>
                   <div>
-                    <p style={{ fontSize: "14px", fontWeight: 600, color: "#ffffff", lineHeight: 1.35, marginBottom: b.desc ? "4px" : 0 }}>
+                    <p style={{ fontSize: "14px", fontWeight: 600, color: "var(--mv-text-primary)", lineHeight: 1.35, marginBottom: b.desc ? "4px" : 0 }}>
                       {b.title}
                     </p>
                     {b.desc && (
@@ -679,7 +679,7 @@ function OutcomesSection() {
                   width: "24px",
                   height: "24px",
                   borderRadius: "50%",
-                  background: "linear-gradient(135deg, #6b150e 0%, #c94535 100%)",
+                  background: "linear-gradient(135deg, #70150E 0%, #c94535 100%)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -705,11 +705,11 @@ function WaitlistSection() {
     <section
       id="waitlist"
       className="px-6 md:px-16 lg:px-24 py-24 md:py-32"
-      style={{ backgroundColor: "#0a0a0a" }}
+      style={{ backgroundColor: "#faf8f5" }}
     >
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-12">
-          <span className="mv-tag mv-tag-dark">Списък на чакащите</span>
+          <span className="mv-tag mv-tag-light">Списък на чакащите</span>
           <h2
             className="mt-5"
             style={{
@@ -723,7 +723,7 @@ function WaitlistSection() {
             Включи се в списъка{" "}
             <span
               style={{
-                background: "linear-gradient(135deg, #6b150e 0%, #c94535 55%, #e85050 100%)",
+                background: "linear-gradient(135deg, #70150E 0%, #c94535 55%, #e85050 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -759,8 +759,8 @@ function WaitlistSection() {
                 placeholder={f.placeholder}
                 autoComplete={f.id === "email" ? "email" : f.id === "phone" ? "tel" : "name"}
                 style={{
-                  backgroundColor: "rgba(255,255,255,0.06)",
-                  border: "1px solid rgba(255,255,255,0.12)",
+                  backgroundColor: "rgba(112,21,14,0.05)",
+                  border: "1px solid rgba(112,21,14,0.09)",
                   borderRadius: T.radiusSm,
                   padding: "14px 16px",
                   fontSize: "15px",
@@ -853,7 +853,7 @@ function AboutSection() {
             className="mt-8 p-6"
             style={{
               backgroundColor: T.surfaceStrong,
-              borderLeft: "3px solid #6b150e",
+              borderLeft: "3px solid #70150E",
               borderRadius: "0 8px 8px 0",
             }}
           >
@@ -866,7 +866,7 @@ function AboutSection() {
               style={{
                 fontSize: "13px",
                 fontWeight: 700,
-                color: "#6b150e",
+                color: "#70150E",
                 marginTop: "12px",
                 letterSpacing: "0.02em",
               }}
@@ -890,14 +890,14 @@ function FinalCTASection() {
     <section
       className="px-6 md:px-16 lg:px-24 py-24 md:py-32"
       style={{
-        background: "linear-gradient(160deg, #0f0606 0%, #1c0a09 50%, #0a0a0a 100%)",
+        background: "#faf8f5",
         borderTop: "1px solid rgba(107,21,14,0.15)",
       }}
     >
       <div className="max-w-3xl mx-auto text-center">
         <span
           className="mv-tag inline-block mb-8"
-          style={{ backgroundColor: "rgba(255,255,255,0.1)", color: "#e87070" }}
+          style={{ backgroundColor: "rgba(112,21,14,0.08)", color: "#e87070" }}
         >
           Готов/а ли си да започнеш?
         </span>
@@ -906,7 +906,7 @@ function FinalCTASection() {
           style={{
             fontSize: "clamp(1.8rem, 4vw, 3rem)",
             fontWeight: 900,
-            color: "#ffffff",
+            color: "var(--mv-text-primary)",
             lineHeight: 1.15,
             letterSpacing: "-0.02em",
           }}

@@ -85,7 +85,7 @@ const faqs = [
 ];
 
 /* ─── SPECIALIST ICONS ──────────────────────────────────────────────── */
-function IconHeart({ color = "#6b150e" }: { color?: string }) {
+function IconHeart({ color = "#70150E" }: { color?: string }) {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
@@ -93,7 +93,7 @@ function IconHeart({ color = "#6b150e" }: { color?: string }) {
   );
 }
 
-function IconTarget({ color = "#6b150e" }: { color?: string }) {
+function IconTarget({ color = "#70150E" }: { color?: string }) {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="12" cy="12" r="10" />
@@ -103,7 +103,7 @@ function IconTarget({ color = "#6b150e" }: { color?: string }) {
   );
 }
 
-function IconStar({ color = "#6b150e" }: { color?: string }) {
+function IconStar({ color = "#70150E" }: { color?: string }) {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
@@ -111,7 +111,7 @@ function IconStar({ color = "#6b150e" }: { color?: string }) {
   );
 }
 
-function IconLeaf({ color = "#6b150e" }: { color?: string }) {
+function IconLeaf({ color = "#70150E" }: { color?: string }) {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
@@ -120,7 +120,7 @@ function IconLeaf({ color = "#6b150e" }: { color?: string }) {
   );
 }
 
-function IconBrain({ color = "#6b150e" }: { color?: string }) {
+function IconBrain({ color = "#70150E" }: { color?: string }) {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z" />
@@ -129,7 +129,7 @@ function IconBrain({ color = "#6b150e" }: { color?: string }) {
   );
 }
 
-function IconNetwork({ color = "#6b150e" }: { color?: string }) {
+function IconNetwork({ color = "#70150E" }: { color?: string }) {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="12" cy="5" r="2" />
@@ -142,7 +142,7 @@ function IconNetwork({ color = "#6b150e" }: { color?: string }) {
   );
 }
 
-function IconMoon({ color = "#6b150e" }: { color?: string }) {
+function IconMoon({ color = "#70150E" }: { color?: string }) {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
@@ -151,7 +151,7 @@ function IconMoon({ color = "#6b150e" }: { color?: string }) {
   );
 }
 
-function IconBriefcase({ color = "#6b150e" }: { color?: string }) {
+function IconBriefcase({ color = "#70150E" }: { color?: string }) {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <rect width="20" height="14" x="2" y="7" rx="2" ry="2" />
@@ -166,7 +166,7 @@ function IconCheck({ dark = false }: { dark?: boolean }) {
     <svg width="11" height="9" viewBox="0 0 11 9" fill="none">
       <path
         d="M1 4.5L4 7.5L10 1"
-        stroke={dark ? "#ffffff" : "#6b150e"}
+        stroke={dark ? "#ffffff" : "#70150E"}
         strokeWidth="1.7"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -177,7 +177,7 @@ function IconCheck({ dark = false }: { dark?: boolean }) {
 
 function IconQuote() {
   return (
-    <svg width="36" height="28" viewBox="0 0 36 28" fill="#6b150e" opacity="0.18">
+    <svg width="36" height="28" viewBox="0 0 36 28" fill="#70150E" opacity="0.18">
       <path d="M0 28V16.8C0 12.267 1.067 8.533 3.2 5.6 5.467 2.667 8.933.8 13.6 0l1.6 3.2C11.067 4.267 8.8 6.133 7.6 8.8 6.533 11.2 6.133 13.6 6.4 16H14V28H0Zm22 0V16.8c0-4.533 1.067-8.267 3.2-11.2C27.467 2.667 30.933.8 35.6 0L37.2 3.2c-4.133 1.067-6.4 2.933-6.8 5.6C29.333 11.2 29 13.6 29.2 16H36V28H22Z" />
     </svg>
   );
@@ -443,7 +443,7 @@ function HeroSection() {
                 gap: "6px",
                 fontSize: "13px",
                 fontWeight: 700,
-                color: "#6b150e",
+                color: "#70150E",
                 backgroundColor: "rgba(107,21,14,0.06)",
                 padding: "5px 14px",
                 borderRadius: "20px",
@@ -466,7 +466,7 @@ function HeroSection() {
               style={{
                 fontSize: "clamp(2.4rem, 5.5vw, 4.6rem)",
                 fontWeight: 900,
-                background: "linear-gradient(135deg, #6b150e 0%, #c94535 55%, #e85050 100%)",
+                background: "linear-gradient(135deg, #70150E 0%, #c94535 55%, #e85050 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -537,7 +537,7 @@ function HeroSection() {
                 </span>
                 <span
                   className="flex items-center gap-1.5"
-                  style={{ fontSize: "12px", color: "#6b150e", fontWeight: 700, letterSpacing: "0.04em" }}
+                  style={{ fontSize: "12px", color: "#70150E", fontWeight: 700, letterSpacing: "0.04em" }}
                 >
                   <span
                     style={{
@@ -574,7 +574,7 @@ function HeroSection() {
               height: "420px",
               borderRadius: "50%",
               padding: "4px",
-              background: "linear-gradient(135deg, #6b150e, #c94535, #e85050, #6b150e)",
+              background: "linear-gradient(135deg, #70150E, #c94535, #e85050, #70150E)",
               boxShadow: "none",
             }}
           >
@@ -616,21 +616,21 @@ function HeroSection() {
           opacity: 0.45,
         }}
       >
-        <span style={{ fontSize: "10px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#6b150e" }}>
+        <span style={{ fontSize: "10px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#70150E" }}>
           Скролни надолу
         </span>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "2px" }}>
           <svg
             className="mc-scroll-chevron"
             width="16" height="10" viewBox="0 0 16 10" fill="none"
-            stroke="#6b150e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"
+            stroke="#70150E" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"
           >
             <path d="M1 1l7 7 7-7" />
           </svg>
           <svg
             className="mc-scroll-chevron mc-scroll-chevron-2"
             width="16" height="10" viewBox="0 0 16 10" fill="none"
-            stroke="#6b150e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"
+            stroke="#70150E" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"
           >
             <path d="M1 1l7 7 7-7" />
           </svg>
@@ -675,7 +675,7 @@ function ForWhomSection() {
                   border: "1px solid rgba(107,21,14,0.1)",
                 }}
               >
-                <Icon color="#6b150e" />
+                <Icon color="#70150E" />
                 <span style={{ fontSize: "13px", color: T.textPrimary, fontWeight: 500 }}>{label}</span>
               </div>
             ))}
@@ -714,7 +714,7 @@ function ForWhomSection() {
                     width: "24px",
                     height: "24px",
                     borderRadius: "50%",
-                    background: "linear-gradient(135deg, #6b150e 0%, #c94535 100%)",
+                    background: "linear-gradient(135deg, #70150E 0%, #c94535 100%)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -858,7 +858,7 @@ function WhyNowSection() {
               width: "4px",
               alignSelf: "stretch",
               borderRadius: "4px",
-              background: "linear-gradient(180deg, #6b150e, #e85050)",
+              background: "linear-gradient(180deg, #70150E, #e85050)",
               flexShrink: 0,
             }}
           />
@@ -966,7 +966,7 @@ function SolutionSection() {
                     width: "24px",
                     height: "24px",
                     borderRadius: "50%",
-                    background: "linear-gradient(135deg, #6b150e 0%, #c94535 100%)",
+                    background: "linear-gradient(135deg, #70150E 0%, #c94535 100%)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -1073,7 +1073,7 @@ function CurriculumSection() {
                         width: "36px",
                         height: "36px",
                         borderRadius: "50%",
-                        background: "linear-gradient(135deg, #6b150e 0%, #c94535 100%)",
+                        background: "linear-gradient(135deg, #70150E 0%, #c94535 100%)",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
@@ -1194,7 +1194,7 @@ function AboutSection() {
                 style={{
                   fontSize: "12px",
                   fontWeight: 700,
-                  color: "#6b150e",
+                  color: "#70150E",
                   backgroundColor: "rgba(107,21,14,0.06)",
                   padding: "4px 12px",
                   borderRadius: "20px",
@@ -1252,7 +1252,7 @@ function AboutSection() {
 
           <blockquote
             className="mt-6 pl-5"
-            style={{ borderLeft: "3px solid #6b150e" }}
+            style={{ borderLeft: "3px solid #70150E" }}
           >
             <p style={{ fontSize: "15px", color: T.textSecondary, lineHeight: 1.8, fontStyle: "italic" }}>
               &ldquo;Мисията ми е да покажа, че духовността и бизнесът не се
@@ -1349,7 +1349,7 @@ function FinalCTASection() {
             style={{
               fontSize: "13px",
               fontWeight: 700,
-              color: "#6b150e",
+              color: "#70150E",
               backgroundColor: "rgba(107,21,14,0.06)",
               padding: "5px 14px",
               borderRadius: "20px",
@@ -1418,7 +1418,7 @@ function FinalCTASection() {
                 flexShrink: 0,
               }}
             />
-            <span style={{ fontSize: "12px", color: "#6b150e", fontWeight: 700, letterSpacing: "0.04em" }}>
+            <span style={{ fontSize: "12px", color: "#70150E", fontWeight: 700, letterSpacing: "0.04em" }}>
               Останали 7 от 30 места
             </span>
           </div>

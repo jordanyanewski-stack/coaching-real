@@ -42,7 +42,7 @@ export default function ThankYouPage() {
               width: '64px',
               height: '64px',
               borderRadius: '50%',
-              background: 'linear-gradient(135deg, #6b150e 0%, #c94535 100%)',
+              background: 'linear-gradient(135deg, #70150E 0%, #c94535 100%)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -78,7 +78,7 @@ export default function ThankYouPage() {
             </p>
           </div>
 
-          <a href="/masterclass" style={{ fontSize: '14px', color: '#6b150e', fontWeight: 600, textDecoration: 'none' }}>
+          <a href="/masterclass" style={{ fontSize: '14px', color: '#70150E', fontWeight: 600, textDecoration: 'none' }}>
             Обратно към страницата
           </a>
         </div>

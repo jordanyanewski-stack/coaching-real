@@ -125,7 +125,7 @@ function IconCheck({ dark = false }: { dark?: boolean }) {
     <svg width="11" height="9" viewBox="0 0 11 9" fill="none">
       <path
         d="M1 4.5L4 7.5L10 1"
-        stroke={dark ? '#ffffff' : '#6b150e'}
+        stroke={dark ? '#ffffff' : '#70150E'}
         strokeWidth="1.7"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -136,13 +136,13 @@ function IconCheck({ dark = false }: { dark?: boolean }) {
 
 function IconQuote() {
   return (
-    <svg width="36" height="28" viewBox="0 0 36 28" fill="#6b150e" opacity="0.18">
+    <svg width="36" height="28" viewBox="0 0 36 28" fill="#70150E" opacity="0.18">
       <path d="M0 28V16.8C0 12.267 1.067 8.533 3.2 5.6 5.467 2.667 8.933.8 13.6 0l1.6 3.2C11.067 4.267 8.8 6.133 7.6 8.8 6.533 11.2 6.133 13.6 6.4 16H14V28H0Zm22 0V16.8c0-4.533 1.067-8.267 3.2-11.2C27.467 2.667 30.933.8 35.6 0L37.2 3.2c-4.133 1.067-6.4 2.933-6.8 5.6C29.333 11.2 29 13.6 29.2 16H36V28H22Z" />
     </svg>
   );
 }
 
-function IconTrendUp({ color = '#6b150e' }: { color?: string }) {
+function IconTrendUp({ color = '#70150E' }: { color?: string }) {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
@@ -151,7 +151,7 @@ function IconTrendUp({ color = '#6b150e' }: { color?: string }) {
   );
 }
 
-function IconTarget({ color = '#6b150e' }: { color?: string }) {
+function IconTarget({ color = '#70150E' }: { color?: string }) {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="12" cy="12" r="10" />
@@ -161,7 +161,7 @@ function IconTarget({ color = '#6b150e' }: { color?: string }) {
   );
 }
 
-function IconGear({ color = '#6b150e' }: { color?: string }) {
+function IconGear({ color = '#70150E' }: { color?: string }) {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="12" cy="12" r="3" />
@@ -170,7 +170,7 @@ function IconGear({ color = '#6b150e' }: { color?: string }) {
   );
 }
 
-function IconSpark({ color = '#6b150e' }: { color?: string }) {
+function IconSpark({ color = '#70150E' }: { color?: string }) {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
@@ -178,7 +178,7 @@ function IconSpark({ color = '#6b150e' }: { color?: string }) {
   );
 }
 
-function IconMail({ color = '#6b150e' }: { color?: string }) {
+function IconMail({ color = '#70150E' }: { color?: string }) {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
@@ -187,7 +187,7 @@ function IconMail({ color = '#6b150e' }: { color?: string }) {
   );
 }
 
-function IconGift({ color = '#6b150e' }: { color?: string }) {
+function IconGift({ color = '#70150E' }: { color?: string }) {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <polyline points="20 12 20 22 4 22 4 12" />
@@ -222,7 +222,7 @@ function HeroSection() {
   return (
     <section
       className="relative min-h-screen flex flex-col justify-center px-6 md:px-16 lg:px-24 pt-24 pb-20 overflow-hidden"
-      style={{ backgroundColor: '#0f0808' }}
+      style={{ backgroundColor: '#faf8f5' }}
     >
       <div aria-hidden style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
         <div style={{
@@ -241,7 +241,7 @@ function HeroSection() {
         {/* Left */}
         <div>
           <div className="animate-fade-up">
-            <span className="mv-tag mv-tag-dark">За завършили KickSTART</span>
+            <span className="mv-tag mv-tag-light">За завършили KickSTART</span>
           </div>
 
           <h1 className="animate-fade-up delay-100 mt-6" style={{ lineHeight: 0.95, letterSpacing: '-0.03em' }}>
@@ -250,7 +250,7 @@ function HeroSection() {
               style={{
                 fontSize: 'clamp(2rem, 5vw, 3rem)',
                 fontWeight: 900,
-                background: 'linear-gradient(135deg, #6b150e 0%, #c94535 55%, #e85050 100%)',
+                background: 'linear-gradient(135deg, #70150E 0%, #c94535 55%, #e85050 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -264,7 +264,7 @@ function HeroSection() {
               style={{
                 fontSize: 'clamp(1.1rem, 2.6vw, 1.6rem)',
                 fontWeight: 700,
-                color: 'rgba(255,255,255,0.78)',
+                color: 'rgba(15,19,26,0.65)',
                 letterSpacing: '-0.01em',
                 lineHeight: 1.3,
               }}
@@ -287,7 +287,7 @@ function HeroSection() {
               <div key={i} className="flex items-start gap-3">
                 <span style={{
                   flexShrink: 0, width: '22px', height: '22px', borderRadius: '50%',
-                  background: 'linear-gradient(135deg, #6b150e 0%, #c94535 100%)',
+                  background: 'linear-gradient(135deg, #70150E 0%, #c94535 100%)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '1px',
                 }}>
                   <IconCheck dark />
@@ -301,7 +301,7 @@ function HeroSection() {
             <a href="#order" className="mv-btn mv-btn-primary" style={{ fontSize: '15px', padding: '14px 28px' }}>
               Присъедини се към програмата →
             </a>
-            <a href="#phases" className="mv-btn mv-btn-outline-dark" style={{ fontSize: '15px', padding: '14px 28px' }}>
+            <a href="#phases" className="mv-btn mv-btn-outline-light" style={{ fontSize: '15px', padding: '14px 28px' }}>
               Виж как работи
             </a>
           </div>
@@ -311,9 +311,9 @@ function HeroSection() {
         <div className="animate-fade-in delay-200 hidden lg:block">
           <div
             style={{
-              backgroundColor: 'rgba(255,255,255,0.04)',
+              backgroundColor: 'rgba(112,21,14,0.04)',
               borderRadius: T.radiusSm,
-              border: '1px solid rgba(255,255,255,0.09)',
+              border: '1px solid rgba(112,21,14,0.08)',
               padding: '28px',
             }}
           >
@@ -337,9 +337,9 @@ function HeroSection() {
                   key={type}
                   className="flex gap-3 items-center px-3 py-2.5"
                   style={{
-                    backgroundColor: 'rgba(255,255,255,0.05)',
+                    backgroundColor: 'rgba(112,21,14,0.04)',
                     borderRadius: '8px',
-                    border: '1px solid rgba(255,255,255,0.07)',
+                    border: '1px solid rgba(112,21,14,0.06)',
                   }}
                 >
                   <span style={{ flexShrink: 0, display: 'flex' }}>
@@ -353,7 +353,7 @@ function HeroSection() {
               ))}
             </div>
 
-            <div className="mt-6 pt-5" style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+            <div className="mt-6 pt-5" style={{ borderTop: '1px solid rgba(112,21,14,0.07)' }}>
               <p style={{
                 fontSize: '11px', fontWeight: 700, color: onDark.muted,
                 letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '12px',
@@ -374,11 +374,11 @@ function HeroSection() {
               </div>
             </div>
 
-            <div className="mt-6 pt-5" style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+            <div className="mt-6 pt-5" style={{ borderTop: '1px solid rgba(112,21,14,0.07)' }}>
               <p style={{ fontSize: '11px', color: onDark.muted, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '6px' }}>
                 Инвестиция
               </p>
-              <p style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 900, color: '#ffffff', lineHeight: 1, letterSpacing: '-0.03em' }}>
+              <p style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 900, color: 'var(--mv-text-primary)', lineHeight: 1, letterSpacing: '-0.03em' }}>
                 €702
               </p>
               <p style={{ fontSize: '12px', color: onDark.muted, marginTop: '4px' }}>
@@ -433,7 +433,7 @@ function TestimonialsSection() {
                 &ldquo;{t.quote}&rdquo;
               </p>
               <div>
-                <p style={{ fontSize: '13px', fontWeight: 700, color: '#6b150e' }}>{t.author}</p>
+                <p style={{ fontSize: '13px', fontWeight: 700, color: '#70150E' }}>{t.author}</p>
                 <p style={{ fontSize: '12px', color: T.textSecondary, marginTop: '2px' }}>{t.role}</p>
               </div>
             </div>
@@ -486,11 +486,11 @@ function PhasesSection() {
               <div className="flex flex-col items-center" style={{ flexShrink: 0, width: '48px' }}>
                 <div style={{
                   width: '36px', height: '36px', borderRadius: '50%', flexShrink: 0,
-                  background: 'linear-gradient(135deg, #6b150e 0%, #c94535 100%)',
+                  background: 'linear-gradient(135deg, #70150E 0%, #c94535 100%)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   marginTop: '4px',
                 }}>
-                  <span style={{ fontSize: '11px', fontWeight: 900, color: '#ffffff', letterSpacing: '0.04em' }}>{number}</span>
+                  <span style={{ fontSize: '11px', fontWeight: 900, color: 'var(--mv-text-primary)', letterSpacing: '0.04em' }}>{number}</span>
                 </div>
                 {i < phases.length - 1 && (
                   <div style={{
@@ -545,7 +545,7 @@ function ResultsSection() {
   return (
     <section
       className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
-      style={{ backgroundColor: '#1a1010' }}
+      style={{ backgroundColor: '#faf8f5' }}
     >
       <div
         aria-hidden
@@ -558,7 +558,7 @@ function ResultsSection() {
         }}
       />
       <div className="relative max-w-5xl mx-auto">
-        <span className="mv-tag mv-tag-dark">Какво ще постигнеш</span>
+        <span className="mv-tag mv-tag-light">Какво ще постигнеш</span>
         <h2
           className="mt-5"
           style={{
@@ -568,7 +568,7 @@ function ResultsSection() {
         >
           До края на програмата ти ще имаш{' '}
           <span style={{
-            background: 'linear-gradient(135deg, #6b150e 0%, #c94535 55%, #e85050 100%)',
+            background: 'linear-gradient(135deg, #70150E 0%, #c94535 55%, #e85050 100%)',
             WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
           }}>
             реални резултати
@@ -581,9 +581,9 @@ function ResultsSection() {
               key={i}
               className="flex gap-4 p-6"
               style={{
-                backgroundColor: 'rgba(255,255,255,0.04)',
+                backgroundColor: 'rgba(112,21,14,0.04)',
                 borderRadius: '12px',
-                border: '1px solid rgba(255,255,255,0.08)',
+                border: '1px solid rgba(112,21,14,0.07)',
               }}
             >
               <div style={{
@@ -698,7 +698,7 @@ function BonusSection() {
   return (
     <section
       className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
-      style={{ backgroundColor: '#100808' }}
+      style={{ backgroundColor: '#faf8f5' }}
     >
       <div
         aria-hidden
@@ -711,7 +711,7 @@ function BonusSection() {
         }}
       />
       <div className="relative max-w-5xl mx-auto">
-        <span className="mv-tag mv-tag-dark">Ексклузивни бонуси</span>
+        <span className="mv-tag mv-tag-light">Ексклузивни бонуси</span>
         <h2
           className="mt-5"
           style={{
@@ -721,7 +721,7 @@ function BonusSection() {
         >
           Всичко, от което се{' '}
           <span style={{
-            background: 'linear-gradient(135deg, #6b150e 0%, #c94535 55%, #e85050 100%)',
+            background: 'linear-gradient(135deg, #70150E 0%, #c94535 55%, #e85050 100%)',
             WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
           }}>
             нуждаеш, за да успееш
@@ -734,20 +734,20 @@ function BonusSection() {
               key={i}
               className="flex flex-col p-7"
               style={{
-                backgroundColor: 'rgba(255,255,255,0.04)',
+                backgroundColor: 'rgba(112,21,14,0.04)',
                 borderRadius: '14px',
                 border: i === 2
                   ? '1px solid rgba(201,69,53,0.4)'
-                  : '1px solid rgba(255,255,255,0.08)',
+                  : '1px solid rgba(112,21,14,0.07)',
               }}
             >
               <div className="flex items-center justify-between mb-5">
                 <div style={{
                   width: '36px', height: '36px', borderRadius: '50%',
-                  background: 'linear-gradient(135deg, #6b150e 0%, #c94535 100%)',
+                  background: 'linear-gradient(135deg, #70150E 0%, #c94535 100%)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
                 }}>
-                  <span style={{ fontSize: '12px', fontWeight: 900, color: '#ffffff' }}>
+                  <span style={{ fontSize: '12px', fontWeight: 900, color: 'var(--mv-text-primary)' }}>
                     {number === '★' ? <IconGift color="#ffffff" /> : number}
                   </span>
                 </div>
@@ -832,12 +832,12 @@ function PricingSection() {
           >
             <div
               className="px-7 py-5"
-              style={{ background: 'linear-gradient(135deg, #6b150e 0%, #c94535 100%)' }}
+              style={{ background: 'linear-gradient(135deg, #70150E 0%, #c94535 100%)' }}
             >
-              <p style={{ fontSize: '11px', fontWeight: 700, color: 'rgba(255,255,255,0.7)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '4px' }}>
+              <p style={{ fontSize: '11px', fontWeight: 700, color: 'rgba(15,19,26,0.6)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '4px' }}>
                 Ангажираност и развитие
               </p>
-              <p style={{ fontSize: '15px', fontWeight: 700, color: '#ffffff' }}>
+              <p style={{ fontSize: '15px', fontWeight: 700, color: 'var(--mv-text-primary)' }}>
                 Пълен достъп до всичко
               </p>
             </div>
@@ -863,7 +863,7 @@ function PricingSection() {
                   <div key={i} className="flex gap-3 items-center">
                     <span style={{
                       flexShrink: 0, width: '20px', height: '20px', borderRadius: '50%',
-                      background: 'linear-gradient(135deg, #6b150e 0%, #c94535 100%)',
+                      background: 'linear-gradient(135deg, #70150E 0%, #c94535 100%)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                     }}>
                       <IconCheck dark />
@@ -931,7 +931,7 @@ function PricingSection() {
                 border: '1px solid rgba(107,21,14,0.15)',
               }}
             >
-              <p style={{ fontSize: '13px', fontWeight: 700, color: '#6b150e', marginBottom: '6px' }}>
+              <p style={{ fontSize: '13px', fontWeight: 700, color: '#70150E', marginBottom: '6px' }}>
                 Специален бонус при пълно плащане
               </p>
               <p style={{ fontSize: '13px', color: T.textSecondary, lineHeight: 1.75 }}>
@@ -951,7 +951,7 @@ function FinalCTASection() {
   return (
     <section
       className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
-      style={{ backgroundColor: '#0f0808' }}
+      style={{ backgroundColor: '#faf8f5' }}
     >
       <div
         aria-hidden
@@ -968,7 +968,7 @@ function FinalCTASection() {
         {/* Personal message */}
         <div
           className="grid lg:grid-cols-[auto_1fr] gap-8 items-start mb-16 pb-16"
-          style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}
+          style={{ borderBottom: '1px solid rgba(112,21,14,0.07)' }}
         >
           <div className="hidden lg:block" style={{ flexShrink: 0 }}>
             <div
@@ -1010,13 +1010,13 @@ function FinalCTASection() {
         <div className="text-center">
           <span
             className="mv-tag inline-block mb-8"
-            style={{ backgroundColor: 'rgba(255,255,255,0.1)', color: '#e87070' }}
+            style={{ backgroundColor: 'rgba(112,21,14,0.08)', color: '#e87070' }}
           >
             Готова ли си за устойчив растеж?
           </span>
 
           <h2 style={{
-            fontSize: 'clamp(1.8rem, 4vw, 3rem)', fontWeight: 900, color: '#ffffff',
+            fontSize: 'clamp(1.8rem, 4vw, 3rem)', fontWeight: 900, color: 'var(--mv-text-primary)',
             lineHeight: 1.15, letterSpacing: '-0.02em',
           }}>
             Присъедини се сега и{' '}
@@ -1030,14 +1030,14 @@ function FinalCTASection() {
           <div
             className="mt-10 mb-10 inline-flex flex-col items-center gap-4 px-10 py-6"
             style={{
-              backgroundColor: 'rgba(255,255,255,0.06)', borderRadius: '14px',
-              border: '1px solid rgba(255,255,255,0.1)',
+              backgroundColor: 'rgba(112,21,14,0.05)', borderRadius: '14px',
+              border: '1px solid rgba(112,21,14,0.08)',
             }}
           >
             <p style={{ fontSize: '11px', color: onDark.muted, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
               Инвестиция
             </p>
-            <span style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: 900, color: '#ffffff', lineHeight: 1, letterSpacing: '-0.03em' }}>
+            <span style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: 900, color: 'var(--mv-text-primary)', lineHeight: 1, letterSpacing: '-0.03em' }}>
               €702
             </span>
             <p style={{ fontSize: '13px', color: onDark.muted }}>
@@ -1064,7 +1064,7 @@ function FinalCTASection() {
 }
 
 /* ─── INLINE ICONS (used in hero card only) ─────────────────────────── */
-function IconCalendar({ color = '#6b150e' }: { color?: string }) {
+function IconCalendar({ color = '#70150E' }: { color?: string }) {
   return (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
       <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
@@ -1075,7 +1075,7 @@ function IconCalendar({ color = '#6b150e' }: { color?: string }) {
   );
 }
 
-function IconKey({ color = '#6b150e' }: { color?: string }) {
+function IconKey({ color = '#70150E' }: { color?: string }) {
   return (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
       <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4" />

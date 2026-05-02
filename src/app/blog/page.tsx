@@ -173,7 +173,7 @@ function PostRow({ post }: { post: Post }) {
           style={{
             fontSize: "12px",
             fontWeight: 700,
-            color: "#6b150e",
+            color: "#70150E",
             letterSpacing: "0.01em",
           }}
         >

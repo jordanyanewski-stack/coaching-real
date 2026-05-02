@@ -68,8 +68,8 @@ html {
   --mv-purple: #c94535;
   --mv-purple-dark: #a8372a;
   --mv-purple-light: #e87070; /* accessible on dark bg: ~7:1 on #000 */
-  --mv-surface-base: #000000;
-  --mv-surface-dark: #0c0c0e;
+  --mv-surface-base: #faf8f5;
+  --mv-surface-dark: #f0ebe4;
   --mv-surface-muted: #f3f4f6;
   --mv-surface-raised: #ffffff;
   --mv-surface-strong: #f9f9f9;
@@ -221,12 +221,12 @@ html {
 }
 
 /* Outline dark — on dark bg */
-.mv-btn-outline-dark {
+.mv-btn-outline-light {
   background-color: transparent;
   color: #ffffff;
   border: 1.5px solid rgba(255, 255, 255, 0.35);
 }
-.mv-btn-outline-dark:hover { border-color: rgba(255, 255, 255, 0.75); }
+.mv-btn-outline-light:hover { border-color: rgba(255, 255, 255, 0.75); }
 
 /* Outline light — on light bg */
 .mv-btn-outline-light {
@@ -258,11 +258,11 @@ html {
   text-transform: uppercase;
 }
 /* On dark bg: lighter red (#e87070 on #000 ≈ 7:1) ✅ */
-.mv-tag-dark {
+.mv-tag-light {
   background-color: rgba(232, 112, 112, 0.12);
   color: #e87070;
 }
-/* On light bg: burgundy (#6b150e on #f3f4f6 ≈ 10:1) ✅ */
+/* On light bg: burgundy (#70150E on #f3f4f6 ≈ 10:1) ✅ */
 .mv-tag-light {
   background-color: rgba(107, 21, 14, 0.08);
   color: var(--mv-purple);
@@ -295,13 +295,13 @@ html {
 
 /* ─── Ecosystem card hover (replaces JS handlers in server component) */
 .mv-ecosystem-card {
-  background-color: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  background-color: rgba(112, 21, 14, 0.03);
+  border: 1px solid rgba(112, 21, 14, 0.08);
   transition: border-color var(--mv-duration-fast), background-color var(--mv-duration-fast);
 }
 .mv-ecosystem-card:hover {
-  border-color: rgba(107, 21, 14, 0.5);
-  background-color: rgba(107, 21, 14, 0.06);
+  border-color: rgba(112, 21, 14, 0.5);
+  background-color: rgba(112, 21, 14, 0.06);
 }
 
 /* ─── Program catalogue card hover ─────────────────────────────────── */

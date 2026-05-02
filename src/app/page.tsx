@@ -65,7 +65,7 @@ function HeroSection() {
           width: "52%",
           aspectRatio: "1",
           borderRadius: "50%",
-          background: "radial-gradient(circle, #6b150e 0%, transparent 70%)",
+          background: "radial-gradient(circle, #70150E 0%, transparent 70%)",
           animation: "heroOrbA 10s ease-in-out infinite",
           filter: "blur(80px)",
         }} />
@@ -76,7 +76,7 @@ function HeroSection() {
           width: "35%",
           aspectRatio: "1",
           borderRadius: "50%",
-          background: "radial-gradient(circle, #6b150e 0%, transparent 70%)",
+          background: "radial-gradient(circle, #70150E 0%, transparent 70%)",
           animation: "heroOrbB 13s ease-in-out infinite",
           filter: "blur(100px)",
         }} />
@@ -87,7 +87,7 @@ function HeroSection() {
         {/* Left - text */}
         <div>
           <div className="animate-fade-up">
-            <span className="mv-tag mv-tag-dark">За коучове · терапевти · холистични лидери</span>
+            <span className="mv-tag mv-tag-light">За коучове · терапевти · холистични лидери</span>
           </div>
 
           <h1
@@ -105,7 +105,7 @@ function HeroSection() {
             <span
               className="block"
               style={{
-                background: "linear-gradient(135deg, #6b150e 0%, #c94535 55%, #e85050 100%)",
+                background: "linear-gradient(135deg, #70150E 0%, #c94535 55%, #e85050 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -133,7 +133,7 @@ function HeroSection() {
             <a href="/programs" className="mv-btn mv-btn-primary">
               Запази безплатна сесия →
             </a>
-            <a href="/stanislava" className="mv-btn mv-btn-outline-dark">
+            <a href="/stanislava" className="mv-btn mv-btn-outline-light">
               Кой стои зад Coaching Real
             </a>
           </div>
@@ -149,7 +149,7 @@ function HeroSection() {
             style={{
               position: "relative",
               borderRadius: T.radiusSm,
-              border: "1.5px solid #6b150e",
+              border: "1.5px solid #70150E",
             }}
           >
             <Image

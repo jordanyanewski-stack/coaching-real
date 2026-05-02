@@ -98,12 +98,12 @@ function CTASection() {
     <section
       className="px-6 md:px-16 lg:px-24 py-24"
       style={{
-        background: "linear-gradient(160deg, #0f0606 0%, #1c0a09 50%, #0a0a0a 100%)",
+        background: "#faf8f5",
         borderTop: "1px solid rgba(107,21,14,0.15)",
       }}
     >
       <div className="max-w-3xl mx-auto text-center">
-        <span className="mv-tag mv-tag-dark">Готова за следващата стъпка?</span>
+        <span className="mv-tag mv-tag-light">Готова за следващата стъпка?</span>
         <h2
           className="mt-6"
           style={{

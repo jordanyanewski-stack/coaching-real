@@ -58,7 +58,7 @@ function FAQItem({
           height="16"
           viewBox="0 0 16 16"
           fill="none"
-          stroke="#6b150e"
+          stroke="#70150E"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
