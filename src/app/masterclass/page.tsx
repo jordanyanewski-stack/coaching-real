@@ -2,6 +2,7 @@ import Image from "next/image";
 import { T, onDark, PHOTO_URL, GRADIENT_TEXT, LOGO_URL, SiteFooter } from "@/app/_shared";
 import { FAQAccordion } from "./faq-accordion";
 import { ScrollReveal } from "./scroll-reveal";
+import { EnrollForm } from "./enroll-form";
 
 export const metadata = {
   title: "12 Дни Мастъркласове® - 12 Измерения на Твоята Мисия | Coaching Real",
@@ -1238,16 +1239,7 @@ function FinalCTASection() {
         </div>
 
         <div className="flex flex-col items-center gap-4">
-          <a
-            href="#enroll"
-            className="mv-btn mv-btn-primary"
-            style={{ fontSize: "17px", padding: "18px 52px" }}
-          >
-            Да - Готова съм да вляза →
-          </a>
-          <p style={{ fontSize: "13px", color: T.textSecondary }}>
-            Сигурна транзакция · Получаваш потвърждение с всички детайли
-          </p>
+          <EnrollForm />
         </div>
       </div>
     </section>
