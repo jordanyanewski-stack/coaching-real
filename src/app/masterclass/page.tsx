@@ -64,7 +64,7 @@ const faqs = [
   },
   {
     q: "Кога се провеждат мастъркласовете?",
-    a: "Всеки ден в продължение на 12 дни - точните дати и часове ще получиш веднага след записването.",
+    a: "От 18 до 29 Май 2026 включително, всеки ден от 19:00 до 20:30 ч. на живо онлайн.",
   },
   {
     q: "Каква е продължителността на всеки мастърклас?",
@@ -220,11 +220,13 @@ export default function MasterclassPage() {
       <ScrollReveal />
       <CampaignHeader />
       <HeroSection />
+      <VSLSection />
       <ForWhomSection />
       <WhyNowSection />
       <SolutionSection />
       <CurriculumSection />
       <AboutSection />
+      <TestimonialsSection />
       <FAQSection />
       <FinalCTASection />
       <SiteFooter />
@@ -232,7 +234,130 @@ export default function MasterclassPage() {
   );
 }
 
-/* ─── HERO ──────────────────────────────────────────────────────────── */
+/* ─── VSL ───────────────────────────────────────────────────────────── */
+function VSLSection() {
+  // Swap VSL_VIDEO_ID with the actual YouTube video ID when the video is ready
+  const VSL_VIDEO_ID = "REPLACE_WITH_VIDEO_ID";
+  if (VSL_VIDEO_ID === "REPLACE_WITH_VIDEO_ID") return null;
+
+  return (
+    <section
+      className="relative px-6 md:px-16 lg:px-24 py-16 md:py-20"
+      style={{ backgroundColor: "#ffffff" }}
+    >
+      <div className="reveal max-w-3xl mx-auto">
+        <div className="text-center mb-8">
+          <span className="mv-tag mv-tag-light">Лично послание от Станислава</span>
+        </div>
+        <div
+          style={{
+            position: "relative",
+            paddingBottom: "56.25%",
+            height: 0,
+            borderRadius: "16px",
+            overflow: "hidden",
+            boxShadow: "0 12px 48px rgba(107,21,14,0.12)",
+            border: "1px solid rgba(107,21,14,0.1)",
+          }}
+        >
+          <iframe
+            src={`https://www.youtube.com/embed/${VSL_VIDEO_ID}?rel=0&modestbranding=1`}
+            title="Лично послание от Станислава Павлова"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              border: "none",
+            }}
+          />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── TESTIMONIALS ──────────────────────────────────────────────────── */
+const testimonials = [
+  { id: "P7uagO2iKQU" },
+  { id: "YaXXwMVzYCE" },
+  { id: "KCKlgVLQfnI" },
+  { id: "qxwjEwrPclE" },
+  { id: "XCbVcEi6p84" },
+];
+
+function TestimonialsSection() {
+  return (
+    <section
+      className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
+      style={{ backgroundColor: "#faf8f5" }}
+    >
+      <div className="reveal relative max-w-6xl mx-auto">
+        <div className="text-center mb-12">
+          <span className="mv-tag mv-tag-light">Реални резултати</span>
+          <h2
+            className="mt-5"
+            style={{
+              fontSize: "clamp(1.8rem, 4vw, 3rem)",
+              fontWeight: 800,
+              color: T.textPrimary,
+              lineHeight: 1.15,
+              letterSpacing: "-0.02em",
+            }}
+          >
+            Какво казват{" "}
+            <span style={{ ...GRADIENT_TEXT }}>жените, които преминаха</span>
+          </h2>
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            gap: "20px",
+            overflowX: "auto",
+            paddingBottom: "12px",
+            scrollbarWidth: "none",
+            WebkitOverflowScrolling: "touch",
+          }}
+        >
+          {testimonials.map(({ id }) => (
+            <div
+              key={id}
+              style={{
+                flexShrink: 0,
+                width: "220px",
+                aspectRatio: "9/16",
+                borderRadius: "16px",
+                overflow: "hidden",
+                boxShadow: "0 8px 32px rgba(107,21,14,0.1)",
+                border: "1px solid rgba(107,21,14,0.1)",
+              }}
+            >
+              <iframe
+                src={`https://www.youtube.com/embed/${id}?rel=0&modestbranding=1`}
+                title={`Testimonial ${id}`}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                style={{ width: "100%", height: "100%", border: "none", display: "block" }}
+              />
+            </div>
+          ))}
+        </div>
+
+        <div className="text-center mt-12">
+          <a href="#enroll" className="mv-btn mv-btn-primary" style={{ fontSize: "15px" }}>
+            Искам същите резултати →
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── HERO ───────────────────────────────────────────────────────────── */
 function HeroSection() {
   return (
     <section
@@ -307,6 +432,28 @@ function HeroSection() {
                 <span style={{ position: "relative", width: "8px", height: "8px", borderRadius: "50%", backgroundColor: "#c94535", flexShrink: 0 }} />
               </span>
               за терапевти, коучове, лечители, астролози
+            </span>
+          </div>
+
+          <div className="animate-fade-up mt-4 flex flex-wrap items-center gap-3">
+            <span
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "6px",
+                fontSize: "13px",
+                fontWeight: 700,
+                color: "#6b150e",
+                backgroundColor: "rgba(107,21,14,0.06)",
+                padding: "5px 14px",
+                borderRadius: "20px",
+                border: "1px solid rgba(107,21,14,0.14)",
+              }}
+            >
+              18 - 29 Май 2026
+            </span>
+            <span style={{ fontSize: "13px", color: T.textSecondary, fontWeight: 600 }}>
+              19:00 - 20:30 ч. на живо
             </span>
           </div>
 
@@ -403,7 +550,7 @@ function HeroSection() {
                       flexShrink: 0,
                     }}
                   />
-                  Ограничени места
+                  Останали 7 от 30 места
                 </span>
               </div>
             </div>
@@ -1040,6 +1187,26 @@ function AboutSection() {
             Бизнес ментор · Стратег · Създател на системата KickSTART
           </p>
 
+          <div className="mt-4 flex flex-wrap gap-2">
+            {["11 години опит", "CPD UK акредитация", "Noble Manhattan"].map((badge) => (
+              <span
+                key={badge}
+                style={{
+                  fontSize: "12px",
+                  fontWeight: 700,
+                  color: "#6b150e",
+                  backgroundColor: "rgba(107,21,14,0.06)",
+                  padding: "4px 12px",
+                  borderRadius: "20px",
+                  border: "1px solid rgba(107,21,14,0.12)",
+                  letterSpacing: "0.02em",
+                }}
+              >
+                {badge}
+              </span>
+            ))}
+          </div>
+
           <p className="mt-6" style={{ fontSize: "16px", color: T.textSecondary, lineHeight: 1.85 }}>
             Помагам на жени в помагащите професии да изградят, структурират и
             скалират своя онлайн бизнес с яснота, женска енергия и стабилност.
@@ -1177,6 +1344,25 @@ function FinalCTASection() {
           Започва с теб. Завършва с ясен план за растеж, готов за изпълнение.
         </p>
 
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+          <span
+            style={{
+              fontSize: "13px",
+              fontWeight: 700,
+              color: "#6b150e",
+              backgroundColor: "rgba(107,21,14,0.06)",
+              padding: "5px 14px",
+              borderRadius: "20px",
+              border: "1px solid rgba(107,21,14,0.14)",
+            }}
+          >
+            18 - 29 Май 2026
+          </span>
+          <span style={{ fontSize: "13px", color: T.textSecondary, fontWeight: 600 }}>
+            19:00 - 20:30 ч. на живо онлайн
+          </span>
+        </div>
+
         {/* Price block */}
         <div
           className="mt-10 mb-10 inline-flex flex-col items-center gap-2 px-10 py-6"
@@ -1233,7 +1419,7 @@ function FinalCTASection() {
               }}
             />
             <span style={{ fontSize: "12px", color: "#6b150e", fontWeight: 700, letterSpacing: "0.04em" }}>
-              Ограничени места
+              Останали 7 от 30 места
             </span>
           </div>
         </div>
