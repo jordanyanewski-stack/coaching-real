@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
   `;
 
   addToPending(email.trim(), name.trim()).catch((err) =>
-    console.error('MailerLite addToPending error:', err)
+    console.error('[MailerLite addToPending FAILED]', { email: email.trim(), error: (err as Error).message })
   );
 
   const { action, fields } = buildPurchaseParams({

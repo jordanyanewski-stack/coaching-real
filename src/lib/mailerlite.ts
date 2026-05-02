@@ -5,7 +5,7 @@ async function request(path: string, method: string, body?: unknown) {
     method,
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${process.env.MAILERLITE_API_KEY}`,
+      Authorization: `Bearer ${(process.env.MAILERLITE_API_KEY ?? '').trim()}`,
     },
     body: body ? JSON.stringify(body) : undefined,
   });
@@ -21,13 +21,13 @@ export async function addToPending(email: string, name: string) {
   await request('/subscribers', 'POST', {
     email,
     fields: { name: firstName, last_name: rest.join(' ') },
-    groups: [process.env.MAILERLITE_PENDING_GROUP_ID],
+    groups: [(process.env.MAILERLITE_PENDING_GROUP_ID ?? '').trim()],
   });
 }
 
 export async function moveToPaid(email: string) {
-  const pendingGroupId = process.env.MAILERLITE_PENDING_GROUP_ID;
-  const paidGroupId = process.env.MAILERLITE_PAID_GROUP_ID;
+  const pendingGroupId = (process.env.MAILERLITE_PENDING_GROUP_ID ?? '').trim();
+  const paidGroupId    = (process.env.MAILERLITE_PAID_GROUP_ID ?? '').trim();
 
   const data = await request(`/subscribers/${encodeURIComponent(email)}`, 'GET');
   const subscriberId = data.data?.id;
