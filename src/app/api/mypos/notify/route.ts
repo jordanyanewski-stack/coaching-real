@@ -10,19 +10,20 @@ export async function POST(request: NextRequest) {
   const { valid, fields } = verifyNotify(rawBody);
 
   if (!valid) {
-    console.error('myPOS notify: invalid signature', rawBody);
+    console.error('[myPOS notify] invalid signature', { rawBody });
     return new Response('OK', { status: 200 });
   }
 
-  const { OrderID, Status, TransactionID } = fields;
+  const { IPCmethod, OrderID, IPC_Trnref } = fields;
+  console.log('[myPOS notify]', { IPCmethod, OrderID, IPC_Trnref });
 
-  if (Status === '1') {
-    const sql = getDb();
+  const sql = getDb();
 
+  if (IPCmethod === 'IPCPurchaseNotify') {
     await sql`
       UPDATE orders
       SET status = 'paid',
-          mypos_transaction_id = ${TransactionID ?? null},
+          mypos_transaction_id = ${IPC_Trnref ?? null},
           updated_at = now()
       WHERE mypos_order_id = ${OrderID}
     `;
@@ -33,9 +34,16 @@ export async function POST(request: NextRequest) {
 
     if (rows[0]?.email) {
       moveToPaid(rows[0].email).catch((err) =>
-        console.error('MailerLite moveToPaid error:', err)
+        console.error('[myPOS notify] MailerLite moveToPaid error:', err)
       );
     }
+  } else if (IPCmethod === 'IPCPurchaseRollback' || IPCmethod === 'IPCPurchaseCancel') {
+    await sql`
+      UPDATE orders
+      SET status = ${IPCmethod === 'IPCPurchaseCancel' ? 'cancelled' : 'failed'},
+          updated_at = now()
+      WHERE mypos_order_id = ${OrderID}
+    `;
   }
 
   return new Response('OK', { status: 200 });
