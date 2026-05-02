@@ -17,6 +17,10 @@ export async function POST(request: NextRequest) {
   const amount = (process.env.PRODUCT_PRICE ?? '97.00').trim();
   const currency = (process.env.PRODUCT_CURRENCY ?? 'EUR').trim();
   const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? '').trim();
+  const customerIp =
+    request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
+    request.headers.get('x-real-ip')?.trim() ||
+    '0.0.0.0';
 
   const sql = getDb();
   await sql`
@@ -34,6 +38,7 @@ export async function POST(request: NextRequest) {
     currency,
     customerEmail: email.trim(),
     customerName: name.trim(),
+    customerIp,
     urlOk: `${siteUrl}/thank-you?order=${orderId}`,
     urlCancel: `${siteUrl}/payment-cancelled?order=${orderId}`,
     urlNotify: `${siteUrl}/api/mypos/notify`,

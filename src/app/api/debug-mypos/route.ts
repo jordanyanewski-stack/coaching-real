@@ -12,6 +12,7 @@ export async function GET() {
     currency: (process.env.PRODUCT_CURRENCY ?? 'EUR').trim(),
     customerEmail: 'test@example.com',
     customerName: 'Test User',
+    customerIp: '127.0.0.1',
     urlOk:     `${SITE_URL}/thank-you?order=${fakeOrderId}`,
     urlCancel: `${SITE_URL}/payment-cancelled?order=${fakeOrderId}`,
     urlNotify: `${SITE_URL}/api/mypos/notify`,

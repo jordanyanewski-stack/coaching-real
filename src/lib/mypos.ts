@@ -6,6 +6,7 @@ interface PurchaseParams {
   currency: string;
   customerEmail: string;
   customerName: string;
+  customerIp: string;
   urlOk: string;
   urlCancel: string;
   urlNotify: string;
@@ -23,10 +24,12 @@ function splitName(fullName: string): { first: string; last: string } {
 }
 
 /**
- * Build IPCPurchase params and signature, matching the official myPOS PHP SDK
- * (developermypos/myPOS-Checkout-SDK-PHP). Field order, casing, separator,
- * and base64 wrapping must all match exactly or myPOS returns Error 2
- * (STATUS_SIGNATURE_FAILED).
+ * Build IPCPurchase params and signature, mirroring the production myPOS
+ * WooCommerce plugin (common-repository/mypos-virtual-for-woocommerce
+ * → includes/class-wc-gateway-mypos.php), which is known to work against
+ * this merchant account. Field order, casing, and the empty-string
+ * placeholders are part of the signed payload — any deviation produces
+ * Error 2 (STATUS_SIGNATURE_FAILED) from myPOS.
  */
 export function buildPurchaseParams(params: PurchaseParams) {
   const SID         = (process.env.MYPOS_SID         ?? '').trim();
@@ -36,48 +39,45 @@ export function buildPurchaseParams(params: PurchaseParams) {
   const PRIVATE_KEY = process.env.MYPOS_PRIVATE_KEY  ?? '';
 
   const { first, last } = splitName(params.customerName);
-  const productName = params.productName ?? process.env.PRODUCT_NAME ?? 'Product';
+  const productName = (params.productName ?? process.env.PRODUCT_NAME ?? 'Product').trim();
+  const lang = 'BG';
 
-  // Order MUST match Purchase.php::process() exactly.
-  // Empty strings are intentional — the field still participates in signature.
   const ordered: [string, string][] = [
     ['IPCmethod',                 'IPCPurchase'],
     ['IPCVersion',                '1.4'],
-    ['IPCLanguage',               'BG'],
-    ['SID',                       SID],
+    ['IPCLanguage',               lang],
     ['WalletNumber',              WALLET],
-    ['KeyIndex',                  KEY_INDEX],
+    ['SID',                       SID],
+    ['keyindex',                  KEY_INDEX],
     ['Source',                    'SDK_PHP_1.3.1'],
-    ['Currency',                  params.currency],
     ['Amount',                    params.amount],
+    ['Currency',                  params.currency],
     ['OrderID',                   params.orderId],
     ['URL_OK',                    params.urlOk],
-    ['URL_Cancel',                params.urlCancel],
+    ['URL_CANCEL',                params.urlCancel],
     ['URL_Notify',                params.urlNotify],
+    ['CustomerIP',                params.customerIp],
+    ['CustomerEmail',             params.customerEmail],
+    ['CustomerFirstNames',        first],
+    ['CustomerFamilyName',        last],
+    ['CustomerCountry',           ''],
+    ['CustomerCity',              ''],
+    ['CustomerZIPCode',           ''],
+    ['CustomerAddress',           ''],
+    ['CustomerPhone',             ''],
     ['Note',                      ''],
-    ['expires_in',                '86400'],
-    ['ApplicationID',             ''],
-    ['PartnerID',                 ''],
-    ['customeremail',             params.customerEmail],
-    ['customerphone',             ''],
-    ['customerfirstnames',        first],
-    ['customerfamilyname',        last],
-    ['customercountry',           ''],
-    ['customercity',              ''],
-    ['customerzipcode',           ''],
-    ['customeraddress',           ''],
-    ['CartItems',                 '1'],
+    ['CardTokenRequest',          '0'],
+    ['PaymentParametersRequired', '2'],
+    ['PaymentMethod',             '1'],
     ['Article_1',                 productName],
     ['Quantity_1',                '1'],
     ['Price_1',                   params.amount],
     ['Amount_1',                  params.amount],
     ['Currency_1',                params.currency],
-    ['CardTokenRequest',          '0'],
-    ['PaymentParametersRequired', '2'],
-    ['PaymentMethod',             '1'],
+    ['CartItems',                 '1'],
+    ['trp-form-language',         lang],
   ];
 
-  // Signature: base64(values joined by single '-') signed with RSA-SHA256, then base64.
   const concatValues = ordered.map(([, v]) => v).join('-');
   const concatBase64 = Buffer.from(concatValues, 'utf8').toString('base64');
 
@@ -104,7 +104,6 @@ export function verifyNotify(rawBody: string): { valid: boolean; fields: Record<
 
   if (!signature) return { valid: false, fields };
 
-  // myPOS notify uses the same scheme: base64(values joined by '-') signed with RSA-SHA256.
   const concatValues = Object.values(fields).join('-');
   const concatBase64 = Buffer.from(concatValues, 'utf8').toString('base64');
 
