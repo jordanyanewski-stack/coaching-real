@@ -21,9 +21,9 @@ export function buildPurchaseParams(params: PurchaseParams) {
     ['IPCmethod',                'IPCPurchase'],
     ['IPCVersion',               '1.4'],
     ['IPCLanguage',              'BG'],
-    ['SID',                      process.env.MYPOS_SID!],
-    ['WalletNumber',             process.env.MYPOS_WALLET!],
-    ['KeyIndex',                 process.env.MYPOS_KEY_INDEX!],
+    ['SID',                      process.env.MYPOS_SID!.trim()],
+    ['WalletNumber',             process.env.MYPOS_WALLET!.trim()],
+    ['KeyIndex',                 process.env.MYPOS_KEY_INDEX!.trim()],
     ['Amount',                   params.amount],
     ['Currency',                 params.currency],
     ['OrderID',                  params.orderId],
@@ -40,7 +40,7 @@ export function buildPurchaseParams(params: PurchaseParams) {
   const signature = sign.sign(loadPem(process.env.MYPOS_PRIVATE_KEY!), 'base64');
 
   const fields = Object.fromEntries([...ordered, ['Signature', signature]]);
-  return { action: process.env.MYPOS_IPC_URL!, fields };
+  return { action: process.env.MYPOS_IPC_URL!.trim(), fields };
 }
 
 export function verifyNotify(rawBody: string): { valid: boolean; fields: Record<string, string> } {
@@ -62,7 +62,7 @@ export function verifyNotify(rawBody: string): { valid: boolean; fields: Record<
   try {
     const verify = crypto.createVerify('RSA-SHA256');
     verify.update(concatValues);
-    const valid = verify.verify(loadPem(process.env.MYPOS_API_PUBLIC_KEY!), signature, 'base64');
+    const valid = verify.verify(loadPem(process.env.MYPOS_API_PUBLIC_KEY!.trim()), signature, 'base64');
     return { valid, fields };
   } catch {
     return { valid: false, fields };
