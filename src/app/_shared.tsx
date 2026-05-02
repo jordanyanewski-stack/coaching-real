@@ -93,7 +93,9 @@ export function SiteNav() {
       </div>
 
       <a
-        href="/kickstart#waitlist"
+        href="https://calendly.com/stanislavapavlova8/30min?month=2026-05&date=2026-05-04"
+        target="_blank"
+        rel="noopener noreferrer"
         className="mv-btn mv-btn-primary"
         style={{ padding: "10px 22px", fontSize: "14px", flexShrink: 0 }}
       >
