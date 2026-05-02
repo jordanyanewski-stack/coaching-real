@@ -7,7 +7,7 @@ import { EnrollForm } from "./enroll-form";
 export const metadata = {
   title: "12 Дни Мастъркласове® - 12 Измерения на Твоята Мисия | Coaching Real",
   description:
-    "Пренареди своя онлайн бизнес за 2026-та. 12 трансформиращи мастъркласа на живо за жени предприемачи в помагащите професии. €97 (вместо €197).",
+    "Пренареди своя онлайн бизнес за 2026-та. 12 трансформиращи мастъркласа на живо за жени предприемачи в помагащите професии. €67 (вместо €197).",
 };
 
 /* ─── DATA ──────────────────────────────────────────────────────────── */
@@ -56,7 +56,7 @@ const curriculum = [
 const faqs = [
   {
     q: "Колко струва участието?",
-    a: "Само €97 (намалено от €197). Ограничени места на тази цена.",
+    a: "Само €67 (намалено от €197). Ограничени места на тази цена.",
   },
   {
     q: "Ще има ли запис след събитието?",
@@ -227,8 +227,8 @@ export default function MasterclassPage() {
       <CurriculumSection />
       <AboutSection />
       <TestimonialsSection />
-      <FAQSection />
       <FinalCTASection />
+      <FAQSection />
       <SiteFooter />
     </div>
   );
@@ -521,7 +521,7 @@ function HeroSection() {
                   letterSpacing: "-0.03em",
                 }}
               >
-                €97
+                €67
               </span>
               <div className="flex flex-col gap-1">
                 <span
@@ -1122,7 +1122,7 @@ function CurriculumSection() {
             className="mv-btn mv-btn-primary"
             style={{ fontSize: "16px", padding: "16px 44px" }}
           >
-            Включи ме в 12-те мастъркласа - €97 →
+            Включи ме в 12-те мастъркласа - €67 →
           </a>
         </div>
       </div>
@@ -1244,7 +1244,7 @@ function AboutSection() {
                   ...GRADIENT_TEXT,
                 }}
               >
-                €97
+                €67
               </strong>
               . Инвестиция, която се връща в измерими резултати.
             </p>
@@ -1392,7 +1392,7 @@ function FinalCTASection() {
                 letterSpacing: "-0.03em",
               }}
             >
-              €97
+              €67
             </span>
             <span
               style={{

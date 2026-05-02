@@ -6,26 +6,37 @@ import { moveToPaid } from '@/lib/mailerlite';
 
 export async function GET(request: NextRequest) {
   const orderId = request.nextUrl.searchParams.get('order');
-  if (!orderId) return Response.json({ error: 'missing ?order=' }, { status: 400 });
+  const email = request.nextUrl.searchParams.get('email');
+  if (!orderId && !email) {
+    return Response.json({ error: 'pass ?order= or ?email=' }, { status: 400 });
+  }
 
   const sql = getDb();
-  await sql`
-    UPDATE orders
-    SET status = 'paid', updated_at = now()
-    WHERE mypos_order_id = ${orderId}
-  `;
 
-  const rows = await sql`
-    SELECT email, status FROM orders WHERE mypos_order_id = ${orderId}
-  ` as { email: string; status: string }[];
+  if (orderId) {
+    await sql`
+      UPDATE orders SET status = 'paid', updated_at = now()
+      WHERE mypos_order_id = ${orderId}
+    `;
+  } else if (email) {
+    await sql`
+      UPDATE orders SET status = 'paid', updated_at = now()
+      WHERE email = ${email} AND status != 'paid'
+    `;
+  }
 
-  if (rows[0]?.email) {
+  const targetEmail = email ?? (
+    (await sql`SELECT email FROM orders WHERE mypos_order_id = ${orderId!}` as { email: string }[])[0]?.email
+  );
+
+  if (targetEmail) {
     try {
-      await moveToPaid(rows[0].email);
+      await moveToPaid(targetEmail);
+      return Response.json({ ok: true, email: targetEmail, moved_to_paid: true });
     } catch (err) {
-      return Response.json({ updated: rows[0], mailerlite_error: (err as Error).message });
+      return Response.json({ ok: false, email: targetEmail, mailerlite_error: (err as Error).message });
     }
   }
 
-  return Response.json({ updated: rows[0] ?? null });
+  return Response.json({ ok: false, error: 'no email found' });
 }

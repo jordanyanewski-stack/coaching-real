@@ -28,9 +28,14 @@ export async function POST(request: NextRequest) {
     VALUES (${orderId}, ${email.trim()}, ${name.trim()}, ${parseFloat(amount)}, ${currency}, 'pending')
   `;
 
-  addToPending(email.trim(), name.trim()).catch((err) =>
-    console.error('[MailerLite addToPending FAILED]', { email: email.trim(), error: (err as Error).message })
-  );
+  try {
+    await addToPending(email.trim(), name.trim());
+  } catch (err) {
+    console.error('[MailerLite addToPending FAILED]', {
+      email: email.trim(),
+      error: (err as Error).message,
+    });
+  }
 
   const { action, fields } = buildPurchaseParams({
     orderId,

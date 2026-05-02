@@ -33,9 +33,14 @@ export async function POST(request: NextRequest) {
     ` as { email: string }[];
 
     if (rows[0]?.email) {
-      moveToPaid(rows[0].email).catch((err) =>
-        console.error('[myPOS notify] MailerLite moveToPaid error:', err)
-      );
+      try {
+        await moveToPaid(rows[0].email);
+      } catch (err) {
+        console.error('[myPOS notify] MailerLite moveToPaid FAILED', {
+          email: rows[0].email,
+          error: (err as Error).message,
+        });
+      }
     }
   } else if (IPCmethod === 'IPCPurchaseRollback' || IPCmethod === 'IPCPurchaseCancel') {
     await sql`
