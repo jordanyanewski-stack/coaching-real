@@ -358,6 +358,9 @@ function TestimonialsSection() {
 }
 
 /* ─── HERO ───────────────────────────────────────────────────────────── */
+// Set this to the YouTube ID once the video is uploaded. Until then, the photo shows.
+const HERO_VIDEO_ID = "";
+
 function HeroSection() {
   return (
     <section
@@ -565,38 +568,67 @@ function HeroSection() {
           </div>
         </div>
 
-        {/* Right - photo */}
+        {/* Right - video (or photo fallback until HERO_VIDEO_ID is set) */}
         <div className="mc-hero-visual animate-fade-in delay-200 hidden lg:flex items-center justify-center">
-          <div
-            style={{
-              position: "relative",
-              width: "420px",
-              height: "420px",
-              borderRadius: "50%",
-              padding: "4px",
-              background: "linear-gradient(135deg, #70150E, #c94535, #e85050, #70150E)",
-              boxShadow: "none",
-            }}
-          >
+          {HERO_VIDEO_ID ? (
             <div
               style={{
                 position: "relative",
                 width: "100%",
-                height: "100%",
-                borderRadius: "50%",
+                maxWidth: "500px",
+                aspectRatio: "16 / 9",
+                borderRadius: "16px",
                 overflow: "hidden",
+                boxShadow: "0 12px 48px rgba(107,21,14,0.18)",
+                border: "1px solid rgba(107,21,14,0.12)",
               }}
             >
-              <Image
-                src="/stasi-4.jpg"
-                alt="Станислава Павлова"
-                fill
-                style={{ objectFit: "cover", objectPosition: "top center" }}
-                sizes="420px"
-                priority
+              <iframe
+                src={`https://www.youtube.com/embed/${HERO_VIDEO_ID}?rel=0&modestbranding=1`}
+                title="12 Измерения на твоята мисия"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  width: "100%",
+                  height: "100%",
+                  border: "none",
+                }}
               />
             </div>
-          </div>
+          ) : (
+            <div
+              style={{
+                position: "relative",
+                width: "420px",
+                height: "420px",
+                borderRadius: "50%",
+                padding: "4px",
+                background: "linear-gradient(135deg, #70150E, #c94535, #e85050, #70150E)",
+                boxShadow: "none",
+              }}
+            >
+              <div
+                style={{
+                  position: "relative",
+                  width: "100%",
+                  height: "100%",
+                  borderRadius: "50%",
+                  overflow: "hidden",
+                }}
+              >
+                <Image
+                  src="/stasi-4.jpg"
+                  alt="Станислава Павлова"
+                  fill
+                  style={{ objectFit: "cover", objectPosition: "top center" }}
+                  sizes="420px"
+                  priority
+                />
+              </div>
+            </div>
+          )}
         </div>
       </div>
 

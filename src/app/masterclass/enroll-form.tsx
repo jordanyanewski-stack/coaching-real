@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
+import { trackInitiateCheckout } from '@/app/pixel';
 
 export function EnrollForm() {
   const [name, setName] = useState('');
@@ -30,6 +31,8 @@ export function EnrollForm() {
         action: string;
         fields: Record<string, string>;
       };
+
+      trackInitiateCheckout(67);
 
       // Build hidden form and submit to myPOS
       const form = document.createElement('form');

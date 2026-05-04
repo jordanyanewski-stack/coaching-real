@@ -38,7 +38,13 @@ export function buildPurchaseParams(params: PurchaseParams) {
   const IPC_URL     = (process.env.MYPOS_IPC_URL     ?? '').trim();
   const PRIVATE_KEY = process.env.MYPOS_PRIVATE_KEY  ?? '';
 
-  const { first, last } = splitName(params.customerName);
+  const { first: firstRaw, last: lastRaw } = splitName(params.customerName);
+  // myPOS rejects requests with non-ASCII characters in name fields; since
+  // PaymentParametersRequired=2 has the customer fill in their details on the
+  // payment page anyway, fall back to empty strings for non-ASCII names.
+  const isAscii = (s: string) => /^[\x00-\x7F]*$/.test(s);
+  const first = isAscii(firstRaw) ? firstRaw : '';
+  const last  = isAscii(lastRaw)  ? lastRaw  : '';
   const productName = (params.productName ?? process.env.PRODUCT_NAME ?? 'Product').trim();
   const lang = 'BG';
 
