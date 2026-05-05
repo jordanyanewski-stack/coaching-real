@@ -630,16 +630,15 @@ function HeroSection() {
         </div>
       </div>
 
-      {/* Scroll prompt */}
+      {/* Scroll prompt - desktop only */}
       <div
         aria-hidden
-        className="mc-scroll-prompt"
+        className="mc-scroll-prompt hidden md:flex"
         style={{
           position: "absolute",
           bottom: "32px",
           left: "50%",
           transform: "translateX(-50%)",
-          display: "flex",
           flexDirection: "column",
           alignItems: "center",
           gap: "6px",
