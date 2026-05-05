@@ -359,7 +359,7 @@ function TestimonialsSection() {
 
 /* ─── HERO ───────────────────────────────────────────────────────────── */
 // Set this to the YouTube ID once the video is uploaded. Until then, the photo shows.
-const HERO_VIDEO_ID = "";
+const HERO_VIDEO_ID = "MJsPGCl6HrI";
 
 function HeroSection() {
   return (
