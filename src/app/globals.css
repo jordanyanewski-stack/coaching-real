@@ -363,40 +363,18 @@ html {
   margin: 2.5rem 0;
 }
 
-/* ─── Masterclass campaign hero hover ───────────────────────────────── */
+/* ─── Masterclass campaign hero ─────────────────────────────────────── */
 .mc-hero {
   position: relative;
   overflow: hidden;
 }
-.mc-hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 80% 60% at 55% 45%, rgba(107,21,14,0.07) 0%, transparent 70%);
-  opacity: 0;
-  transition: opacity 0.6s ease;
-  pointer-events: none;
-  z-index: 0;
-}
-.mc-hero:hover::before {
-  opacity: 1;
-}
 .mc-hero-content {
   position: relative;
   z-index: 1;
-  transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
-}
-.mc-hero:hover .mc-hero-content {
-  transform: translateY(-5px);
 }
 .mc-hero-visual {
   position: relative;
   z-index: 1;
-  transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), filter 0.5s ease;
-}
-.mc-hero:hover .mc-hero-visual {
-  transform: translateY(-3px) scale(1.015);
-  filter: drop-shadow(0 24px 40px rgba(107,21,14,0.14));
 }
 @keyframes mcOrb {
   0%, 100% { transform: scale(1)    translate(0,    0);    opacity: 0.30; }
