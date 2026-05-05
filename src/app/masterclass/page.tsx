@@ -569,7 +569,7 @@ function HeroSection() {
         </div>
 
         {/* Right - video (or photo fallback until HERO_VIDEO_ID is set) */}
-        <div className="mc-hero-visual animate-fade-in delay-200 hidden lg:flex items-center justify-center">
+        <div className="mc-hero-visual animate-fade-in delay-200 flex items-center justify-center order-first lg:order-none">
           {HERO_VIDEO_ID ? (
             <div
               style={{
