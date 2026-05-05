@@ -358,8 +358,12 @@ function TestimonialsSection() {
 }
 
 /* ─── HERO ───────────────────────────────────────────────────────────── */
-// Set this to the YouTube ID once the video is uploaded. Until then, the photo shows.
-const HERO_VIDEO_ID = "MJsPGCl6HrI";
+// Bunny Stream library ID (numeric) and video ID (UUID).
+// Once uploaded to Bunny, set both. Until then the photo shows.
+const HERO_VIDEO = {
+  libraryId: "653527",
+  videoId:   "b32c246d-b7a5-4289-ae4d-ee866c2657cd",
+};
 
 function HeroSection() {
   return (
@@ -568,9 +572,9 @@ function HeroSection() {
           </div>
         </div>
 
-        {/* Right - video (or photo fallback until HERO_VIDEO_ID is set) */}
+        {/* Right - video (or photo fallback until HERO_VIDEO is set) */}
         <div className="mc-hero-visual animate-fade-in delay-200 flex items-center justify-center order-first lg:order-none">
-          {HERO_VIDEO_ID ? (
+          {HERO_VIDEO.libraryId && HERO_VIDEO.videoId ? (
             <div
               style={{
                 position: "relative",
@@ -584,9 +588,10 @@ function HeroSection() {
               }}
             >
               <iframe
-                src={`https://www.youtube.com/embed/${HERO_VIDEO_ID}?rel=0&modestbranding=1`}
+                src={`https://iframe.mediadelivery.net/embed/${HERO_VIDEO.libraryId}/${HERO_VIDEO.videoId}?autoplay=true&loop=false&muted=false&preload=true&responsive=true`}
                 title="12 Измерения на твоята мисия"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                loading="lazy"
+                allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
                 allowFullScreen
                 style={{
                   position: "absolute",
