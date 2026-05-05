@@ -314,38 +314,84 @@ function TestimonialsSection() {
           </h2>
         </div>
 
+        <div style={{ position: "relative" }}>
+          <div
+            className="mc-testimonials-scroll"
+            style={{
+              display: "flex",
+              gap: "20px",
+              overflowX: "auto",
+              paddingBottom: "12px",
+              scrollbarWidth: "none",
+              WebkitOverflowScrolling: "touch",
+              scrollSnapType: "x mandatory",
+              scrollPaddingLeft: "0px",
+            }}
+          >
+            {testimonials.map(({ id }) => (
+              <div
+                key={id}
+                style={{
+                  flexShrink: 0,
+                  width: "220px",
+                  aspectRatio: "9/16",
+                  borderRadius: "16px",
+                  overflow: "hidden",
+                  boxShadow: "0 8px 32px rgba(107,21,14,0.1)",
+                  border: "1px solid rgba(107,21,14,0.1)",
+                  scrollSnapAlign: "start",
+                }}
+              >
+                <iframe
+                  src={`https://www.youtube.com/embed/${id}?rel=0&modestbranding=1`}
+                  title={`Testimonial ${id}`}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  style={{ width: "100%", height: "100%", border: "none", display: "block" }}
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Right-edge fade indicating more content */}
+          <div
+            aria-hidden
+            style={{
+              position: "absolute",
+              top: 0,
+              bottom: 12,
+              right: 0,
+              width: "72px",
+              pointerEvents: "none",
+              background: "linear-gradient(90deg, rgba(250,248,245,0) 0%, rgba(250,248,245,0.95) 100%)",
+            }}
+          />
+        </div>
+
+        {/* Mobile-only swipe indicator */}
         <div
+          className="md:hidden mc-swipe-hint"
           style={{
             display: "flex",
-            gap: "20px",
-            overflowX: "auto",
-            paddingBottom: "12px",
-            scrollbarWidth: "none",
-            WebkitOverflowScrolling: "touch",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "10px",
+            marginTop: "16px",
+            fontSize: "12px",
+            fontWeight: 700,
+            letterSpacing: "0.1em",
+            textTransform: "uppercase",
+            color: "#70150E",
+            opacity: 0.7,
           }}
         >
-          {testimonials.map(({ id }) => (
-            <div
-              key={id}
-              style={{
-                flexShrink: 0,
-                width: "220px",
-                aspectRatio: "9/16",
-                borderRadius: "16px",
-                overflow: "hidden",
-                boxShadow: "0 8px 32px rgba(107,21,14,0.1)",
-                border: "1px solid rgba(107,21,14,0.1)",
-              }}
-            >
-              <iframe
-                src={`https://www.youtube.com/embed/${id}?rel=0&modestbranding=1`}
-                title={`Testimonial ${id}`}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                style={{ width: "100%", height: "100%", border: "none", display: "block" }}
-              />
-            </div>
-          ))}
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+            <path d="M19 12H5M12 19l-7-7 7-7" />
+          </svg>
+          <span>Свайпни за още</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
         </div>
 
         <div className="text-center mt-12">
