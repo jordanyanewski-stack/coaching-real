@@ -3,6 +3,7 @@ import { T, onDark, PHOTO_URL, GRADIENT_TEXT, LOGO_URL, SiteFooter } from "@/app
 import { FAQAccordion } from "./faq-accordion";
 import { ScrollReveal } from "./scroll-reveal";
 import { EnrollForm } from "./enroll-form";
+import { HeroVideo } from "./hero-video";
 
 export const metadata = {
   title: "12 Дни Мастъркласове® - 12 Измерения на Твоята Мисия | Coaching Real",
@@ -361,8 +362,9 @@ function TestimonialsSection() {
 // Bunny Stream library ID (numeric) and video ID (UUID).
 // Once uploaded to Bunny, set both. Until then the photo shows.
 const HERO_VIDEO = {
-  libraryId: "653527",
-  videoId:   "b32c246d-b7a5-4289-ae4d-ee866c2657cd",
+  libraryId:    "653527",
+  videoId:      "b32c246d-b7a5-4289-ae4d-ee866c2657cd",
+  thumbnailUrl: "https://vz-84c41e4d-6a7.b-cdn.net/b32c246d-b7a5-4289-ae4d-ee866c2657cd/thumbnail.jpg",
 };
 
 function HeroSection() {
@@ -587,19 +589,10 @@ function HeroSection() {
                 border: "1px solid rgba(107,21,14,0.12)",
               }}
             >
-              <iframe
-                src={`https://iframe.mediadelivery.net/embed/${HERO_VIDEO.libraryId}/${HERO_VIDEO.videoId}?autoplay=true&loop=false&muted=false&preload=true&responsive=true`}
-                title="12 Измерения на твоята мисия"
-                loading="lazy"
-                allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
-                allowFullScreen
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  width: "100%",
-                  height: "100%",
-                  border: "none",
-                }}
+              <HeroVideo
+                libraryId={HERO_VIDEO.libraryId}
+                videoId={HERO_VIDEO.videoId}
+                thumbnailUrl={HERO_VIDEO.thumbnailUrl}
               />
             </div>
           ) : (
