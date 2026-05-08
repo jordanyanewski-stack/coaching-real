@@ -372,12 +372,12 @@ function HeroSection() {
 
           <h1
             className="animate-fade-up delay-100 mt-5"
-            style={{ lineHeight: 1.05, letterSpacing: "-0.03em" }}
+            style={{ lineHeight: 1.05, letterSpacing: "-0.03em", maxWidth: "560px" }}
           >
             <span
               className="block"
               style={{
-                fontSize: "clamp(2.2rem, 5vw, 4.2rem)",
+                fontSize: "clamp(2rem, 4.2vw, 3.4rem)",
                 fontWeight: 900,
                 color: T.textPrimary,
               }}
@@ -387,85 +387,112 @@ function HeroSection() {
             <span
               className="block"
               style={{
-                fontSize: "clamp(1.6rem, 3.4vw, 2.6rem)",
+                fontSize: "clamp(1.4rem, 2.8vw, 2.1rem)",
                 fontWeight: 800,
                 background: "linear-gradient(135deg, #70150E 0%, #c94535 55%, #e85050 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
-                marginTop: "8px",
+                marginTop: "6px",
               }}
             >
               Научиха те само да лекуваш.
             </span>
           </h1>
 
-          <div
+          <p
             className="animate-fade-up delay-200 mt-6"
-            style={{ maxWidth: "520px" }}
+            style={{
+              fontSize: "16px",
+              color: T.textSecondary,
+              lineHeight: 1.65,
+              maxWidth: "520px",
+            }}
           >
-            <p style={{ fontSize: "16px", color: T.textSecondary, lineHeight: 1.7 }}>
-              Събуждаш се с пълен календар. И пак се питаш дали ще се наредят сметките ти за този месец.
-              Сесия след сесия. Час след час. Изтощение след изтощение.
-            </p>
-            <p
-              className="mt-4"
-              style={{
-                fontSize: "17px",
-                color: T.textPrimary,
-                lineHeight: 1.5,
-                fontWeight: 700,
-              }}
-            >
+            Събуждаш се с пълен календар. И пак се питаш дали ще се наредят сметките
+            ти за този месец. Сесия след сесия. Час след час. Изтощение след изтощение.{" "}
+            <strong style={{ color: T.textPrimary, fontWeight: 700 }}>
               Това не е духовност. Това е оцеляване.
-            </p>
-            <p
-              className="mt-4"
-              style={{ fontSize: "14px", color: T.textSecondary, lineHeight: 1.7 }}
-            >
-              12 дни на трансформация — за терапевти, коучове, лечители и холистични
-              специалисти, готови да спрат да оцеляват.
-            </p>
-          </div>
+            </strong>
+          </p>
 
-          {/* Countdown + CTA block */}
-          <div className="animate-fade-up delay-300 mt-7 flex flex-col gap-4 items-start">
-            <CountdownTimer />
-
+          {/* CTA + countdown */}
+          <div className="animate-fade-up delay-300 mt-7 flex flex-wrap items-center gap-5">
             <a
               href="#enroll"
               className="mv-btn mv-btn-primary"
-              style={{ fontSize: "16px", padding: "16px 36px", display: "inline-flex", alignItems: "center", gap: "10px" }}
+              style={{
+                fontSize: "16px",
+                padding: "16px 32px",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "10px",
+                flexShrink: 0,
+              }}
             >
               Искам да спра да оцелявам
               <span style={{ opacity: 0.85, fontWeight: 700 }}>— €67</span>
             </a>
-            <p style={{ fontSize: "12px", color: T.textSecondary, fontWeight: 600 }}>
-              Сигурна транзакция · Потвърждение веднага
-            </p>
+            <CountdownTimer compact />
           </div>
+
+          <p
+            className="animate-fade-up delay-300 mt-4"
+            style={{ fontSize: "12px", color: T.textSecondary, fontWeight: 600 }}
+          >
+            Сигурна транзакция · Потвърждение веднага · 12 дни на трансформация за
+            терапевти, коучове и холистични специалисти
+          </p>
         </div>
 
         {/* Right - video (or photo fallback until HERO_VIDEO is set) */}
-        <div className="mc-hero-visual animate-fade-in delay-200 flex items-center justify-center order-first lg:order-none">
+        <div className="mc-hero-visual animate-fade-in delay-200 flex flex-col items-center justify-center gap-4 order-first lg:order-none">
           {HERO_VIDEO.libraryId && HERO_VIDEO.videoId ? (
-            <div
-              style={{
-                position: "relative",
-                width: "100%",
-                maxWidth: "500px",
-                aspectRatio: "16 / 9",
-                borderRadius: "16px",
-                overflow: "hidden",
-                boxShadow: "0 12px 48px rgba(107,21,14,0.18)",
-                border: "1px solid rgba(107,21,14,0.12)",
-              }}
-            >
-              <HeroVideo
-                libraryId={HERO_VIDEO.libraryId}
-                videoId={HERO_VIDEO.videoId}
-                thumbnailUrl={HERO_VIDEO.thumbnailUrl}
-              />
+            <div style={{ width: "100%", maxWidth: "500px", display: "flex", flexDirection: "column", gap: "14px", alignItems: "center" }}>
+              {/* Pulse cue above the video */}
+              <div
+                className="hero-video-cue"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "10px",
+                  padding: "10px 18px",
+                  background: "linear-gradient(135deg, #70150E 0%, #c94535 100%)",
+                  borderRadius: "999px",
+                  color: "#ffffff",
+                  fontSize: "13px",
+                  fontWeight: 700,
+                  letterSpacing: "0.04em",
+                  boxShadow: "0 8px 24px rgba(112,21,14,0.35)",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                <svg width="11" height="13" viewBox="0 0 30 34" fill="none" aria-hidden>
+                  <path d="M28 17L1.75 32.1554L1.75 1.84462L28 17Z" fill="#ffffff" />
+                </svg>
+                Натисни play, за да гледаш
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                  <path d="M12 5v14M5 12l7 7 7-7" />
+                </svg>
+              </div>
+
+              <div
+                style={{
+                  position: "relative",
+                  width: "100%",
+                  aspectRatio: "16 / 9",
+                  borderRadius: "16px",
+                  overflow: "hidden",
+                  boxShadow: "0 12px 48px rgba(107,21,14,0.18)",
+                  border: "1px solid rgba(107,21,14,0.12)",
+                }}
+              >
+                <HeroVideo
+                  libraryId={HERO_VIDEO.libraryId}
+                  videoId={HERO_VIDEO.videoId}
+                  thumbnailUrl={HERO_VIDEO.thumbnailUrl}
+                />
+              </div>
             </div>
           ) : (
             <div

@@ -27,37 +27,12 @@ function calc(): TimeLeft {
 
 const pad = (n: number) => n.toString().padStart(2, "0");
 
-const cellStyle: React.CSSProperties = {
-  minWidth: "52px",
-  padding: "8px 10px",
-  backgroundColor: "#ffffff",
-  borderRadius: "10px",
-  border: "1px solid rgba(107,21,14,0.14)",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  gap: "2px",
-  boxShadow: "0 1px 4px rgba(107,21,14,0.05)",
-};
+interface CountdownProps {
+  /** Compact = smaller cells, tighter for inline use next to a CTA. Default false. */
+  compact?: boolean;
+}
 
-const numStyle: React.CSSProperties = {
-  fontSize: "20px",
-  fontWeight: 800,
-  color: "#70150E",
-  lineHeight: 1,
-  letterSpacing: "-0.02em",
-  fontVariantNumeric: "tabular-nums",
-};
-
-const lblStyle: React.CSSProperties = {
-  fontSize: "9px",
-  fontWeight: 700,
-  color: "rgba(0,0,0,0.45)",
-  letterSpacing: "0.08em",
-  textTransform: "uppercase",
-};
-
-export function CountdownTimer() {
+export function CountdownTimer({ compact = false }: CountdownProps = {}) {
   // null on SSR + first paint to avoid hydration mismatch
   const [t, setT] = useState<TimeLeft | null>(null);
 
@@ -69,15 +44,45 @@ export function CountdownTimer() {
 
   if (!t || t.expired) return null;
 
+  const cellStyle: React.CSSProperties = {
+    minWidth: compact ? "44px" : "52px",
+    padding: compact ? "6px 8px" : "8px 10px",
+    backgroundColor: "#ffffff",
+    borderRadius: compact ? "8px" : "10px",
+    border: "1px solid rgba(107,21,14,0.14)",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "2px",
+    boxShadow: "0 1px 4px rgba(107,21,14,0.05)",
+  };
+
+  const numStyle: React.CSSProperties = {
+    fontSize: compact ? "17px" : "20px",
+    fontWeight: 800,
+    color: "#70150E",
+    lineHeight: 1,
+    letterSpacing: "-0.02em",
+    fontVariantNumeric: "tabular-nums",
+  };
+
+  const lblStyle: React.CSSProperties = {
+    fontSize: compact ? "8px" : "9px",
+    fontWeight: 700,
+    color: "rgba(0,0,0,0.45)",
+    letterSpacing: "0.08em",
+    textTransform: "uppercase",
+  };
+
   return (
     <div
       style={{
         display: "inline-flex",
         flexDirection: "column",
-        gap: "10px",
-        padding: "14px 16px",
+        gap: compact ? "8px" : "10px",
+        padding: compact ? "10px 12px" : "14px 16px",
         backgroundColor: "rgba(107,21,14,0.05)",
-        borderRadius: "14px",
+        borderRadius: compact ? "12px" : "14px",
         border: "1px solid rgba(107,21,14,0.14)",
         maxWidth: "100%",
       }}
@@ -95,18 +100,18 @@ export function CountdownTimer() {
         />
         <span
           style={{
-            fontSize: "11px",
+            fontSize: compact ? "10px" : "11px",
             fontWeight: 700,
             color: "#70150E",
             letterSpacing: "0.08em",
             textTransform: "uppercase",
           }}
         >
-          Цената скача след
+          Цената скача на 14 май
         </span>
       </div>
 
-      <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
+      <div style={{ display: "flex", gap: "6px", flexWrap: "nowrap" }}>
         <div style={cellStyle}>
           <span style={numStyle}>{pad(t.days)}</span>
           <span style={lblStyle}>дни</span>
@@ -124,10 +129,6 @@ export function CountdownTimer() {
           <span style={lblStyle}>сек</span>
         </div>
       </div>
-
-      <p style={{ fontSize: "11px", color: "rgba(0,0,0,0.55)", fontWeight: 600 }}>
-        Ранно записване до 14 май, 23:59
-      </p>
     </div>
   );
 }

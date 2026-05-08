@@ -426,6 +426,21 @@ html {
   animation: mcPulse 1.6s ease-out infinite;
 }
 
+/* ── Hero video cue (pulse pill above iframe) ───────────────────────── */
+@keyframes heroVideoCuePulse {
+  0%, 100% {
+    transform: translateY(0);
+    box-shadow: 0 8px 24px rgba(112,21,14,0.35);
+  }
+  50% {
+    transform: translateY(2px);
+    box-shadow: 0 12px 32px rgba(112,21,14,0.45);
+  }
+}
+.hero-video-cue {
+  animation: heroVideoCuePulse 2s ease-in-out infinite;
+}
+
 /* ── Testimonials masonry grid ──────────────────────────────────────── */
 .mc-testimonials-grid {
   column-count: 2;
