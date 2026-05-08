@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { MobileMenu } from "@/components/mobile-menu";
 // ─── Shared design tokens, data, and layout components ───────────────
 export const T = {
   textPrimary:   "var(--mv-text-primary)",
@@ -57,12 +58,15 @@ export const certs = [
 ];
 
 /* ─── SiteNav ──────────────────────────────────────────────────────── */
+const CTA_HREF = "https://calendly.com/stanislavapavlova8/30min?month=2026-05&date=2026-05-04";
+const CTA_LABEL = "Запази си среща";
+
 export function SiteNav() {
   return (
     <nav
       role="navigation"
       aria-label="Главно меню"
-      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-10 py-4 gap-6"
+      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-10 py-4 gap-4 md:gap-6"
       style={{
         backgroundColor: "rgba(255,255,255,0.96)",
         backdropFilter: "blur(16px)",
@@ -92,15 +96,18 @@ export function SiteNav() {
         ))}
       </div>
 
-      <a
-        href="https://calendly.com/stanislavapavlova8/30min?month=2026-05&date=2026-05-04"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mv-btn mv-btn-primary"
-        style={{ padding: "10px 22px", fontSize: "14px", flexShrink: 0 }}
-      >
-        Запази си среща
-      </a>
+      <div className="flex items-center gap-3" style={{ flexShrink: 0 }}>
+        <a
+          href={CTA_HREF}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mv-btn mv-btn-primary hidden md:inline-flex"
+          style={{ padding: "10px 22px", fontSize: "14px" }}
+        >
+          {CTA_LABEL}
+        </a>
+        <MobileMenu links={navLinks} ctaHref={CTA_HREF} ctaLabel={CTA_LABEL} />
+      </div>
     </nav>
   );
 }

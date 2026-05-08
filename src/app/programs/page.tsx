@@ -398,19 +398,19 @@ function CTASection() {
           style={{
             fontSize: "clamp(1.6rem, 4vw, 2.6rem)",
             fontWeight: 900,
-            color: "#ffffff",
+            color: T.textPrimary,
             lineHeight: 1.15,
             letterSpacing: "-0.02em",
           }}
         >
           Запази безплатна стратегическа сесия -{" "}
-          <span style={{ color: "#e85050" }}>заедно ще намерим правилния път за теб.</span>
+          <span style={{ ...GRADIENT_TEXT }}>заедно ще намерим правилния път за теб.</span>
         </h2>
         <p
           className="mt-5"
           style={{
             fontSize: "16px",
-            color: "rgba(255,255,255,0.52)",
+            color: T.textSecondary,
             lineHeight: 1.8,
           }}
         >

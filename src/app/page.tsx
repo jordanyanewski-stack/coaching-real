@@ -48,7 +48,7 @@ function HeroSection() {
       className="relative min-h-screen flex flex-col justify-center px-6 md:px-16 lg:px-24 pt-24 pb-20 overflow-hidden"
       style={{ backgroundColor: T.surfaceBase }}
     >
-      {/* Animated gradient orbs */}
+      {/* Subtle dot grid background */}
       <div
         aria-hidden
         style={{
@@ -56,31 +56,12 @@ function HeroSection() {
           inset: 0,
           pointerEvents: "none",
           zIndex: 0,
+          backgroundImage: "radial-gradient(circle, rgba(15,19,26,0.10) 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
+          maskImage: "radial-gradient(ellipse 85% 85% at 50% 50%, black 25%, transparent 100%)",
+          WebkitMaskImage: "radial-gradient(ellipse 85% 85% at 50% 50%, black 25%, transparent 100%)",
         }}
-      >
-        <div style={{
-          position: "absolute",
-          top: "-5%",
-          right: "-5%",
-          width: "52%",
-          aspectRatio: "1",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, #70150E 0%, transparent 70%)",
-          animation: "heroOrbA 10s ease-in-out infinite",
-          filter: "blur(80px)",
-        }} />
-        <div style={{
-          position: "absolute",
-          bottom: "0%",
-          right: "5%",
-          width: "35%",
-          aspectRatio: "1",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, #70150E 0%, transparent 70%)",
-          animation: "heroOrbB 13s ease-in-out infinite",
-          filter: "blur(100px)",
-        }} />
-      </div>
+      />
 
       <div className="relative z-10 max-w-6xl mx-auto w-full grid lg:grid-cols-[1.15fr_1fr] gap-12 lg:gap-16 items-center">
 
@@ -165,16 +146,33 @@ function HeroSection() {
           <div
             className="absolute bottom-5 left-5 right-5 px-5 py-4"
             style={{
-              backgroundColor: "rgba(0,0,0,0.82)",
+              backgroundColor: "rgba(15,19,26,0.92)",
               backdropFilter: "blur(16px)",
               borderRadius: T.radiusSm,
-              border: "1px solid rgba(107,21,14,0.4)",
+              border: "1px solid rgba(232,80,80,0.45)",
+              boxShadow: "0 8px 28px rgba(0,0,0,0.35)",
             }}
           >
-            <p style={{ fontSize: "11px", fontWeight: 700, color: onDark.accent, letterSpacing: "0.1em", textTransform: "uppercase" }}>
+            <p
+              style={{
+                fontSize: "11px",
+                fontWeight: 800,
+                color: "#ff7a6e",
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+              }}
+            >
               Основател на Coaching Real
             </p>
-            <p style={{ fontSize: "14px", color: onDark.secondary, marginTop: "3px", fontWeight: 500 }}>
+            <p
+              style={{
+                fontSize: "15px",
+                color: "#ffffff",
+                marginTop: "4px",
+                fontWeight: 600,
+                lineHeight: 1.4,
+              }}
+            >
               Станислава Павлова · Единственият Ikigai коуч в България
             </p>
           </div>

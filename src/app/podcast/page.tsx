@@ -9,7 +9,8 @@ export const metadata = {
 };
 
 const SEASON2_EPISODES: Episode[] = [
-  { id: "s2e12", videoId: "iOF3bW3IweQ", season: 2, episode: 12, title: "Пътуване към себе си", featured: true },
+  { id: "s2e13", videoId: "8_Nw3enBRdQ", season: 2, episode: 13, title: "Усещане за ЖЕНА", featured: true },
+  { id: "s2e12", videoId: "iOF3bW3IweQ", season: 2, episode: 12, title: "Пътуване към себе си" },
   { id: "s2e11", videoId: "tb3LtL9lvMo", season: 2, episode: 11, title: "Тайната на изобилието" },
   { id: "s2e10", videoId: "jxH7AznilYw", season: 2, episode: 10, title: "Какво казва лицето ти?" },
   { id: "s2e9",  videoId: "OslQxmKc1YE", season: 2, episode: 9,  title: "Невидимите сценарии" },
@@ -109,17 +110,17 @@ function CTASection() {
           style={{
             fontSize: "clamp(1.6rem, 4vw, 2.6rem)",
             fontWeight: 900,
-            color: "#ffffff",
+            color: T.textPrimary,
             lineHeight: 1.15,
             letterSpacing: "-0.02em",
           }}
         >
           От вдъхновение към{" "}
-          <span style={{ color: "#e85050" }}>реален бизнес с душа.</span>
+          <span style={{ ...GRADIENT_TEXT }}>реален бизнес с душа.</span>
         </h2>
         <p
           className="mt-5"
-          style={{ fontSize: "16px", color: "rgba(255,255,255,0.52)", lineHeight: 1.8 }}
+          style={{ fontSize: "16px", color: T.textSecondary, lineHeight: 1.8 }}
         >
           Запази 45-минутна безплатна стратегическа сесия - без продажбен
           натиск, с ясен следващ план.
