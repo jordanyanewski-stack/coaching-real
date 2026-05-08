@@ -4,6 +4,7 @@ import { FAQAccordion } from "./faq-accordion";
 import { ScrollReveal } from "./scroll-reveal";
 import { EnrollForm } from "./enroll-form";
 import { HeroVideo } from "./hero-video";
+import { CountdownTimer } from "./countdown-timer";
 
 export const metadata = {
   title: "Краят на оцеляването · 12 дни Мастъркласове® | Coaching Real",
@@ -122,8 +123,8 @@ export default function MasterclassPage() {
       <GuaranteeSection />
       <TestimonialsSection />
       <AboutSection />
-      <FAQSection />
       <FinalCTASection />
+      <FAQSection />
       <SiteFooter />
     </div>
   );
@@ -231,100 +232,34 @@ function TestimonialsSection() {
             Животът им се раздели{" "}
             <span style={{ ...GRADIENT_TEXT }}>на преди и след.</span>
           </h2>
-          <p
-            className="mt-4"
-            style={{
-              fontSize: "clamp(0.95rem, 1.4vw, 1.05rem)",
-              color: T.textSecondary,
-              maxWidth: "560px",
-              margin: "16px auto 0",
-            }}
-          >
-            Реални коментари от Facebook, Messenger и Viber. Без редакция.
-          </p>
         </div>
 
-        <div style={{ position: "relative" }}>
-          <div
-            className="mc-testimonials-scroll"
-            style={{
-              display: "flex",
-              gap: "20px",
-              overflowX: "auto",
-              paddingBottom: "12px",
-              scrollbarWidth: "none",
-              WebkitOverflowScrolling: "touch",
-              scrollSnapType: "x mandatory",
-              scrollPaddingLeft: "0px",
-            }}
-          >
-            {testimonials.map(({ src, alt, width, height }) => (
-              <figure
-                key={src}
-                style={{
-                  flexShrink: 0,
-                  height: "380px",
-                  aspectRatio: `${width} / ${height}`,
-                  borderRadius: "16px",
-                  overflow: "hidden",
-                  boxShadow: "0 8px 32px rgba(107,21,14,0.1)",
-                  border: "1px solid rgba(107,21,14,0.1)",
-                  scrollSnapAlign: "start",
-                  margin: 0,
-                  background: "#ffffff",
-                }}
-              >
-                <Image
-                  src={src}
-                  alt={alt}
-                  width={width}
-                  height={height}
-                  loading="lazy"
-                  sizes="(max-width: 768px) 80vw, 600px"
-                  style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-                />
-              </figure>
-            ))}
-          </div>
-
-          {/* Right-edge fade indicating more content */}
-          <div
-            aria-hidden
-            style={{
-              position: "absolute",
-              top: 0,
-              bottom: 12,
-              right: 0,
-              width: "72px",
-              pointerEvents: "none",
-              background: "linear-gradient(90deg, rgba(250,248,245,0) 0%, rgba(250,248,245,0.95) 100%)",
-            }}
-          />
-        </div>
-
-        {/* Mobile-only swipe indicator */}
-        <div
-          className="md:hidden mc-swipe-hint"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "10px",
-            marginTop: "16px",
-            fontSize: "12px",
-            fontWeight: 700,
-            letterSpacing: "0.1em",
-            textTransform: "uppercase",
-            color: "#70150E",
-            opacity: 0.7,
-          }}
-        >
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-            <path d="M19 12H5M12 19l-7-7 7-7" />
-          </svg>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
+        <div className="mc-testimonials-grid">
+          {testimonials.map(({ src, alt, width, height }) => (
+            <figure
+              key={src}
+              style={{
+                margin: 0,
+                breakInside: "avoid",
+                borderRadius: "16px",
+                overflow: "hidden",
+                boxShadow: "0 8px 32px rgba(107,21,14,0.1)",
+                border: "1px solid rgba(107,21,14,0.1)",
+                background: "#ffffff",
+                marginBottom: "20px",
+              }}
+            >
+              <Image
+                src={src}
+                alt={alt}
+                width={width}
+                height={height}
+                loading="lazy"
+                sizes="(max-width: 768px) 90vw, (max-width: 1024px) 45vw, 540px"
+                style={{ width: "100%", height: "auto", objectFit: "contain", display: "block" }}
+              />
+            </figure>
+          ))}
         </div>
 
         <div className="text-center mt-12">
@@ -436,7 +371,7 @@ function HeroSection() {
           </div>
 
           <h1
-            className="animate-fade-up delay-100 mt-6"
+            className="animate-fade-up delay-100 mt-5"
             style={{ lineHeight: 1.05, letterSpacing: "-0.03em" }}
           >
             <span
@@ -458,49 +393,45 @@ function HeroSection() {
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
-                marginTop: "10px",
+                marginTop: "8px",
               }}
             >
               Научиха те само да лекуваш.
             </span>
           </h1>
 
-          <p
-            className="animate-fade-up delay-200 mt-7"
-            style={{ fontSize: "16px", color: T.textSecondary, lineHeight: 1.8, maxWidth: "520px" }}
+          <div
+            className="animate-fade-up delay-200 mt-6"
+            style={{ maxWidth: "520px" }}
           >
-            Събуждаш се с пълен календар. И пак се питаш дали ще се наредят сметките ти за този месец.
-          </p>
-          <p
-            className="animate-fade-up delay-200 mt-3"
-            style={{ fontSize: "16px", color: T.textSecondary, lineHeight: 1.8, maxWidth: "520px" }}
-          >
-            Сесия след сесия. Час след час. Изтощение след изтощение.
-          </p>
-          <p
-            className="animate-fade-up delay-200 mt-4"
-            style={{
-              fontSize: "17px",
-              color: T.textPrimary,
-              lineHeight: 1.6,
-              fontWeight: 700,
-              maxWidth: "520px",
-            }}
-          >
-            Това не е духовност. Това е оцеляване.
-          </p>
+            <p style={{ fontSize: "16px", color: T.textSecondary, lineHeight: 1.7 }}>
+              Събуждаш се с пълен календар. И пак се питаш дали ще се наредят сметките ти за този месец.
+              Сесия след сесия. Час след час. Изтощение след изтощение.
+            </p>
+            <p
+              className="mt-4"
+              style={{
+                fontSize: "17px",
+                color: T.textPrimary,
+                lineHeight: 1.5,
+                fontWeight: 700,
+              }}
+            >
+              Това не е духовност. Това е оцеляване.
+            </p>
+            <p
+              className="mt-4"
+              style={{ fontSize: "14px", color: T.textSecondary, lineHeight: 1.7 }}
+            >
+              12 дни на трансформация — за терапевти, коучове, лечители и холистични
+              специалисти, готови да спрат да оцеляват.
+            </p>
+          </div>
 
-          <p
-            className="animate-fade-up delay-300 mt-6"
-            style={{ fontSize: "15px", color: T.textSecondary, lineHeight: 1.8, maxWidth: "520px" }}
-          >
-            12 дни на трансформация — системата зад успешната онлайн
-            терапевтична практика. За терапевти, коучове, лечители и
-            холистични специалисти, готови да спрат да оцеляват.
-          </p>
+          {/* Countdown + CTA block */}
+          <div className="animate-fade-up delay-300 mt-7 flex flex-col gap-4 items-start">
+            <CountdownTimer />
 
-          {/* Price + CTA block */}
-          <div className="animate-fade-up delay-300 mt-9">
             <a
               href="#enroll"
               className="mv-btn mv-btn-primary"
@@ -509,41 +440,9 @@ function HeroSection() {
               Искам да спра да оцелявам
               <span style={{ opacity: 0.85, fontWeight: 700 }}>— €67</span>
             </a>
-            <p
-              className="mt-3"
-              style={{ fontSize: "12px", color: T.textSecondary, fontWeight: 600 }}
-            >
+            <p style={{ fontSize: "12px", color: T.textSecondary, fontWeight: 600 }}>
               Сигурна транзакция · Потвърждение веднага
             </p>
-
-            <div
-              className="mt-6 flex items-center gap-3 px-4 py-3"
-              style={{
-                backgroundColor: "rgba(107,21,14,0.05)",
-                borderRadius: "12px",
-                border: "1px solid rgba(107,21,14,0.12)",
-                maxWidth: "420px",
-              }}
-            >
-              <span
-                style={{
-                  width: 8,
-                  height: 8,
-                  borderRadius: "50%",
-                  backgroundColor: "#c94535",
-                  flexShrink: 0,
-                  boxShadow: "0 0 0 3px rgba(201,69,53,0.2)",
-                }}
-              />
-              <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.3 }}>
-                <span style={{ fontSize: "12px", fontWeight: 700, color: "#70150E", letterSpacing: "0.04em", textTransform: "uppercase" }}>
-                  Ранно записване изтича
-                </span>
-                <span style={{ fontSize: "13px", color: T.textSecondary, fontWeight: 600, marginTop: "2px" }}>
-                  14 Май · 23:59
-                </span>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -1235,7 +1134,7 @@ function FinalCTASection() {
 
         {/* Price block */}
         <div
-          className="mt-10 mb-10 inline-flex flex-col items-center gap-3 px-10 py-7"
+          className="mt-10 mb-10 inline-flex flex-col items-center gap-5 px-10 py-7"
           style={{
             backgroundColor: "#faf8f5",
             borderRadius: "14px",
@@ -1266,27 +1165,7 @@ function FinalCTASection() {
               €67
             </span>
           </div>
-          <div className="flex flex-col items-center gap-1">
-            <div className="flex items-center gap-2">
-              <span
-                style={{
-                  width: 7,
-                  height: 7,
-                  borderRadius: "50%",
-                  backgroundColor: "#c94535",
-                  display: "inline-block",
-                  boxShadow: "0 0 0 2px rgba(201,69,53,0.22)",
-                  flexShrink: 0,
-                }}
-              />
-              <span style={{ fontSize: "12px", color: "#70150E", fontWeight: 700, letterSpacing: "0.04em" }}>
-                Остават 7 от 30 места
-              </span>
-            </div>
-            <span style={{ fontSize: "12px", color: T.textSecondary, fontWeight: 600 }}>
-              Записванията се затварят на 18 Май
-            </span>
-          </div>
+          <CountdownTimer />
         </div>
 
         <div className="flex flex-col items-center gap-4">
