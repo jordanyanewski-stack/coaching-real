@@ -186,7 +186,7 @@ export function StickyCTABar() {
               whiteSpace: "nowrap",
             }}
           >
-            Запиши се →
+Искам да спра да оцелявам - €34
           </a>
         </div>
       </div>

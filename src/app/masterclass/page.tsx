@@ -8,9 +8,9 @@ import { CountdownTimer } from "./countdown-timer";
 import { StickyCTABar } from "./sticky-cta-bar";
 
 export const metadata = {
-  title: "Краят на оцеляването · 12 дни Мастъркласове® | Coaching Real",
+  title: "Пренареди своя онлайн бизнес · 12 дни Мастъркласове® | Coaching Real",
   description:
-    "Никой не те е научил на това. Научиха те само да лекуваш. 12 дни на трансформация — системата зад успешната онлайн терапевтична практика. 18-29 май 2026 · €34 (€67 след 14 май).",
+    "12 дни мастъркласове за жени в трансформиращите професии. Създай яснота, посока и план за растеж — само за €34 (€67 след 14 май). 18-29 май 2026.",
 };
 
 /* ─── DATA ──────────────────────────────────────────────────────────── */
@@ -174,7 +174,7 @@ function CampaignHeader() {
         className="mv-btn mv-btn-primary"
         style={{ padding: "10px 22px", fontSize: "14px", flexShrink: 0 }}
       >
-        Запиши се
+        Искам да спра да оцелявам - €34
       </a>
     </header>
   );
@@ -346,7 +346,8 @@ function TestimonialsSection() {
             className="mv-btn mv-btn-primary"
             style={{ fontSize: "15px", display: "inline-flex", alignItems: "center", gap: "10px" }}
           >
-            Искам да спра да оцелявам          </a>
+            Искам да спра да оцелявам - €34
+          </a>
         </div>
       </div>
     </section>
@@ -699,7 +700,7 @@ function HeroSection() {
                   "0 12px 32px rgba(107,21,14,0.30), 0 1px 2px rgba(0,0,0,0.04)",
               }}
             >
-              Искам да спра да оцелявам
+              Искам да спра да оцелявам - €34
               <svg
                 width="18"
                 height="18"
@@ -954,7 +955,7 @@ function ShortAudienceSection() {
             className="mv-btn mv-btn-primary"
             style={{ fontSize: "15px", padding: "16px 28px" }}
           >
-            ЗАПИСВАМ СЕ ЗА 12-ДНЕВНИТЕ МАСТЪРКЛАСОВЕ (€34)
+            Искам да спра да оцелявам - €34
           </a>
         </div>
       </div>
@@ -993,7 +994,7 @@ function WhatYouGetForPriceSection() {
               fontWeight: 600,
             }}
           >
-            🎁 Стойност над <strong style={{ color: T.textPrimary }}>€891</strong> — натрупана яснота, структура и посока
+            🎁 Регулярна цена <strong style={{ color: T.textPrimary }}>€197</strong> — натрупана яснота, структура и посока
           </p>
         </div>
 
@@ -1043,7 +1044,7 @@ function WhatYouGetForPriceSection() {
             className="mv-btn mv-btn-primary"
             style={{ fontSize: "15px", padding: "16px 28px" }}
           >
-            ДА, ИСКАМ ДОСТЪП ДО ВСИЧКИ 12 МАСТЪРКЛАСА (€34)
+            Искам да спра да оцелявам - €34
           </a>
         </div>
       </div>
@@ -1223,7 +1224,7 @@ function WhyNowSection() {
             className="mv-btn mv-btn-primary"
             style={{ fontSize: "15px", padding: "16px 28px" }}
           >
-            ГОТОВА СЪМ ДА ВЛЯЗА В 12-ТЕ МАСТЪРКЛАСА (€34)
+            Искам да спра да оцелявам - €34
           </a>
         </div>
       </div>
@@ -1351,7 +1352,7 @@ function ForWhomDetailedSection() {
             className="mv-btn mv-btn-primary"
             style={{ fontSize: "15px", padding: "16px 28px" }}
           >
-            ДА, ТОВА Е ЗА МЕН — ЗАПИСВАМ СЕ (€34)
+            Искам да спра да оцелявам - €34
           </a>
         </div>
       </div>
@@ -1451,7 +1452,7 @@ function WhatMakesItDifferentSection() {
             className="mv-btn mv-btn-primary"
             style={{ fontSize: "15px", padding: "16px 28px" }}
           >
-            ИСКАМ ДА СЕ ПРИСЪЕДИНЯ (€34)
+            Искам да спра да оцелявам - €34
           </a>
         </div>
       </div>
@@ -1523,7 +1524,7 @@ function WhatYouGetChecklistSection() {
             className="mv-btn mv-btn-primary"
             style={{ fontSize: "15px", padding: "16px 28px" }}
           >
-            ПРИСЪЕДИНЯВАМ СЕ (€34)
+            Искам да спра да оцелявам - €34
           </a>
         </div>
       </div>
@@ -1591,7 +1592,7 @@ function WhyWomenComeSection() {
             className="mv-btn mv-btn-primary"
             style={{ fontSize: "15px", padding: "16px 28px" }}
           >
-            ИСКАМ ДА БЪДА ЧАСТ (€34)
+            Искам да спра да оцелявам - €34
           </a>
         </div>
       </div>
@@ -1634,44 +1635,30 @@ function ValueStackSection() {
           }}
         >
           <ul className="flex flex-col" style={{ listStyle: "none", margin: 0, padding: 0 }}>
-            {valueStack.map(({ label, price }, i) => (
+            {valueStack.map(({ label }, i) => (
               <li
                 key={label}
-                className="flex items-center justify-between gap-4 py-4"
+                className="flex items-center gap-3 py-4"
                 style={{
                   borderBottom: i < valueStack.length - 1 ? "1px solid rgba(107,21,14,0.08)" : "none",
                 }}
               >
-                <div className="flex items-start gap-3">
-                  <span
-                    style={{
-                      flexShrink: 0,
-                      width: "22px",
-                      height: "22px",
-                      borderRadius: "50%",
-                      background: "linear-gradient(135deg, #70150E 0%, #c94535 100%)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      marginTop: "2px",
-                    }}
-                  >
-                    <IconCheck dark />
-                  </span>
-                  <span style={{ fontSize: "15px", color: T.textPrimary, lineHeight: 1.5, fontWeight: 600 }}>
-                    {label}
-                  </span>
-                </div>
                 <span
                   style={{
-                    fontSize: "15px",
-                    fontWeight: 700,
-                    color: T.textSecondary,
                     flexShrink: 0,
-                    letterSpacing: "-0.01em",
+                    width: "22px",
+                    height: "22px",
+                    borderRadius: "50%",
+                    background: "linear-gradient(135deg, #70150E 0%, #c94535 100%)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
                   }}
                 >
-                  {price}
+                  <IconCheck dark />
+                </span>
+                <span style={{ fontSize: "15px", color: T.textPrimary, lineHeight: 1.5, fontWeight: 600 }}>
+                  {label}
                 </span>
               </li>
             ))}
@@ -1692,7 +1679,7 @@ function ValueStackSection() {
                   marginBottom: "4px",
                 }}
               >
-                Обща стойност
+                Регулярна цена
               </p>
               <span
                 style={{
@@ -1703,7 +1690,7 @@ function ValueStackSection() {
                   textDecorationColor: "rgba(0,0,0,0.3)",
                 }}
               >
-                €891
+                €197
               </span>
             </div>
             <div className="text-right">
@@ -1740,7 +1727,7 @@ function ValueStackSection() {
             className="mv-btn mv-btn-primary"
             style={{ fontSize: "15px", padding: "16px 28px" }}
           >
-            ДА, ИСКАМ ДОСТЪП (€34)
+            Искам да спра да оцелявам - €34
           </a>
         </div>
       </div>
@@ -1948,7 +1935,7 @@ function CurriculumSection() {
             className="mv-btn mv-btn-primary"
             style={{ fontSize: "15px", padding: "16px 28px" }}
           >
-            ОБИЧАМ ТЕЗИ ТЕМИ — ВКЛЮЧИ МЕ (€34)
+            Искам да спра да оцелявам - €34
           </a>
         </div>
       </div>
@@ -2053,7 +2040,7 @@ function AboutSection() {
               className="mv-btn mv-btn-primary"
               style={{ fontSize: "15px", padding: "16px 28px" }}
             >
-              ГОТОВА СЪМ ДА СЕ ПРИСЪЕДИНЯ (€34)
+              Искам да спра да оцелявам - €34
             </a>
           </div>
         </div>
