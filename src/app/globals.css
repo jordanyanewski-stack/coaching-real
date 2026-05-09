@@ -494,6 +494,44 @@ html {
   transform: translateX(4px);
 }
 
+/* ── Free-day page ─────────────────────────────────────────────────── */
+@keyframes fdPulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.4; transform: scale(0.85); }
+}
+@keyframes fdFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
+}
+.fd-marquee {
+  animation: fdMarquee 28s linear infinite;
+}
+@keyframes fdMarquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+/* Sticky bottom CTA — mobile only */
+.fd-sticky-mobile { display: block; }
+@media (min-width: 768px) {
+  .fd-sticky-mobile { display: none !important; }
+}
+/* Top CTA — sticky/fixed top-right on desktop, static-in-hero on mobile. */
+.fd-top-cta {
+  position: fixed !important;
+  top: 16px !important;
+  right: 16px !important;
+  z-index: 50 !important;
+}
+@media (max-width: 767px) {
+  .fd-top-cta {
+    position: absolute !important;
+    top: 14px !important;
+    right: 14px !important;
+    padding: 9px 14px !important;
+    font-size: 12px !important;
+  }
+}
+
 /* ── Pricing card polish ───────────────────────────────────────────── */
 .mc-pricing-card {
   transition: box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
