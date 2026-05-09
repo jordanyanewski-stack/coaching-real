@@ -478,7 +478,7 @@ export default function FreeDayThankYouPage() {
 
 /* ─── Share buttons (client) ────────────────────────────────────────── */
 function ShareButtons() {
-  const shareUrl = "https://coachingreal.com/ai-free-course";
+  const shareUrl = "https://coachingreallive.com/ai-free-course";
   const shareText =
     "Безплатен 4-седмичен курс „Моето кариерно развитие в ерата на AI“ — започва 21 май.";
 
