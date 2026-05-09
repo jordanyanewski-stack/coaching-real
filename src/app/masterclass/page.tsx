@@ -5,6 +5,7 @@ import { ScrollReveal } from "./scroll-reveal";
 import { EnrollForm } from "./enroll-form";
 import { HeroVideo } from "./hero-video";
 import { CountdownTimer } from "./countdown-timer";
+import { StickyCTABar } from "./sticky-cta-bar";
 
 export const metadata = {
   title: "Краят на оцеляването · 12 дни Мастъркласове® | Coaching Real",
@@ -103,7 +104,7 @@ function CampaignHeader() {
         className="mv-btn mv-btn-primary"
         style={{ padding: "10px 22px", fontSize: "14px", flexShrink: 0 }}
       >
-        Запиши се сега
+        Запиши се
       </a>
     </header>
   );
@@ -118,14 +119,15 @@ export default function MasterclassPage() {
       <HeroSection />
       <VSLSection />
       <PainRecognitionSection />
+      <AboutSection />
       <CurriculumSection />
       <ValueStackSection />
       <GuaranteeSection />
       <TestimonialsSection />
-      <AboutSection />
       <FinalCTASection />
       <FAQSection />
       <SiteFooter />
+      <StickyCTABar />
     </div>
   );
 }
@@ -263,9 +265,12 @@ function TestimonialsSection() {
         </div>
 
         <div className="text-center mt-12">
-          <a href="#enroll" className="mv-btn mv-btn-primary" style={{ fontSize: "15px" }}>
-            Искам същите резултати →
-          </a>
+          <a
+            href="#enroll"
+            className="mv-btn mv-btn-primary"
+            style={{ fontSize: "15px", display: "inline-flex", alignItems: "center", gap: "10px" }}
+          >
+            Искам да спра да оцелявам          </a>
         </div>
       </div>
     </section>
@@ -370,6 +375,54 @@ function HeroSection() {
             </span>
           </div>
 
+          {/* Social proof strip */}
+          <div
+            className="animate-fade-up delay-100 mt-4 flex items-center gap-3 flex-wrap"
+            aria-label="Социално доказателство"
+          >
+            <div style={{ display: "flex", flexShrink: 0 }}>
+              {[
+                { src: "/Стефани Булмез.jpg", alt: "Стефани Булмез" },
+                { src: "/Красимира Кондова.jpg", alt: "Красимира Кондова" },
+                { src: "/Надежда Клисарска.jpg", alt: "Надежда Клисарска" },
+              ].map(({ src, alt }, i) => (
+                <span
+                  key={src}
+                  style={{
+                    position: "relative",
+                    width: "32px",
+                    height: "32px",
+                    borderRadius: "50%",
+                    overflow: "hidden",
+                    border: "2px solid #faf8f5",
+                    boxShadow: "0 1px 4px rgba(107,21,14,0.15)",
+                    marginLeft: i === 0 ? 0 : "-8px",
+                    backgroundColor: "#f0ebe4",
+                  }}
+                >
+                  <Image
+                    src={src}
+                    alt={alt}
+                    fill
+                    sizes="32px"
+                    style={{ objectFit: "cover", objectPosition: "top center" }}
+                  />
+                </span>
+              ))}
+            </div>
+            <span
+              style={{
+                fontSize: "13px",
+                color: T.textSecondary,
+                fontWeight: 600,
+                lineHeight: 1.4,
+              }}
+            >
+              <strong style={{ color: T.textPrimary, fontWeight: 800 }}>200+</strong>{" "}
+              терапевти, коучове и лечители вече минаха през KickSTART
+            </span>
+          </div>
+
           <h1
             className="animate-fade-up delay-100 mt-5"
             style={{ lineHeight: 1.05, letterSpacing: "-0.03em", maxWidth: "560px" }}
@@ -400,10 +453,27 @@ function HeroSection() {
             </span>
           </h1>
 
+          {/* Subheadline - benefit-clear, audience-named */}
           <p
-            className="animate-fade-up delay-200 mt-6"
+            className="animate-fade-up delay-150 mt-4"
             style={{
-              fontSize: "16px",
+              fontSize: "17px",
+              color: T.textPrimary,
+              lineHeight: 1.5,
+              maxWidth: "560px",
+              fontWeight: 600,
+              letterSpacing: "-0.005em",
+            }}
+          >
+            12 живи мастъркласа за{" "}
+            <span style={{ color: "#70150E" }}>терапевти, коучове и холистични специалисти</span>
+            {" "}— от хаос към система за 12 вечери.
+          </p>
+
+          <p
+            className="animate-fade-up delay-200 mt-5"
+            style={{
+              fontSize: "15px",
               color: T.textSecondary,
               lineHeight: 1.65,
               maxWidth: "520px",
@@ -416,8 +486,69 @@ function HeroSection() {
             </strong>
           </p>
 
+          {/* Price anchor */}
+          <div
+            className="animate-fade-up delay-250 mt-6 inline-flex items-baseline gap-3 px-4 py-2"
+            style={{
+              backgroundColor: "rgba(107,21,14,0.06)",
+              borderRadius: "10px",
+              border: "1px solid rgba(107,21,14,0.14)",
+            }}
+          >
+            <span
+              style={{
+                fontSize: "13px",
+                fontWeight: 700,
+                color: T.textSecondary,
+                textTransform: "uppercase",
+                letterSpacing: "0.06em",
+              }}
+            >
+              Само днес
+            </span>
+            <span
+              style={{
+                fontSize: "20px",
+                fontWeight: 700,
+                color: T.textSecondary,
+                textDecoration: "line-through",
+                textDecorationColor: "rgba(0,0,0,0.35)",
+                lineHeight: 1,
+              }}
+            >
+              €197
+            </span>
+            <span
+              style={{
+                fontSize: "32px",
+                fontWeight: 900,
+                background: "linear-gradient(135deg, #70150E 0%, #c94535 55%, #e85050 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                lineHeight: 1,
+                letterSpacing: "-0.03em",
+              }}
+            >
+              €67
+            </span>
+            <span
+              style={{
+                fontSize: "12px",
+                fontWeight: 700,
+                color: "#70150E",
+                backgroundColor: "rgba(232,80,80,0.15)",
+                padding: "3px 8px",
+                borderRadius: "6px",
+                letterSpacing: "0.04em",
+              }}
+            >
+              -66%
+            </span>
+          </div>
+
           {/* CTA + countdown */}
-          <div className="animate-fade-up delay-300 mt-7 flex flex-wrap items-center gap-5">
+          <div className="animate-fade-up delay-300 mt-5 flex flex-wrap items-center gap-5">
             <a
               href="#enroll"
               className="mv-btn mv-btn-primary"
@@ -430,9 +561,7 @@ function HeroSection() {
                 flexShrink: 0,
               }}
             >
-              Искам да спра да оцелявам
-              <span style={{ opacity: 0.85, fontWeight: 700 }}>— €67</span>
-            </a>
+              Искам да спра да оцелявам            </a>
             <CountdownTimer compact />
           </div>
 
@@ -440,8 +569,7 @@ function HeroSection() {
             className="animate-fade-up delay-300 mt-4"
             style={{ fontSize: "12px", color: T.textSecondary, fontWeight: 600 }}
           >
-            Сигурна транзакция · Потвърждение веднага · 12 дни на трансформация за
-            терапевти, коучове и холистични специалисти
+            Сигурна транзакция · Потвърждение веднага · 30-дневна гаранция
           </p>
         </div>
 
@@ -467,10 +595,12 @@ function HeroSection() {
                   whiteSpace: "nowrap",
                 }}
               >
-                <svg width="11" height="13" viewBox="0 0 30 34" fill="none" aria-hidden>
-                  <path d="M28 17L1.75 32.1554L1.75 1.84462L28 17Z" fill="#ffffff" />
+                <svg width="16" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="#ffffff" stroke="#ffffff" />
+                  <line x1="22" y1="9" x2="16" y2="15" />
+                  <line x1="16" y1="9" x2="22" y2="15" />
                 </svg>
-                Натисни play, за да гледаш
+                Кликни за звук
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                   <path d="M12 5v14M5 12l7 7 7-7" />
                 </svg>
@@ -626,9 +756,12 @@ function PainRecognitionSection() {
         </div>
 
         <div className="mt-10 text-center">
-          <a href="#enroll" className="mv-btn mv-btn-primary" style={{ fontSize: "15px" }}>
-            Искам да спра да оцелявам →
-          </a>
+          <a
+            href="#enroll"
+            className="mv-btn mv-btn-primary"
+            style={{ fontSize: "15px", display: "inline-flex", alignItems: "center", gap: "10px" }}
+          >
+            Искам да спра да оцелявам          </a>
         </div>
       </div>
     </section>
@@ -774,10 +907,15 @@ function ValueStackSection() {
           <a
             href="#enroll"
             className="mv-btn mv-btn-primary"
-            style={{ fontSize: "16px", padding: "16px 40px" }}
+            style={{
+              fontSize: "16px",
+              padding: "16px 40px",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "10px",
+            }}
           >
-            Запиши се сега →
-          </a>
+            Искам да спра да оцелявам          </a>
         </div>
       </div>
     </section>
@@ -982,10 +1120,15 @@ function CurriculumSection() {
           <a
             href="#enroll"
             className="mv-btn mv-btn-primary"
-            style={{ fontSize: "16px", padding: "16px 44px" }}
+            style={{
+              fontSize: "16px",
+              padding: "16px 44px",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "10px",
+            }}
           >
-            Включи ме в 12-те мастъркласа - €67 →
-          </a>
+            Искам да спра да оцелявам          </a>
         </div>
       </div>
     </section>

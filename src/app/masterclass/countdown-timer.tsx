@@ -87,7 +87,7 @@ export function CountdownTimer({ compact = false }: CountdownProps = {}) {
         maxWidth: "100%",
       }}
     >
-      <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+      <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
         <span
           style={{
             width: 8,
@@ -107,7 +107,7 @@ export function CountdownTimer({ compact = false }: CountdownProps = {}) {
             textTransform: "uppercase",
           }}
         >
-          Цената скача на 14 май
+          Цената скача на 14 май → €197
         </span>
       </div>
 

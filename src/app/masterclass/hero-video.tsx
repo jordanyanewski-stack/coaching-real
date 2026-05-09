@@ -13,7 +13,7 @@ type Props = {
 export function HeroVideo({ libraryId, videoId }: Props) {
   return (
     <iframe
-      src={`https://iframe.mediadelivery.net/embed/${libraryId}/${videoId}?autoplay=false&loop=false&muted=false&preload=true&responsive=true`}
+      src={`https://iframe.mediadelivery.net/embed/${libraryId}/${videoId}?autoplay=true&loop=false&muted=true&preload=true&responsive=true`}
       title="12 Измерения на твоята мисия"
       loading="eager"
       allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
