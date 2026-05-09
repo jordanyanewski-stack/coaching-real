@@ -2,6 +2,8 @@ import Image from "next/image";
 import { ScrollReveal } from "../masterclass/scroll-reveal";
 import { FreeDayEnrollForm } from "./enroll-form";
 import { FreeDayStickyCTA } from "./sticky-cta";
+import { FreeDayFAQAccordion } from "./faq-accordion";
+import { FormCueHandler } from "./form-cue";
 
 export const metadata = {
   title: "Моето кариерно развитие в ерата на AI · 4-седмичен безплатен курс | Магдалена Пенчева",
@@ -449,6 +451,7 @@ export default function FreeDayPage() {
   return (
     <div style={{ fontFamily: "var(--font-mv, sans-serif)", backgroundColor: FD.bg }}>
       <ScrollReveal />
+      <FormCueHandler />
       <FreeDayHeader />
       <HeroSection />
       <MarqueeStrip />
@@ -498,7 +501,7 @@ function FreeDayHeader() {
 function HeroSection() {
   return (
     <section
-      className="fd-hero relative px-6 md:px-12 lg:px-20 pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden"
+      className="fd-hero relative px-6 md:px-12 lg:px-20 pt-24 pb-16 md:pt-28 md:pb-24 overflow-hidden flex items-center"
       style={{
         backgroundColor: FD.bgDark,
         color: "#ffffff",
@@ -518,7 +521,7 @@ function HeroSection() {
       />
 
       <div
-        className="relative max-w-6xl mx-auto grid lg:grid-cols-[1.15fr_1fr] gap-10 lg:gap-16 items-center"
+        className="relative w-full max-w-6xl mx-auto grid lg:grid-cols-[1.15fr_1fr] gap-10 lg:gap-16 items-center"
         style={{ zIndex: 1 }}
       >
         {/* Left — copy */}
@@ -582,54 +585,9 @@ function HeroSection() {
             но не знае как да стигне там в новата реалност.
           </p>
 
-          <div
-            style={{
-              marginTop: "28px",
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "10px",
-            }}
-          >
-            {[
-              "4 четвъртъка, 19:00 ч.",
-              "2 часа / седмица",
-              "Работни листи всяка седмица",
-              "100% безплатно",
-            ].map((p) => (
-              <span
-                key={p}
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "8px",
-                  padding: "7px 14px",
-                  borderRadius: "4px",
-                  background: "rgba(255,255,255,0.06)",
-                  border: "1px solid rgba(255,255,255,0.10)",
-                  fontSize: "13px",
-                  fontWeight: 500,
-                  color: "rgba(255,255,255,0.78)",
-                }}
-              >
-                <span
-                  style={{
-                    width: 5,
-                    height: 5,
-                    borderRadius: "50%",
-                    backgroundColor: "#60a5fa",
-                  }}
-                />
-                {p}
-              </span>
-            ))}
-          </div>
-
-          <div id="enroll" style={{ marginTop: "32px" }}>
-            <FreeDayEnrollForm variant="dark" />
-          </div>
         </div>
 
-        {/* Right — editorial pull-quote treatment */}
+        {/* Right — sign-up form + format pills */}
         <aside style={{ position: "relative" }}>
           <div
             style={{
@@ -645,82 +603,53 @@ function HeroSection() {
             }}
           >
             <span style={{ width: "32px", height: "1px", background: "#a5b8d8" }} />
-            Из анкета · 80 отговора
+            Запази мястото си
           </div>
 
-          <p
-            style={{
-              fontFamily: SERIF,
-              fontSize: "clamp(1.65rem, 3.4vw, 2.4rem)",
-              fontWeight: 400,
-              color: "#ffffff",
-              lineHeight: 1.25,
-              letterSpacing: "-0.01em",
-              margin: 0,
-            }}
-          >
-            <span style={{ color: "#a5b8d8", marginRight: "6px" }}>“</span>
-            Знам накъде искам, но не знам{" "}
-            <em style={{ color: "#a5b8d8", fontStyle: "italic" }}>как</em>{" "}
-            да го постигна.
-            <span style={{ color: "#a5b8d8", marginLeft: "4px" }}>”</span>
-          </p>
+          <FreeDayEnrollForm variant="dark" />
 
-          <div
-            style={{
-              marginTop: "24px",
-              fontSize: "12px",
-              color: "rgba(255,255,255,0.55)",
-              letterSpacing: "0.02em",
-              lineHeight: 1.65,
-            }}
-          >
-            Така отговориха <strong style={{ color: "#ffffff", fontWeight: 600 }}>44%</strong>{" "}
-            от 80-те участника в анкетата. Този курс е изграден около техните думи —
-            не върху предположения.
-          </div>
-
-          {/* slim metric strip — three numbers, no card chrome */}
+          {/* Format pills — below the form */}
           <div
             style={{
               marginTop: "28px",
-              paddingTop: "20px",
+              paddingTop: "24px",
               borderTop: "1px solid rgba(255,255,255,0.16)",
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gap: "20px",
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "8px",
             }}
           >
             {[
-              { num: "80", lbl: "отговора" },
-              { num: "41%", lbl: "готови сега" },
-              { num: "4", lbl: "четвъртъка" },
-            ].map((s) => (
-              <div key={s.lbl}>
-                <div
+              "4 четвъртъка, 19:00 ч.",
+              "2 часа / седмица",
+              "Работни листи всяка седмица",
+              "100% безплатно",
+            ].map((p) => (
+              <span
+                key={p}
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  padding: "7px 12px",
+                  borderRadius: "4px",
+                  background: "rgba(255,255,255,0.05)",
+                  border: "1px solid rgba(255,255,255,0.10)",
+                  fontSize: "12px",
+                  fontWeight: 500,
+                  color: "rgba(255,255,255,0.78)",
+                }}
+              >
+                <span
                   style={{
-                    fontFamily: SERIF,
-                    fontSize: "28px",
-                    fontWeight: 400,
-                    color: "#ffffff",
-                    lineHeight: 1,
-                    letterSpacing: "-0.02em",
+                    width: 4,
+                    height: 4,
+                    borderRadius: "50%",
+                    backgroundColor: "#a5b8d8",
                   }}
-                >
-                  {s.num}
-                </div>
-                <div
-                  style={{
-                    fontSize: "11px",
-                    color: "rgba(255,255,255,0.55)",
-                    letterSpacing: "0.04em",
-                    marginTop: "6px",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  {s.lbl}
-                </div>
-              </div>
+                />
+                {p}
+              </span>
             ))}
           </div>
         </aside>
@@ -797,138 +726,102 @@ function ScheduleSection() {
         borderBottom: `1px solid ${FD.border}`,
       }}
     >
-      <div
-        className="max-w-6xl mx-auto flex flex-wrap items-center justify-center gap-6 md:gap-12"
-      >
-        <div style={{ textAlign: "center" }}>
-          <div
-            style={{
-              fontSize: "11px",
-              color: FD.accent,
-              letterSpacing: "0.12em",
-              textTransform: "uppercase",
-              fontWeight: 700,
-              marginBottom: "6px",
-            }}
-          >
-            Начало
-          </div>
-          <div
-            style={{
-              fontSize: "26px",
-              fontWeight: 800,
-              color: FD.textPrimary,
-              letterSpacing: "-0.02em",
-            }}
-          >
-            21 май 2026
-          </div>
-          <div
-            style={{
-              fontSize: "13px",
-              color: FD.textMuted,
-              marginTop: "2px",
-            }}
-          >
-            Четвъртък, 19:00 ч.
-          </div>
-        </div>
-
+      <div className="max-w-5xl mx-auto">
+        {/* Editorial header — single line, no redundant sidebars */}
         <div
           style={{
-            width: "1px",
-            height: "60px",
-            background: FD.border,
-            display: "block",
+            textAlign: "center",
+            fontSize: "11px",
+            color: FD.accent,
+            letterSpacing: "0.16em",
+            textTransform: "uppercase",
+            fontWeight: 700,
+            marginBottom: "10px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "14px",
           }}
-          className="hidden md:block"
-        />
-
-        <div
-          className="flex flex-wrap gap-3 justify-center"
-          style={{ flex: "1 1 auto", maxWidth: "560px" }}
         >
-          {meetingDates.map((m) => (
+          <span style={{ flex: "0 1 60px", height: "1px", background: FD.borderEditorial }} />
+          Програма
+          <span style={{ flex: "0 1 60px", height: "1px", background: FD.borderEditorial }} />
+        </div>
+        <h3
+          style={{
+            fontFamily: SERIF,
+            fontSize: "clamp(1.5rem, 3vw, 2rem)",
+            fontWeight: 400,
+            color: FD.textPrimary,
+            textAlign: "center",
+            margin: "0 0 8px",
+            letterSpacing: "-0.01em",
+            lineHeight: 1.2,
+          }}
+        >
+          4 четвъртъка <em style={{ color: FD.accent }}>· от 21 май до 11 юни</em>
+        </h3>
+        <p
+          style={{
+            textAlign: "center",
+            fontSize: "13px",
+            color: FD.textMuted,
+            letterSpacing: "0.04em",
+            margin: "0 0 28px",
+          }}
+        >
+          Всяка среща в 19:00 ч. · Онлайн
+        </p>
+
+        {/* 4 dates: 2x2 on mobile, 1x4 on desktop */}
+        <div
+          className="grid grid-cols-2 sm:grid-cols-4 gap-3 mx-auto"
+          style={{ maxWidth: "640px" }}
+        >
+          {meetingDates.map((m, i) => (
             <div
               key={m.num}
               style={{
                 background: FD.bg,
                 border: `1px solid ${FD.borderEditorial}`,
                 borderRadius: "4px",
-                padding: "12px 18px",
-                minWidth: "108px",
+                padding: "16px 12px",
                 textAlign: "center",
+                position: "relative",
               }}
             >
               <div
                 style={{
-                  fontSize: "10px",
-                  fontWeight: 700,
+                  fontFamily: SERIF,
+                  fontSize: "11px",
+                  fontWeight: 600,
                   color: FD.accent,
-                  letterSpacing: "0.10em",
-                  textTransform: "uppercase",
-                  marginBottom: "4px",
+                  letterSpacing: "0.06em",
+                  marginBottom: "6px",
                 }}
               >
-                {m.num}
+                0{i + 1}
               </div>
               <div
                 style={{
-                  fontSize: "17px",
-                  fontWeight: 800,
+                  fontFamily: SERIF,
+                  fontSize: "22px",
+                  fontWeight: 500,
                   color: FD.textPrimary,
+                  letterSpacing: "-0.01em",
+                  lineHeight: 1.1,
                 }}
               >
                 {m.date}
               </div>
-              <div style={{ fontSize: "12px", color: FD.textMuted }}>
-                {m.day}
+              <div style={{ fontSize: "11px", color: FD.textMuted, marginTop: "4px", letterSpacing: "0.04em" }}>
+                {m.day.toLowerCase()}
               </div>
             </div>
           ))}
         </div>
-
-        <div
-          style={{
-            width: "1px",
-            height: "60px",
-            background: FD.border,
-          }}
-          className="hidden md:block"
-        />
-
-        <div style={{ textAlign: "center" }}>
-          <div
-            style={{
-              fontSize: "11px",
-              color: FD.accent,
-              letterSpacing: "0.12em",
-              textTransform: "uppercase",
-              fontWeight: 700,
-              marginBottom: "6px",
-            }}
-          >
-            Час
-          </div>
-          <div
-            style={{
-              fontSize: "26px",
-              fontWeight: 800,
-              color: FD.textPrimary,
-              letterSpacing: "-0.02em",
-            }}
-          >
-            19:00 ч.
-          </div>
-          <div
-            style={{
-              fontSize: "13px",
-              color: FD.textMuted,
-              marginTop: "2px",
-            }}
-          >
-            всеки четвъртък
-          </div>
+        <div className="mt-10 text-center">
+          <PrimaryButton href="#enroll">Запиши се безплатно →</PrimaryButton>
         </div>
       </div>
     </section>
@@ -981,9 +874,8 @@ function ProblemSection() {
           {/* Featured pain — large pull-quote, NOT a card */}
           <div
             style={{
-              borderTop: `1px solid ${FD.borderEditorial}`,
               borderBottom: `1px solid ${FD.borderEditorial}`,
-              padding: "28px 0",
+              padding: "0 0 28px",
               marginBottom: "32px",
             }}
           >
@@ -1154,20 +1046,6 @@ function WeeksProgramSection() {
             >
               <div
                 style={{
-                  position: "absolute",
-                  top: "8px",
-                  right: "14px",
-                  fontSize: "60px",
-                  fontWeight: 900,
-                  color: "rgba(96,165,250,0.08)",
-                  lineHeight: 1,
-                  letterSpacing: "-0.05em",
-                }}
-              >
-                {w.num}
-              </div>
-              <div
-                style={{
                   fontSize: "10px",
                   fontWeight: 700,
                   color: "#60a5fa",
@@ -1230,24 +1108,11 @@ function WeeksProgramSection() {
                   </li>
                 ))}
               </ul>
-              <div
-                style={{
-                  marginTop: "18px",
-                  paddingTop: "16px",
-                  borderTop: "1px solid rgba(255,255,255,0.08)",
-                  fontSize: "12px",
-                  fontWeight: 600,
-                  color: "#60a5fa",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "8px",
-                }}
-              >
-                <Icon name="file" size={14} stroke="#60a5fa" strokeWidth={2} />
-                {w.tool}
-              </div>
             </div>
           ))}
+        </div>
+        <div className="mt-12 text-center">
+          <PrimaryButton href="#enroll">Запиши се безплатно →</PrimaryButton>
         </div>
       </div>
     </section>
@@ -1339,6 +1204,9 @@ function WhatYouGetSection() {
               </p>
             </div>
           ))}
+        </div>
+        <div className="mt-12 text-center">
+          <PrimaryButton href="#enroll">Запиши се безплатно →</PrimaryButton>
         </div>
       </div>
     </section>
@@ -1453,6 +1321,9 @@ function MaterialsSection() {
               </ul>
             </div>
           ))}
+        </div>
+        <div className="mt-12 text-center">
+          <PrimaryButton href="#enroll">Запиши се безплатно →</PrimaryButton>
         </div>
       </div>
     </section>
@@ -1600,6 +1471,9 @@ function ForWhomSection() {
               ))}
             </ul>
           </div>
+        </div>
+        <div className="mt-12 text-center">
+          <PrimaryButton href="#enroll">Запиши се безплатно →</PrimaryButton>
         </div>
       </div>
     </section>
@@ -1768,6 +1642,9 @@ function VoicesSection() {
             ))}
           </div>
         </div>
+        <div className="mt-14 text-center">
+          <PrimaryButton href="#enroll">Запиши се безплатно →</PrimaryButton>
+        </div>
       </div>
     </section>
   );
@@ -1777,10 +1654,10 @@ function VoicesSection() {
 function MentorSection() {
   return (
     <section
-      className="px-6 md:px-12 lg:px-20 py-20 md:py-28"
+      className="px-6 md:px-12 lg:px-20 py-24 md:py-36"
       style={{ backgroundColor: FD.bgDark, color: "#ffffff" }}
     >
-      <div className="reveal max-w-6xl mx-auto grid lg:grid-cols-[360px_1fr] gap-12 items-start">
+      <div className="reveal max-w-6xl mx-auto grid lg:grid-cols-[420px_1fr] gap-14 lg:gap-24 items-start">
         <div>
           <div
             style={{
@@ -1796,7 +1673,7 @@ function MentorSection() {
               src="/ai-free-course/magdalena.jpg"
               alt="Магдалена Пенчева — HR лидер с 17 години опит"
               fill
-              sizes="(max-width: 1024px) 100vw, 360px"
+              sizes="(max-width: 1024px) 100vw, 420px"
               style={{ objectFit: "cover", objectPosition: "center top" }}
               priority
             />
@@ -1898,11 +1775,12 @@ function MentorSection() {
             style={{
               display: "flex",
               flexDirection: "column",
-              gap: "16px",
-              fontSize: "15px",
+              gap: "22px",
+              fontSize: "16px",
               color: "rgba(255,255,255,0.72)",
-              lineHeight: 1.75,
-              marginBottom: "30px",
+              lineHeight: 1.85,
+              marginBottom: "44px",
+              maxWidth: "62ch",
             }}
           >
             <p>
@@ -1939,89 +1817,94 @@ function MentorSection() {
             </p>
           </div>
 
-          {/* Skills + Certs grids */}
-          <div className="grid md:grid-cols-2 gap-5">
-            <div
-              style={{
-                background: "rgba(255,255,255,0.04)",
-                border: "1px solid rgba(255,255,255,0.10)",
-                borderRadius: "6px",
-                padding: "20px",
-              }}
-            >
-              <div
-                style={{
-                  fontSize: "11px",
-                  fontWeight: 700,
-                  color: "#60a5fa",
-                  letterSpacing: "0.10em",
-                  textTransform: "uppercase",
-                  marginBottom: "12px",
-                }}
-              >
-                Ключови умения
-              </div>
-              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "8px" }}>
-                {mentorSkills.map((s) => (
-                  <li
-                    key={s}
-                    style={{
-                      fontSize: "13px",
-                      color: "rgba(255,255,255,0.7)",
-                      lineHeight: 1.5,
-                      display: "flex",
-                      gap: "8px",
-                      alignItems: "flex-start",
-                    }}
-                  >
-                    <span style={{ color: "#60a5fa", flexShrink: 0 }}>›</span>
-                    {s}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div
-              style={{
-                background: "rgba(255,255,255,0.04)",
-                border: "1px solid rgba(255,255,255,0.10)",
-                borderRadius: "6px",
-                padding: "20px",
-              }}
-            >
-              <div
-                style={{
-                  fontSize: "11px",
-                  fontWeight: 700,
-                  color: "#60a5fa",
-                  letterSpacing: "0.10em",
-                  textTransform: "uppercase",
-                  marginBottom: "12px",
-                }}
-              >
-                Сертификати и квалификации
-              </div>
-              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "8px" }}>
-                {mentorCerts.map((c) => (
-                  <li
-                    key={c}
-                    style={{
-                      fontSize: "13px",
-                      color: "rgba(255,255,255,0.7)",
-                      lineHeight: 1.5,
-                      display: "flex",
-                      gap: "8px",
-                      alignItems: "flex-start",
-                    }}
-                  >
-                    <span style={{ color: "#60a5fa", flexShrink: 0 }}>›</span>
-                    {c}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
         </div>
+      </div>
+
+      {/* Skills + Certs — full width below the photo+bio grid, two columns */}
+      <div className="reveal max-w-6xl mx-auto mt-14 lg:mt-20 grid md:grid-cols-2 gap-6 lg:gap-8">
+        <div
+          style={{
+            background: "rgba(255,255,255,0.04)",
+            border: "1px solid rgba(255,255,255,0.10)",
+            borderRadius: "6px",
+            padding: "30px 28px",
+          }}
+        >
+          <div
+            style={{
+              fontSize: "11px",
+              fontWeight: 700,
+              color: "#60a5fa",
+              letterSpacing: "0.10em",
+              textTransform: "uppercase",
+              marginBottom: "16px",
+            }}
+          >
+            Ключови умения
+          </div>
+          <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "10px" }}>
+            {mentorSkills.map((s) => (
+              <li
+                key={s}
+                style={{
+                  fontSize: "14px",
+                  color: "rgba(255,255,255,0.78)",
+                  lineHeight: 1.55,
+                  display: "flex",
+                  gap: "10px",
+                  alignItems: "flex-start",
+                }}
+              >
+                <span style={{ color: "#60a5fa", flexShrink: 0, fontWeight: 600 }}>›</span>
+                {s}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div
+          style={{
+            background: "rgba(255,255,255,0.04)",
+            border: "1px solid rgba(255,255,255,0.10)",
+            borderRadius: "6px",
+            padding: "30px 28px",
+          }}
+        >
+          <div
+            style={{
+              fontSize: "11px",
+              fontWeight: 700,
+              color: "#60a5fa",
+              letterSpacing: "0.10em",
+              textTransform: "uppercase",
+              marginBottom: "16px",
+            }}
+          >
+            Сертификати и квалификации
+          </div>
+          <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "10px" }}>
+            {mentorCerts.map((c) => (
+              <li
+                key={c}
+                style={{
+                  fontSize: "14px",
+                  color: "rgba(255,255,255,0.78)",
+                  lineHeight: 1.55,
+                  display: "flex",
+                  gap: "10px",
+                  alignItems: "flex-start",
+                }}
+              >
+                <span style={{ color: "#60a5fa", flexShrink: 0, fontWeight: 600 }}>›</span>
+                {c}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div className="max-w-6xl mx-auto mt-14 text-center">
+        <PrimaryButton href="#enroll">Запиши се безплатно →</PrimaryButton>
       </div>
     </section>
   );
@@ -2036,77 +1919,31 @@ function FAQSection() {
     >
       <div className="reveal max-w-4xl mx-auto">
         <div className="text-center mb-12">
-          <SectionEyebrow>Въпроси и отговори</SectionEyebrow>
           <h2
             style={{
-              fontSize: "clamp(1.9rem, 4vw, 2.6rem)",
+              fontSize: "clamp(2rem, 4.4vw, 3rem)",
               fontWeight: 800,
               color: FD.textPrimary,
               lineHeight: 1.15,
               letterSpacing: "-0.02em",
-              margin: "12px 0",
+              margin: 0,
             }}
           >
-            Отговори преди да се запишеш
+            Въпроси и отговори
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-3">
-          {faqs.map((f) => (
-            <details
-              key={f.q}
-              style={{
-                background: FD.bg,
-                border: `1px solid ${FD.borderEditorial}`,
-                borderRadius: "4px",
-                padding: "0",
-                overflow: "hidden",
-              }}
-            >
-              <summary
-                style={{
-                  padding: "18px 22px",
-                  fontSize: "15px",
-                  fontWeight: 700,
-                  color: FD.textPrimary,
-                  cursor: "pointer",
-                  listStyle: "none",
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  gap: "16px",
-                }}
-              >
-                {f.q}
-                <span
-                  style={{
-                    width: "22px",
-                    height: "22px",
-                    borderRadius: "50%",
-                    background: FD.accentLight,
-                    color: FD.accent,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: "13px",
-                    flexShrink: 0,
-                  }}
-                >
-                  ▾
-                </span>
-              </summary>
-              <p
-                style={{
-                  padding: "0 22px 20px",
-                  fontSize: "14px",
-                  color: FD.textBody,
-                  lineHeight: 1.7,
-                }}
-              >
-                {f.a}
-              </p>
-            </details>
-          ))}
+        <FreeDayFAQAccordion
+          items={faqs}
+          accent={FD.accent}
+          accentLight={FD.accentLight}
+          textPrimary={FD.textPrimary}
+          textBody={FD.textBody}
+          border={FD.borderEditorial}
+          bg={FD.bg}
+        />
+        <div className="mt-12 text-center">
+          <PrimaryButton href="#enroll">Запиши се безплатно →</PrimaryButton>
         </div>
       </div>
     </section>
@@ -2169,7 +2006,11 @@ function FinalCTASection() {
           4 седмици. 2 часа на седмица. Реални работни материали. Ясен план в
           края. Безплатно.
         </p>
-        <div className="flex justify-center">
+        <div
+          id="enroll"
+          className="flex justify-center"
+          style={{ borderRadius: "8px", padding: "8px" }}
+        >
           <FreeDayEnrollForm variant="dark" />
         </div>
       </div>
