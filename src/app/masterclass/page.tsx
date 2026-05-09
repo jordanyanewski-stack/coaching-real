@@ -10,32 +10,102 @@ import { StickyCTABar } from "./sticky-cta-bar";
 export const metadata = {
   title: "Краят на оцеляването · 12 дни Мастъркласове® | Coaching Real",
   description:
-    "Никой не те е научил на това. Научиха те само да лекуваш. 12 дни на трансформация — системата зад успешната онлайн терапевтична практика. 18-29 май 2026 · €67 (вместо €197).",
+    "Никой не те е научил на това. Научиха те само да лекуваш. 12 дни на трансформация — системата зад успешната онлайн терапевтична практика. 18-29 май 2026 · €34 (€67 след 14 май).",
 };
 
 /* ─── DATA ──────────────────────────────────────────────────────────── */
-const painPoints = [
-  "Виждам те. Работиш толкова много и се питаш защо не се движи.",
-  "Имаш мисия. Нямаш система. И двете са нужни — само едната не работи.",
-  "Продаваш времето си. Час след час. Без таван. Без изход.",
-  "Публикуваш. Консултираш. Даваш от себе си. И пак си невидима за правилните хора.",
-  "Идеята за курс или програма стои в главата от месеци — без ясен план кога и как.",
-  "Усещаш, че другите знаят нещо, което ти не знаеш. Знаят. Но не е тайна — никой просто не те е научил.",
+const audienceWants = [
+  "да структурират своя онлайн бизнес",
+  "да намерят идеалния си клиент",
+  "да създадат първия си онлайн курс или програма",
+  "да скалират със спокойствие, яснота и подкрепа",
+  "да използват силата на AI в бизнеса си",
+  "да спрат хаоса и да започнат да действат системно",
+];
+
+const whatYouGetBullets = [
+  "освободиш менталния шум",
+  "видиш какво работи и какво не",
+  "усетиш увереност за следващите 12 месеца",
+  "подготвиш основите за своя онлайн курс или програма",
+  "изградиш стабилност в бизнеса си",
+];
+
+const whyNowChallenges = [
+  "клиентското поведение се променя",
+  "хората купуват по-различно",
+  "доверието се изгражда по-бавно",
+  "конкуренцията вече не е в обема, а в качеството",
+  "интуитивното публикуване и „ще видим каквото стане“ вече не работи",
+];
+
+const whyNowConstants = [
+  "Твоята експертиза",
+  "Желанието ти да помагаш",
+  "Способността ти да водиш хора",
+  "Мечтата ти за стабилен, структуриран онлайн бизнес",
+];
+
+const forWhomChecklist = [
+  "имат експертиза, но усещат застой",
+  "искат да я превърнат в стабилен и структуриран доход",
+  "искат да създадат своя първи онлайн курс или програма",
+  "или искат да скалират вече съществуваща оферта",
+  "усещат, че хаосът им пречи да действат",
+  "липсва им структура, посока и система",
+  "искат да започнат с яснота и план",
+  "искат да използват AI, за да облекчат и ускорят бизнеса си",
+];
+
+const forWhomFinds = [
+  "яснота",
+  "посока",
+  "структура",
+  "подкрепа",
+  "инерция",
+  "спокойствие",
+];
+
+const whatMakesDifferent = [
+  "дълбочина без усложнение",
+  "яснота без натиск",
+  "практичност без претоварване",
+  "структура, която създава инерция",
+  "подкрепа, която отключва решения",
+];
+
+const whatYouGetChecklist = [
+  "Ще подредиш бизнеса си",
+  "Ще откриеш идеалния си клиент",
+  "Ще намериш идеята за първия си онлайн курс",
+  "Ще изградиш бизнес структура",
+  "Ще създадеш увереност в продажбите",
+  "Ще използваш AI за скалиране",
+  "Ще създадеш инерция с ежедневни стъпки",
+];
+
+const whyWomenCome = [
+  "получават яснота",
+  "чувстват се видени",
+  "взимат решения",
+  "виждат резултати",
+  "намират пространство",
+  "действат по-лесно",
 ];
 
 const curriculum = [
-  { day: "Ден 1",  date: "18 Май", title: "Новият онлайн свят през 2026",       outcome: "Ще знаеш кои 3 неща в бизнеса ти те ощетяват в момента." },
-  { day: "Ден 2",  date: "19 Май", title: "Твоята автентична визия",            outcome: "Ще знаеш точно как да говориш за работата си без извинения." },
-  { day: "Ден 3",  date: "20 Май", title: "Изчистване на хаоса",                outcome: "Ще спреш да правиш всичко и ще знаеш точно кое движи бизнеса ти." },
-  { day: "Ден 4",  date: "21 Май", title: "Идеалният клиент в дълбочина",       outcome: "Профил толкова конкретен, че следващият пост ще пише сам себе си." },
-  { day: "Ден 5",  date: "22 Май", title: "Идеята за твоя онлайн курс",         outcome: "Идеята излиза от главата на хартия — оформена, оценена, готова." },
-  { day: "Ден 6",  date: "23 Май", title: "Позициониране без натиск",           outcome: "Ще знаеш как да се откроиш без да се сравняваш с другите." },
-  { day: "Ден 7",  date: "24 Май", title: "Продавай стойност, не време",        outcome: "Ще имаш модел, при който доходът не зависи от броя часове." },
-  { day: "Ден 8",  date: "25 Май", title: "Оферти, които конвертират",          outcome: "Оферта оценена, позиционирана, готова за публикуване." },
-  { day: "Ден 9",  date: "26 Май", title: "AI стратегии за твоя бизнес",        outcome: "Конкретни инструменти, спестяващи часове маркетинг всяка седмица." },
-  { day: "Ден 10", date: "27 Май", title: "Бизнес инерция",                     outcome: "Ще знаеш как да поддържаш движение без бърнаут." },
-  { day: "Ден 11", date: "28 Май", title: "Вътрешни блокажи",                   outcome: "Страхът и синдромът на измамника спират да вземат решения вместо теб." },
-  { day: "Ден 12", date: "29 Май", title: "Планът за 2026",                     outcome: "Конкретен план за 90 дни — не вдъхновение. Документ." },
+  { day: "Ден 1",  date: "18 Май", title: "Новият онлайн свят",                  outcome: "Какво работи, какво не работи и какво създава реални резултати." },
+  { day: "Ден 2",  date: "19 Май", title: "Твоята автентична визия",            outcome: "Възстановяване на връзката с мисията, смелостта и посоката." },
+  { day: "Ден 3",  date: "20 Май", title: "Изчистване на хаоса в бизнеса",      outcome: "Как да подредиш всичко, което те претоварва." },
+  { day: "Ден 4",  date: "21 Май", title: "Идеалният клиент: кой е и как да го откриеш", outcome: "С истинска дълбочина, не с повърхностни упражнения." },
+  { day: "Ден 5",  date: "22 Май", title: "Идеята за твоя онлайн курс / програма", outcome: "Формула за откриване на печеливша тема." },
+  { day: "Ден 6",  date: "23 Май", title: "Позициониране без натиск",           outcome: "Как да бъдеш лидер, не „още един профил“." },
+  { day: "Ден 7",  date: "24 Май", title: "Да продаваш стойността си (не времето си)", outcome: "Модел за жени в мисия." },
+  { day: "Ден 8",  date: "25 Май", title: "Как да създаваш оферти, които се продават", outcome: "Във всяка икономика." },
+  { day: "Ден 9",  date: "26 Май", title: "AI стратегии за по-лек и скалиращ бизнес", outcome: "Как да спестиш време и да увеличиш резултатите." },
+  { day: "Ден 10", date: "27 Май", title: "Бизнес инерция: малки стъпки → големи резултати", outcome: "Как да се движиш напред без претоварване." },
+  { day: "Ден 11", date: "28 Май", title: "Вътрешните блокажи, които спират растежа", outcome: "И как да ги трансформираш завинаги." },
+  { day: "Ден 12", date: "29 Май", title: "Планът за успех",                    outcome: "Готова рамка, която можеш да следваш веднага." },
 ];
 
 const valueStack = [
@@ -118,12 +188,18 @@ export default function MasterclassPage() {
       <CampaignHeader />
       <HeroSection />
       <VSLSection />
-      <PainRecognitionSection />
-      <AboutSection />
+      <ShortAudienceSection />
+      <WhatYouGetForPriceSection />
+      <WhyNowSection />
+      <ForWhomDetailedSection />
+      <WhatMakesItDifferentSection />
+      <WhatYouGetChecklistSection />
       <CurriculumSection />
+      <WhyWomenComeSection />
       <ValueStackSection />
       <GuaranteeSection />
       <TestimonialsSection />
+      <AboutSection />
       <FinalCTASection />
       <FAQSection />
       <SiteFooter />
@@ -352,7 +428,7 @@ function HeroSection() {
 
       <div className="mc-hero-content max-w-6xl mx-auto w-full grid lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-16 items-center">
         {/* Left - text */}
-        <div>
+        <div className="mc-hero-text">
           <div className="animate-fade-up flex flex-wrap items-center gap-3">
             <span
               style={{
@@ -423,154 +499,258 @@ function HeroSection() {
             </span>
           </div>
 
-          <h1
-            className="animate-fade-up delay-100 mt-5"
-            style={{ lineHeight: 1.05, letterSpacing: "-0.03em", maxWidth: "560px" }}
-          >
+          {/* Eyebrow */}
+          <div className="animate-fade-up delay-75 mt-6">
             <span
-              className="block"
               style={{
-                fontSize: "clamp(2rem, 4.2vw, 3.4rem)",
-                fontWeight: 900,
-                color: T.textPrimary,
+                display: "inline-block",
+                fontSize: "11px",
+                fontWeight: 800,
+                color: "#70150E",
+                letterSpacing: "0.14em",
+                textTransform: "uppercase",
+                lineHeight: 1.4,
               }}
             >
-              Никой не те е научил на това.
+              12 ИЗМЕРЕНИЯ НА ТВОЯТА МИСИЯ — 12 ДНИ МАСТЪРКЛАСОВЕ®
             </span>
+          </div>
+
+          <h1
+            className="animate-fade-up delay-100 mt-3"
+            style={{
+              fontSize: "clamp(2.2rem, 5vw, 3.8rem)",
+              fontWeight: 900,
+              color: T.textPrimary,
+              lineHeight: 1.05,
+              letterSpacing: "-0.03em",
+              maxWidth: "580px",
+              margin: "12px 0 0",
+            }}
+          >
+            Пренареди{" "}
             <span
-              className="block"
               style={{
-                fontSize: "clamp(1.4rem, 2.8vw, 2.1rem)",
-                fontWeight: 800,
                 background: "linear-gradient(135deg, #70150E 0%, #c94535 55%, #e85050 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
-                marginTop: "6px",
               }}
             >
-              Научиха те само да лекуваш.
+              своя онлайн бизнес
             </span>
           </h1>
 
-          {/* Subheadline - benefit-clear, audience-named */}
+          {/* Subheadline */}
           <p
-            className="animate-fade-up delay-150 mt-4"
+            className="animate-fade-up delay-150 mt-5"
             style={{
               fontSize: "17px",
-              color: T.textPrimary,
-              lineHeight: 1.5,
-              maxWidth: "560px",
-              fontWeight: 600,
-              letterSpacing: "-0.005em",
-            }}
-          >
-            12 живи мастъркласа за{" "}
-            <span style={{ color: "#70150E" }}>терапевти, коучове и холистични специалисти</span>
-            {" "}— от хаос към система за 12 вечери.
-          </p>
-
-          <p
-            className="animate-fade-up delay-200 mt-5"
-            style={{
-              fontSize: "15px",
               color: T.textSecondary,
-              lineHeight: 1.65,
-              maxWidth: "520px",
+              lineHeight: 1.55,
+              maxWidth: "560px",
+              fontWeight: 500,
             }}
           >
-            Събуждаш се с пълен календар. И пак се питаш дали ще се наредят сметките
-            ти за този месец. Сесия след сесия. Час след час. Изтощение след изтощение.{" "}
+            Създай{" "}
             <strong style={{ color: T.textPrimary, fontWeight: 700 }}>
-              Това не е духовност. Това е оцеляване.
+              яснота, посока и план за растеж
             </strong>
+            <span style={{ whiteSpace: "nowrap" }}>
+              {" "}— само за{" "}
+              <strong style={{ color: "#70150E", fontWeight: 800 }}>€34</strong>
+            </span>
           </p>
 
-          {/* Price anchor */}
+          {/* Unified pricing card — price + countdown together */}
           <div
-            className="animate-fade-up delay-250 mt-6 inline-flex items-baseline gap-3 px-4 py-2"
+            className="animate-fade-up delay-250 mt-7 mc-pricing-card"
             style={{
-              backgroundColor: "rgba(107,21,14,0.06)",
-              borderRadius: "10px",
-              border: "1px solid rgba(107,21,14,0.14)",
+              display: "inline-flex",
+              flexDirection: "column",
+              gap: "18px",
+              padding: "22px 26px",
+              background:
+                "linear-gradient(135deg, #ffffff 0%, #fdf6ee 100%)",
+              borderRadius: "18px",
+              border: "1px solid rgba(107,21,14,0.16)",
+              boxShadow:
+                "0 12px 40px rgba(107,21,14,0.10), 0 1px 2px rgba(0,0,0,0.04)",
+              maxWidth: "100%",
             }}
           >
-            <span
+            {/* Tier badge */}
+            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              <span
+                style={{
+                  width: 8,
+                  height: 8,
+                  borderRadius: "50%",
+                  backgroundColor: "#c94535",
+                  flexShrink: 0,
+                  boxShadow: "0 0 0 3px rgba(201,69,53,0.20)",
+                  animation: "stickyDotPulse 1.6s ease-in-out infinite",
+                }}
+              />
+              <span
+                style={{
+                  fontSize: "11px",
+                  fontWeight: 800,
+                  color: "#70150E",
+                  letterSpacing: "0.10em",
+                  textTransform: "uppercase",
+                }}
+              >
+                Ранна цена · изтича на 14 май
+              </span>
+            </div>
+
+            {/* Price row */}
+            <div
               style={{
-                fontSize: "13px",
-                fontWeight: 700,
-                color: T.textSecondary,
-                textTransform: "uppercase",
-                letterSpacing: "0.06em",
+                display: "flex",
+                alignItems: "baseline",
+                gap: "12px",
+                flexWrap: "wrap",
+                rowGap: "8px",
               }}
             >
-              Само днес
-            </span>
-            <span
+              <span
+                style={{
+                  fontSize: "clamp(2.4rem, 7vw, 3.2rem)",
+                  fontWeight: 900,
+                  background:
+                    "linear-gradient(135deg, #70150E 0%, #c94535 55%, #e85050 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  lineHeight: 1,
+                  letterSpacing: "-0.04em",
+                }}
+              >
+                €34
+              </span>
+              <span
+                style={{
+                  fontSize: "18px",
+                  fontWeight: 600,
+                  color: T.textSecondary,
+                  textDecoration: "line-through",
+                  textDecorationColor: "rgba(0,0,0,0.35)",
+                  lineHeight: 1,
+                }}
+              >
+                €67
+              </span>
+              <span
+                style={{
+                  fontSize: "11px",
+                  fontWeight: 700,
+                  color: "#70150E",
+                  backgroundColor: "rgba(232,80,80,0.16)",
+                  padding: "4px 9px",
+                  borderRadius: "6px",
+                  letterSpacing: "0.04em",
+                  alignSelf: "center",
+                }}
+              >
+                Спести €33
+              </span>
+            </div>
+
+            {/* Divider + countdown */}
+            <div
               style={{
-                fontSize: "20px",
-                fontWeight: 700,
-                color: T.textSecondary,
-                textDecoration: "line-through",
-                textDecorationColor: "rgba(0,0,0,0.35)",
-                lineHeight: 1,
+                paddingTop: "16px",
+                borderTop: "1px dashed rgba(107,21,14,0.20)",
+                display: "flex",
+                flexDirection: "column",
+                gap: "8px",
               }}
             >
-              €197
-            </span>
-            <span
-              style={{
-                fontSize: "32px",
-                fontWeight: 900,
-                background: "linear-gradient(135deg, #70150E 0%, #c94535 55%, #e85050 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                lineHeight: 1,
-                letterSpacing: "-0.03em",
-              }}
-            >
-              €67
-            </span>
-            <span
-              style={{
-                fontSize: "12px",
-                fontWeight: 700,
-                color: "#70150E",
-                backgroundColor: "rgba(232,80,80,0.15)",
-                padding: "3px 8px",
-                borderRadius: "6px",
-                letterSpacing: "0.04em",
-              }}
-            >
-              -66%
-            </span>
+              <span
+                style={{
+                  fontSize: "11px",
+                  fontWeight: 700,
+                  color: T.textSecondary,
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                }}
+              >
+                Цената скача след
+              </span>
+              <CountdownTimer bare />
+            </div>
           </div>
 
-          {/* CTA + countdown */}
-          <div className="animate-fade-up delay-300 mt-5 flex flex-wrap items-center gap-5">
+          {/* Big CTA */}
+          <div className="animate-fade-up delay-300 mt-6">
             <a
               href="#enroll"
-              className="mv-btn mv-btn-primary"
+              className="mv-btn mv-btn-primary mc-hero-cta"
               style={{
-                fontSize: "16px",
-                padding: "16px 32px",
+                fontSize: "17px",
+                padding: "18px 36px",
                 display: "inline-flex",
                 alignItems: "center",
-                gap: "10px",
-                flexShrink: 0,
+                gap: "12px",
+                fontWeight: 700,
+                boxShadow:
+                  "0 12px 32px rgba(107,21,14,0.30), 0 1px 2px rgba(0,0,0,0.04)",
               }}
             >
-              Искам да спра да оцелявам            </a>
-            <CountdownTimer compact />
+              Искам да спра да оцелявам
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden
+              >
+                <path d="M5 12h14M13 5l7 7-7 7" />
+              </svg>
+            </a>
           </div>
 
-          <p
-            className="animate-fade-up delay-300 mt-4"
+          {/* Trust strip with checkmark icons */}
+          <div
+            className="animate-fade-up delay-300 mt-4 flex flex-wrap items-center justify-center lg:justify-start gap-x-5 gap-y-2"
             style={{ fontSize: "12px", color: T.textSecondary, fontWeight: 600 }}
           >
-            Сигурна транзакция · Потвърждение веднага · 30-дневна гаранция
-          </p>
+            {[
+              "Сигурна транзакция",
+              "Потвърждение веднага",
+              "30-дневна гаранция",
+            ].map((label) => (
+              <span
+                key={label}
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "5px",
+                }}
+              >
+                <svg
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#70150E"
+                  strokeWidth="2.6"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden
+                >
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                {label}
+              </span>
+            ))}
+          </div>
         </div>
 
         {/* Right - video (or photo fallback until HERO_VIDEO is set) */}
@@ -698,8 +878,8 @@ function HeroSection() {
   );
 }
 
-/* ─── PAIN RECOGNITION ──────────────────────────────────────────────── */
-function PainRecognitionSection() {
+/* ─── SHORT AUDIENCE — replaces pain recognition ────────────────────── */
+function ShortAudienceSection() {
   return (
     <section
       className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
@@ -707,7 +887,7 @@ function PainRecognitionSection() {
     >
       <div className="reveal relative max-w-3xl mx-auto">
         <div className="text-center mb-12">
-          <span className="mv-tag mv-tag-light">Разпознаваш ли се</span>
+          <span className="mv-tag mv-tag-light">За кого е</span>
           <h2
             className="mt-5"
             style={{
@@ -718,15 +898,13 @@ function PainRecognitionSection() {
               letterSpacing: "-0.02em",
             }}
           >
-            Виждам те.{" "}
-            <span style={{ ...GRADIENT_TEXT }}>
-              Работиш толкова много и се питаш защо не се движи.
-            </span>
+            За жени предприемачи и практици,{" "}
+            <span style={{ ...GRADIENT_TEXT }}>които искат:</span>
           </h2>
         </div>
 
         <div className="flex flex-col gap-3">
-          {painPoints.slice(1).map((item, i) => (
+          {audienceWants.map((item, i) => (
             <div
               key={i}
               className="flex gap-4 items-start p-5"
@@ -755,13 +933,666 @@ function PainRecognitionSection() {
           ))}
         </div>
 
+        <p
+          className="mt-10 text-center"
+          style={{
+            fontSize: "17px",
+            fontWeight: 700,
+            color: T.textPrimary,
+            letterSpacing: "-0.005em",
+          }}
+        >
+          Това са 12 дни за:{" "}
+          <span style={{ ...GRADIENT_TEXT }}>
+            посока → яснота → структура → инерция → растеж
+          </span>
+        </p>
+
+        <div className="mt-8 text-center">
+          <a
+            href="#enroll"
+            className="mv-btn mv-btn-primary"
+            style={{ fontSize: "15px", padding: "16px 28px" }}
+          >
+            ЗАПИСВАМ СЕ ЗА 12-ДНЕВНИТЕ МАСТЪРКЛАСОВЕ (€34)
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── WHAT YOU GET FOR €34 ──────────────────────────────────────────── */
+function WhatYouGetForPriceSection() {
+  return (
+    <section
+      className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
+      style={{ backgroundColor: "#faf8f5" }}
+    >
+      <div className="reveal relative max-w-3xl mx-auto">
+        <div className="text-center mb-10">
+          <span className="mv-tag mv-tag-light">Само €34</span>
+          <h2
+            className="mt-5"
+            style={{
+              fontSize: "clamp(1.8rem, 4vw, 3rem)",
+              fontWeight: 800,
+              color: T.textPrimary,
+              lineHeight: 1.2,
+              letterSpacing: "-0.02em",
+            }}
+          >
+            Само <span style={{ ...GRADIENT_TEXT }}>€34</span> за 12 дни дълбока работа по твоя бизнес
+          </h2>
+          <p
+            className="mt-5"
+            style={{
+              fontSize: "17px",
+              color: T.textSecondary,
+              lineHeight: 1.6,
+              fontWeight: 600,
+            }}
+          >
+            🎁 Стойност над <strong style={{ color: T.textPrimary }}>€891</strong> — натрупана яснота, структура и посока
+          </p>
+        </div>
+
+        <p
+          className="mb-6 text-center"
+          style={{ fontSize: "16px", color: T.textPrimary, fontWeight: 600 }}
+        >
+          12 последователни мастъркласа, в които ще:
+        </p>
+
+        <ul className="flex flex-col gap-3" style={{ listStyle: "none", padding: 0, margin: 0 }}>
+          {whatYouGetBullets.map((item) => (
+            <li
+              key={item}
+              className="flex gap-3 items-start p-4"
+              style={{
+                backgroundColor: "#ffffff",
+                borderRadius: "10px",
+                border: "1px solid rgba(107,21,14,0.08)",
+              }}
+            >
+              <span
+                style={{
+                  flexShrink: 0,
+                  width: "22px",
+                  height: "22px",
+                  borderRadius: "50%",
+                  background: "linear-gradient(135deg, #70150E 0%, #c94535 100%)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginTop: "2px",
+                }}
+              >
+                <IconCheck dark />
+              </span>
+              <p style={{ fontSize: "15px", color: T.textPrimary, lineHeight: 1.6, fontWeight: 500 }}>
+                {item}
+              </p>
+            </li>
+          ))}
+        </ul>
+
         <div className="mt-10 text-center">
           <a
             href="#enroll"
             className="mv-btn mv-btn-primary"
-            style={{ fontSize: "15px", display: "inline-flex", alignItems: "center", gap: "10px" }}
+            style={{ fontSize: "15px", padding: "16px 28px" }}
           >
-            Искам да спра да оцелявам          </a>
+            ДА, ИСКАМ ДОСТЪП ДО ВСИЧКИ 12 МАСТЪРКЛАСА (€34)
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── WHY NOW ───────────────────────────────────────────────────────── */
+function WhyNowSection() {
+  return (
+    <section
+      className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
+      style={{ backgroundColor: "#ffffff" }}
+    >
+      <div className="reveal relative max-w-3xl mx-auto">
+        <div className="text-center mb-10">
+          <span className="mv-tag mv-tag-light">Защо точно сега</span>
+          <h2
+            className="mt-5"
+            style={{
+              fontSize: "clamp(1.8rem, 4vw, 3rem)",
+              fontWeight: 800,
+              color: T.textPrimary,
+              lineHeight: 1.15,
+              letterSpacing: "-0.02em",
+            }}
+          >
+            Защо точно сега е{" "}
+            <span style={{ ...GRADIENT_TEXT }}>моментът да действаш</span>
+          </h2>
+        </div>
+
+        <p
+          className="mb-8"
+          style={{
+            fontSize: "16px",
+            color: T.textSecondary,
+            lineHeight: 1.75,
+            textAlign: "center",
+          }}
+        >
+          Ако усещаш, че онлайн пространството се променя — права си.
+          <br />
+          <strong style={{ color: T.textPrimary }}>
+            Това е моментът на разделение
+          </strong>{" "}
+          между тези, които{" "}
+          <span style={{ color: "#c94535", fontWeight: 700 }}>
+            👉 реагират на хаоса
+          </span>
+          , и тези, които{" "}
+          <span style={{ color: "#70150E", fontWeight: 700 }}>
+            👉 създават яснота, структура и посока.
+          </span>
+        </p>
+
+        {/* Истината */}
+        <div
+          className="p-6 mb-6"
+          style={{
+            backgroundColor: T.surfaceStrong,
+            borderRadius: "14px",
+            border: "1px solid rgba(107,21,14,0.10)",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "13px",
+              fontWeight: 800,
+              color: "#70150E",
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              marginBottom: "12px",
+            }}
+          >
+            Истината е:
+          </p>
+          <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "10px" }}>
+            {whyNowChallenges.map((item) => (
+              <li
+                key={item}
+                style={{
+                  fontSize: "15px",
+                  color: T.textPrimary,
+                  lineHeight: 1.65,
+                  fontWeight: 500,
+                  display: "flex",
+                  gap: "10px",
+                  alignItems: "flex-start",
+                }}
+              >
+                <span
+                  style={{
+                    flexShrink: 0,
+                    width: "6px",
+                    height: "6px",
+                    borderRadius: "50%",
+                    backgroundColor: "#c94535",
+                    marginTop: "9px",
+                  }}
+                />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Но има нещо */}
+        <div
+          className="p-6"
+          style={{
+            background: "linear-gradient(135deg, #fff7f4 0%, #faf3e8 100%)",
+            borderRadius: "14px",
+            border: "1px solid rgba(107,21,14,0.16)",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "13px",
+              fontWeight: 800,
+              color: "#70150E",
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              marginBottom: "12px",
+            }}
+          >
+            Но има нещо, което не се е променило:
+          </p>
+          <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "8px" }}>
+            {whyNowConstants.map((item) => (
+              <li
+                key={item}
+                style={{
+                  fontSize: "16px",
+                  color: T.textPrimary,
+                  lineHeight: 1.55,
+                  fontWeight: 600,
+                }}
+              >
+                ✨ {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <p
+          className="mt-8 text-center"
+          style={{
+            fontSize: "17px",
+            color: T.textPrimary,
+            lineHeight: 1.6,
+            fontWeight: 600,
+          }}
+        >
+          Сега не е момент за „повече“, а за{" "}
+          <span style={{ ...GRADIENT_TEXT }}>по-добре:</span>
+          <br />
+          <span style={{ fontSize: "15px", fontWeight: 500, color: T.textSecondary }}>
+            по-добра структура, по-добро позициониране, по-добра оферта, по-добра стратегия.
+          </span>
+        </p>
+
+        <p
+          className="mt-6 text-center"
+          style={{ fontSize: "15px", color: T.textSecondary, lineHeight: 1.7 }}
+        >
+          Точно затова създадох{" "}
+          <strong style={{ color: T.textPrimary }}>
+            12-те дни Мастъркласове® за €34
+          </strong>{" "}
+          — пространство, в което да се подготвиш, да се подредиш вътрешно и да започнеш с увереност и фокус.
+        </p>
+
+        <div className="mt-10 text-center">
+          <a
+            href="#enroll"
+            className="mv-btn mv-btn-primary"
+            style={{ fontSize: "15px", padding: "16px 28px" }}
+          >
+            ГОТОВА СЪМ ДА ВЛЯЗА В 12-ТЕ МАСТЪРКЛАСА (€34)
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── FOR WHOM (DETAILED) ───────────────────────────────────────────── */
+function ForWhomDetailedSection() {
+  return (
+    <section
+      className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
+      style={{ backgroundColor: "#faf8f5" }}
+    >
+      <div className="reveal relative max-w-3xl mx-auto">
+        <div className="text-center mb-10">
+          <span className="mv-tag mv-tag-light">За кого</span>
+          <h2
+            className="mt-5"
+            style={{
+              fontSize: "clamp(1.8rem, 4vw, 3rem)",
+              fontWeight: 800,
+              color: T.textPrimary,
+              lineHeight: 1.15,
+              letterSpacing: "-0.02em",
+            }}
+          >
+            За кого са тези{" "}
+            <span style={{ ...GRADIENT_TEXT }}>12 дни Мастъркласове®</span>
+          </h2>
+        </div>
+
+        <p
+          className="mb-8"
+          style={{
+            fontSize: "16px",
+            color: T.textSecondary,
+            lineHeight: 1.75,
+            textAlign: "center",
+          }}
+        >
+          Този формат е създаден специално за{" "}
+          <strong style={{ color: T.textPrimary }}>жени</strong>, които работят в помощни и трансформиращи професии:{" "}
+          <em style={{ color: T.textPrimary }}>
+            терапевти, коучове, констелатори, нутриционисти, психолози, НЛП практици, астролози, родолози, консултанти
+          </em>{" "}
+          и жени предприемачи, които искат да изградят или развият своя онлайн бизнес.
+        </p>
+
+        <p
+          className="mb-4"
+          style={{ fontSize: "16px", color: T.textPrimary, fontWeight: 700 }}
+        >
+          Ако си една от жените, които:
+        </p>
+
+        <ul className="flex flex-col gap-2 mb-10" style={{ listStyle: "none", padding: 0, margin: 0 }}>
+          {forWhomChecklist.map((item) => (
+            <li
+              key={item}
+              className="flex gap-3 items-start p-3"
+              style={{
+                backgroundColor: "#ffffff",
+                borderRadius: "8px",
+                border: "1px solid rgba(107,21,14,0.06)",
+              }}
+            >
+              <span
+                style={{
+                  flexShrink: 0,
+                  marginTop: "3px",
+                }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#70150E" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+              </span>
+              <p style={{ fontSize: "15px", color: T.textPrimary, lineHeight: 1.6 }}>{item}</p>
+            </li>
+          ))}
+        </ul>
+
+        <p
+          className="text-center mb-8"
+          style={{ fontSize: "17px", color: T.textPrimary, fontWeight: 700 }}
+        >
+          …тогава тези 12 дни са{" "}
+          <span style={{ ...GRADIENT_TEXT }}>перфектното пространство за теб.</span>
+        </p>
+
+        <div
+          className="p-6"
+          style={{
+            background: "linear-gradient(135deg, #fff7f4 0%, #faf3e8 100%)",
+            borderRadius: "14px",
+            border: "1px solid rgba(107,21,14,0.16)",
+            textAlign: "center",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "13px",
+              fontWeight: 800,
+              color: "#70150E",
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              marginBottom: "14px",
+            }}
+          >
+            Тук ще намериш:
+          </p>
+          <div
+            className="flex flex-wrap justify-center gap-x-6 gap-y-2"
+            style={{ fontSize: "16px", fontWeight: 600, color: T.textPrimary }}
+          >
+            {forWhomFinds.map((item) => (
+              <span key={item}>✨ {item}</span>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-10 text-center">
+          <a
+            href="#enroll"
+            className="mv-btn mv-btn-primary"
+            style={{ fontSize: "15px", padding: "16px 28px" }}
+          >
+            ДА, ТОВА Е ЗА МЕН — ЗАПИСВАМ СЕ (€34)
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── WHAT MAKES IT DIFFERENT ───────────────────────────────────────── */
+function WhatMakesItDifferentSection() {
+  return (
+    <section
+      className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
+      style={{ backgroundColor: "#ffffff" }}
+    >
+      <div className="reveal relative max-w-3xl mx-auto">
+        <div className="text-center mb-10">
+          <span className="mv-tag mv-tag-light">Различното</span>
+          <h2
+            className="mt-5"
+            style={{
+              fontSize: "clamp(1.8rem, 4vw, 3rem)",
+              fontWeight: 800,
+              color: T.textPrimary,
+              lineHeight: 1.15,
+              letterSpacing: "-0.02em",
+            }}
+          >
+            Какво прави тези 12 дни{" "}
+            <span style={{ ...GRADIENT_TEXT }}>толкова различни</span>{" "}
+            — и толкова нужни точно сега
+          </h2>
+        </div>
+
+        <p
+          className="mb-3 text-center"
+          style={{ fontSize: "16px", color: T.textSecondary, lineHeight: 1.7 }}
+        >
+          Повечето онлайн обучения претоварват. Бързат. Обещават трансформация, но дават хаос.
+        </p>
+
+        <p
+          className="mb-10 text-center"
+          style={{ fontSize: "17px", color: T.textPrimary, lineHeight: 1.6, fontWeight: 600 }}
+        >
+          Тези 12 дни са създадени различно — не като „още информация“, а като{" "}
+          <span style={{ ...GRADIENT_TEXT }}>структурирано пространство за яснота и развитие.</span>
+        </p>
+
+        <div
+          className="p-6"
+          style={{
+            backgroundColor: T.surfaceStrong,
+            borderRadius: "14px",
+            border: "1px solid rgba(107,21,14,0.10)",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "13px",
+              fontWeight: 800,
+              color: "#70150E",
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              marginBottom: "14px",
+            }}
+          >
+            Това, което прави този формат уникален:
+          </p>
+          <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "10px" }}>
+            {whatMakesDifferent.map((item) => (
+              <li
+                key={item}
+                style={{
+                  fontSize: "16px",
+                  color: T.textPrimary,
+                  lineHeight: 1.55,
+                  fontWeight: 600,
+                }}
+              >
+                ✨ {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <p
+          className="mt-8 text-center"
+          style={{ fontSize: "17px", color: T.textPrimary, lineHeight: 1.55, fontWeight: 700 }}
+        >
+          Това не са просто 12 дни — това е{" "}
+          <span style={{ ...GRADIENT_TEXT }}>място, което създава яснота, движение и увереност.</span>
+        </p>
+
+        <div className="mt-10 text-center">
+          <a
+            href="#enroll"
+            className="mv-btn mv-btn-primary"
+            style={{ fontSize: "15px", padding: "16px 28px" }}
+          >
+            ИСКАМ ДА СЕ ПРИСЪЕДИНЯ (€34)
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── WHAT YOU'LL GET — CHECKLIST ───────────────────────────────────── */
+function WhatYouGetChecklistSection() {
+  return (
+    <section
+      className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
+      style={{ backgroundColor: "#faf8f5" }}
+    >
+      <div className="reveal relative max-w-3xl mx-auto">
+        <div className="text-center mb-10">
+          <span className="mv-tag mv-tag-light">Какво получаваш</span>
+          <h2
+            className="mt-5"
+            style={{
+              fontSize: "clamp(1.8rem, 4vw, 3rem)",
+              fontWeight: 800,
+              color: T.textPrimary,
+              lineHeight: 1.15,
+              letterSpacing: "-0.02em",
+            }}
+          >
+            Какво ще получиш в{" "}
+            <span style={{ ...GRADIENT_TEXT }}>тези 12 дни</span>
+          </h2>
+        </div>
+
+        <ul className="flex flex-col gap-3" style={{ listStyle: "none", padding: 0, margin: 0 }}>
+          {whatYouGetChecklist.map((item) => (
+            <li
+              key={item}
+              className="flex gap-3 items-start p-4"
+              style={{
+                backgroundColor: "#ffffff",
+                borderRadius: "10px",
+                border: "1px solid rgba(107,21,14,0.08)",
+              }}
+            >
+              <span
+                style={{
+                  flexShrink: 0,
+                  width: "22px",
+                  height: "22px",
+                  borderRadius: "50%",
+                  background: "linear-gradient(135deg, #70150E 0%, #c94535 100%)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginTop: "2px",
+                }}
+              >
+                <IconCheck dark />
+              </span>
+              <p style={{ fontSize: "15px", color: T.textPrimary, lineHeight: 1.6, fontWeight: 500 }}>
+                {item}
+              </p>
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-10 text-center">
+          <a
+            href="#enroll"
+            className="mv-btn mv-btn-primary"
+            style={{ fontSize: "15px", padding: "16px 28px" }}
+          >
+            ПРИСЪЕДИНЯВАМ СЕ (€34)
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── WHY WOMEN COME ────────────────────────────────────────────────── */
+function WhyWomenComeSection() {
+  return (
+    <section
+      className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
+      style={{ backgroundColor: "#ffffff" }}
+    >
+      <div className="reveal relative max-w-3xl mx-auto">
+        <div className="text-center mb-10">
+          <span className="mv-tag mv-tag-light">Защо точно тук</span>
+          <h2
+            className="mt-5"
+            style={{
+              fontSize: "clamp(1.8rem, 4vw, 3rem)",
+              fontWeight: 800,
+              color: T.textPrimary,
+              lineHeight: 1.15,
+              letterSpacing: "-0.02em",
+            }}
+          >
+            Защо жените{" "}
+            <span style={{ ...GRADIENT_TEXT }}>идват точно тук</span>
+          </h2>
+        </div>
+
+        <div
+          className="p-8"
+          style={{
+            background: "linear-gradient(135deg, #fff7f4 0%, #faf3e8 100%)",
+            borderRadius: "16px",
+            border: "1px solid rgba(107,21,14,0.16)",
+          }}
+        >
+          <ul
+            className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+            style={{ listStyle: "none", padding: 0, margin: 0 }}
+          >
+            {whyWomenCome.map((item) => (
+              <li
+                key={item}
+                style={{
+                  fontSize: "17px",
+                  color: T.textPrimary,
+                  fontWeight: 600,
+                  lineHeight: 1.4,
+                  textAlign: "center",
+                }}
+              >
+                ✨ {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="mt-10 text-center">
+          <a
+            href="#enroll"
+            className="mv-btn mv-btn-primary"
+            style={{ fontSize: "15px", padding: "16px 28px" }}
+          >
+            ИСКАМ ДА БЪДА ЧАСТ (€34)
+          </a>
         </div>
       </div>
     </section>
@@ -788,8 +1619,8 @@ function ValueStackSection() {
               letterSpacing: "-0.02em",
             }}
           >
-            Всичко,{" "}
-            <span style={{ ...GRADIENT_TEXT }}>което получаваш</span>
+            Стойността, която получаваш за €34, е{" "}
+            <span style={{ ...GRADIENT_TEXT }}>многократно по-голяма</span>
           </h2>
         </div>
 
@@ -897,7 +1728,7 @@ function ValueStackSection() {
                   lineHeight: 1,
                 }}
               >
-                €67
+                €34
               </span>
             </div>
           </div>
@@ -907,15 +1738,10 @@ function ValueStackSection() {
           <a
             href="#enroll"
             className="mv-btn mv-btn-primary"
-            style={{
-              fontSize: "16px",
-              padding: "16px 40px",
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "10px",
-            }}
+            style={{ fontSize: "15px", padding: "16px 28px" }}
           >
-            Искам да спра да оцелявам          </a>
+            ДА, ИСКАМ ДОСТЪП (€34)
+          </a>
         </div>
       </div>
     </section>
@@ -1120,15 +1946,10 @@ function CurriculumSection() {
           <a
             href="#enroll"
             className="mv-btn mv-btn-primary"
-            style={{
-              fontSize: "16px",
-              padding: "16px 44px",
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "10px",
-            }}
+            style={{ fontSize: "15px", padding: "16px 28px" }}
           >
-            Искам да спра да оцелявам          </a>
+            ОБИЧАМ ТЕЗИ ТЕМИ — ВКЛЮЧИ МЕ (€34)
+          </a>
         </div>
       </div>
     </section>
@@ -1213,9 +2034,11 @@ function AboutSection() {
           </div>
 
           <p className="mt-6" style={{ fontSize: "16px", color: T.textSecondary, lineHeight: 1.85 }}>
-            Работя с жени в трансформиращите професии от 11 години. Виждала
-            съм стотици терапевти, коучове и лечители отвътре и знам точно
-            кога и как се обръща.
+            Аз съм{" "}
+            <strong style={{ color: T.textPrimary }}>Станислава Павлова</strong>
+            , бизнес ментор и стратег, и помагам на жени в професии като
+            психолози, коучове, терапевти и още да изградят, структурират и
+            скалират своя онлайн бизнес с яснота, женска енергия и стабилност.
           </p>
 
           <p className="mt-4" style={{ fontSize: "16px", color: T.textSecondary, lineHeight: 1.85 }}>
@@ -1223,6 +2046,16 @@ function AboutSection() {
             изключват. Когато ги съчетаеш с правилната структура, резултатите
             идват естествено.
           </p>
+
+          <div className="mt-8">
+            <a
+              href="#enroll"
+              className="mv-btn mv-btn-primary"
+              style={{ fontSize: "15px", padding: "16px 28px" }}
+            >
+              ГОТОВА СЪМ ДА СЕ ПРИСЪЕДИНЯ (€34)
+            </a>
+          </div>
         </div>
         </div>
       </div>
@@ -1279,9 +2112,23 @@ function FinalCTASection() {
             letterSpacing: "-0.03em",
           }}
         >
-          Краят на{" "}
-          <span style={{ ...GRADIENT_TEXT }}>оцеляването.</span>
+          Твоят нов бизнес цикъл{" "}
+          <span style={{ ...GRADIENT_TEXT }}>започва тук.</span>
         </h2>
+        <p
+          className="mt-5"
+          style={{
+            fontSize: "17px",
+            color: T.textSecondary,
+            lineHeight: 1.55,
+            fontWeight: 600,
+          }}
+        >
+          12 дни. 12 теми.{" "}
+          <strong style={{ color: T.textPrimary }}>
+            12 стъпки, които ще те подредят отвътре навън.
+          </strong>
+        </p>
 
         <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
           <span
@@ -1321,7 +2168,7 @@ function FinalCTASection() {
                 textDecorationColor: "rgba(0,0,0,0.25)",
               }}
             >
-              €197
+              €67
             </span>
             <span
               style={{
@@ -1332,7 +2179,7 @@ function FinalCTASection() {
                 letterSpacing: "-0.03em",
               }}
             >
-              €67
+              €34
             </span>
           </div>
           <CountdownTimer />
@@ -1340,9 +2187,6 @@ function FinalCTASection() {
 
         <div className="flex flex-col items-center gap-4">
           <EnrollForm />
-          <p style={{ fontSize: "12px", color: T.textSecondary, fontWeight: 600 }}>
-            Сигурна транзакция · Потвърждение веднага
-          </p>
         </div>
       </div>
     </section>

@@ -30,9 +30,11 @@ const pad = (n: number) => n.toString().padStart(2, "0");
 interface CountdownProps {
   /** Compact = smaller cells, tighter for inline use next to a CTA. Default false. */
   compact?: boolean;
+  /** Bare = no wrapper background/border, no label header. For embedding in a card. */
+  bare?: boolean;
 }
 
-export function CountdownTimer({ compact = false }: CountdownProps = {}) {
+export function CountdownTimer({ compact = false, bare = false }: CountdownProps = {}) {
   // null on SSR + first paint to avoid hydration mismatch
   const [t, setT] = useState<TimeLeft | null>(null);
 
@@ -74,6 +76,29 @@ export function CountdownTimer({ compact = false }: CountdownProps = {}) {
     textTransform: "uppercase",
   };
 
+  const cells = (
+    <div style={{ display: "flex", gap: "6px", flexWrap: "nowrap" }}>
+      <div style={cellStyle}>
+        <span style={numStyle}>{pad(t.days)}</span>
+        <span style={lblStyle}>дни</span>
+      </div>
+      <div style={cellStyle}>
+        <span style={numStyle}>{pad(t.hours)}</span>
+        <span style={lblStyle}>часа</span>
+      </div>
+      <div style={cellStyle}>
+        <span style={numStyle}>{pad(t.mins)}</span>
+        <span style={lblStyle}>мин</span>
+      </div>
+      <div style={cellStyle}>
+        <span style={numStyle}>{pad(t.secs)}</span>
+        <span style={lblStyle}>сек</span>
+      </div>
+    </div>
+  );
+
+  if (bare) return cells;
+
   return (
     <div
       style={{
@@ -107,28 +132,10 @@ export function CountdownTimer({ compact = false }: CountdownProps = {}) {
             textTransform: "uppercase",
           }}
         >
-          Цената скача на 14 май → €197
+          Цената скача на 14 май → €67
         </span>
       </div>
-
-      <div style={{ display: "flex", gap: "6px", flexWrap: "nowrap" }}>
-        <div style={cellStyle}>
-          <span style={numStyle}>{pad(t.days)}</span>
-          <span style={lblStyle}>дни</span>
-        </div>
-        <div style={cellStyle}>
-          <span style={numStyle}>{pad(t.hours)}</span>
-          <span style={lblStyle}>часа</span>
-        </div>
-        <div style={cellStyle}>
-          <span style={numStyle}>{pad(t.mins)}</span>
-          <span style={lblStyle}>мин</span>
-        </div>
-        <div style={cellStyle}>
-          <span style={numStyle}>{pad(t.secs)}</span>
-          <span style={lblStyle}>сек</span>
-        </div>
-      </div>
+      {cells}
     </div>
   );
 }

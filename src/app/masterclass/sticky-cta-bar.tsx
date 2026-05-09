@@ -128,7 +128,7 @@ export function StickyCTABar() {
                   textDecorationColor: "rgba(0,0,0,0.3)",
                 }}
               >
-                €197
+                €67
               </span>
               <span
                 style={{
@@ -142,7 +142,7 @@ export function StickyCTABar() {
                   lineHeight: 1,
                 }}
               >
-                €67
+                €34
               </span>
             </div>
             <div
