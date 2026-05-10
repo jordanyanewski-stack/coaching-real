@@ -32,7 +32,7 @@ export function EnrollForm() {
         fields: Record<string, string>;
       };
 
-      trackInitiateCheckout(67);
+      trackInitiateCheckout(34);
 
       // Build hidden form and submit to myPOS
       const form = document.createElement('form');

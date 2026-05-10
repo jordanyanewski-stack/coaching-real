@@ -5,7 +5,7 @@ import { trackPurchase } from '@/app/pixel';
 
 export function TrackPurchase() {
   useEffect(() => {
-    trackPurchase(67);
+    trackPurchase(34);
   }, []);
   return null;
 }

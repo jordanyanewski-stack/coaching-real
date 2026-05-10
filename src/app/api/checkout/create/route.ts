@@ -14,7 +14,7 @@ export async function POST(request: NextRequest) {
   }
 
   const orderId = randomUUID();
-  const amount = (process.env.PRODUCT_PRICE ?? '97.00').trim();
+  const amount = (process.env.PRODUCT_PRICE ?? '34.00').trim();
   const currency = (process.env.PRODUCT_CURRENCY ?? 'EUR').trim();
   const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? '').trim();
   const customerIp =
