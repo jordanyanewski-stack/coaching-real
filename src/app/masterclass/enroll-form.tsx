@@ -208,6 +208,7 @@ function PaymentOption({
         borderRadius: '10px',
         cursor: 'pointer',
         transition: 'all 0.15s',
+        textAlign: 'left',
       }}
     >
       <input

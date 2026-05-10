@@ -456,6 +456,21 @@ html {
   }
 }
 
+/* ── Video testimonials horizontal scroller ─────────────────────────── */
+.mc-testimonials-scroll {
+  -ms-overflow-style: none;
+}
+.mc-testimonials-scroll::-webkit-scrollbar {
+  display: none;
+}
+@keyframes mcSwipeHintNudge {
+  0%, 100% { transform: translateX(0); }
+  50%      { transform: translateX(4px); }
+}
+.mc-swipe-hint {
+  animation: mcSwipeHintNudge 1.6s ease-in-out infinite;
+}
+
 /* ── Scroll reveal ─────────────────────────────────────────────────── */
 .reveal {
   opacity: 0;
