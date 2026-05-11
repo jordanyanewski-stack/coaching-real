@@ -410,7 +410,7 @@ const marqueeKeywords = [
   "Strengths Finder",
   "Ценностна матрица",
   "Skills Gap анализ",
-  "Личен бранд",
+  "Бранд одит",
   "SMART цели",
   "90-дневен план",
   "LinkedIn оптимизация",
