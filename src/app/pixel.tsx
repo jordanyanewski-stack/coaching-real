@@ -42,6 +42,12 @@ declare global {
   }
 }
 
+export function trackLead(contentName: string) {
+  if (typeof window !== 'undefined' && window.fbq) {
+    window.fbq('track', 'Lead', { content_name: contentName });
+  }
+}
+
 export function trackInitiateCheckout(value: number, currency = 'EUR') {
   if (typeof window !== 'undefined' && window.fbq) {
     window.fbq('track', 'InitiateCheckout', { value, currency });

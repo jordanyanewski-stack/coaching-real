@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { trackLead } from "@/app/pixel";
 
 interface FreeDayEnrollFormProps {
   variant?: "light" | "dark";
@@ -39,6 +40,8 @@ export function FreeDayEnrollForm({ variant = "light" }: FreeDayEnrollFormProps)
       setLoading(false);
       return;
     }
+
+    trackLead("AI Free Day");
 
     const params = new URLSearchParams({ name, email });
     router.push(`/ai-free-course/thank-you?${params.toString()}`);
