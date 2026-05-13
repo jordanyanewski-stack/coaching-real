@@ -24,7 +24,7 @@ export function FreeDayEnrollForm({ variant = "light" }: FreeDayEnrollFormProps)
     setLoading(true);
 
     try {
-      const res = await fetch("/api/ai-free-course/register", {
+      const res = await fetch("/api/career-free-course/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, name }),
@@ -44,7 +44,7 @@ export function FreeDayEnrollForm({ variant = "light" }: FreeDayEnrollFormProps)
     trackLead("AI Free Day");
 
     const params = new URLSearchParams({ name, email });
-    router.push(`/ai-free-course/thank-you?${params.toString()}`);
+    router.push(`/career-free-course/thank-you?${params.toString()}`);
   }
 
   const fieldStyle: React.CSSProperties = {

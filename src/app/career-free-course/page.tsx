@@ -1669,7 +1669,7 @@ function MentorSection() {
             }}
           >
             <Image
-              src="/ai-free-course/magdalena.jpg"
+              src="/career-free-course/magdalena.jpg"
               alt="Магдалена Пенчева — HR лидер с 17 години опит"
               fill
               sizes="(max-width: 1024px) 100vw, 420px"
