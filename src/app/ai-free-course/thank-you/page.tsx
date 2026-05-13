@@ -3,7 +3,7 @@ import { LOGO_URL, SiteFooter } from "@/app/_shared";
 
 export const metadata = {
   title: "Записа се успешно! · Моето кариерно развитие в ерата на AI",
-  description: "Добре дошла в Кариерното Пробуждане. Провери имейла си.",
+  description: "Добре дошъл/дошла в Кариерното Пробуждане. Провери имейла си.",
   robots: { index: false, follow: false },
 };
 
@@ -128,7 +128,7 @@ export default function FreeDayThankYouPage() {
               color: "#ffffff",
             }}
           >
-            Добре дошла{" "}
+            Добре дошъл/дошла{" "}
             <span
               style={{
                 background: "linear-gradient(135deg, #60a5fa 0%, #ffffff 100%)",
