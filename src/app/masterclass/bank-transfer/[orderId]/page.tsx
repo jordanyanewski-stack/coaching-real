@@ -132,7 +132,7 @@ export default async function BankTransferPage({ params }: { params: Promise<{ o
             }}
           >
             <strong style={{ color: '#4a3000' }}>Важно:</strong> Преводът трябва да достигне сметката
-            до <strong>14 май 2026 г.</strong>, за да заключим цената от <strong>€34</strong>.
+            до <strong>18 май 2026 г.</strong>, за да заключим цената от <strong>€34</strong>.
             След тази дата участието е €67.
           </div>
 

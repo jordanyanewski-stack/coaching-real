@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 
-/* Early-bird deadline: 14 May 2026 · 23:59:59 Sofia time (UTC+3 = EEST). */
-const DEADLINE_MS = Date.UTC(2026, 4, 14, 20, 59, 59);
+/* Early-bird deadline: 18 May 2026 · 23:59:59 Sofia time (UTC+3 = EEST). */
+const DEADLINE_MS = Date.UTC(2026, 4, 18, 20, 59, 59);
 
 interface TimeLeft {
   days: number;
@@ -132,7 +132,7 @@ export function CountdownTimer({ compact = false, bare = false }: CountdownProps
             textTransform: "uppercase",
           }}
         >
-          Цената скача на 14 май → €67
+          Цената скача на 18 май → €67
         </span>
       </div>
       {cells}

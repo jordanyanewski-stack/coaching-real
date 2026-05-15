@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const DEADLINE_MS = Date.UTC(2026, 4, 14, 20, 59, 59);
+const DEADLINE_MS = Date.UTC(2026, 4, 18, 20, 59, 59);
 
 interface TimeLeft {
   days: number;
