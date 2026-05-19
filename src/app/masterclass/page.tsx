@@ -390,31 +390,6 @@ function HeroSection() {
               maxWidth: "100%",
             }}
           >
-            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-              <span
-                style={{
-                  width: 8,
-                  height: 8,
-                  borderRadius: "50%",
-                  backgroundColor: "#c94535",
-                  flexShrink: 0,
-                  boxShadow: "0 0 0 3px rgba(201,69,53,0.20)",
-                  animation: "stickyDotPulse 1.6s ease-in-out infinite",
-                }}
-              />
-              <span
-                style={{
-                  fontSize: "11px",
-                  fontWeight: 800,
-                  color: "#70150E",
-                  letterSpacing: "0.10em",
-                  textTransform: "uppercase",
-                }}
-              >
-                Ранна цена · изтича на 18 май
-              </span>
-            </div>
-
             <div
               style={{
                 display: "flex",
