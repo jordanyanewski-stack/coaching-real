@@ -2,32 +2,10 @@
 
 import { useEffect, useState } from "react";
 
-const DEADLINE_MS = Date.UTC(2026, 4, 18, 20, 59, 59);
-
-interface TimeLeft {
-  days: number;
-  hours: number;
-  expired: boolean;
-}
-
-function calc(): TimeLeft {
-  const ms = DEADLINE_MS - Date.now();
-  if (ms <= 0) return { days: 0, hours: 0, expired: true };
-  return {
-    days: Math.floor(ms / (1000 * 60 * 60 * 24)),
-    hours: Math.floor((ms / (1000 * 60 * 60)) % 24),
-    expired: false,
-  };
-}
-
 export function StickyCTABar() {
   const [visible, setVisible] = useState(false);
-  const [t, setT] = useState<TimeLeft | null>(null);
 
   useEffect(() => {
-    setT(calc());
-    const tick = setInterval(() => setT(calc()), 60_000);
-
     const heroEl = document.querySelector(".mc-hero");
     const enrollEl = document.getElementById("enroll");
 
@@ -55,13 +33,10 @@ export function StickyCTABar() {
     if (enrollEl) enrollObs.observe(enrollEl);
 
     return () => {
-      clearInterval(tick);
       heroObs.disconnect();
       enrollObs.disconnect();
     };
   }, []);
-
-  if (!t || t.expired) return null;
 
   return (
     <div
@@ -121,17 +96,6 @@ export function StickyCTABar() {
             >
               <span
                 style={{
-                  fontSize: "13px",
-                  fontWeight: 600,
-                  color: "#595e67",
-                  textDecoration: "line-through",
-                  textDecorationColor: "rgba(0,0,0,0.3)",
-                }}
-              >
-                €67
-              </span>
-              <span
-                style={{
                   fontSize: "22px",
                   fontWeight: 900,
                   background: "linear-gradient(135deg, #70150E 0%, #c94535 100%)",
@@ -142,36 +106,17 @@ export function StickyCTABar() {
                   lineHeight: 1,
                 }}
               >
-                €34
+                €67
               </span>
-            </div>
-            <div
-              className="mc-sticky-countdown"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "6px",
-                fontSize: "12px",
-                fontWeight: 700,
-                color: "#70150E",
-                letterSpacing: "0.04em",
-                whiteSpace: "nowrap",
-                minWidth: 0,
-              }}
-            >
               <span
                 style={{
-                  width: 6,
-                  height: 6,
-                  borderRadius: "50%",
-                  backgroundColor: "#c94535",
-                  flexShrink: 0,
-                  boxShadow: "0 0 0 3px rgba(201,69,53,0.2)",
-                  animation: "stickyDotPulse 1.6s ease-in-out infinite",
+                  fontSize: "12px",
+                  fontWeight: 600,
+                  color: "#595e67",
+                  letterSpacing: "0.02em",
                 }}
-              />
-              <span style={{ overflow: "hidden", textOverflow: "ellipsis" }}>
-                Цената скача след {t.days}д {t.hours}ч
+              >
+                за 12 дни
               </span>
             </div>
           </div>
@@ -186,7 +131,7 @@ export function StickyCTABar() {
               whiteSpace: "nowrap",
             }}
           >
-Искам да спра да оцелявам - €34
+            Запиши се - €67
           </a>
         </div>
       </div>

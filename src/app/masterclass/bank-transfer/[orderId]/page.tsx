@@ -131,9 +131,9 @@ export default async function BankTransferPage({ params }: { params: Promise<{ o
               lineHeight: 1.6,
             }}
           >
-            <strong style={{ color: '#4a3000' }}>Важно:</strong> Преводът трябва да достигне сметката
-            до <strong>18 май 2026 г.</strong>, за да заключим цената от <strong>€34</strong>.
-            След тази дата участието е €67.
+            <strong style={{ color: '#4a3000' }}>Важно:</strong> Сумата за превод е <strong>€67</strong>.
+            Веднага щом получим плащането (1–2 работни дни), ще ти изпратим имейл с Zoom линка
+            и всички детайли за мастъркласа (18–29 май 2026).
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>

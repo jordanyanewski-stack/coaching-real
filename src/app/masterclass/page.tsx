@@ -4,13 +4,12 @@ import { FAQAccordion } from "./faq-accordion";
 import { ScrollReveal } from "./scroll-reveal";
 import { EnrollForm } from "./enroll-form";
 import { HeroVideo } from "./hero-video";
-import { CountdownTimer } from "./countdown-timer";
 import { StickyCTABar } from "./sticky-cta-bar";
 
 export const metadata = {
   title: "Дипломата ти виси на стената. А клиентите не идват. · 12 дни Мастъркласове® | Coaching Real",
   description:
-    "12 дни мастъркласове за терапевти, коучове и лечители — спри да чакаш препоръки, започни да привличаш клиенти онлайн. €34 ранна цена до 18 май. 18-29 май 2026.",
+    "12 дни мастъркласове за терапевти, коучове и лечители — спри да чакаш препоръки, започни да привличаш клиенти онлайн. €67 за всички 12 дни. 18-29 май 2026.",
 };
 
 /* ─── DATA ──────────────────────────────────────────────────────────── */
@@ -146,7 +145,7 @@ function CampaignHeader() {
         className="mv-btn mv-btn-primary"
         style={{ padding: "10px 22px", fontSize: "14px", flexShrink: 0 }}
       >
-        Искам клиенти онлайн - €34
+        Искам клиенти онлайн - €67
       </a>
     </header>
   );
@@ -437,57 +436,19 @@ function HeroSection() {
                   letterSpacing: "-0.04em",
                 }}
               >
-                €34
-              </span>
-              <span
-                style={{
-                  fontSize: "18px",
-                  fontWeight: 600,
-                  color: T.textSecondary,
-                  textDecoration: "line-through",
-                  textDecorationColor: "rgba(0,0,0,0.35)",
-                  lineHeight: 1,
-                }}
-              >
                 €67
               </span>
               <span
                 style={{
-                  fontSize: "11px",
-                  fontWeight: 700,
-                  color: "#70150E",
-                  backgroundColor: "rgba(232,80,80,0.16)",
-                  padding: "4px 9px",
-                  borderRadius: "6px",
-                  letterSpacing: "0.04em",
+                  fontSize: "13px",
+                  fontWeight: 600,
+                  color: T.textSecondary,
+                  letterSpacing: "0.02em",
                   alignSelf: "center",
                 }}
               >
-                Спести €33
+                за всички 12 дни
               </span>
-            </div>
-
-            <div
-              style={{
-                paddingTop: "16px",
-                borderTop: "1px dashed rgba(107,21,14,0.20)",
-                display: "flex",
-                flexDirection: "column",
-                gap: "8px",
-              }}
-            >
-              <span
-                style={{
-                  fontSize: "11px",
-                  fontWeight: 700,
-                  color: T.textSecondary,
-                  letterSpacing: "0.08em",
-                  textTransform: "uppercase",
-                }}
-              >
-                Цената скача след
-              </span>
-              <CountdownTimer bare />
             </div>
           </div>
 
@@ -892,7 +853,7 @@ function OutcomesSection() {
 
         <div className="mt-10 text-center">
           <a href="#enroll" className="mv-btn mv-btn-primary" style={{ fontSize: "15px", padding: "16px 28px" }}>
-            Искам тези резултати — €34 →
+            Искам тези резултати — €67 →
           </a>
         </div>
       </div>
@@ -1169,7 +1130,7 @@ function TestimonialsSection() {
             className="mv-btn mv-btn-primary"
             style={{ fontSize: "15px", display: "inline-flex", alignItems: "center", gap: "10px" }}
           >
-            Искам същите резултати - €34
+            Искам същите резултати - €67
           </a>
         </div>
       </div>
@@ -1272,7 +1233,7 @@ function CurriculumSection() {
 
         <div className="text-center mt-14">
           <a href="#enroll" className="mv-btn mv-btn-primary" style={{ fontSize: "15px", padding: "16px 28px" }}>
-            Искам да разбера защо нямам клиенти — €34 →
+            Искам да разбера защо нямам клиенти — €67 →
           </a>
         </div>
       </div>
@@ -1419,18 +1380,18 @@ function ValueStackSection() {
                   lineHeight: 1,
                 }}
               >
-                €34
+                €67
               </span>
               <span
                 style={{
-                  fontSize: "18px",
+                  fontSize: "13px",
                   fontWeight: 600,
                   color: T.textSecondary,
-                  textDecoration: "line-through",
-                  textDecorationColor: "rgba(0,0,0,0.30)",
+                  letterSpacing: "0.02em",
+                  alignSelf: "center",
                 }}
               >
-                €67
+                за всички 12 дни
               </span>
             </div>
             <a
@@ -1737,17 +1698,6 @@ function FinalCTASection() {
           <div className="flex items-baseline gap-3">
             <span
               style={{
-                fontSize: "18px",
-                fontWeight: 600,
-                color: T.textSecondary,
-                textDecoration: "line-through",
-                textDecorationColor: "rgba(0,0,0,0.25)",
-              }}
-            >
-              €67
-            </span>
-            <span
-              style={{
                 fontSize: "clamp(2.4rem, 5vw, 3.6rem)",
                 fontWeight: 900,
                 color: T.textPrimary,
@@ -1755,20 +1705,19 @@ function FinalCTASection() {
                 letterSpacing: "-0.03em",
               }}
             >
-              €34
+              €67
             </span>
             <span
               style={{
-                fontSize: "12px",
-                fontWeight: 700,
+                fontSize: "13px",
+                fontWeight: 600,
                 color: T.textSecondary,
                 letterSpacing: "0.02em",
               }}
             >
-              до 18 май
+              за всички 12 дни
             </span>
           </div>
-          <CountdownTimer />
         </div>
 
         <div className="flex flex-col items-center gap-4">

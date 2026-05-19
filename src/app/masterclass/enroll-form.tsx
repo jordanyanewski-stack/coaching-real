@@ -32,7 +32,7 @@ export function EnrollForm() {
         }
 
         const { orderId } = await res.json() as { orderId: string };
-        trackInitiateCheckout(34);
+        trackInitiateCheckout(67);
         window.location.href = `/masterclass/bank-transfer/${orderId}`;
         return;
       }
@@ -53,7 +53,7 @@ export function EnrollForm() {
         fields: Record<string, string>;
       };
 
-      trackInitiateCheckout(34);
+      trackInitiateCheckout(67);
 
       // Build hidden form and submit to myPOS
       const form = document.createElement('form');
