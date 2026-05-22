@@ -1,4 +1,5 @@
 import { getDb } from '@/lib/db';
+import { sanitizeBlogHtml } from '@/lib/sanitize';
 
 export type Post = {
   slug: string;
@@ -90,6 +91,7 @@ export interface UpsertPostInput {
 
 export async function createPost(input: UpsertPostInput): Promise<void> {
   const sql = getDb();
+  const safeContent = sanitizeBlogHtml(input.content);
   await sql`
     INSERT INTO blog_posts (slug, title, excerpt, cover, date_label, category, read_min, content, published, sort_at)
     VALUES (
@@ -100,7 +102,7 @@ export async function createPost(input: UpsertPostInput): Promise<void> {
       ${input.date},
       ${input.category},
       ${input.readMin},
-      ${input.content},
+      ${safeContent},
       ${input.published},
       ${input.sortAt ?? new Date().toISOString()}
     )
@@ -109,6 +111,7 @@ export async function createPost(input: UpsertPostInput): Promise<void> {
 
 export async function updatePost(slug: string, input: UpsertPostInput): Promise<void> {
   const sql = getDb();
+  const safeContent = sanitizeBlogHtml(input.content);
   await sql`
     UPDATE blog_posts SET
       slug       = ${input.slug},
@@ -118,7 +121,7 @@ export async function updatePost(slug: string, input: UpsertPostInput): Promise<
       date_label = ${input.date},
       category   = ${input.category},
       read_min   = ${input.readMin},
-      content    = ${input.content},
+      content    = ${safeContent},
       published  = ${input.published},
       sort_at    = COALESCE(${input.sortAt ?? null}, sort_at),
       updated_at = now()

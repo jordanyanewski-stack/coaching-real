@@ -1,7 +1,8 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { T, GRADIENT_TEXT, SiteNav, SiteFooter } from "@/app/_shared";
+import { T, SiteNav, SiteFooter } from "@/app/_shared";
 import { getPost } from "@/lib/blog-posts";
+import { sanitizeBlogHtml } from "@/lib/sanitize";
 
 export const dynamic = "force-dynamic";
 
@@ -139,7 +140,7 @@ export default async function PostPage({
         >
           <div
             className="blog-content"
-            dangerouslySetInnerHTML={{ __html: post.content }}
+            dangerouslySetInnerHTML={{ __html: sanitizeBlogHtml(post.content) }}
           />
         </div>
       </article>
@@ -160,13 +161,13 @@ export default async function PostPage({
             style={{
               fontSize: "clamp(1.6rem, 4vw, 2.6rem)",
               fontWeight: 900,
-              color: "#ffffff",
+              color: T.textPrimary,
               lineHeight: 1.15,
               letterSpacing: "-0.02em",
             }}
           >
             Направи следващата си стъпка{" "}
-            <span style={{ color: "#e85050" }}>
+            <span style={{ color: "#70150E" }}>
               запази безплатна стратегическа сесия.
             </span>
           </h2>

@@ -22,10 +22,8 @@ function requireEnv(name: string): string {
 function sanitizeFilename(original: string, prefix = ''): string {
   const dot = original.lastIndexOf('.');
   const ext = dot >= 0 ? original.slice(dot).toLowerCase() : '';
-  // Random 12-char base — avoids collisions, hides original name from URL.
-  const rand = Array.from({ length: 12 }, () =>
-    'abcdefghijklmnopqrstuvwxyz0123456789'.charAt(Math.floor(Math.random() * 36))
-  ).join('');
+  // 12 chars from a UUID — collision-resistant, hides original name from URL.
+  const rand = crypto.randomUUID().replace(/-/g, '').slice(0, 12);
   return `${prefix}${rand}${ext}`;
 }
 

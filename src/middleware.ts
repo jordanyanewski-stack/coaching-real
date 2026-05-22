@@ -1,6 +1,21 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
 import { NextResponse, type NextRequest } from 'next/server';
 
+// Edge-runtime-safe constant-time equality. Node's crypto.timingSafeEqual
+// isn't available here, so XOR every byte regardless of length so the
+// observable timing doesn't leak how far the prefix matched.
+function constantTimeEqual(a: string, b: string): boolean {
+  const enc = new TextEncoder();
+  const aBuf = enc.encode(a);
+  const bBuf = enc.encode(b);
+  let mismatch = aBuf.length === bBuf.length ? 0 : 1;
+  const len = Math.max(aBuf.length, bBuf.length);
+  for (let i = 0; i < len; i++) {
+    mismatch |= (aBuf[i] ?? 0) ^ (bBuf[i] ?? 0);
+  }
+  return mismatch === 0;
+}
+
 function isAdminAuthorized(request: NextRequest): boolean {
   const expected = (process.env.ADMIN_PASSWORD ?? '').trim();
   if (!expected) return false;
@@ -11,7 +26,8 @@ function isAdminAuthorized(request: NextRequest): boolean {
   try {
     const decoded = atob(header.slice(6));
     const [, password] = decoded.split(':');
-    return password === expected;
+    if (!password) return false;
+    return constantTimeEqual(password, expected);
   } catch {
     return false;
   }

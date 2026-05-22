@@ -3,9 +3,16 @@
 import { useEffect } from 'react';
 import { trackPurchase } from '@/app/pixel';
 
-export function TrackPurchase() {
+interface Props {
+  value: number;
+  currency?: string;
+}
+
+export function TrackPurchase({ value, currency = 'EUR' }: Props) {
   useEffect(() => {
-    trackPurchase(34);
-  }, []);
+    // No-op if value is missing or invalid (don't fire bogus events).
+    if (!Number.isFinite(value) || value <= 0) return;
+    trackPurchase(value, currency);
+  }, [value, currency]);
   return null;
 }
