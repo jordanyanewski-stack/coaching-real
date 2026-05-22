@@ -25,9 +25,12 @@ export async function addToPending(email: string, name: string) {
   });
 }
 
-export async function moveToPaid(email: string) {
+export async function moveToPaid(email: string, paidGroupId: string) {
   const pendingGroupId = (process.env.MAILERLITE_PENDING_GROUP_ID ?? '').trim();
-  const paidGroupId    = (process.env.MAILERLITE_PAID_GROUP_ID ?? '').trim();
+
+  if (!paidGroupId) {
+    throw new Error('moveToPaid called without a paid group id');
+  }
 
   const data = await request(`/subscribers/${encodeURIComponent(email)}`, 'GET');
   const subscriberId = data.data?.id;

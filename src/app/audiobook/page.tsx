@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { T, onDark, PHOTO_URL, GRADIENT_TEXT, SiteNav, SiteFooter } from "@/app/_shared";
+import { EnrollForm } from "../masterclass/enroll-form";
 
 export const metadata = {
   title: "Аудиокнига: Дигитален Успех за Холистични Лидери | Coaching Real",
@@ -482,7 +483,6 @@ function HeroSection() {
 function LearnSection() {
   return (
     <section
-      id="buy"
       className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
       style={{ backgroundColor: "#faf8f5" }}
     >
@@ -1132,6 +1132,7 @@ function BonusesSection() {
 function FinalCTASection() {
   return (
     <section
+      id="buy"
       className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
       style={{ backgroundColor: "#faf8f5" }}
     >
@@ -1197,20 +1198,8 @@ function FinalCTASection() {
           </div>
         </div>
 
-        <div>
-          <a
-            href="#buy"
-            className="mv-btn mv-btn-primary"
-            style={{ fontSize: "17px", padding: "18px 52px" }}
-          >
-            Добавяне в количката →
-          </a>
-          <p
-            className="mt-5"
-            style={{ fontSize: "13px", color: onDark.muted }}
-          >
-            Сигурна транзакция · Незабавен достъп
-          </p>
+        <div className="flex justify-center">
+          <EnrollForm product="audiobook" />
         </div>
       </div>
     </section>

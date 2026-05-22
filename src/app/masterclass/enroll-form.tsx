@@ -2,16 +2,23 @@
 
 import { useState, useRef } from 'react';
 import { trackInitiateCheckout } from '@/app/pixel';
+import { PRODUCTS, type ProductSlug } from '@/lib/products';
 
 type PaymentMethod = 'card' | 'bank';
 
-export function EnrollForm() {
+interface EnrollFormProps {
+  product?: ProductSlug;
+}
+
+export function EnrollForm({ product = 'masterclass' }: EnrollFormProps) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [method, setMethod] = useState<PaymentMethod>('card');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const formRef = useRef<HTMLFormElement>(null);
+  const priceForPixel = parseFloat(PRODUCTS[product].price);
+  const supportsBank = PRODUCTS[product].supportsBankTransfer;
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -23,7 +30,7 @@ export function EnrollForm() {
         const res = await fetch('/api/checkout/bank-transfer', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, email }),
+          body: JSON.stringify({ name, email, product }),
         });
 
         if (!res.ok) {
@@ -32,15 +39,15 @@ export function EnrollForm() {
         }
 
         const { orderId } = await res.json() as { orderId: string };
-        trackInitiateCheckout(67);
-        window.location.href = `/masterclass/bank-transfer/${orderId}`;
+        trackInitiateCheckout(priceForPixel);
+        window.location.href = `/bank-transfer/${orderId}`;
         return;
       }
 
       const res = await fetch('/api/checkout/create', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email }),
+        body: JSON.stringify({ name, email, product }),
       });
 
       if (!res.ok) {
@@ -53,7 +60,7 @@ export function EnrollForm() {
         fields: Record<string, string>;
       };
 
-      trackInitiateCheckout(67);
+      trackInitiateCheckout(priceForPixel);
 
       // Build hidden form and submit to myPOS
       const form = document.createElement('form');
@@ -113,44 +120,46 @@ export function EnrollForm() {
           onBlur={(e) => (e.target.style.borderColor = 'rgba(107,21,14,0.18)')}
         />
 
-        <fieldset
-          disabled={loading}
-          style={{
-            border: 'none',
-            padding: 0,
-            margin: '4px 0 0',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '8px',
-          }}
-        >
-          <legend
+        {supportsBank && (
+          <fieldset
+            disabled={loading}
             style={{
-              fontSize: '11px',
-              fontWeight: 700,
-              letterSpacing: '0.08em',
-              textTransform: 'uppercase',
-              color: 'rgba(0,0,0,0.5)',
+              border: 'none',
               padding: 0,
-              marginBottom: '4px',
+              margin: '4px 0 0',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '8px',
             }}
           >
-            Начин на плащане
-          </legend>
+            <legend
+              style={{
+                fontSize: '11px',
+                fontWeight: 700,
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                color: 'rgba(0,0,0,0.5)',
+                padding: 0,
+                marginBottom: '4px',
+              }}
+            >
+              Начин на плащане
+            </legend>
 
-          <PaymentOption
-            checked={method === 'card'}
-            onSelect={() => setMethod('card')}
-            title="Плати с карта"
-            subtitle="Мигновен достъп · Visa / Mastercard"
-          />
-          <PaymentOption
-            checked={method === 'bank'}
-            onSelect={() => setMethod('bank')}
-            title="Банков превод"
-            subtitle="Потвърждение в рамките на 1–2 работни дни"
-          />
-        </fieldset>
+            <PaymentOption
+              checked={method === 'card'}
+              onSelect={() => setMethod('card')}
+              title="Плати с карта"
+              subtitle="Мигновен достъп · Visa / Mastercard"
+            />
+            <PaymentOption
+              checked={method === 'bank'}
+              onSelect={() => setMethod('bank')}
+              title="Банков превод"
+              subtitle="Потвърждение в рамките на 1–2 работни дни"
+            />
+          </fieldset>
+        )}
 
         {error && (
           <p style={{ fontSize: '13px', color: '#c94535', margin: 0 }}>{error}</p>

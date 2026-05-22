@@ -1696,7 +1696,7 @@ function FinalCTASection() {
         </div>
 
         <div className="flex flex-col items-center gap-4">
-          <EnrollForm />
+          <EnrollForm product="masterclass" />
         </div>
 
         {/* Trust strip */}

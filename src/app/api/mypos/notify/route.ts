@@ -5,6 +5,7 @@ import { clerkClient } from '@clerk/nextjs/server';
 import { getDb } from '@/lib/db';
 import { moveToPaid } from '@/lib/mailerlite';
 import { verifyNotify } from '@/lib/mypos';
+import { getPaidGroupId, getProduct, type ProductSlug } from '@/lib/products';
 
 async function inviteIfNewBuyer(email: string) {
   if (!email) return;
@@ -51,19 +52,39 @@ export async function POST(request: NextRequest) {
     `;
 
     const rows = await sql`
-      SELECT email FROM orders WHERE mypos_order_id = ${OrderID}
-    ` as { email: string }[];
+      SELECT email, product FROM orders WHERE mypos_order_id = ${OrderID}
+    ` as { email: string; product: string }[];
 
-    if (rows[0]?.email) {
-      try {
-        await moveToPaid(rows[0].email);
-      } catch (err) {
-        console.error('[myPOS notify] MailerLite moveToPaid FAILED', {
-          email: rows[0].email,
-          error: (err as Error).message,
+    const row = rows[0];
+    if (row?.email) {
+      const product = getProduct(row.product);
+      if (product) {
+        const paidGroupId = getPaidGroupId(product.slug as ProductSlug);
+        if (paidGroupId) {
+          try {
+            await moveToPaid(row.email, paidGroupId);
+          } catch (err) {
+            console.error('[myPOS notify] MailerLite moveToPaid FAILED', {
+              email: row.email,
+              product: product.slug,
+              error: (err as Error).message,
+            });
+          }
+        } else {
+          console.error('[myPOS notify] Missing paid group id env var', {
+            email: row.email,
+            product: product.slug,
+            envVar: product.mlPaidGroupIdEnv,
+          });
+        }
+      } else {
+        console.error('[myPOS notify] Unknown product on paid order', {
+          email: row.email,
+          product: row.product,
+          orderId: OrderID,
         });
       }
-      await inviteIfNewBuyer(rows[0].email);
+      await inviteIfNewBuyer(row.email);
     }
   } else if (IPCmethod === 'IPCPurchaseRollback' || IPCmethod === 'IPCPurchaseCancel') {
     await sql`
