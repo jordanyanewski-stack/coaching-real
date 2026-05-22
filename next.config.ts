@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "coachingreallive.com",
       },
+      {
+        protocol: "https",
+        hostname: "coaching-real.b-cdn.net",
+      },
     ],
   },
   async redirects() {

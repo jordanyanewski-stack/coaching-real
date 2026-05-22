@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { auth, currentUser } from "@clerk/nextjs/server";
 import { UserButton } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
@@ -127,48 +128,71 @@ export default async function DashboardPage() {
                 padding: "28px",
               }}
             >
-              <div className="flex items-center justify-between mb-6 flex-wrap gap-3">
-                <h2
+              <div className="flex gap-6 items-start flex-wrap">
+                <div
                   style={{
-                    fontSize: "20px",
-                    fontWeight: 800,
-                    color: "#0f131a",
-                    letterSpacing: "-0.01em",
+                    position: "relative",
+                    width: "140px",
+                    height: "140px",
+                    flexShrink: 0,
+                    borderRadius: "12px",
+                    overflow: "hidden",
+                    boxShadow: "0 6px 24px rgba(15,19,26,0.12)",
                   }}
                 >
-                  Аудиокнига · Дигитален Успех
-                </h2>
-                <span
-                  style={{
-                    fontSize: "11px",
-                    fontWeight: 700,
-                    color: "#15803d",
-                    backgroundColor: "rgba(34,197,94,0.12)",
-                    padding: "4px 10px",
-                    borderRadius: "999px",
-                    letterSpacing: "0.04em",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  Достъпно
-                </span>
+                  <Image
+                    src="https://coaching-real.b-cdn.net/9ff8bd87-324a-4212-a909-a8c70ebc1365.png"
+                    alt="Аудиокнига · Дигитален Успех"
+                    fill
+                    sizes="140px"
+                    style={{ objectFit: "cover" }}
+                  />
+                </div>
+                <div style={{ flex: 1, minWidth: "260px" }}>
+                  <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
+                    <h2
+                      style={{
+                        fontSize: "20px",
+                        fontWeight: 800,
+                        color: "#0f131a",
+                        letterSpacing: "-0.01em",
+                      }}
+                    >
+                      Аудиокнига · Дигитален Успех
+                    </h2>
+                    <span
+                      style={{
+                        fontSize: "11px",
+                        fontWeight: 700,
+                        color: "#15803d",
+                        backgroundColor: "rgba(34,197,94,0.12)",
+                        padding: "4px 10px",
+                        borderRadius: "999px",
+                        letterSpacing: "0.04em",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      Достъпно
+                    </span>
+                  </div>
+                  <audio
+                    src="/api/audiobook/stream"
+                    controls
+                    controlsList="nodownload noplaybackrate"
+                    preload="metadata"
+                    style={{ width: "100%" }}
+                  />
+                  <p
+                    style={{
+                      fontSize: "12px",
+                      color: "rgba(15,19,26,0.5)",
+                      marginTop: "12px",
+                    }}
+                  >
+                    Стрийминг достъп · Без download. Слушай директно от профила си когато искаш.
+                  </p>
+                </div>
               </div>
-              <audio
-                src="/api/audiobook/stream"
-                controls
-                controlsList="nodownload noplaybackrate"
-                preload="metadata"
-                style={{ width: "100%" }}
-              />
-              <p
-                style={{
-                  fontSize: "12px",
-                  color: "rgba(15,19,26,0.5)",
-                  marginTop: "12px",
-                }}
-              >
-                Стрийминг достъп · Без download. Слушай директно от профила си когато искаш.
-              </p>
             </section>
           )}
 
