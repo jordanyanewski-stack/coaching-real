@@ -24,6 +24,8 @@ export interface Product {
     nextStepCopy: string;
   };
   mlPaidGroupIdEnv: string;
+  /** Filename in Bunny storage. Streamed via /api/audiobook/stream after gate check. */
+  bunnyFile?: string;
 }
 
 export const PRODUCTS: Record<ProductSlug, Product> = {
@@ -51,9 +53,10 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
       referencePrefix: 'Аудиокнига',
       productLabel: 'Аудиокнига: Дигитален Успех',
       nextStepCopy:
-        'Имейлът съдържа линк за сваляне на аудиокнигата и достъп до бонусите.',
+        'След потвърждението ще получиш достъп до аудиокнигата в профила си в coachingreallive.com/dashboard.',
     },
     mlPaidGroupIdEnv: 'MAILERLITE_AUDIOBOOK_PAID_GROUP_ID',
+    bunnyFile: 'stasi-audiobook.mp3',
   },
   'career-course': {
     slug: 'career-course',

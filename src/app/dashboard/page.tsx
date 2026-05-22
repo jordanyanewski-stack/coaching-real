@@ -18,6 +18,7 @@ type Order = {
   amount: string;
   currency: string;
   status: string;
+  product: string;
   created_at: string;
 };
 
@@ -46,6 +47,7 @@ async function loadOrdersForUser(userId: string, email: string | null): Promise<
       amount::text AS amount,
       currency,
       status,
+      product,
       created_at
     FROM orders
     WHERE user_id = ${userId} OR (${e} <> '' AND lower(email) = ${e})
@@ -67,6 +69,7 @@ export default async function DashboardPage() {
 
   const orders = await loadOrdersForUser(userId, primaryEmail);
   const paidOrders = orders.filter(o => o.status === "paid");
+  const hasPaidAudiobook = paidOrders.some(o => o.product === "audiobook");
 
   return (
     <div style={{ fontFamily: "var(--font-mv, sans-serif)" }}>
@@ -186,22 +189,80 @@ export default async function DashboardPage() {
             )}
           </section>
 
-          {/* Future-content placeholder */}
-          <section className="mt-8">
-            <div
+          {/* Audiobook player — visible only for paid audiobook customers */}
+          {hasPaidAudiobook && (
+            <section
+              className="mt-8"
               style={{
-                backgroundColor: "rgba(112,21,14,0.04)",
-                border: "1px dashed rgba(112,21,14,0.2)",
+                backgroundColor: "#ffffff",
+                border: "1px solid rgba(15,19,26,0.07)",
                 borderRadius: "14px",
-                padding: "24px",
-                fontSize: "13px",
-                color: "rgba(15,19,26,0.6)",
-                lineHeight: 1.7,
+                padding: "28px",
               }}
             >
-              <strong style={{ color: "#70150E" }}>Скоро тук:</strong> директен достъп до аудиокниги и видео уроци за курсовете, които си закупил/а.
-            </div>
-          </section>
+              <div className="flex items-center justify-between mb-6 flex-wrap gap-3">
+                <h2
+                  style={{
+                    fontSize: "20px",
+                    fontWeight: 800,
+                    color: "#0f131a",
+                    letterSpacing: "-0.01em",
+                  }}
+                >
+                  Аудиокнига · Дигитален Успех
+                </h2>
+                <span
+                  style={{
+                    fontSize: "11px",
+                    fontWeight: 700,
+                    color: "#15803d",
+                    backgroundColor: "rgba(34,197,94,0.12)",
+                    padding: "4px 10px",
+                    borderRadius: "999px",
+                    letterSpacing: "0.04em",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  Достъпно
+                </span>
+              </div>
+              <audio
+                src="/api/audiobook/stream"
+                controls
+                controlsList="nodownload noplaybackrate"
+                preload="metadata"
+                style={{ width: "100%" }}
+              />
+              <p
+                style={{
+                  fontSize: "12px",
+                  color: "rgba(15,19,26,0.5)",
+                  marginTop: "12px",
+                }}
+              >
+                Стрийминг достъп · Без download. Слушай директно от профила си когато искаш.
+              </p>
+            </section>
+          )}
+
+          {/* Placeholder for users without paid audiobook */}
+          {!hasPaidAudiobook && (
+            <section className="mt-8">
+              <div
+                style={{
+                  backgroundColor: "rgba(112,21,14,0.04)",
+                  border: "1px dashed rgba(112,21,14,0.2)",
+                  borderRadius: "14px",
+                  padding: "24px",
+                  fontSize: "13px",
+                  color: "rgba(15,19,26,0.6)",
+                  lineHeight: 1.7,
+                }}
+              >
+                <strong style={{ color: "#70150E" }}>Скоро тук:</strong> директен достъп до аудиокниги и видео уроци за курсовете, които си закупил/а.
+              </div>
+            </section>
+          )}
         </div>
       </main>
       <SiteFooter />
