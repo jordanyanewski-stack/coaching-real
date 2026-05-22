@@ -32,8 +32,8 @@ export default clerkMiddleware(async (auth, request) => {
     return NextResponse.redirect(request.nextUrl, 303);
   }
 
-  // Basic-auth gate for /admin (separate from Clerk auth).
-  if (pathname.startsWith('/admin')) {
+  // Basic-auth gate for /admin and /api/admin (separate from Clerk auth).
+  if (pathname.startsWith('/admin') || pathname.startsWith('/api/admin')) {
     if (!isAdminAuthorized(request)) {
       return new NextResponse('Authentication required', {
         status: 401,

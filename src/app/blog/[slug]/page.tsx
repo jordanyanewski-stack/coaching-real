@@ -1,11 +1,9 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { T, GRADIENT_TEXT, SiteNav, SiteFooter } from "@/app/_shared";
-import { POSTS, getPost } from "../_posts";
+import { getPost } from "@/lib/blog-posts";
 
-export function generateStaticParams() {
-  return POSTS.map((p) => ({ slug: p.slug }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
@@ -13,7 +11,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = getPost(slug);
+  const post = await getPost(slug);
   if (!post) return {};
   return {
     title: `${post.title} – Coaching Real`,
@@ -28,7 +26,7 @@ export default async function PostPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = getPost(slug);
+  const post = await getPost(slug);
   if (!post) notFound();
 
   return (

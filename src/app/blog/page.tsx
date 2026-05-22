@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { T, GRADIENT_TEXT, SiteNav, SiteFooter } from "@/app/_shared";
-import { POSTS, type Post } from "./_posts";
+import { listPublishedPosts, type Post } from "@/lib/blog-posts";
 
 export const metadata = {
   title: "Блог – Coaching Real",
@@ -8,8 +8,11 @@ export const metadata = {
     "Статии, стратегии и вдъхновение за холистични предприемачи, коучове и терапевти, готови да изградят устойчив онлайн бизнес.",
 };
 
+export const dynamic = "force-dynamic";
+
 /* ─── PAGE ─────────────────────────────────────────────────────────── */
-export default function BlogPage() {
+export default async function BlogPage() {
+  const posts = await listPublishedPosts();
   return (
     <div
       style={{
@@ -20,7 +23,7 @@ export default function BlogPage() {
     >
       <SiteNav />
       <PageHero />
-      <PostsGrid posts={POSTS} />
+      <PostsGrid posts={posts} />
       <SiteFooter />
     </div>
   );
