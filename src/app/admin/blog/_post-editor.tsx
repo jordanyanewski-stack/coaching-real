@@ -194,7 +194,7 @@ export function PostEditor({ defaults, submitLabel, onSubmit, onDelete }: PostEd
           </Field>
 
           <Field label="Slug (URL)">
-            <input name="slug" value={slug} onChange={e => onSlugChange(e.target.value)} required pattern="[a-z0-9-]+" style={{ ...inputStyle, fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace', fontSize: '13px' }} />
+            <input name="slug" value={slug} onChange={e => onSlugChange(e.target.value)} required pattern="[-a-z0-9]+" style={{ ...inputStyle, fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace', fontSize: '13px' }} />
             <p style={{ fontSize: '11px', color: 'rgba(0,0,0,0.45)', marginTop: '4px' }}>
               Само малки латински букви, цифри и тирета. Ще се появи на /blog/{slug || '...'}.
             </p>

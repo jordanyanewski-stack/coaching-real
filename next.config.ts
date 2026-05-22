@@ -1,6 +1,19 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  experimental: {
+    serverActions: {
+      // Server-action POSTs hit the bare apex `coachingreallive.com`, but
+      // Vercel may set forwarded-host or x-vercel-deployment-url that
+      // doesn't match Origin exactly. Whitelist all hostnames the site
+      // is served from so Next doesn't return 403 on action submission.
+      allowedOrigins: [
+        "coachingreallive.com",
+        "www.coachingreallive.com",
+        "*.vercel.app",
+      ],
+    },
+  },
   images: {
     remotePatterns: [
       {
