@@ -1,13 +1,17 @@
+import { cache } from 'react';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { LOGO_URL, SiteFooter } from '@/app/_shared';
 import { getDb } from '@/lib/db';
 import { getProduct, type Product } from '@/lib/products';
+import { cleanEnv } from '@/lib/validators';
 import { CopyButton } from './copy-button';
 
-const IBAN = 'BG69UNCR70001525696890';
-const ACCOUNT_HOLDER = 'БИЗНЕС МАЙНД КОУЧИНГ ЕООД';
-const BIC = 'UNCRBGSF';
+// Override with env vars when the bank account changes. Defaults preserve the
+// current live values so a missing env doesn't break production.
+const IBAN = cleanEnv(process.env.BANK_TRANSFER_IBAN) || 'BG69UNCR70001525696890';
+const ACCOUNT_HOLDER = cleanEnv(process.env.BANK_TRANSFER_HOLDER) || 'БИЗНЕС МАЙНД КОУЧИНГ ЕООД';
+const BIC = cleanEnv(process.env.BANK_TRANSFER_BIC) || 'UNCRBGSF';
 
 type Order = {
   name: string;
@@ -18,7 +22,9 @@ type Order = {
   product: string;
 };
 
-async function loadOrder(orderId: string): Promise<Order | null> {
+// React's per-request cache de-dupes the call between generateMetadata and the
+// page render, so we don't hit the DB twice for the same order on one request.
+const loadOrder = cache(async (orderId: string): Promise<Order | null> => {
   const sql = getDb();
   const rows = await sql`
     SELECT name, email, amount::text AS amount, currency, status, product
@@ -27,7 +33,7 @@ async function loadOrder(orderId: string): Promise<Order | null> {
     LIMIT 1
   ` as Order[];
   return rows[0] ?? null;
-}
+});
 
 function formatAmount(amount: string, currency: string): string {
   const n = parseFloat(amount);

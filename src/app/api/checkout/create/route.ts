@@ -6,8 +6,18 @@ import { getDb } from '@/lib/db';
 import { addToPending } from '@/lib/mailerlite';
 import { buildPurchaseParams } from '@/lib/mypos';
 import { getPendingGroupId, getProduct } from '@/lib/products';
+import { checkRateLimit, clientIp, rateLimitResponse } from '@/lib/rate-limit';
+import { emailLooksValid, normalizeEmail } from '@/lib/validators';
 
 export async function POST(request: NextRequest) {
+  const ip = clientIp(request);
+  const rate = checkRateLimit({
+    key: `checkout-create:${ip}`,
+    limit: 10,            // 10 attempts
+    windowMs: 60 * 1000,  // per minute
+  });
+  if (!rate.ok) return rateLimitResponse(rate.retryAfter);
+
   const { name, email, product: productSlug } = await request.json() as {
     name?: string;
     email?: string;
@@ -16,6 +26,10 @@ export async function POST(request: NextRequest) {
 
   if (!name?.trim() || !email?.trim()) {
     return Response.json({ error: 'Името и имейлът са задължителни.' }, { status: 400 });
+  }
+  const cleanEmail = normalizeEmail(email);
+  if (!emailLooksValid(cleanEmail)) {
+    return Response.json({ error: 'Моля въведи валиден имейл адрес.' }, { status: 400 });
   }
 
   const product = getProduct(productSlug);
@@ -39,13 +53,13 @@ export async function POST(request: NextRequest) {
   const sql = getDb();
   await sql`
     INSERT INTO orders (mypos_order_id, email, name, amount, currency, status, product)
-    VALUES (${orderId}, ${email.trim()}, ${name.trim()}, ${parseFloat(product.price)}, ${product.currency}, 'pending', ${product.slug})
+    VALUES (${orderId}, ${cleanEmail}, ${name.trim()}, ${parseFloat(product.price)}, ${product.currency}, 'pending', ${product.slug})
   `;
 
   try {
     const pendingGroupId = getPendingGroupId(product.slug);
     if (pendingGroupId) {
-      await addToPending(email.trim(), name.trim(), pendingGroupId);
+      await addToPending(cleanEmail, name.trim(), pendingGroupId);
     } else {
       console.error('[MailerLite] Missing pending group id env var', {
         product: product.slug,
@@ -54,7 +68,7 @@ export async function POST(request: NextRequest) {
     }
   } catch (err) {
     console.error('[MailerLite addToPending FAILED]', {
-      email: email.trim(),
+      email: cleanEmail,
       product: product.slug,
       error: (err as Error).message,
     });
@@ -64,7 +78,7 @@ export async function POST(request: NextRequest) {
     orderId,
     amount: product.price,
     currency: product.currency,
-    customerEmail: email.trim(),
+    customerEmail: cleanEmail,
     customerName: name.trim(),
     customerIp,
     urlOk: `${siteUrl}/thank-you?order=${orderId}`,

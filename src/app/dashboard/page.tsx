@@ -40,6 +40,9 @@ function formatDate(d: string) {
 async function loadOrdersForUser(userId: string, email: string | null): Promise<Order[]> {
   const sql = getDb();
   const e = email?.toLowerCase() ?? "";
+  // user_id is the primary key. Email is a fallback ONLY for orders not yet
+  // claimed (user_id IS NULL) — prevents a new Clerk user verifying a prior
+  // buyer's email from reading the buyer's orders.
   const rows = await sql`
     SELECT
       mypos_order_id,
@@ -51,7 +54,8 @@ async function loadOrdersForUser(userId: string, email: string | null): Promise<
       product,
       created_at
     FROM orders
-    WHERE user_id = ${userId} OR (${e} <> '' AND lower(email) = ${e})
+    WHERE user_id = ${userId}
+       OR (user_id IS NULL AND ${e} <> '' AND lower(email) = ${e})
     ORDER BY created_at DESC
   ` as Order[];
   return rows;

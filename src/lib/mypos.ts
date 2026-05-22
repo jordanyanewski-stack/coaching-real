@@ -1,4 +1,5 @@
 import crypto from 'crypto';
+import { transliterateToAscii } from '@/lib/transliterate';
 
 interface PurchaseParams {
   orderId: string;
@@ -18,7 +19,12 @@ function loadPem(raw: string) {
 }
 
 function splitName(fullName: string): { first: string; last: string } {
-  const parts = fullName.trim().split(/\s+/);
+  // Strip trailing punctuation (commas etc.) and collapse repeated whitespace.
+  const parts = fullName
+    .trim()
+    .replace(/[,;:]+/g, ' ')
+    .split(/\s+/)
+    .filter(Boolean);
   if (parts.length <= 1) return { first: parts[0] ?? '', last: '' };
   return { first: parts[0], last: parts.slice(1).join(' ') };
 }
@@ -39,12 +45,12 @@ export function buildPurchaseParams(params: PurchaseParams) {
   const PRIVATE_KEY = process.env.MYPOS_PRIVATE_KEY  ?? '';
 
   const { first: firstRaw, last: lastRaw } = splitName(params.customerName);
-  // myPOS rejects requests with non-ASCII characters in name fields; since
-  // PaymentParametersRequired=2 has the customer fill in their details on the
-  // payment page anyway, fall back to empty strings for non-ASCII names.
-  const isAscii = (s: string) => /^[\x00-\x7F]*$/.test(s);
-  const first = isAscii(firstRaw) ? firstRaw : '';
-  const last  = isAscii(lastRaw)  ? lastRaw  : '';
+  // myPOS rejects non-ASCII in name fields. Transliterate Cyrillic → Latin
+  // (rather than blanking it out) so receipts carry a readable name. Any
+  // characters still non-ASCII after transliteration are stripped.
+  const stripNonAscii = (s: string) => s.replace(/[^\x00-\x7F]/g, '');
+  const first = stripNonAscii(transliterateToAscii(firstRaw));
+  const last  = stripNonAscii(transliterateToAscii(lastRaw));
   const productName = (params.productName ?? process.env.PRODUCT_NAME ?? 'Product').trim();
   const lang = 'BG';
 

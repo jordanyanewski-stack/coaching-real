@@ -1,4 +1,6 @@
 import { NextResponse } from "next/server";
+import { checkRateLimit, clientIp, rateLimitResponse } from "@/lib/rate-limit";
+import { cleanEnv, emailLooksValid, normalizeEmail } from "@/lib/validators";
 
 const ML_API = "https://connect.mailerlite.com/api/subscribers";
 
@@ -7,11 +9,15 @@ interface RegisterBody {
   name?: string;
 }
 
-function emailLooksValid(s: string): boolean {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
-}
-
 export async function POST(req: Request) {
+  const ip = clientIp(req);
+  const rate = checkRateLimit({
+    key: `career-register:${ip}`,
+    limit: 5,             // 5 register attempts
+    windowMs: 60 * 1000,  // per minute
+  });
+  if (!rate.ok) return rateLimitResponse(rate.retryAfter);
+
   let body: RegisterBody;
   try {
     body = await req.json();
@@ -19,7 +25,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Невалидни данни." }, { status: 400 });
   }
 
-  const email = body.email?.trim().toLowerCase() ?? "";
+  const email = normalizeEmail(body.email ?? "");
   const name = body.name?.trim() ?? "";
 
   if (!email || !emailLooksValid(email)) {
@@ -35,7 +41,7 @@ export async function POST(req: Request) {
     );
   }
 
-  const apiKey = process.env.MAILERLITE_API_KEY?.trim();
+  const apiKey = cleanEnv(process.env.MAILERLITE_API_KEY);
   if (!apiKey) {
     console.error("MAILERLITE_API_KEY is not set");
     return NextResponse.json(
@@ -45,9 +51,6 @@ export async function POST(req: Request) {
   }
 
   // Prefer a dedicated AI-course group; fall back to the existing pending group.
-  // Vercel CLI sometimes pulls env values with a literal "\n" at the end — strip both real and literal newlines.
-  const cleanEnv = (v: string | undefined) =>
-    (v ?? "").replace(/\\n/g, "").replace(/[\r\n]/g, "").trim();
   const groupId =
     cleanEnv(process.env.MAILERLITE_AI_COURSE_GROUP_ID) ||
     cleanEnv(process.env.MAILERLITE_PENDING_GROUP_ID);

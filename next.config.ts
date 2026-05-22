@@ -5,12 +5,15 @@ const nextConfig: NextConfig = {
     serverActions: {
       // Server-action POSTs hit the bare apex `coachingreallive.com`, but
       // Vercel may set forwarded-host or x-vercel-deployment-url that
-      // doesn't match Origin exactly. Whitelist all hostnames the site
-      // is served from so Next doesn't return 403 on action submission.
+      // doesn't match Origin exactly. Narrowed from `*.vercel.app` (which
+      // would accept any Vercel preview anywhere, including from foreign
+      // accounts) to project-specific preview patterns.
       allowedOrigins: [
         "coachingreallive.com",
         "www.coachingreallive.com",
-        "*.vercel.app",
+        "coaching-real-*.vercel.app",
+        "coaching-real-git-*.vercel.app",
+        "coaching-real.vercel.app",
       ],
     },
   },

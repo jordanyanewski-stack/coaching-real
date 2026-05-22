@@ -1,6 +1,7 @@
 export const runtime = 'nodejs';
 
 import type { NextRequest } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import { Webhook } from 'svix';
 import { getDb } from '@/lib/db';
 
@@ -55,13 +56,27 @@ export async function POST(request: NextRequest) {
   if (!email) return new Response('OK', { status: 200 });
 
   const sql = getDb();
-  const result = await sql`
+  // Use RETURNING to get a real backfill count. The neon tagged-template
+  // returns an array of rows; previously the code cast the result to
+  // `{rowCount}` which doesn't actually exist on the driver's return value,
+  // so the log line below always printed `rowCount: undefined`.
+  const backfilled = (await sql`
     UPDATE orders
     SET user_id = ${userId}
     WHERE user_id IS NULL AND lower(email) = ${email}
-  ` as unknown as { rowCount?: number };
+    RETURNING mypos_order_id
+  `) as { mypos_order_id: string }[];
 
-  console.log('[clerk webhook] backfilled orders for', { userId, email, rowCount: result?.rowCount });
+  if (backfilled.length > 0) {
+    // Make the freshly-claimed orders visible on the next dashboard fetch.
+    revalidatePath('/dashboard');
+  }
+
+  console.log('[clerk webhook] backfilled orders', {
+    userId,
+    email,
+    count: backfilled.length,
+  });
 
   return new Response('OK', { status: 200 });
 }

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { T, onDark, PHOTO_URL, GRADIENT_TEXT, SiteNav, SiteFooter } from "@/app/_shared";
+import { WaitlistForm } from "./waitlist-form";
 
 export const metadata = {
   title: "KickSTART - Изгради устойчив онлайн бизнес с душа | Coaching Real",
@@ -740,47 +741,7 @@ function WaitlistSection() {
           </p>
         </div>
 
-        <form className="flex flex-col gap-4">
-          {[
-            { id: "name",  label: "Имена",            type: "text",  placeholder: "Твоето пълно име" },
-            { id: "email", label: "Имейл",             type: "email", placeholder: "email@example.com" },
-            { id: "phone", label: "Телефонен номер",   type: "tel",   placeholder: "+359 8XX XXX XXX" },
-          ].map((f) => (
-            <div key={f.id} className="flex flex-col gap-2">
-              <label
-                htmlFor={f.id}
-                style={{ fontSize: "13px", fontWeight: 600, color: onDark.secondary, letterSpacing: "0.02em" }}
-              >
-                {f.label}
-              </label>
-              <input
-                id={f.id}
-                type={f.type}
-                placeholder={f.placeholder}
-                autoComplete={f.id === "email" ? "email" : f.id === "phone" ? "tel" : "name"}
-                style={{
-                  backgroundColor: "rgba(112,21,14,0.05)",
-                  border: "1px solid rgba(112,21,14,0.09)",
-                  borderRadius: T.radiusSm,
-                  padding: "14px 16px",
-                  fontSize: "15px",
-                  color: onDark.primary,
-                  outline: "none",
-                  width: "100%",
-                  fontFamily: "inherit",
-                }}
-              />
-            </div>
-          ))}
-
-          <button
-            type="submit"
-            className="mv-btn mv-btn-primary mt-2"
-            style={{ fontSize: "16px", padding: "16px", width: "100%", justifyContent: "center" }}
-          >
-            Запиши се →
-          </button>
-        </form>
+        <WaitlistForm onDark={onDark} />
       </div>
     </section>
   );
