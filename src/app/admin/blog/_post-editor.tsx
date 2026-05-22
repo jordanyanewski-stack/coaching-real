@@ -143,6 +143,14 @@ export function PostEditor({ defaults, submitLabel, onSubmit, onDelete }: PostEd
     }
   }
 
+  // Next.js redirect()/notFound() throw internal errors with these digests.
+  // We must rethrow them so the framework can handle the navigation; only
+  // genuine user-facing errors should surface in submitError.
+  function isFrameworkError(err: unknown): boolean {
+    const digest = (err as { digest?: string })?.digest;
+    return typeof digest === 'string' && (digest.startsWith('NEXT_REDIRECT') || digest === 'NEXT_NOT_FOUND');
+  }
+
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setSubmitError('');
@@ -151,6 +159,7 @@ export function PostEditor({ defaults, submitLabel, onSubmit, onDelete }: PostEd
       try {
         await onSubmit(formData);
       } catch (err) {
+        if (isFrameworkError(err)) throw err;
         setSubmitError((err as Error).message);
       }
     });
@@ -163,6 +172,7 @@ export function PostEditor({ defaults, submitLabel, onSubmit, onDelete }: PostEd
       try {
         await onDelete();
       } catch (err) {
+        if (isFrameworkError(err)) throw err;
         setSubmitError((err as Error).message);
       }
     });
