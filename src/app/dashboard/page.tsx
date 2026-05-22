@@ -60,7 +60,10 @@ export default async function DashboardPage() {
 
   const user = await currentUser();
   const primaryEmail = user?.emailAddresses.find(e => e.id === user.primaryEmailAddressId)?.emailAddress ?? null;
-  const fullName = [user?.firstName, user?.lastName].filter(Boolean).join(" ") || primaryEmail || "Профил";
+  const greetingName =
+    user?.firstName ||
+    primaryEmail?.split("@")[0] ||
+    "приятел";
 
   const orders = await loadOrdersForUser(userId, primaryEmail);
   const paidOrders = orders.filter(o => o.status === "paid");
@@ -97,7 +100,7 @@ export default async function DashboardPage() {
                   lineHeight: 1.1,
                 }}
               >
-                Здравей, {fullName.split(" ")[0]}
+                Здравей, {greetingName}
               </h1>
             </div>
             <UserButton />
