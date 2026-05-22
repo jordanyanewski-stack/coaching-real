@@ -1,9 +1,31 @@
 export const runtime = 'nodejs';
 
 import type { NextRequest } from 'next/server';
+import { clerkClient } from '@clerk/nextjs/server';
 import { getDb } from '@/lib/db';
 import { moveToPaid } from '@/lib/mailerlite';
 import { verifyNotify } from '@/lib/mypos';
+
+async function inviteIfNewBuyer(email: string) {
+  if (!email) return;
+  try {
+    const clerk = await clerkClient();
+    const existing = await clerk.users.getUserList({ emailAddress: [email] });
+    if (existing.totalCount > 0) return; // already has an account
+
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://coachingreallive.com';
+    await clerk.invitations.createInvitation({
+      emailAddress: email,
+      redirectUrl: `${siteUrl}/sign-up`,
+      ignoreExisting: true,
+    });
+  } catch (err) {
+    console.error('[myPOS notify] Clerk invitation FAILED', {
+      email,
+      error: (err as Error).message,
+    });
+  }
+}
 
 export async function POST(request: NextRequest) {
   const rawBody = await request.text();
@@ -41,6 +63,7 @@ export async function POST(request: NextRequest) {
           error: (err as Error).message,
         });
       }
+      await inviteIfNewBuyer(rows[0].email);
     }
   } else if (IPCmethod === 'IPCPurchaseRollback' || IPCmethod === 'IPCPurchaseCancel') {
     await sql`

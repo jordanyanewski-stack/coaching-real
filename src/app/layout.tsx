@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Onest } from "next/font/google";
+import { ClerkProvider } from "@clerk/nextjs";
+import { bgBG } from "@clerk/localizations";
 import "./globals.css";
 import { FacebookPixel } from "./pixel";
 
@@ -28,15 +30,29 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="bg"
-      className={`${mv.variable} h-full`}
-      suppressHydrationWarning
+    <ClerkProvider
+      localization={bgBG}
+      afterSignOutUrl="/"
+      appearance={{
+        variables: {
+          colorPrimary: "#70150E",
+          colorText: "#0f131a",
+          colorBackground: "#faf8f5",
+          fontFamily: "var(--font-mv, sans-serif)",
+          borderRadius: "10px",
+        },
+      }}
     >
-      <body className="min-h-full flex flex-col antialiased">
-        <FacebookPixel />
-        {children}
-      </body>
-    </html>
+      <html
+        lang="bg"
+        className={`${mv.variable} h-full`}
+        suppressHydrationWarning
+      >
+        <body className="min-h-full flex flex-col antialiased">
+          <FacebookPixel />
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

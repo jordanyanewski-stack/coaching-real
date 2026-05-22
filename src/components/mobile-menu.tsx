@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import { useAuth } from "@clerk/nextjs";
 
 type NavLink = { href: string; label: string };
 
@@ -14,6 +15,7 @@ interface Props {
 export function MobileMenu({ links, ctaHref, ctaLabel }: Props) {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const { isSignedIn } = useAuth();
 
   useEffect(() => {
     setMounted(true);
@@ -146,6 +148,24 @@ export function MobileMenu({ links, ctaHref, ctaLabel }: Props) {
               {l.label}
             </a>
           ))}
+          <a
+            href={isSignedIn ? "/dashboard" : "/sign-in"}
+            onClick={() => setOpen(false)}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              padding: "14px 14px",
+              marginTop: 6,
+              fontSize: 16,
+              fontWeight: 600,
+              color: "#70150E",
+              textDecoration: "none",
+              borderRadius: 10,
+              borderTop: "1px solid rgba(15,19,26,0.07)",
+            }}
+          >
+            {isSignedIn ? "Моят профил" : "Вход"}
+          </a>
         </nav>
 
         <div style={{ padding: "16px 22px 22px", borderTop: "1px solid rgba(15,19,26,0.07)" }}>

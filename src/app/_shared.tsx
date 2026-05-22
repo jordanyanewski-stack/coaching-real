@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Show, UserButton } from "@clerk/nextjs";
 import { MobileMenu } from "@/components/mobile-menu";
 // ─── Shared design tokens, data, and layout components ───────────────
 export const T = {
@@ -97,6 +98,41 @@ export function SiteNav() {
       </div>
 
       <div className="flex items-center gap-3" style={{ flexShrink: 0 }}>
+        <Show when="signed-out">
+          <a
+            href="/sign-in"
+            className="hidden md:inline-flex items-center"
+            style={{
+              fontSize: "14px",
+              fontWeight: 500,
+              color: T.textSecondary,
+              textDecoration: "none",
+              padding: "10px 14px",
+              transition: "color var(--mv-duration-fast)",
+            }}
+          >
+            Вход
+          </a>
+        </Show>
+        <Show when="signed-in">
+          <a
+            href="/dashboard"
+            className="hidden md:inline-flex items-center"
+            style={{
+              fontSize: "14px",
+              fontWeight: 500,
+              color: T.textSecondary,
+              textDecoration: "none",
+              padding: "10px 14px",
+              transition: "color var(--mv-duration-fast)",
+            }}
+          >
+            Профил
+          </a>
+          <div className="hidden md:flex items-center">
+            <UserButton />
+          </div>
+        </Show>
         <a
           href={CTA_HREF}
           target="_blank"
