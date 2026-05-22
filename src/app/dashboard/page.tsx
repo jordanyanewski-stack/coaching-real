@@ -116,79 +116,6 @@ export default async function DashboardPage() {
             <StatCard label="Имейл за достъп"    value={primaryEmail ?? "—"} small />
           </div>
 
-          {/* My purchases */}
-          <section
-            style={{
-              backgroundColor: "#ffffff",
-              border: "1px solid rgba(15,19,26,0.07)",
-              borderRadius: "14px",
-              padding: "28px",
-            }}
-          >
-            <div className="flex items-center justify-between mb-6 flex-wrap gap-3">
-              <h2
-                style={{
-                  fontSize: "20px",
-                  fontWeight: 800,
-                  color: "#0f131a",
-                  letterSpacing: "-0.01em",
-                }}
-              >
-                Моите покупки
-              </h2>
-              <span style={{ fontSize: "12px", color: "rgba(15,19,26,0.5)" }}>
-                {orders.length === 0 ? "Все още нямаш поръчки" : `${orders.length} поръчк${orders.length === 1 ? "а" : "и"}`}
-              </span>
-            </div>
-
-            {orders.length === 0 ? (
-              <EmptyPurchases email={primaryEmail} />
-            ) : (
-              <div className="overflow-x-auto">
-                <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "14px" }}>
-                  <thead>
-                    <tr style={{ borderBottom: "1px solid rgba(15,19,26,0.08)" }}>
-                      <Th>Дата</Th>
-                      <Th>Поръчка</Th>
-                      <Th>Сума</Th>
-                      <Th>Статус</Th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {orders.map(o => {
-                      const s = STATUS_LABEL[o.status] ?? { text: o.status, color: "#475569", bg: "rgba(100,116,139,0.10)" };
-                      return (
-                        <tr key={o.mypos_order_id} style={{ borderBottom: "1px solid rgba(15,19,26,0.04)" }}>
-                          <Td muted>{formatDate(o.created_at)}</Td>
-                          <Td><code style={{ fontSize: "12px", color: "rgba(15,19,26,0.7)" }}>{o.mypos_order_id}</code></Td>
-                          <Td>
-                            <strong>{Number(o.amount).toFixed(2)} {o.currency}</strong>
-                          </Td>
-                          <Td>
-                            <span
-                              style={{
-                                fontSize: "11px",
-                                fontWeight: 700,
-                                color: s.color,
-                                backgroundColor: s.bg,
-                                padding: "4px 10px",
-                                borderRadius: "999px",
-                                letterSpacing: "0.04em",
-                                textTransform: "uppercase",
-                              }}
-                            >
-                              {s.text}
-                            </span>
-                          </Td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </div>
-            )}
-          </section>
-
           {/* Audiobook player — visible only for paid audiobook customers */}
           {hasPaidAudiobook && (
             <section
@@ -263,6 +190,74 @@ export default async function DashboardPage() {
               </div>
             </section>
           )}
+
+          {/* Order history — collapsed, secondary */}
+          {orders.length > 0 && (
+            <details
+              className="mt-12"
+              style={{
+                fontSize: "13px",
+                color: "rgba(15,19,26,0.6)",
+              }}
+            >
+              <summary
+                style={{
+                  cursor: "pointer",
+                  padding: "8px 0",
+                  fontWeight: 600,
+                  letterSpacing: "0.02em",
+                  userSelect: "none",
+                }}
+              >
+                История на поръчките ({orders.length})
+              </summary>
+              <div
+                className="mt-3"
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "6px",
+                }}
+              >
+                {orders.map(o => {
+                  const s = STATUS_LABEL[o.status] ?? { text: o.status, color: "#475569", bg: "rgba(100,116,139,0.10)" };
+                  return (
+                    <div
+                      key={o.mypos_order_id}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        gap: "12px",
+                        padding: "8px 12px",
+                        backgroundColor: "rgba(15,19,26,0.02)",
+                        borderRadius: "8px",
+                        fontSize: "12px",
+                        flexWrap: "wrap",
+                      }}
+                    >
+                      <span style={{ color: "rgba(15,19,26,0.55)" }}>{formatDate(o.created_at)}</span>
+                      <strong style={{ color: "#0f131a" }}>{Number(o.amount).toFixed(2)} {o.currency}</strong>
+                      <span
+                        style={{
+                          fontSize: "10px",
+                          fontWeight: 700,
+                          color: s.color,
+                          backgroundColor: s.bg,
+                          padding: "2px 8px",
+                          borderRadius: "999px",
+                          letterSpacing: "0.04em",
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        {s.text}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            </details>
+          )}
         </div>
       </main>
       <SiteFooter />
@@ -307,57 +302,3 @@ function StatCard({ label, value, small = false }: { label: string; value: strin
   );
 }
 
-function Th({ children }: { children: React.ReactNode }) {
-  return (
-    <th
-      style={{
-        textAlign: "left",
-        padding: "12px 14px",
-        fontSize: "11px",
-        fontWeight: 700,
-        color: "rgba(15,19,26,0.5)",
-        letterSpacing: "0.08em",
-        textTransform: "uppercase",
-      }}
-    >
-      {children}
-    </th>
-  );
-}
-
-function Td({ children, muted = false }: { children: React.ReactNode; muted?: boolean }) {
-  return (
-    <td
-      style={{
-        padding: "14px",
-        color: muted ? "rgba(15,19,26,0.6)" : "#0f131a",
-        verticalAlign: "middle",
-      }}
-    >
-      {children}
-    </td>
-  );
-}
-
-function EmptyPurchases({ email }: { email: string | null }) {
-  return (
-    <div
-      className="text-center py-12"
-      style={{ color: "rgba(15,19,26,0.6)" }}
-    >
-      <p style={{ fontSize: "15px", marginBottom: "8px" }}>
-        Все още нямаш поръчки в този профил.
-      </p>
-      <p style={{ fontSize: "13px", color: "rgba(15,19,26,0.45)" }}>
-        Ако вече си купил/а аудиокнига или програма, увери се, че влизаш с имейла <strong>{email}</strong>, който си използвал/а при покупка.
-      </p>
-      <a
-        href="/programs"
-        className="mv-btn mv-btn-primary inline-flex mt-6"
-        style={{ fontSize: "14px", padding: "12px 28px" }}
-      >
-        Разгледай програмите
-      </a>
-    </div>
-  );
-}
