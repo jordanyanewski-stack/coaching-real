@@ -586,7 +586,7 @@ function HowItWorksSection() {
           </h3>
           <div className="grid md:grid-cols-3 gap-4">
             {bonuses.map((b, i) => {
-              const BonusIcon = bonusIcons[i];
+              const BonusIcon = bonusIcons[i]!;
               return (
                 <div
                   key={b.title}

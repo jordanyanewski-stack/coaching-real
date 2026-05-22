@@ -895,7 +895,7 @@ function ProblemSection() {
                 01
               </span>
               <span style={{ flex: 1, height: "1px", background: FD.borderEditorial }} />
-              <span>{surveyPainPoints[0].stat.replace("от участниците в анкетата", "от 80")}</span>
+              <span>{surveyPainPoints[0]!.stat.replace("от участниците в анкетата", "от 80")}</span>
             </div>
             <p
               style={{
@@ -908,7 +908,7 @@ function ProblemSection() {
                 letterSpacing: "-0.005em",
               }}
             >
-              {surveyPainPoints[0].title}
+              {surveyPainPoints[0]!.title}
             </p>
             <p
               style={{
@@ -919,7 +919,7 @@ function ProblemSection() {
                 maxWidth: "55ch",
               }}
             >
-              {surveyPainPoints[0].body}
+              {surveyPainPoints[0]!.body}
             </p>
           </div>
 
@@ -1582,7 +1582,7 @@ function VoicesSection() {
               }}
             >
               <span style={{ color: FD.accent }}>“</span>
-              {voices[0].quote.replace(/[“„]/g, "").replace(/[”“]/g, "")}
+              {voices[0]!.quote.replace(/[“„]/g, "").replace(/[”“]/g, "")}
               <span style={{ color: FD.accent }}>”</span>
             </blockquote>
             <figcaption
@@ -1597,7 +1597,7 @@ function VoicesSection() {
                 fontWeight: 600,
               }}
             >
-              {voices[0].name} · {voices[0].role}
+              {voices[0]!.name} · {voices[0]!.role}
             </figcaption>
           </figure>
 

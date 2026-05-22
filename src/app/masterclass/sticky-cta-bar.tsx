@@ -16,6 +16,7 @@ export function StickyCTABar() {
 
     const heroObs = new IntersectionObserver(
       ([entry]) => {
+        if (!entry) return;
         pastHero = !entry.isIntersecting;
         update();
       },
@@ -23,6 +24,7 @@ export function StickyCTABar() {
     );
     const enrollObs = new IntersectionObserver(
       ([entry]) => {
+        if (!entry) return;
         inEnroll = entry.isIntersecting;
         update();
       },

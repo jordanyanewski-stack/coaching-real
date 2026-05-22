@@ -19,6 +19,7 @@ export function FreeDayStickyCTA() {
 
     const heroObs = new IntersectionObserver(
       ([entry]) => {
+        if (!entry) return;
         pastHero = !entry.isIntersecting;
         update();
       },
@@ -26,6 +27,7 @@ export function FreeDayStickyCTA() {
     );
     const enrollObs = new IntersectionObserver(
       ([entry]) => {
+        if (!entry) return;
         inEnroll = entry.isIntersecting;
         update();
       },

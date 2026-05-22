@@ -26,7 +26,7 @@ function splitName(fullName: string): { first: string; last: string } {
     .split(/\s+/)
     .filter(Boolean);
   if (parts.length <= 1) return { first: parts[0] ?? '', last: '' };
-  return { first: parts[0], last: parts.slice(1).join(' ') };
+  return { first: parts[0] ?? '', last: parts.slice(1).join(' ') };
 }
 
 /**
@@ -51,7 +51,9 @@ export function buildPurchaseParams(params: PurchaseParams) {
   const stripNonAscii = (s: string) => s.replace(/[^\x00-\x7F]/g, '');
   const first = stripNonAscii(transliterateToAscii(firstRaw));
   const last  = stripNonAscii(transliterateToAscii(lastRaw));
-  const productName = (params.productName ?? process.env.PRODUCT_NAME ?? 'Product').trim();
+  // Callers always pass productName (resolved from products.ts). Default
+  // exists only as a defensive fallback if someone ever calls without one.
+  const productName = (params.productName ?? 'Product').trim();
   const lang = 'BG';
 
   const ordered: [string, string][] = [

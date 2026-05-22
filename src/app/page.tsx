@@ -185,7 +185,9 @@ function HeroSection() {
 
 /* ─── MISSION / VISION / VALUES ─────────────────────────────────────── */
 function MVVSection() {
-  const values = mvv[2];
+  // mvv is a fixed-length tuple of 3 entries — index 2 is the Values block.
+  // Non-null assertion is safe because mvv is statically populated above.
+  const values = mvv[2]!;
   return (
     <section
       className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
