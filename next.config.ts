@@ -15,15 +15,11 @@ const nextConfig: NextConfig = {
     },
   },
   images: {
+    // Allow any HTTPS image source so admin-pasted Unsplash/etc. URLs work
+    // for blog covers. Bunny CDN (coaching-real.b-cdn.net) and the legacy
+    // WordPress assets on coachingreallive.com both fall under this.
     remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "coachingreallive.com",
-      },
-      {
-        protocol: "https",
-        hostname: "coaching-real.b-cdn.net",
-      },
+      { protocol: "https", hostname: "**" },
     ],
   },
   async redirects() {
