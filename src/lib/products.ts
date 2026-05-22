@@ -2,7 +2,7 @@
  * Source of truth for every purchasable product on coachingreallive.com.
  *
  * Adding a product is a 3-step change:
- *   1. Add an entry below + set its `mlPaidGroupIdEnv` env var on Vercel.
+ *   1. Add an entry below + set its MailerLite paid + pending group env vars on Vercel.
  *   2. Run a DB migration if the new product needs extra columns (rare).
  *   3. Render `<EnrollForm product="<slug>" />` on the product page.
  *
@@ -24,6 +24,8 @@ export interface Product {
     nextStepCopy: string;
   };
   mlPaidGroupIdEnv: string;
+  /** Env var name holding the MailerLite group ID for unpaid leads of this product. */
+  mlPendingGroupIdEnv: string;
   /** Filename in Bunny storage. Streamed via /api/audiobook/stream after gate check. */
   bunnyFile?: string;
 }
@@ -42,6 +44,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
         'Имейлът съдържа Zoom линка, програмата и инструкциите за първия мастърклас (18 май, 19:00 ч.).',
     },
     mlPaidGroupIdEnv: 'MAILERLITE_PAID_GROUP_ID',
+    mlPendingGroupIdEnv: 'MAILERLITE_PENDING_GROUP_ID',
   },
   audiobook: {
     slug: 'audiobook',
@@ -56,6 +59,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
         'След потвърждението ще получиш достъп до аудиокнигата в профила си в coachingreallive.com/dashboard.',
     },
     mlPaidGroupIdEnv: 'MAILERLITE_AUDIOBOOK_PAID_GROUP_ID',
+    mlPendingGroupIdEnv: 'MAILERLITE_AUDIOBOOK_PENDING_GROUP_ID',
     bunnyFile: 'stasi-audiobook.mp3',
   },
   'career-course': {
@@ -71,6 +75,8 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
         'Имейлът съдържа достъп до пълния 4-седмичен курс и материалите.',
     },
     mlPaidGroupIdEnv: 'MAILERLITE_CAREER_PAID_GROUP_ID',
+    // No dedicated pending group yet — falls back to the legacy general pending group.
+    mlPendingGroupIdEnv: 'MAILERLITE_PENDING_GROUP_ID',
   },
 };
 
@@ -81,4 +87,8 @@ export function getProduct(slug: string | undefined | null): Product | null {
 
 export function getPaidGroupId(slug: ProductSlug): string {
   return (process.env[PRODUCTS[slug].mlPaidGroupIdEnv] ?? '').trim();
+}
+
+export function getPendingGroupId(slug: ProductSlug): string {
+  return (process.env[PRODUCTS[slug].mlPendingGroupIdEnv] ?? '').trim();
 }

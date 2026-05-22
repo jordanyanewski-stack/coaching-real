@@ -5,7 +5,7 @@ import { clerkClient } from '@clerk/nextjs/server';
 import { getDb } from '@/lib/db';
 import { moveToPaid } from '@/lib/mailerlite';
 import { verifyNotify } from '@/lib/mypos';
-import { getPaidGroupId, getProduct, type ProductSlug } from '@/lib/products';
+import { getPaidGroupId, getPendingGroupId, getProduct, type ProductSlug } from '@/lib/products';
 
 async function inviteIfNewBuyer(email: string) {
   if (!email) return;
@@ -60,9 +60,10 @@ export async function POST(request: NextRequest) {
       const product = getProduct(row.product);
       if (product) {
         const paidGroupId = getPaidGroupId(product.slug as ProductSlug);
+        const pendingGroupId = getPendingGroupId(product.slug as ProductSlug);
         if (paidGroupId) {
           try {
-            await moveToPaid(row.email, paidGroupId);
+            await moveToPaid(row.email, paidGroupId, pendingGroupId || undefined);
           } catch (err) {
             console.error('[myPOS notify] MailerLite moveToPaid FAILED', {
               email: row.email,

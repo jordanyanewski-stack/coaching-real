@@ -5,7 +5,7 @@ import type { NextRequest } from 'next/server';
 import { getDb } from '@/lib/db';
 import { addToPending } from '@/lib/mailerlite';
 import { buildPurchaseParams } from '@/lib/mypos';
-import { getProduct } from '@/lib/products';
+import { getPendingGroupId, getProduct } from '@/lib/products';
 
 export async function POST(request: NextRequest) {
   const { name, email, product: productSlug } = await request.json() as {
@@ -43,10 +43,19 @@ export async function POST(request: NextRequest) {
   `;
 
   try {
-    await addToPending(email.trim(), name.trim());
+    const pendingGroupId = getPendingGroupId(product.slug);
+    if (pendingGroupId) {
+      await addToPending(email.trim(), name.trim(), pendingGroupId);
+    } else {
+      console.error('[MailerLite] Missing pending group id env var', {
+        product: product.slug,
+        envVar: product.mlPendingGroupIdEnv,
+      });
+    }
   } catch (err) {
     console.error('[MailerLite addToPending FAILED]', {
       email: email.trim(),
+      product: product.slug,
       error: (err as Error).message,
     });
   }

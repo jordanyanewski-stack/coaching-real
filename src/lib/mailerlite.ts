@@ -16,18 +16,19 @@ async function request(path: string, method: string, body?: unknown) {
   return res.json();
 }
 
-export async function addToPending(email: string, name: string) {
+export async function addToPending(email: string, name: string, pendingGroupId: string) {
+  if (!pendingGroupId) {
+    throw new Error('addToPending called without a pending group id');
+  }
   const [firstName, ...rest] = name.trim().split(' ');
   await request('/subscribers', 'POST', {
     email,
     fields: { name: firstName, last_name: rest.join(' ') },
-    groups: [(process.env.MAILERLITE_PENDING_GROUP_ID ?? '').trim()],
+    groups: [pendingGroupId],
   });
 }
 
-export async function moveToPaid(email: string, paidGroupId: string) {
-  const pendingGroupId = (process.env.MAILERLITE_PENDING_GROUP_ID ?? '').trim();
-
+export async function moveToPaid(email: string, paidGroupId: string, pendingGroupId?: string) {
   if (!paidGroupId) {
     throw new Error('moveToPaid called without a paid group id');
   }
