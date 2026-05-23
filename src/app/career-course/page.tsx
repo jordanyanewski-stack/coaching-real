@@ -372,7 +372,7 @@ const voices = [
   },
   {
     initial: "Д",
-    quote: "Имам собствен бизнес и искам да се развия като лидер в ерата на AI. Готова съм веднага, чакам само ясен план и правилната подкрепа.",
+    quote: "Имам собствен бизнес и искам да се развия като лидер в ерата на AI. Готов/а съм веднага, чакам само ясен план и правилната подкрепа.",
     name: "Д. П.",
     role: "Участник в анкетата",
   },
@@ -605,7 +605,7 @@ function HeroSection() {
             Запази мястото си
           </div>
 
-          <EnrollForm product="career-course" cardOnly />
+          <EnrollForm product="career-course" cardOnly variant="dark" />
 
           {/* Format pills — below the form */}
           <div
@@ -2010,7 +2010,7 @@ function FinalCTASection() {
           className="flex justify-center"
           style={{ borderRadius: "8px", padding: "8px" }}
         >
-          <EnrollForm product="career-course" cardOnly />
+          <EnrollForm product="career-course" cardOnly variant="dark" />
         </div>
       </div>
     </section>
