@@ -8,9 +8,10 @@ type PaymentMethod = 'card' | 'bank';
 
 interface EnrollFormProps {
   product?: ProductSlug;
+  cardOnly?: boolean;
 }
 
-export function EnrollForm({ product = 'masterclass' }: EnrollFormProps) {
+export function EnrollForm({ product = 'masterclass', cardOnly = false }: EnrollFormProps) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [method, setMethod] = useState<PaymentMethod>('card');
@@ -18,7 +19,7 @@ export function EnrollForm({ product = 'masterclass' }: EnrollFormProps) {
   const [error, setError] = useState('');
   const formRef = useRef<HTMLFormElement>(null);
   const priceForPixel = parseFloat(PRODUCTS[product].price);
-  const supportsBank = PRODUCTS[product].supportsBankTransfer;
+  const supportsBank = PRODUCTS[product].supportsBankTransfer && !cardOnly;
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();

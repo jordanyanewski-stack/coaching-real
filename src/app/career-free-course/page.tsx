@@ -1,14 +1,14 @@
 import Image from "next/image";
 import { ScrollReveal } from "../masterclass/scroll-reveal";
-import { FreeDayEnrollForm } from "./enroll-form";
+import { EnrollForm } from "../masterclass/enroll-form";
 import { FreeDayStickyCTA } from "./sticky-cta";
 import { FreeDayFAQAccordion } from "./faq-accordion";
 import { FormCueHandler } from "./form-cue";
 
 export const metadata = {
-  title: "Моето кариерно развитие в ерата на AI · 4-седмичен безплатен курс | Магдалена Пенчева",
+  title: "Моето кариерно развитие в ерата на AI · 4-седмичен курс €97 | Магдалена Пенчева",
   description:
-    "Безплатен 4-седмичен онлайн курс за кариерно развитие в ерата на AI с Магдалена Пенчева — 17 години HR опит в международни корпорации. Старт 21 май 2026, всеки четвъртък 19:00 ч.",
+    "4-седмичен онлайн курс за кариерно развитие в ерата на AI с Магдалена Пенчева — 17 години HR опит в международни корпорации. €97 еднократно за пълните 4 седмици + работни материали + групова подкрепа.",
 };
 
 /* ─── DESIGN TOKENS — editorial corporate, tinted neutrals ──────────── */
@@ -420,8 +420,8 @@ const marqueeKeywords = [
 
 const faqs = [
   {
-    q: "Наистина ли е безплатно?",
-    a: "Да, напълно безплатно — без скрити такси. Курсът е начинът ни да докажем стойността си преди да поканим хора в платени програми.",
+    q: "Колко струва курсът?",
+    a: "Еднократна такса €97 за пълните 4 седмици — всички записи, всички работни материали, груповата подкрепа. Без абонамент, без скрити такси.",
   },
   {
     q: "Какви работни материали получавам?",
@@ -491,7 +491,7 @@ function FreeDayHeader() {
         whiteSpace: "nowrap",
       }}
     >
-      Запиши се безплатно →
+      Купи курса — €97 →
     </a>
   );
 }
@@ -605,7 +605,7 @@ function HeroSection() {
             Запази мястото си
           </div>
 
-          <FreeDayEnrollForm variant="dark" />
+          <EnrollForm product="career-course" cardOnly />
 
           {/* Format pills — below the form */}
           <div
@@ -622,7 +622,7 @@ function HeroSection() {
               "4 четвъртъка, 19:00 ч.",
               "2 часа / седмица",
               "Работни листи всяка седмица",
-              "100% безплатно",
+              "€97 еднократно",
             ].map((p) => (
               <span
                 key={p}
@@ -820,7 +820,7 @@ function ScheduleSection() {
           ))}
         </div>
         <div className="mt-10 text-center">
-          <PrimaryButton href="#enroll">Запиши се безплатно →</PrimaryButton>
+          <PrimaryButton href="#enroll">Купи курса — €97 →</PrimaryButton>
         </div>
       </div>
     </section>
@@ -865,7 +865,7 @@ function ProblemSection() {
             80 души отговориха на нашата анкета. Ето с какво се борят в момента
             — вероятно и ти.
           </p>
-          <PrimaryButton href="#enroll">Запиши се безплатно →</PrimaryButton>
+          <PrimaryButton href="#enroll">Купи курса — €97 →</PrimaryButton>
         </div>
 
         {/* Editorial layout: featured top quote + 2 supporting tucked below */}
@@ -1111,7 +1111,7 @@ function WeeksProgramSection() {
           ))}
         </div>
         <div className="mt-12 text-center">
-          <PrimaryButton href="#enroll">Запиши се безплатно →</PrimaryButton>
+          <PrimaryButton href="#enroll">Купи курса — €97 →</PrimaryButton>
         </div>
       </div>
     </section>
@@ -1205,7 +1205,7 @@ function WhatYouGetSection() {
           ))}
         </div>
         <div className="mt-12 text-center">
-          <PrimaryButton href="#enroll">Запиши се безплатно →</PrimaryButton>
+          <PrimaryButton href="#enroll">Купи курса — €97 →</PrimaryButton>
         </div>
       </div>
     </section>
@@ -1322,7 +1322,7 @@ function MaterialsSection() {
           ))}
         </div>
         <div className="mt-12 text-center">
-          <PrimaryButton href="#enroll">Запиши се безплатно →</PrimaryButton>
+          <PrimaryButton href="#enroll">Купи курса — €97 →</PrimaryButton>
         </div>
       </div>
     </section>
@@ -1472,7 +1472,7 @@ function ForWhomSection() {
           </div>
         </div>
         <div className="mt-12 text-center">
-          <PrimaryButton href="#enroll">Запиши се безплатно →</PrimaryButton>
+          <PrimaryButton href="#enroll">Купи курса — €97 →</PrimaryButton>
         </div>
       </div>
     </section>
@@ -1642,7 +1642,7 @@ function VoicesSection() {
           </div>
         </div>
         <div className="mt-14 text-center">
-          <PrimaryButton href="#enroll">Запиши се безплатно →</PrimaryButton>
+          <PrimaryButton href="#enroll">Купи курса — €97 →</PrimaryButton>
         </div>
       </div>
     </section>
@@ -1903,7 +1903,7 @@ function MentorSection() {
       </div>
 
       <div className="max-w-6xl mx-auto mt-14 text-center">
-        <PrimaryButton href="#enroll">Запиши се безплатно →</PrimaryButton>
+        <PrimaryButton href="#enroll">Купи курса — €97 →</PrimaryButton>
       </div>
     </section>
   );
@@ -1942,7 +1942,7 @@ function FAQSection() {
           bg={FD.bg}
         />
         <div className="mt-12 text-center">
-          <PrimaryButton href="#enroll">Запиши се безплатно →</PrimaryButton>
+          <PrimaryButton href="#enroll">Купи курса — €97 →</PrimaryButton>
         </div>
       </div>
     </section>
@@ -2003,14 +2003,14 @@ function FinalCTASection() {
           }}
         >
           4 седмици. 2 часа на седмица. Реални работни материали. Ясен план в
-          края. Безплатно.
+          края. €97 еднократно.
         </p>
         <div
           id="enroll"
           className="flex justify-center"
           style={{ borderRadius: "8px", padding: "8px" }}
         >
-          <FreeDayEnrollForm variant="dark" />
+          <EnrollForm product="career-course" cardOnly />
         </div>
       </div>
     </section>
