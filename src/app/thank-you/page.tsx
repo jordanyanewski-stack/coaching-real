@@ -57,7 +57,7 @@ function copyFor(productSlug: string | undefined): ProductCopy {
       return {
         title: 'Добре дошла!',
         body: 'Плащането е успешно. Ще получиш имейл с достъп до пълния 4-седмичен курс и всички материали.',
-        secondaryCtaHref: '/career-free-course',
+        secondaryCtaHref: '/career-course',
       };
     case 'masterclass':
     default:

@@ -66,7 +66,7 @@ export default function FreeDayThankYouPage() {
           />
         </a>
         <a
-          href="/career-free-course"
+          href="/career-course"
           style={{
             fontSize: "13px",
             fontWeight: 600,
@@ -478,7 +478,7 @@ export default function FreeDayThankYouPage() {
 
 /* ─── Share buttons (client) ────────────────────────────────────────── */
 function ShareButtons() {
-  const shareUrl = "https://coachingreallive.com/career-free-course";
+  const shareUrl = "https://coachingreallive.com/career-course";
   const shareText =
     "Безплатен 4-седмичен курс „Моето кариерно развитие в ерата на AI“ — започва 21 май.";
 

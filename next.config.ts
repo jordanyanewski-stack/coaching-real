@@ -28,10 +28,15 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       // Route renamed 2026-05-13: /ai-free-course → /career-free-course.
-      // The Magi FB campaign (live 10–21 May) still points at the old slug.
-      { source: "/ai-free-course",            destination: "/career-free-course",            permanent: true },
-      { source: "/ai-free-course/:path*",     destination: "/career-free-course/:path*",     permanent: true },
-      { source: "/api/ai-free-course/:path*", destination: "/api/career-free-course/:path*", permanent: true },
+      // Renamed again 2026-05-23: /career-free-course → /career-course (post-Magi
+      // event the page is paid €97, "free" framing dropped). Both legacy slugs
+      // collapse directly to /career-course to avoid double-hop redirects.
+      // The legacy /api/ai-free-course path is dropped — the lead-capture API
+      // was removed when the page flipped to MyPOS-only paid checkout.
+      { source: "/ai-free-course",                destination: "/career-course",            permanent: true },
+      { source: "/ai-free-course/:path*",         destination: "/career-course/:path*",     permanent: true },
+      { source: "/career-free-course",            destination: "/career-course",            permanent: true },
+      { source: "/career-free-course/:path*",     destination: "/career-course/:path*",     permanent: true },
     ];
   },
 };
