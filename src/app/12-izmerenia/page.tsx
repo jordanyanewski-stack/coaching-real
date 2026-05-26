@@ -5,11 +5,12 @@ import { ScrollReveal } from "./scroll-reveal";
 import { EnrollForm } from "../masterclass/enroll-form";
 import { HeroVideo } from "./hero-video";
 import { StickyCTABar } from "./sticky-cta-bar";
+import { PromoPrice } from "./promo-price";
 
 export const metadata = {
   title: "12 Измерения на твоята мисия · Онлайн курс | Coaching Real",
   description:
-    "12-модулен онлайн курс за терапевти, коучове и лечители — спри да чакаш препоръки, започни да привличаш клиенти онлайн. €97 за всички 12 модула.",
+    "12-модулен онлайн курс за терапевти, коучове и лечители — спри да чакаш препоръки, започни да привличаш клиенти онлайн. €197 за всички 12 модула.",
 };
 
 /* ─── DATA ──────────────────────────────────────────────────────────── */
@@ -145,7 +146,7 @@ function CampaignHeader() {
         className="mv-btn mv-btn-primary"
         style={{ padding: "10px 22px", fontSize: "14px", flexShrink: 0 }}
       >
-        Искам клиенти онлайн - €97
+        Искам клиенти онлайн - €197
       </a>
     </header>
   );
@@ -375,56 +376,9 @@ function HeroSection() {
             , които са уморени да разчитат само на препоръки, случайни постове и „дано някой ми пише".
           </p>
 
-          {/* Unified pricing card */}
-          <div
-            className="animate-fade-up delay-250 mt-7 mc-pricing-card"
-            style={{
-              display: "inline-flex",
-              flexDirection: "column",
-              gap: "18px",
-              padding: "22px 26px",
-              background: "linear-gradient(135deg, #ffffff 0%, #fdf6ee 100%)",
-              borderRadius: "18px",
-              border: "1px solid rgba(107,21,14,0.16)",
-              boxShadow: "0 12px 40px rgba(107,21,14,0.10), 0 1px 2px rgba(0,0,0,0.04)",
-              maxWidth: "100%",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                alignItems: "baseline",
-                gap: "12px",
-                flexWrap: "wrap",
-                rowGap: "8px",
-              }}
-            >
-              <span
-                style={{
-                  fontSize: "clamp(2.4rem, 7vw, 3.2rem)",
-                  fontWeight: 900,
-                  background: "linear-gradient(135deg, #70150E 0%, #c94535 55%, #e85050 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                  lineHeight: 1,
-                  letterSpacing: "-0.04em",
-                }}
-              >
-                €97
-              </span>
-              <span
-                style={{
-                  fontSize: "13px",
-                  fontWeight: 600,
-                  color: T.textSecondary,
-                  letterSpacing: "0.02em",
-                  alignSelf: "center",
-                }}
-              >
-                за всички 12 модула
-              </span>
-            </div>
+          {/* Dynamic pricing card */}
+          <div className="animate-fade-up delay-250 mt-7 mc-pricing-card">
+            <PromoPrice variant="hero" />
           </div>
 
           {/* Big CTA */}
@@ -759,7 +713,7 @@ function HonestReasonSection() {
               opacity: 0.92,
             }}
           >
-            Красимира Такева · Терапевт
+            Станислава Павлова · за Красимира Такева, Терапевт
           </figcaption>
         </figure>
       </div>
@@ -828,7 +782,7 @@ function OutcomesSection() {
 
         <div className="mt-10 text-center">
           <a href="#enroll" className="mv-btn mv-btn-primary" style={{ fontSize: "15px", padding: "16px 28px" }}>
-            Искам тези резултати — €97 →
+            Искам тези резултати — €197 →
           </a>
         </div>
       </div>
@@ -1105,7 +1059,7 @@ function TestimonialsSection() {
             className="mv-btn mv-btn-primary"
             style={{ fontSize: "15px", display: "inline-flex", alignItems: "center", gap: "10px" }}
           >
-            Искам същите резултати - €97
+            Искам същите резултати - €197
           </a>
         </div>
       </div>
@@ -1196,7 +1150,7 @@ function CurriculumSection() {
 
         <div className="text-center mt-14">
           <a href="#enroll" className="mv-btn mv-btn-primary" style={{ fontSize: "15px", padding: "16px 28px" }}>
-            Искам да разбера защо нямам клиенти — €97 →
+            Искам да разбера защо нямам клиенти — €197 →
           </a>
         </div>
       </div>
@@ -1312,65 +1266,7 @@ function ValueStackSection() {
             Всичко останало е включено безплатно.
           </div>
 
-          <div
-            style={{
-              padding: "26px 24px 30px",
-              backgroundColor: "#ffffff",
-              borderTop: "1px solid rgba(107,21,14,0.08)",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: "20px",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                alignItems: "baseline",
-                justifyContent: "center",
-                gap: "12px",
-              }}
-            >
-              <span
-                style={{
-                  fontSize: "clamp(2.4rem, 6vw, 3.4rem)",
-                  fontWeight: 900,
-                  background: "linear-gradient(135deg, #70150E 0%, #c94535 55%, #e85050 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                  letterSpacing: "-0.04em",
-                  lineHeight: 1,
-                }}
-              >
-                €97
-              </span>
-              <span
-                style={{
-                  fontSize: "13px",
-                  fontWeight: 600,
-                  color: T.textSecondary,
-                  letterSpacing: "0.02em",
-                  alignSelf: "center",
-                }}
-              >
-                за всички 12 модула
-              </span>
-            </div>
-            <a
-              href="#enroll"
-              className="mv-btn mv-btn-primary"
-              style={{
-                fontSize: "16px",
-                padding: "16px 32px",
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "10px",
-              }}
-            >
-              Запиши се →
-            </a>
-          </div>
+          <PromoPrice variant="value-stack" />
         </div>
       </div>
     </section>
@@ -1631,42 +1527,7 @@ function FinalCTASection() {
         </p>
 
         {/* Price block */}
-        <div
-          className="mt-10 mb-10 inline-flex flex-col items-center gap-5 px-10 py-7"
-          style={{
-            backgroundColor: "#faf8f5",
-            borderRadius: "14px",
-            border: "1px solid rgba(107,21,14,0.1)",
-          }}
-        >
-          <div className="flex items-baseline gap-3">
-            <span
-              style={{
-                fontSize: "clamp(2.4rem, 5vw, 3.6rem)",
-                fontWeight: 900,
-                color: T.textPrimary,
-                lineHeight: 1,
-                letterSpacing: "-0.03em",
-              }}
-            >
-              €97
-            </span>
-            <span
-              style={{
-                fontSize: "13px",
-                fontWeight: 600,
-                color: T.textSecondary,
-                letterSpacing: "0.02em",
-              }}
-            >
-              за всички 12 модула
-            </span>
-          </div>
-        </div>
-
-        <div className="flex flex-col items-center gap-4">
-          <EnrollForm product="12-izmerenia" />
-        </div>
+        <PromoPrice variant="final-cta" />
 
         {/* Trust strip */}
         <div

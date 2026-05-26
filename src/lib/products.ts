@@ -10,7 +10,7 @@
  * everything up here.
  */
 
-export type ProductSlug = 'masterclass' | 'audiobook' | 'audiobook-hot' | '12-izmerenia' | 'career-course' | 'rodov-model' | 'zhiva';
+export type ProductSlug = 'masterclass' | 'audiobook' | 'audiobook-hot' | '12-izmerenia' | '12-izmerenia-promo' | 'career-course' | 'rodov-model' | 'zhiva';
 
 export interface Product {
   slug: ProductSlug;
@@ -65,12 +65,27 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
   '12-izmerenia': {
     slug: '12-izmerenia',
     name: '12 Измерения на твоята мисия',
-    price: '97.00',
+    price: '197.00',
     currency: 'EUR',
     supportsBankTransfer: true,
     bankTransfer: {
       referencePrefix: '12 Измерения',
       productLabel: '12 Измерения на твоята мисия · онлайн курс',
+      nextStepCopy:
+        'Имейлът съдържа достъп до пълния курс с всички 12 модула.',
+    },
+    mlPaidGroupIdEnv: 'MAILERLITE_12IZMERENIA_PAID_GROUP_ID',
+    mlPendingGroupIdEnv: 'MAILERLITE_12IZMERENIA_PENDING_GROUP_ID',
+  },
+  '12-izmerenia-promo': {
+    slug: '12-izmerenia-promo',
+    name: '12 Измерения на твоята мисия (промо)',
+    price: '97.00',
+    currency: 'EUR',
+    supportsBankTransfer: true,
+    bankTransfer: {
+      referencePrefix: '12 Измерения',
+      productLabel: '12 Измерения на твоята мисия · онлайн курс (промо)',
       nextStepCopy:
         'Имейлът съдържа достъп до пълния курс с всички 12 модула.',
     },
