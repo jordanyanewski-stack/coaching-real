@@ -1,0 +1,548 @@
+import Image from "next/image";
+import { T, GRADIENT_TEXT, SiteNav, SiteFooter } from "@/app/_shared";
+
+export const metadata = {
+  title: "Безплатни онлайн курсове – Coaching Real",
+  description:
+    "Безплатни 4-седмични онлайн курсове, създадени от реални специалисти в KickSTART. Реална стойност. Безплатно участие.",
+  openGraph: {
+    images: ["/free-courses-hero.png"],
+  },
+};
+
+type Course = {
+  id: string;
+  title: string;
+  description: string;
+  mentor: string;
+  photo: string;
+  categories: string[];
+  href?: string;
+};
+
+const COURSES: Course[] = [
+  {
+    id: "nevidima-vina",
+    title: "В капана на невидимата вина",
+    description:
+      "Разпознай и разбери своята невидима вътрешна вина, как тя влияе на решенията, границите и вътрешния ти свят.",
+    mentor: "Ваня Топалова",
+    photo: "/free-courses/vanya-topalova.jpg",
+    categories: ["Мислене/личностно развитие"],
+  },
+  {
+    id: "kogato-ne-ti-e-milo",
+    title: "Когато вече не ти е мило в живота",
+    description: "Спри, погледни и виж живота.",
+    mentor: "Снежана Леоампа",
+    photo: "/free-courses/snezhana-leoampa.jpg",
+    categories: ["Мислене/личностно развитие"],
+    href: "https://docs.google.com/forms/d/e/1FAIpQLScFi2zJKv8lPctzXnB4tqPvKoy090Tkpq4ewevRX1e8KAongQ/viewform?usp=dialog",
+  },
+  {
+    id: "rod-i-partner",
+    title: "Родът и влиянието му зад избора ни на партньор",
+    description: "Кои са Родовите сценарии зад нашите избори.",
+    mentor: "Галя Тодорова",
+    photo: "/free-courses/galya-todorova.jpg",
+    categories: ["Връзки/любов"],
+  },
+  {
+    id: "umorata-koqto-ne-minava",
+    title: "Умората, която не минава с почивка",
+    description: "Намали изтощението с ясни, приложими стъпки.",
+    mentor: "Мима Иванова",
+    photo: "/free-courses/mima-ivanova.jpg",
+    categories: ["Мислене/личностно развитие"],
+    href: "https://forms.gle/qyNbetKk6d86WJnz5",
+  },
+  {
+    id: "osaznatoto-dvizhenie",
+    title:
+      "Осъзнатото движение – преход от забързано ежедневие към ритъма на природата",
+    description:
+      "Онлайн 4-седмичен подготвителен път за баланс и изграждане на полезни навици в ежедневието.",
+    mentor: "Веселин Дурков",
+    photo: "/free-courses/veselin-durkov.jpg",
+    categories: [
+      "Здраве/спорт/хранене",
+      "Мислене/личностно развитие",
+      "Създаване на продукти",
+      "Пътувания",
+    ],
+    href: "https://docs.google.com/forms/d/1K1aOZGLncO1rZiGatet_QZwhz6XdpJVnCdJ6kuUGhiQ/edit",
+  },
+  {
+    id: "influenser-na-realnostta",
+    title: "Инфлуенсър на Реалността си!?",
+    description:
+      "Разбери силата на влиянието и я превърни в лично предимство.",
+    mentor: "Радостина Натцова",
+    photo: "/free-courses/radostina-natcova.jpg",
+    categories: ["Мислене/личностно развитие"],
+  },
+  {
+    id: "zavrashthane-kam-spokojstvieto",
+    title:
+      "Завръщане към спокойствието. Как да спреш вътрешното напрежение и да си върнеш баланса.",
+    description:
+      "Ще се научиш как да успокояваш тялото си, да намаляваш тревожността и да се връщаш към вътрешна стабилност – без борба със себе си.",
+    mentor: "Радка Павлова",
+    photo: "/free-courses/radka-pavlova.jpg",
+    categories: [
+      "Танци/движение/женственост",
+      "Здраве/спорт/хранене",
+      "Мислене/личностно развитие",
+      "Родителство/раждане/грижа за деца",
+      "Връзки/любов",
+    ],
+    href: "https://docs.google.com/forms/d/e/1FAIpQLSf-XLDfVqpdruX70N0-pGS2AlGGW7uaV0DYHNa0IzwCTBKuCg/viewform",
+  },
+];
+
+export default function FreeCoursesPage() {
+  return (
+    <div
+      style={{
+        fontFamily: "var(--font-mv, sans-serif)",
+        backgroundColor: "#ffffff",
+        minHeight: "100vh",
+      }}
+    >
+      <SiteNav />
+      <HeroSection />
+      <ForWhoSection />
+      <CoursesSection courses={COURSES} />
+      <KickstartCTA />
+      <SiteFooter />
+    </div>
+  );
+}
+
+/* ─── HERO ──────────────────────────────────────────────────────────── */
+function HeroSection() {
+  return (
+    <section
+      className="relative px-6 md:px-16 lg:px-24 pt-32 pb-12 overflow-hidden"
+      style={{ backgroundColor: "#ffffff" }}
+    >
+      <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          inset: 0,
+          pointerEvents: "none",
+          background:
+            "radial-gradient(ellipse 55% 50% at 50% 0%, rgba(107,21,14,0.07) 0%, transparent 65%)",
+        }}
+      />
+
+      <div className="relative max-w-5xl mx-auto text-center">
+        <span className="mv-tag mv-tag-light">KickSTART</span>
+        <h1
+          className="mt-5"
+          style={{
+            fontSize: "clamp(2rem, 5vw, 3.6rem)",
+            fontWeight: 900,
+            color: T.textPrimary,
+            lineHeight: 1.1,
+            letterSpacing: "-0.03em",
+          }}
+        >
+          Безплатни{" "}
+          <span style={{ ...GRADIENT_TEXT }}>онлайн курсове</span>
+        </h1>
+        <p
+          className="mt-4"
+          style={{
+            fontSize: "17px",
+            color: T.textSecondary,
+            lineHeight: 1.7,
+          }}
+        >
+          Създадени от реални специалисти в KickSTART
+        </p>
+        <p
+          className="mt-2"
+          style={{
+            fontSize: "15px",
+            color: T.textSecondary,
+            lineHeight: 1.7,
+          }}
+        >
+          4 седмици. Реална стойност. Безплатно участие.
+        </p>
+
+        <a
+          href="#courses"
+          className="mv-btn mv-btn-primary mt-8 inline-flex"
+          style={{ fontSize: "16px", padding: "16px 40px" }}
+        >
+          Разгледай безплатните курсове
+        </a>
+      </div>
+
+      {/* Hero banner image */}
+      <div
+        className="relative max-w-4xl mx-auto mt-12 overflow-hidden"
+        style={{ borderRadius: "14px" }}
+      >
+        <Image
+          src="/free-courses-hero.png"
+          alt="Избери курс от участниците в KickSTART"
+          width={1370}
+          height={500}
+          priority
+          style={{
+            width: "100%",
+            height: "auto",
+            display: "block",
+          }}
+        />
+      </div>
+    </section>
+  );
+}
+
+/* ─── FOR WHO ───────────────────────────────────────────────────────── */
+function ForWhoSection() {
+  const items = [
+    "търсиш реална трансформация, а не бързи обещания",
+    "искаш да учиш от практикуващи специалисти",
+    "цениш дълбочина, структура и смисъл",
+    "искаш да усетиш как работи един добре подреден онлайн курс",
+  ];
+
+  return (
+    <section
+      className="px-6 md:px-16 lg:px-24 py-20"
+      style={{ backgroundColor: "#f3f4f6" }}
+    >
+      <div className="max-w-3xl mx-auto">
+        <span className="mv-tag mv-tag-light">За теб</span>
+        <h2
+          className="mt-5"
+          style={{
+            fontSize: "clamp(1.6rem, 4vw, 2.6rem)",
+            fontWeight: 900,
+            color: T.textPrimary,
+            lineHeight: 1.15,
+            letterSpacing: "-0.02em",
+          }}
+        >
+          За кого са тези{" "}
+          <span style={{ ...GRADIENT_TEXT }}>курсове?</span>
+        </h2>
+        <p
+          className="mt-4"
+          style={{
+            fontSize: "16px",
+            color: T.textSecondary,
+            lineHeight: 1.8,
+          }}
+        >
+          Тези безплатни курсове са за теб, ако:
+        </p>
+        <ul className="mt-6 flex flex-col gap-4">
+          {items.map((item) => (
+            <li
+              key={item}
+              className="flex items-start gap-3"
+              style={{ fontSize: "16px", color: T.textPrimary, lineHeight: 1.6 }}
+            >
+              <span
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "24px",
+                  height: "24px",
+                  borderRadius: "50%",
+                  backgroundColor: "rgba(107,21,14,0.08)",
+                  color: "#70150E",
+                  fontSize: "14px",
+                  fontWeight: 700,
+                  flexShrink: 0,
+                  marginTop: "2px",
+                }}
+              >
+                ✓
+              </span>
+              {item}
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-10 text-center md:text-left">
+          <a
+            href="#courses"
+            className="mv-btn mv-btn-primary inline-flex"
+            style={{ fontSize: "15px", padding: "14px 36px" }}
+          >
+            Разгледай курсовете
+          </a>
+        </div>
+
+        <p
+          className="mt-10"
+          style={{
+            fontSize: "15px",
+            color: T.textSecondary,
+            lineHeight: 1.8,
+          }}
+        >
+          А сега ти имаш възможност да избереш подходящия курс за теб, като
+          селектираш тема по-долу. След това просто натисни бутона под
+          описанието на курса, за да се запишеш.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/* ─── COURSES SECTION ───────────────────────────────────────────────── */
+function CoursesSection({ courses }: { courses: Course[] }) {
+  return (
+    <section
+      id="courses"
+      className="px-6 md:px-16 lg:px-24 py-20"
+      style={{ backgroundColor: "#ffffff" }}
+    >
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-4">
+          <span className="mv-tag mv-tag-light">Курсове</span>
+        </div>
+        <h2
+          className="text-center"
+          style={{
+            fontSize: "clamp(1.6rem, 4vw, 2.6rem)",
+            fontWeight: 900,
+            color: T.textPrimary,
+            lineHeight: 1.15,
+            letterSpacing: "-0.02em",
+          }}
+        >
+          Избери курс от участниците в{" "}
+          <span style={{ ...GRADIENT_TEXT }}>KickSTART</span>
+        </h2>
+
+        <div
+          className="mt-6 mx-auto flex items-center justify-center gap-3"
+          style={{
+            padding: "14px 28px",
+            backgroundColor: "rgba(107,21,14,0.06)",
+            borderRadius: "12px",
+            maxWidth: "fit-content",
+          }}
+        >
+          <span style={{ fontSize: "20px" }}>📅</span>
+          <p
+            style={{
+              fontSize: "15px",
+              fontWeight: 700,
+              color: T.textPrimary,
+            }}
+          >
+            09 Март – 05 Април 2026 г.
+          </p>
+          <span
+            style={{
+              fontSize: "13px",
+              color: T.textSecondary,
+              fontWeight: 500,
+            }}
+          >
+            · напълно безплатни
+          </span>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6 mt-14">
+          {courses.map((course) => (
+            <CourseCard key={course.id} course={course} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── COURSE CARD ───────────────────────────────────────────────────── */
+function CourseCard({ course }: { course: Course }) {
+  return (
+    <article
+      className="mv-program-card flex flex-col overflow-hidden"
+      style={{
+        backgroundColor: "#ffffff",
+        borderRadius: "14px",
+        border: "1px solid rgba(0,0,0,0.08)",
+      }}
+    >
+      {/* Mentor photo */}
+      <div
+        className="relative overflow-hidden flex items-center justify-center"
+        style={{
+          aspectRatio: "1/1",
+          backgroundColor: "#f3f4f6",
+        }}
+      >
+        <Image
+          src={course.photo}
+          alt={course.mentor}
+          fill
+          style={{ objectFit: "cover", objectPosition: "center top" }}
+          sizes="(max-width: 768px) 100vw, 50vw"
+        />
+      </div>
+
+      {/* Body */}
+      <div className="flex flex-col flex-1 p-6">
+        {/* Categories */}
+        <div className="flex flex-wrap gap-2 mb-4">
+          {course.categories.map((cat) => (
+            <span
+              key={cat}
+              style={{
+                fontSize: "11px",
+                fontWeight: 700,
+                color: "#70150E",
+                letterSpacing: "0.04em",
+                padding: "4px 10px",
+                borderRadius: "6px",
+                backgroundColor: "rgba(107,21,14,0.06)",
+              }}
+            >
+              {cat}
+            </span>
+          ))}
+        </div>
+
+        <h3
+          style={{
+            fontSize: "18px",
+            fontWeight: 800,
+            color: T.textPrimary,
+            lineHeight: 1.3,
+            letterSpacing: "-0.01em",
+            marginBottom: "10px",
+          }}
+        >
+          {course.title}
+        </h3>
+
+        <p
+          style={{
+            fontSize: "14px",
+            color: T.textSecondary,
+            lineHeight: 1.75,
+            flex: 1,
+            marginBottom: "16px",
+          }}
+        >
+          {course.description}
+        </p>
+
+        {/* Mentor name */}
+        <p
+          style={{
+            fontSize: "13px",
+            fontWeight: 700,
+            color: T.textPrimary,
+            marginBottom: "16px",
+          }}
+        >
+          {course.mentor}
+        </p>
+
+        {/* CTA */}
+        {course.href ? (
+          <a
+            href={course.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mv-btn mv-btn-primary"
+            style={{
+              fontSize: "14px",
+              padding: "12px 24px",
+              textAlign: "center",
+              width: "100%",
+            }}
+          >
+            Научи повече
+          </a>
+        ) : (
+          <span
+            style={{
+              display: "block",
+              fontSize: "14px",
+              fontWeight: 700,
+              padding: "12px 24px",
+              textAlign: "center",
+              width: "100%",
+              borderRadius: "10px",
+              backgroundColor: "rgba(107,21,14,0.08)",
+              color: "#70150E",
+            }}
+          >
+            Очаквай скоро
+          </span>
+        )}
+      </div>
+    </article>
+  );
+}
+
+/* ─── KICKSTART CTA ─────────────────────────────────────────────────── */
+function KickstartCTA() {
+  return (
+    <section
+      className="px-6 md:px-16 lg:px-24 py-24"
+      style={{
+        background: "linear-gradient(135deg, #70150E 0%, #c94535 55%, #e85050 100%)",
+      }}
+    >
+      <div className="max-w-3xl mx-auto text-center">
+        <span
+          className="mv-tag"
+          style={{
+            backgroundColor: "rgba(255,255,255,0.15)",
+            color: "rgba(255,255,255,0.9)",
+          }}
+        >
+          KickSTART
+        </span>
+        <h2
+          className="mt-6"
+          style={{
+            fontSize: "clamp(1.6rem, 4vw, 2.6rem)",
+            fontWeight: 900,
+            color: "#ffffff",
+            lineHeight: 1.15,
+            letterSpacing: "-0.02em",
+          }}
+        >
+          Искаш да създадеш свой собствен онлайн курс?
+        </h2>
+        <p
+          className="mt-5"
+          style={{
+            fontSize: "16px",
+            color: "rgba(255,255,255,0.78)",
+            lineHeight: 1.75,
+          }}
+        >
+          Ако искаш да създадеш свой собствен онлайн курс и да стартираш или
+          скалираш онлайн бизнеса си, се включи в KickSTART списъка за
+          изчакващи. Така ще бъдеш сред първите, които научават кога отваряме
+          вратите отново, и ще получиш специални бонуси.
+        </p>
+        <a
+          href="/kickstart#waitlist"
+          className="mv-btn mv-btn-white mt-10 inline-flex"
+          style={{ fontSize: "16px", padding: "16px 40px" }}
+        >
+          Присъедини се към KickSTART списъка
+        </a>
+      </div>
+    </section>
+  );
+}

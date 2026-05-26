@@ -5,12 +5,13 @@ import { trackInitiateCheckout } from '@/app/pixel';
 import { PRODUCTS, type ProductSlug } from '@/lib/products';
 
 type PaymentMethod = 'card' | 'bank';
-type Variant = 'light' | 'dark';
+type Variant = 'light' | 'dark' | 'dark-warm' | 'dark-sage' | 'dark-rose';
 
 interface EnrollFormProps {
   product?: ProductSlug;
   cardOnly?: boolean;
   variant?: Variant;
+  submitLabel?: string;
 }
 
 // Color tokens keyed by variant. Light = warm-red on white (masterclass default).
@@ -66,9 +67,60 @@ const THEME: Record<Variant, {
     paymentTitle: '#ffffff',
     paymentSubtitle: 'rgba(255,255,255,0.62)',
   },
+  'dark-warm': {
+    inputBg: 'rgba(255,255,255,0.08)',
+    inputBorder: 'rgba(255,255,255,0.18)',
+    inputBorderFocus: '#c9a23c',
+    inputText: '#ffffff',
+    legendText: 'rgba(255,255,255,0.55)',
+    hintText: 'rgba(255,255,255,0.55)',
+    errorText: '#fca5a5',
+    buttonGradient: 'linear-gradient(135deg, #8b6914 0%, #6d5210 100%)',
+    buttonShadow: '0 8px 22px rgba(139,105,20,0.30)',
+    paymentBg: 'rgba(255,255,255,0.04)',
+    paymentBgChecked: 'rgba(139,105,20,0.12)',
+    paymentBorderChecked: '#c9a23c',
+    paymentAccent: '#c9a23c',
+    paymentTitle: '#ffffff',
+    paymentSubtitle: 'rgba(255,255,255,0.62)',
+  },
+  'dark-sage': {
+    inputBg: 'rgba(255,255,255,0.08)',
+    inputBorder: 'rgba(255,255,255,0.18)',
+    inputBorderFocus: '#8aab7a',
+    inputText: '#ffffff',
+    legendText: 'rgba(255,255,255,0.55)',
+    hintText: 'rgba(255,255,255,0.55)',
+    errorText: '#fca5a5',
+    buttonGradient: 'linear-gradient(135deg, #5a7a4e 0%, #3d5a34 100%)',
+    buttonShadow: '0 8px 22px rgba(90,122,78,0.30)',
+    paymentBg: 'rgba(255,255,255,0.04)',
+    paymentBgChecked: 'rgba(90,122,78,0.12)',
+    paymentBorderChecked: '#8aab7a',
+    paymentAccent: '#8aab7a',
+    paymentTitle: '#ffffff',
+    paymentSubtitle: 'rgba(255,255,255,0.62)',
+  },
+  'dark-rose': {
+    inputBg: 'rgba(255,255,255,0.08)',
+    inputBorder: 'rgba(255,255,255,0.18)',
+    inputBorderFocus: '#e0728a',
+    inputText: '#ffffff',
+    legendText: 'rgba(255,255,255,0.55)',
+    hintText: 'rgba(255,255,255,0.55)',
+    errorText: '#fca5a5',
+    buttonGradient: 'linear-gradient(135deg, #c4385a 0%, #9e2a48 100%)',
+    buttonShadow: '0 8px 22px rgba(196,56,90,0.30)',
+    paymentBg: 'rgba(255,255,255,0.04)',
+    paymentBgChecked: 'rgba(196,56,90,0.12)',
+    paymentBorderChecked: '#e0728a',
+    paymentAccent: '#e0728a',
+    paymentTitle: '#ffffff',
+    paymentSubtitle: 'rgba(255,255,255,0.62)',
+  },
 };
 
-export function EnrollForm({ product = 'masterclass', cardOnly = false, variant = 'light' }: EnrollFormProps) {
+export function EnrollForm({ product = 'masterclass', cardOnly = false, variant = 'light', submitLabel }: EnrollFormProps) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [method, setMethod] = useState<PaymentMethod>('card');
@@ -162,7 +214,7 @@ export function EnrollForm({ product = 'masterclass', cardOnly = false, variant 
   };
 
   const buttonDarkStyle: React.CSSProperties =
-    variant === 'dark'
+    variant !== 'light'
       ? {
           ...buttonBase,
           background: t.buttonGradient,
@@ -258,7 +310,7 @@ export function EnrollForm({ product = 'masterclass', cardOnly = false, variant 
             ? 'Пренасочване...'
             : method === 'bank'
               ? 'Продължи към банковия превод →'
-              : 'Да - готов/а съм да вляза →'}
+              : submitLabel ?? 'Да - готов/а съм да вляза →'}
         </button>
       </div>
 

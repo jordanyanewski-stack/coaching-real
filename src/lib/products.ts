@@ -10,7 +10,7 @@
  * everything up here.
  */
 
-export type ProductSlug = 'masterclass' | 'audiobook' | 'career-course';
+export type ProductSlug = 'masterclass' | 'audiobook' | 'audiobook-hot' | 'career-course' | 'rodov-model' | 'zhiva';
 
 export interface Product {
   slug: ProductSlug;
@@ -62,6 +62,21 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     mlPendingGroupIdEnv: 'MAILERLITE_AUDIOBOOK_PENDING_GROUP_ID',
     bunnyFile: 'stasi-audiobook.mp3',
   },
+  'audiobook-hot': {
+    slug: 'audiobook-hot',
+    name: 'Аудиокнига Дигитален Успех (специална оферта)',
+    price: '9.00',
+    currency: 'EUR',
+    supportsBankTransfer: false,
+    bankTransfer: {
+      referencePrefix: 'Аудиокнига',
+      productLabel: 'Аудиокнига: Дигитален Успех (специална оферта)',
+      nextStepCopy: '',
+    },
+    mlPaidGroupIdEnv: 'MAILERLITE_AUDIOBOOK_PAID_GROUP_ID',
+    mlPendingGroupIdEnv: 'MAILERLITE_FREEBIE_GROUP_ID',
+    bunnyFile: 'stasi-audiobook.mp3',
+  },
   'career-course': {
     slug: 'career-course',
     name: 'Кариерно развитие в ерата на AI',
@@ -77,6 +92,36 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     mlPaidGroupIdEnv: 'MAILERLITE_CAREER_PAID_GROUP_ID',
     // No dedicated pending group yet — falls back to the legacy general pending group.
     mlPendingGroupIdEnv: 'MAILERLITE_PENDING_GROUP_ID',
+  },
+  zhiva: {
+    slug: 'zhiva',
+    name: 'ЖИВА · 4-седмичен курс',
+    price: '97.00',
+    currency: 'EUR',
+    supportsBankTransfer: true,
+    bankTransfer: {
+      referencePrefix: 'Жива курс',
+      productLabel: 'ЖИВА · 4-седмичен онлайн процес с Таня Касабова',
+      nextStepCopy:
+        'Имейлът съдържа достъп до пълния 4-седмичен курс с Таня Касабова.',
+    },
+    mlPaidGroupIdEnv: 'MAILERLITE_ZHIVA_PAID_GROUP_ID',
+    mlPendingGroupIdEnv: 'MAILERLITE_ZHIVA_PENDING_GROUP_ID',
+  },
+  'rodov-model': {
+    slug: 'rodov-model',
+    name: 'Прекъсни родовия модел в любовта',
+    price: '97.00',
+    currency: 'EUR',
+    supportsBankTransfer: true,
+    bankTransfer: {
+      referencePrefix: 'Родов модел',
+      productLabel: 'Прекъсни родовия модел в любовта · 4-седмичен курс',
+      nextStepCopy:
+        'Имейлът съдържа достъп до пълния 4-седмичен курс с Галя Тодорова.',
+    },
+    mlPaidGroupIdEnv: 'MAILERLITE_RODOV_PAID_GROUP_ID',
+    mlPendingGroupIdEnv: 'MAILERLITE_RODOV_PENDING_GROUP_ID',
   },
 };
 

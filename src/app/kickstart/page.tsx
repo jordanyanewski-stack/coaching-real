@@ -210,7 +210,7 @@ function HeroSection() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="https://coachingreallive.com/wp-content/uploads/2026/03/a-i-r-5.png"
+              src="/kickstart.png"
               alt="KickSTART - програма за холистични предприемачи"
               style={{ width: "100%", height: "560px", objectFit: "cover", objectPosition: "top center", display: "block" }}
             />
