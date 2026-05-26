@@ -251,6 +251,7 @@ export default function AudiobookPage() {
     <div style={{ fontFamily: "var(--font-mv, sans-serif)" }}>
       <SiteNav />
       <HeroSection />
+      <ForYouSection />
       <LearnSection />
       <WhyDifferentSection />
       <ForWhomSection />
@@ -270,47 +271,18 @@ function HeroSection() {
       className="relative min-h-screen flex flex-col justify-center px-6 md:px-16 lg:px-24 pt-24 pb-20 overflow-hidden"
       style={{ backgroundColor: "#faf8f5" }}
     >
-      {/* Ambient light */}
-      <div aria-hidden style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: 0 }}>
-        <div
-          style={{
-            position: "absolute",
-            top: "-10%",
-            right: "-8%",
-            width: "55%",
-            aspectRatio: "1",
-            borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(107,21,14,0.55) 0%, transparent 65%)",
-            filter: "blur(90px)",
-            animation: "heroOrbA 10s ease-in-out infinite",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            bottom: "5%",
-            left: "-5%",
-            width: "40%",
-            aspectRatio: "1",
-            borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(107,21,14,0.35) 0%, transparent 65%)",
-            filter: "blur(100px)",
-            animation: "heroOrbB 13s ease-in-out infinite",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            top: "40%",
-            left: "30%",
-            width: "30%",
-            aspectRatio: "1",
-            borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(180,50,30,0.12) 0%, transparent 70%)",
-            filter: "blur(120px)",
-          }}
-        />
-      </div>
+      {/* Dot pattern */}
+      <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          inset: 0,
+          backgroundImage: "radial-gradient(circle, rgba(107,21,14,0.07) 1px, transparent 1px)",
+          backgroundSize: "24px 24px",
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      />
 
       <div className="relative z-10 max-w-6xl mx-auto w-full grid lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-16 items-center">
         {/* Left - text */}
@@ -337,7 +309,6 @@ function HeroSection() {
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
-                filter: "drop-shadow(0 0 14px rgba(200,60,40,0.35)) drop-shadow(0 0 32px rgba(200,60,40,0.14))",
               }}
             >
               Успех
@@ -380,100 +351,124 @@ function HeroSection() {
           </div>
         </div>
 
-        {/* Right - who it's for */}
-        <div className="animate-fade-in delay-200 flex flex-col gap-6">
-          {/* Specialists */}
-          <div
-            style={{
-              backgroundColor: "rgba(112,21,14,0.04)",
-              borderRadius: T.radiusSm,
-              border: "1px solid rgba(112,21,14,0.08)",
-              padding: "24px",
-            }}
-          >
-            <p
+        {/* Right - audiobook cover */}
+        <div className="animate-fade-in delay-200 flex items-center justify-center">
+          <div style={{ maxWidth: "380px", width: "100%" }}>
+            <Image
+              src="/audiobook-cover.png"
+              alt="Аудиокнига: Дигитален Успех за Холистични Лидери"
+              width={1080}
+              height={1080}
+              priority
               style={{
-                fontSize: "11px",
-                fontWeight: 700,
-                color: onDark.muted,
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                marginBottom: "14px",
+                width: "100%",
+                height: "auto",
+                borderRadius: "18px",
+                boxShadow: "0 20px 60px rgba(107,21,14,0.20), 0 4px 16px rgba(0,0,0,0.06)",
+                border: "1px solid rgba(107,21,14,0.08)",
               }}
-            >
-              Тази аудиокнига е за теб, ако си
-            </p>
-            <div className="grid grid-cols-2 gap-2">
-              {specialists.map(({ Icon, label }) => (
-                <div
-                  key={label}
-                  className="flex items-center gap-3 px-3 py-2.5"
-                  style={{
-                    backgroundColor: "rgba(112,21,14,0.04)",
-                    borderRadius: "8px",
-                    border: "1px solid rgba(112,21,14,0.06)",
-                  }}
-                >
-                  <div
-                    style={{
-                      width: "30px",
-                      height: "30px",
-                      borderRadius: "7px",
-                      backgroundColor: "rgba(107,21,14,0.25)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      flexShrink: 0,
-                    }}
-                  >
-                    <Icon color="#e87070" />
-                  </div>
-                  <span style={{ fontSize: "13px", color: onDark.secondary, fontWeight: 500 }}>{label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Questions */}
-          <div className="flex flex-col gap-3">
-            {questions.map((q, i) => (
-              <div
-                key={i}
-                className="flex gap-3 items-start p-4"
-                style={{
-                  backgroundColor: "rgba(112,21,14,0.04)",
-                  borderRadius: "10px",
-                  border: "1px solid rgba(107,21,14,0.25)",
-                }}
-              >
-                <div
-                  style={{
-                    width: "22px",
-                    height: "22px",
-                    borderRadius: "50%",
-                    background: "rgba(107,21,14,0.35)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    flexShrink: 0,
-                    marginTop: "1px",
-                  }}
-                >
-                  <svg width="10" height="14" viewBox="0 0 10 14" fill="none">
-                    <path d="M1 2.5C1 1.12 2.12 0 3.5 0h3C7.88 0 9 1.12 9 2.5c0 2-2 2.5-4 3v1.5M5 11v2" stroke="#e87070" strokeWidth="1.5" strokeLinecap="round" />
-                  </svg>
-                </div>
-                <p style={{ fontSize: "14px", color: onDark.secondary, lineHeight: 1.65 }}>{q}</p>
-              </div>
-            ))}
-            <p
-              className="text-center pt-1"
-              style={{ fontSize: "14px", color: "#e87070", fontWeight: 600 }}
-            >
-              Тази аудиокнига е създадена точно за теб.
-            </p>
+            />
           </div>
         </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── FOR YOU ──────────────────────────────────────────────────────── */
+function ForYouSection() {
+  return (
+    <section
+      className="relative px-6 md:px-16 lg:px-24 py-20 md:py-24 overflow-hidden"
+      style={{ backgroundColor: "#ffffff" }}
+    >
+      <div className="relative max-w-5xl mx-auto">
+        <div className="text-center mb-12">
+          <span className="mv-tag mv-tag-light">За кого е тази аудиокнига</span>
+          <h2
+            className="mt-5"
+            style={{
+              fontSize: "clamp(1.8rem, 4vw, 3rem)",
+              fontWeight: 800,
+              color: T.textPrimary,
+              lineHeight: 1.15,
+              letterSpacing: "-0.02em",
+            }}
+          >
+            Създадена за{" "}
+            <span style={{ ...GRADIENT_TEXT }}>холистични лидери</span>
+          </h2>
+        </div>
+
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3 max-w-3xl mx-auto">
+          {specialists.map(({ Icon, label }) => (
+            <div
+              key={label}
+              className="flex items-center gap-3 px-4 py-3"
+              style={{
+                backgroundColor: T.surfaceStrong,
+                borderRadius: T.radiusSm,
+                border: "1px solid rgba(112,21,14,0.08)",
+              }}
+            >
+              <div
+                style={{
+                  width: "34px",
+                  height: "34px",
+                  borderRadius: "8px",
+                  backgroundColor: "rgba(107,21,14,0.12)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexShrink: 0,
+                }}
+              >
+                <Icon color="#c94535" />
+              </div>
+              <span style={{ fontSize: "14px", color: T.textPrimary, fontWeight: 600 }}>{label}</span>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex flex-col gap-3 max-w-2xl mx-auto mt-10">
+          {questions.map((q, i) => (
+            <div
+              key={i}
+              className="flex gap-3 items-start p-5"
+              style={{
+                backgroundColor: T.surfaceStrong,
+                borderRadius: T.radiusSm,
+                border: "1px solid rgba(107,21,14,0.08)",
+              }}
+            >
+              <div
+                style={{
+                  width: "24px",
+                  height: "24px",
+                  borderRadius: "50%",
+                  background: "linear-gradient(135deg, #70150E 0%, #c94535 100%)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexShrink: 0,
+                  marginTop: "1px",
+                }}
+              >
+                <svg width="10" height="14" viewBox="0 0 10 14" fill="none">
+                  <path d="M1 2.5C1 1.12 2.12 0 3.5 0h3C7.88 0 9 1.12 9 2.5c0 2-2 2.5-4 3v1.5M5 11v2" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" />
+                </svg>
+              </div>
+              <p style={{ fontSize: "15px", color: T.textPrimary, lineHeight: 1.65, fontWeight: 500 }}>{q}</p>
+            </div>
+          ))}
+        </div>
+
+        <p
+          className="text-center mt-8"
+          style={{ fontSize: "16px", color: "#c94535", fontWeight: 700 }}
+        >
+          Тази аудиокнига е създадена точно за теб.
+        </p>
       </div>
     </section>
   );
@@ -1022,7 +1017,7 @@ function BonusesSection() {
                       flexShrink: 0,
                     }}
                   >
-                    <BonusIcon />
+                    <BonusIcon color="#ffffff" />
                   </div>
                   <div>
                     <p
@@ -1111,13 +1106,13 @@ function BonusesSection() {
             <p style={{ fontSize: "11px", fontWeight: 700, color: "rgba(255,255,255,0.55)", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "6px" }}>
               Обща стойност на офертата
             </p>
-            <p style={{ fontSize: "clamp(1.4rem, 3vw, 2rem)", fontWeight: 900, color: "var(--mv-text-primary)", letterSpacing: "-0.02em" }}>
+            <p style={{ fontSize: "clamp(1.4rem, 3vw, 2rem)", fontWeight: 900, color: "#ffffff", letterSpacing: "-0.02em" }}>
               Над <span style={{ textDecoration: "line-through", opacity: 0.6 }}>625 €</span>
             </p>
           </div>
           <div className="text-center md:text-right">
             <p style={{ fontSize: "12px", color: "rgba(255,255,255,0.6)", marginBottom: "4px" }}>Само сега за</p>
-            <p style={{ fontSize: "clamp(2rem, 4vw, 2.8rem)", fontWeight: 900, color: "var(--mv-text-primary)", lineHeight: 1, letterSpacing: "-0.03em" }}>
+            <p style={{ fontSize: "clamp(2rem, 4vw, 2.8rem)", fontWeight: 900, color: "#ffffff", lineHeight: 1, letterSpacing: "-0.03em" }}>
               25.00 €
             </p>
             <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.65)", marginTop: "3px" }}>/ 48.90 лв.</p>
@@ -1141,9 +1136,8 @@ function FinalCTASection() {
         style={{
           position: "absolute",
           inset: 0,
-          background:
-            "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(107,21,14,0.28) 0%, transparent 65%)," +
-            "radial-gradient(ellipse 40% 30% at 20% 80%, rgba(180,50,30,0.12) 0%, transparent 65%)",
+          backgroundImage: "radial-gradient(circle, rgba(107,21,14,0.07) 1px, transparent 1px)",
+          backgroundSize: "24px 24px",
           pointerEvents: "none",
         }}
       />
