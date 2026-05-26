@@ -5,8 +5,8 @@ import { EnrollForm } from '../masterclass/enroll-form';
 
 const TWENTY_DAYS = 20 * 24 * 60 * 60 * 1000;
 
-function getOptinTimestamp(): number | null {
-  const match = document.cookie.match(/(?:^|;\s*)funnel_optin=(\d+)/);
+function getBuyerTimestamp(): number | null {
+  const match = document.cookie.match(/(?:^|;\s*)audiobook_buyer=(\d+)/);
   return match ? Number(match[1]) : null;
 }
 
@@ -20,7 +20,7 @@ export function PromoPrice({ variant }: PromoPriceProps) {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const ts = getOptinTimestamp();
+    const ts = getBuyerTimestamp();
     if (ts) {
       const deadline = ts + TWENTY_DAYS;
       const remaining = deadline - Date.now();

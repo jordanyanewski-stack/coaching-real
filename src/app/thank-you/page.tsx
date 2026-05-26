@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { getDb } from '@/lib/db';
 import { getProduct, type ProductSlug } from '@/lib/products';
 import { TrackPurchase } from './track-purchase';
+import { SetBuyerCookie } from './set-buyer-cookie';
 
 export const dynamic = 'force-dynamic';
 
@@ -47,6 +48,7 @@ const MASTERCLASS_VIBER =
 function copyFor(productSlug: string | undefined): ProductCopy {
   switch (productSlug as ProductSlug) {
     case 'audiobook':
+    case 'audiobook-hot':
       return {
         title: 'Добре дошла!',
         body: 'Плащането е успешно. Аудиокнигата вече е достъпна в твоя профил.',
@@ -91,6 +93,7 @@ export default async function ThankYouPage({
   return (
     <div style={{ fontFamily: 'var(--font-mv, sans-serif)', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <TrackPurchase value={purchaseValue} currency={purchaseCurrency} />
+      {productSlug && <SetBuyerCookie product={productSlug} />}
       <header style={{ padding: '20px 32px' }}>
         <a href="/">
           <Image src={LOGO_URL} alt="Coaching Real" width={0} height={0} sizes="100vw" style={{ height: '38px', width: 'auto' }} />
