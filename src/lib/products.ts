@@ -10,7 +10,7 @@
  * everything up here.
  */
 
-export type ProductSlug = 'masterclass' | 'audiobook' | 'audiobook-hot' | 'career-course' | 'rodov-model' | 'zhiva';
+export type ProductSlug = 'masterclass' | 'audiobook' | 'audiobook-hot' | '12-izmerenia' | 'career-course' | 'rodov-model' | 'zhiva';
 
 export interface Product {
   slug: ProductSlug;
@@ -61,6 +61,21 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     mlPaidGroupIdEnv: 'MAILERLITE_AUDIOBOOK_PAID_GROUP_ID',
     mlPendingGroupIdEnv: 'MAILERLITE_AUDIOBOOK_PENDING_GROUP_ID',
     bunnyFile: 'stasi-audiobook.mp3',
+  },
+  '12-izmerenia': {
+    slug: '12-izmerenia',
+    name: '12 Измерения на твоята мисия',
+    price: '97.00',
+    currency: 'EUR',
+    supportsBankTransfer: true,
+    bankTransfer: {
+      referencePrefix: '12 Измерения',
+      productLabel: '12 Измерения на твоята мисия · онлайн курс',
+      nextStepCopy:
+        'Имейлът съдържа достъп до пълния курс с всички 12 модула.',
+    },
+    mlPaidGroupIdEnv: 'MAILERLITE_12IZMERENIA_PAID_GROUP_ID',
+    mlPendingGroupIdEnv: 'MAILERLITE_12IZMERENIA_PENDING_GROUP_ID',
   },
   'audiobook-hot': {
     slug: 'audiobook-hot',
