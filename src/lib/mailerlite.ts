@@ -1,14 +1,22 @@
 const API_URL = 'https://connect.mailerlite.com/api';
 
 async function request(path: string, method: string, body?: unknown) {
-  const res = await fetch(`${API_URL}${path}`, {
-    method,
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${(process.env.MAILERLITE_API_KEY ?? '').trim()}`,
-    },
-    body: body ? JSON.stringify(body) : undefined,
-  });
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 8000);
+  let res: Response;
+  try {
+    res = await fetch(`${API_URL}${path}`, {
+      method,
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${(process.env.MAILERLITE_API_KEY ?? '').trim()}`,
+      },
+      body: body ? JSON.stringify(body) : undefined,
+      signal: controller.signal,
+    });
+  } finally {
+    clearTimeout(timeout);
+  }
   if (!res.ok) {
     const text = await res.text();
     throw new Error(`MailerLite ${method} ${path} → ${res.status}: ${text}`);

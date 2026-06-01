@@ -120,6 +120,23 @@ const THEME: Record<Variant, {
   },
 };
 
+// POST JSON with a hard timeout so a slow/cold server can never leave the submit
+// button stuck on "Пренасочване..." forever — the user gets a retryable error.
+async function postJson(url: string, payload: unknown, timeoutMs = 20000): Promise<Response> {
+  const controller = new AbortController();
+  const t = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    return await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      signal: controller.signal,
+    });
+  } finally {
+    clearTimeout(t);
+  }
+}
+
 export function EnrollForm({ product = 'masterclass', cardOnly = false, variant = 'light', submitLabel }: EnrollFormProps) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -138,11 +155,7 @@ export function EnrollForm({ product = 'masterclass', cardOnly = false, variant 
 
     try {
       if (method === 'bank') {
-        const res = await fetch('/api/checkout/bank-transfer', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, email, product }),
-        });
+        const res = await postJson('/api/checkout/bank-transfer', { name, email, product });
 
         if (!res.ok) {
           const data = await res.json();
@@ -155,11 +168,7 @@ export function EnrollForm({ product = 'masterclass', cardOnly = false, variant 
         return;
       }
 
-      const res = await fetch('/api/checkout/create', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, product }),
-      });
+      const res = await postJson('/api/checkout/create', { name, email, product });
 
       if (!res.ok) {
         const data = await res.json();
@@ -187,7 +196,14 @@ export function EnrollForm({ product = 'masterclass', cardOnly = false, variant 
       document.body.appendChild(form);
       form.submit();
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Нещо се обърка. Опитай отново.');
+      const aborted = err instanceof DOMException && err.name === 'AbortError';
+      setError(
+        aborted
+          ? 'Връзката се забави. Провери интернет връзката си и опитай отново.'
+          : err instanceof Error
+            ? err.message
+            : 'Нещо се обърка. Опитай отново.'
+      );
       setLoading(false);
     }
   }

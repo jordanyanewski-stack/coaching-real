@@ -1,6 +1,7 @@
 export const runtime = 'nodejs';
 
 import { randomUUID } from 'crypto';
+import { after } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { getDb } from '@/lib/db';
 import { addToPending } from '@/lib/mailerlite';
@@ -56,23 +57,27 @@ export async function POST(request: NextRequest) {
     VALUES (${orderId}, ${cleanEmail}, ${name.trim()}, ${parseFloat(product.price)}, ${product.currency}, 'pending', ${product.slug})
   `;
 
-  try {
-    const pendingGroupId = getPendingGroupId(product.slug);
-    if (pendingGroupId) {
-      await addToPending(cleanEmail, name.trim(), pendingGroupId);
-    } else {
-      console.error('[MailerLite] Missing pending group id env var', {
+  // Runs AFTER the response is sent — a slow/unreachable MailerLite must never
+  // delay or hang the redirect to myPOS. Errors are logged, not surfaced.
+  const pendingGroupId = getPendingGroupId(product.slug);
+  after(async () => {
+    try {
+      if (pendingGroupId) {
+        await addToPending(cleanEmail, name.trim(), pendingGroupId);
+      } else {
+        console.error('[MailerLite] Missing pending group id env var', {
+          product: product.slug,
+          envVar: product.mlPendingGroupIdEnv,
+        });
+      }
+    } catch (err) {
+      console.error('[MailerLite addToPending FAILED]', {
+        email: cleanEmail,
         product: product.slug,
-        envVar: product.mlPendingGroupIdEnv,
+        error: (err as Error).message,
       });
     }
-  } catch (err) {
-    console.error('[MailerLite addToPending FAILED]', {
-      email: cleanEmail,
-      product: product.slug,
-      error: (err as Error).message,
-    });
-  }
+  });
 
   const { action, fields } = buildPurchaseParams({
     orderId,
