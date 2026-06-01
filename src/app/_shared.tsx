@@ -59,7 +59,7 @@ export const certs = [
 ];
 
 /* ─── SiteNav ──────────────────────────────────────────────────────── */
-const CTA_HREF = "https://calendly.com/stanislavapavlova8/30min?month=2026-05&date=2026-05-04";
+const CTA_HREF = "https://calendly.com/stanislavapavlova8/meet-with-me-1";
 const CTA_LABEL = "Запази си среща";
 
 export function SiteNav() {
