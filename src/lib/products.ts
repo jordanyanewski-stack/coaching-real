@@ -1,16 +1,19 @@
 /**
  * Source of truth for every purchasable product on coachingreallive.com.
  *
- * Adding a product is a 3-step change:
+ * Adding a product is a 4-step change:
  *   1. Add an entry below + set its MailerLite paid + pending group env vars on Vercel.
  *   2. Run a DB migration if the new product needs extra columns (rare).
  *   3. Render `<EnrollForm product="<slug>" />` on the product page.
+ *   4. Add a `copyFor()` case in `src/app/thank-you/page.tsx` — otherwise the
+ *      post-payment page falls through to the masterclass default (May Viber
+ *      group + `/masterclass` back-link), which is wrong for a new product.
  *
  * The checkout API and MyPOS webhook are product-agnostic — they look
  * everything up here.
  */
 
-export type ProductSlug = 'masterclass' | 'audiobook' | 'audiobook-hot' | '12-izmerenia' | '12-izmerenia-promo' | 'career-course' | 'rodov-model' | 'zhiva';
+export type ProductSlug = 'masterclass' | 'audiobook' | 'audiobook-hot' | '12-izmerenia' | '12-izmerenia-promo' | 'career-course' | 'rodov-model' | 'zhiva' | 'biznes-dusha' | 'biznes-dusha-early';
 
 export interface Product {
   slug: ProductSlug;
@@ -152,6 +155,42 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     },
     mlPaidGroupIdEnv: 'MAILERLITE_RODOV_PAID_GROUP_ID',
     mlPendingGroupIdEnv: 'MAILERLITE_RODOV_PENDING_GROUP_ID',
+  },
+  // ── „Бизнес с душа, без хаос" — June 2026 live masterclass (17–28 юни). ──
+  // Two tiers sharing one MailerLite group pair (like 12-izmerenia / -promo):
+  // `biznes-dusha-early` = €37 early-bird (до 15 юни), `biznes-dusha` = €97 regular.
+  // The /biznes-s-dusha page auto-switches which slug renders based on the date.
+  'biznes-dusha-early': {
+    slug: 'biznes-dusha-early',
+    name: 'Бизнес с душа, без хаос (ранно записване)',
+    price: '37.00',
+    currency: 'EUR',
+    supportsBankTransfer: true,
+    bankTransfer: {
+      referencePrefix: 'Бизнес с душа',
+      productLabel: 'Бизнес с душа, без хаос · 12 мастъркласа (17–28 юни 2026) · ранно записване',
+      nextStepCopy:
+        'Имейлът съдържа Zoom линка, програмата и инструкциите за първия мастърклас (17 юни, 17:00 ч.).',
+    },
+    mlPaidGroupIdEnv: 'MAILERLITE_BIZNES_DUSHA_PAID_GROUP_ID',
+    // No dedicated pending group yet — falls back to the legacy general pending group
+    // so ad-captured leads are never lost if the dedicated var isn't set in time.
+    mlPendingGroupIdEnv: 'MAILERLITE_PENDING_GROUP_ID',
+  },
+  'biznes-dusha': {
+    slug: 'biznes-dusha',
+    name: 'Бизнес с душа, без хаос',
+    price: '97.00',
+    currency: 'EUR',
+    supportsBankTransfer: true,
+    bankTransfer: {
+      referencePrefix: 'Бизнес с душа',
+      productLabel: 'Бизнес с душа, без хаос · 12 мастъркласа (17–28 юни 2026)',
+      nextStepCopy:
+        'Имейлът съдържа Zoom линка, програмата и инструкциите за първия мастърклас (17 юни, 17:00 ч.).',
+    },
+    mlPaidGroupIdEnv: 'MAILERLITE_BIZNES_DUSHA_PAID_GROUP_ID',
+    mlPendingGroupIdEnv: 'MAILERLITE_PENDING_GROUP_ID',
   },
 };
 

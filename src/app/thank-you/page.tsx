@@ -61,6 +61,18 @@ function copyFor(productSlug: string | undefined): ProductCopy {
         body: 'Плащането е успешно. Ще получиш имейл с достъп до пълния 4-седмичен курс и всички материали.',
         secondaryCtaHref: '/career-course',
       };
+    case 'biznes-dusha':
+    case 'biznes-dusha-early':
+      return {
+        title: 'Добре дошла!',
+        body: 'Плащането е успешно. Ще получиш имейл с всички детайли за „Бизнес с душа, без хаос“ — дати, часове и Zoom линк за първата вечер (17 юни, 17:00 ч.).',
+        primaryCta: {
+          label: 'Присъедини се към Viber групата',
+          href: MASTERCLASS_VIBER,
+          viber: true,
+        },
+        secondaryCtaHref: '/biznes-s-dusha',
+      };
     case 'masterclass':
     default:
       return {
