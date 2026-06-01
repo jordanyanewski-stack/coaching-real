@@ -6,6 +6,7 @@ import { getDb } from '@/lib/db';
 import { moveToPaid } from '@/lib/mailerlite';
 import { verifyNotify } from '@/lib/mypos';
 import { getPaidGroupId, getPendingGroupId, getProduct, type ProductSlug } from '@/lib/products';
+import { cleanEnv } from '@/lib/validators';
 
 async function inviteIfNewBuyer(email: string) {
   if (!email) return;
@@ -14,7 +15,7 @@ async function inviteIfNewBuyer(email: string) {
     const existing = await clerk.users.getUserList({ emailAddress: [email] });
     if (existing.totalCount > 0) return; // already has an account
 
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://coachingreallive.com';
+    const siteUrl = cleanEnv(process.env.NEXT_PUBLIC_SITE_URL) || 'https://coachingreallive.com';
     await clerk.invitations.createInvitation({
       emailAddress: email,
       redirectUrl: `${siteUrl}/sign-up`,
