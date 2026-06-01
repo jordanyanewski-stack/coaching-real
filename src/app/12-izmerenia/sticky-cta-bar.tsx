@@ -108,7 +108,7 @@ export function StickyCTABar() {
                   lineHeight: 1,
                 }}
               >
-                €97
+                €197
               </span>
               <span
                 style={{
@@ -133,7 +133,7 @@ export function StickyCTABar() {
               whiteSpace: "nowrap",
             }}
           >
-            Запиши се - €97
+            Запиши се - €197
           </a>
         </div>
       </div>
