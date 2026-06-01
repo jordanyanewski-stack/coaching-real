@@ -298,9 +298,9 @@ function FeaturedSection({
             padding: 0,
           }}
         >
-          <div className="grid lg:grid-cols-[1.4fr_1fr]" style={{ minHeight: "340px" }}>
+          <div className="grid lg:grid-cols-[1.4fr_1fr]">
             {/* Thumbnail */}
-            <div className="relative overflow-hidden" style={{ minHeight: "220px" }}>
+            <div className="relative overflow-hidden" style={{ aspectRatio: "16/9" }}>
               <EpisodeThumbnail
                 videoId={episode.videoId}
                 localSrc={episode.thumbnail}

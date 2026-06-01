@@ -9,7 +9,8 @@ export const metadata = {
 };
 
 const SEASON2_EPISODES: Episode[] = [
-  { id: "s2e13", videoId: "8_Nw3enBRdQ", season: 2, episode: 13, title: "Усещане за ЖЕНА", featured: true },
+  { id: "s2e14", videoId: "fc88B95v4mA", season: 2, episode: 14, title: "Хармония в отношенията", featured: true, thumbnail: "/ep-14.jpg" },
+  { id: "s2e13", videoId: "8_Nw3enBRdQ", season: 2, episode: 13, title: "Усещане за ЖЕНА" },
   { id: "s2e12", videoId: "iOF3bW3IweQ", season: 2, episode: 12, title: "Пътуване към себе си" },
   { id: "s2e11", videoId: "tb3LtL9lvMo", season: 2, episode: 11, title: "Тайната на изобилието" },
   { id: "s2e10", videoId: "jxH7AznilYw", season: 2, episode: 10, title: "Какво казва лицето ти?" },
@@ -63,7 +64,7 @@ function PageHero() {
         }}
       />
       <div className="relative max-w-4xl mx-auto text-center">
-        <span className="mv-tag mv-tag-light">2 сезона · 19 епизода</span>
+        <span className="mv-tag mv-tag-light">2 сезона · 21 епизода</span>
         <h1
           className="mt-5"
           style={{
