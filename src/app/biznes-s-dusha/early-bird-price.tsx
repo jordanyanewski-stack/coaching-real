@@ -121,6 +121,7 @@ export function EarlyBirdPrice({ variant }: EarlyBirdPriceProps) {
         style={{
           display: 'inline-flex',
           flexDirection: 'column',
+          alignItems: 'center',
           gap: '14px',
           padding: '22px 26px',
           background: 'linear-gradient(135deg, #ffffff 0%, #fdf6ee 100%)',
@@ -130,7 +131,7 @@ export function EarlyBirdPrice({ variant }: EarlyBirdPriceProps) {
           maxWidth: '100%',
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px', flexWrap: 'wrap', rowGap: '8px' }}>
+        <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: '12px', flexWrap: 'wrap', rowGap: '8px' }}>
           {isEarly && (
             <span
               suppressHydrationWarning
@@ -164,7 +165,7 @@ export function EarlyBirdPrice({ variant }: EarlyBirdPriceProps) {
             за всички 12 дни
           </span>
         </div>
-        {isEarly && note('flex-start')}
+        {isEarly && note('center')}
       </div>
     );
   }
