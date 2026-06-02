@@ -157,7 +157,11 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     mlPendingGroupIdEnv: 'MAILERLITE_RODOV_PENDING_GROUP_ID',
   },
   // ── „Бизнес с душа, без хаос" — June 2026 live masterclass (17–28 юни). ──
-  // Two tiers sharing one MailerLite group pair (like 12-izmerenia / -promo):
+  // The June run of the same 12-masterclass program as `/masterclass`, so both
+  // tiers reuse the masterclass MailerLite groups (paid → MAILERLITE_PAID_GROUP_ID,
+  // pending → MAILERLITE_PENDING_GROUP_ID). No separate „Бизнес с душа" group or
+  // automation needed — leads & buyers land in the same lists the masterclass
+  // page already feeds (both vars are already live on Vercel).
   // `biznes-dusha-early` = €37 early-bird (до 15 юни), `biznes-dusha` = €97 regular.
   // The /biznes-s-dusha page auto-switches which slug renders based on the date.
   'biznes-dusha-early': {
@@ -172,7 +176,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
       nextStepCopy:
         'Имейлът съдържа Zoom линка, програмата и инструкциите за първия мастърклас (17 юни, 17:00 ч.).',
     },
-    mlPaidGroupIdEnv: 'MAILERLITE_BIZNES_DUSHA_PAID_GROUP_ID',
+    mlPaidGroupIdEnv: 'MAILERLITE_PAID_GROUP_ID',
     // No dedicated pending group yet — falls back to the legacy general pending group
     // so ad-captured leads are never lost if the dedicated var isn't set in time.
     mlPendingGroupIdEnv: 'MAILERLITE_PENDING_GROUP_ID',
@@ -189,7 +193,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
       nextStepCopy:
         'Имейлът съдържа Zoom линка, програмата и инструкциите за първия мастърклас (17 юни, 17:00 ч.).',
     },
-    mlPaidGroupIdEnv: 'MAILERLITE_BIZNES_DUSHA_PAID_GROUP_ID',
+    mlPaidGroupIdEnv: 'MAILERLITE_PAID_GROUP_ID',
     mlPendingGroupIdEnv: 'MAILERLITE_PENDING_GROUP_ID',
   },
 };
