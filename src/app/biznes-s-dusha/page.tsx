@@ -5,6 +5,7 @@ import { ScrollReveal } from "../masterclass/scroll-reveal";
 import { EnrollForm } from "../masterclass/enroll-form";
 import { EarlyBirdPrice } from "./early-bird-price";
 import { StickyCTABar } from "./sticky-cta";
+import { HeroVideo } from "./hero-video";
 
 export const metadata = {
   title: "Бизнес с душа, без хаос · 12 Мастъркласове · Юни 2026 | Coaching Real",
@@ -200,6 +201,7 @@ export default function BiznesSDushaPage() {
       <ScrollReveal />
       <CampaignHeader />
       <HeroSection />
+      <VSLSection />
       <TruthSection />
       <PainPointsSection />
       <CurriculumSection />
@@ -444,6 +446,108 @@ function HeroSection() {
               {label}
             </span>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── VSL VIDEO ─────────────────────────────────────────────────────── */
+const VSL_VIDEO = {
+  libraryId: "653527",
+  videoId: "7ca34e85-dd7f-4509-8db5-7f39f4515674",
+};
+
+function VSLSection() {
+  return (
+    <section
+      className="relative px-6 md:px-16 lg:px-24 py-16 md:py-24 overflow-hidden"
+      style={{ backgroundColor: "#1c0703" }}
+    >
+      <div className="reveal relative max-w-3xl mx-auto text-center">
+        <span
+          style={{
+            display: "inline-block",
+            fontSize: "11px",
+            fontWeight: 800,
+            color: "#f0a89f",
+            letterSpacing: "0.16em",
+            textTransform: "uppercase",
+            lineHeight: 1.4,
+          }}
+        >
+          Гледай преди да се запишеш
+        </span>
+        <h2
+          className="mt-5"
+          style={{
+            fontSize: "clamp(1.8rem, 4vw, 2.8rem)",
+            fontWeight: 800,
+            color: "#ffffff",
+            lineHeight: 1.15,
+            letterSpacing: "-0.02em",
+          }}
+        >
+          За какво е „Бизнес с душа,{" "}
+          <span
+            style={{
+              background: "linear-gradient(135deg, #ffd9b0 0%, #f0a89f 55%, #e87070 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+            }}
+          >
+            без хаос“
+          </span>
+        </h2>
+        <p
+          className="mt-5"
+          style={{
+            fontSize: "16px",
+            color: "rgba(255,255,255,0.78)",
+            lineHeight: 1.7,
+            fontWeight: 500,
+            maxWidth: "560px",
+            margin: "20px auto 0",
+          }}
+        >
+          Натисни play и чуй директно от мен защо създадох тази програма — и за кого е.
+        </p>
+
+        {/* Player */}
+        <div
+          className="mt-10"
+          style={{
+            position: "relative",
+            width: "100%",
+            aspectRatio: "16 / 9",
+            borderRadius: "18px",
+            overflow: "hidden",
+            boxShadow: "0 24px 64px rgba(0,0,0,0.45)",
+            border: "1px solid rgba(240,168,159,0.18)",
+          }}
+        >
+          <HeroVideo libraryId={VSL_VIDEO.libraryId} videoId={VSL_VIDEO.videoId} />
+        </div>
+
+        {/* CTA */}
+        <div className="mt-10">
+          <a
+            href="#enroll"
+            className="mv-btn mv-btn-primary"
+            style={{
+              fontSize: "16px",
+              padding: "16px 32px",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "10px",
+            }}
+          >
+            Запиши се на ранна цена
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <path d="M5 12h14M13 5l7 7-7 7" />
+            </svg>
+          </a>
         </div>
       </div>
     </section>
