@@ -454,7 +454,7 @@ function HeroSection() {
 function TruthSection() {
   return (
     <section
-      className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
+      className="relative px-6 md:px-16 lg:px-24 py-16 md:py-24 overflow-hidden"
       style={{ background: "linear-gradient(160deg, #5c110b 0%, #70150E 55%, #8a1c14 100%)" }}
     >
       <div className="reveal relative max-w-3xl mx-auto">
@@ -519,7 +519,7 @@ function TruthSection() {
 function PainPointsSection() {
   return (
     <section
-      className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
+      className="relative px-6 md:px-16 lg:px-24 py-16 md:py-24 overflow-hidden"
       style={{ backgroundColor: "#ffffff" }}
     >
       <div className="reveal relative max-w-5xl mx-auto">
@@ -588,7 +588,7 @@ function PainPointsSection() {
 function CurriculumSection() {
   return (
     <section
-      className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
+      className="relative px-6 md:px-16 lg:px-24 py-16 md:py-24 overflow-hidden"
       style={{ backgroundColor: "#faf8f5" }}
     >
       <div className="reveal relative max-w-5xl mx-auto">
@@ -672,7 +672,7 @@ function CurriculumSection() {
 function VideoTestimonialsSection() {
   return (
     <section
-      className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
+      className="relative px-6 md:px-16 lg:px-24 py-16 md:py-24 overflow-hidden"
       style={{ backgroundColor: "#ffffff" }}
     >
       <div className="reveal relative max-w-6xl mx-auto">
@@ -817,7 +817,7 @@ function VideoTestimonialsSection() {
 function TestimonialsSection() {
   return (
     <section
-      className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
+      className="relative px-6 md:px-16 lg:px-24 py-16 md:py-24 overflow-hidden"
       style={{ backgroundColor: "#faf8f5" }}
     >
       <div className="reveal relative max-w-6xl mx-auto">
@@ -873,7 +873,7 @@ function TestimonialsSection() {
 function OfferSection() {
   return (
     <section
-      className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
+      className="relative px-6 md:px-16 lg:px-24 py-16 md:py-24 overflow-hidden"
       style={{ backgroundColor: "#ffffff" }}
     >
       <div className="reveal relative max-w-2xl mx-auto">
@@ -965,7 +965,7 @@ function OfferSection() {
 function GuaranteeSection() {
   return (
     <section
-      className="relative px-6 md:px-16 lg:px-24 py-20 md:py-24 overflow-hidden"
+      className="relative px-6 md:px-16 lg:px-24 py-14 md:py-20 overflow-hidden"
       style={{ backgroundColor: "#faf8f5" }}
     >
       <div className="reveal relative max-w-3xl mx-auto text-center">
@@ -1020,7 +1020,7 @@ function GuaranteeSection() {
 function AboutSection() {
   return (
     <section
-      className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
+      className="relative px-6 md:px-16 lg:px-24 py-16 md:py-24 overflow-hidden"
       style={{ backgroundColor: "#ffffff" }}
     >
       <div className="reveal relative max-w-5xl mx-auto">
@@ -1127,7 +1127,7 @@ function AboutSection() {
 function FAQSection() {
   return (
     <section
-      className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
+      className="relative px-6 md:px-16 lg:px-24 py-16 md:py-24 overflow-hidden"
       style={{ backgroundColor: "#faf8f5" }}
     >
       <div className="reveal relative max-w-3xl mx-auto">
@@ -1158,7 +1158,7 @@ function FinalCTASection() {
   return (
     <section
       id="enroll"
-      className="relative px-6 md:px-16 lg:px-24 py-24 md:py-32 overflow-hidden"
+      className="relative px-6 md:px-16 lg:px-24 py-16 md:py-24 overflow-hidden"
       style={{ backgroundColor: "#ffffff" }}
     >
       <div className="reveal relative max-w-3xl mx-auto text-center">
