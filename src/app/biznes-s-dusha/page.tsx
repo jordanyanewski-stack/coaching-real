@@ -478,40 +478,18 @@ function VSLSection() {
         >
           Гледай преди да се запишеш
         </span>
-        <h2
-          className="mt-5"
-          style={{
-            fontSize: "clamp(1.8rem, 4vw, 2.8rem)",
-            fontWeight: 800,
-            color: "#ffffff",
-            lineHeight: 1.15,
-            letterSpacing: "-0.02em",
-          }}
-        >
-          За какво е „Бизнес с душа,{" "}
-          <span
-            style={{
-              background: "linear-gradient(135deg, #ffd9b0 0%, #f0a89f 55%, #e87070 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
-          >
-            без хаос“
-          </span>
-        </h2>
         <p
-          className="mt-5"
+          className="mt-6"
           style={{
-            fontSize: "16px",
-            color: "rgba(255,255,255,0.78)",
-            lineHeight: 1.7,
-            fontWeight: 500,
-            maxWidth: "560px",
-            margin: "20px auto 0",
+            fontSize: "clamp(19px, 2.6vw, 26px)",
+            color: "rgba(255,255,255,0.92)",
+            lineHeight: 1.5,
+            fontWeight: 600,
+            maxWidth: "640px",
+            margin: "18px auto 0",
           }}
         >
-          Натисни play и чуй директно от мен защо създадох тази програма — и за кого е.
+          Пусни видеото и чуй директно от мен защо създадох тази програма — и за кого е.
         </p>
 
         {/* Player */}
