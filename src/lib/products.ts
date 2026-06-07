@@ -29,6 +29,14 @@ export interface Product {
   mlPaidGroupIdEnv: string;
   /** Env var name holding the MailerLite group ID for unpaid leads of this product. */
   mlPendingGroupIdEnv: string;
+  /**
+   * True ONLY for products that grant dashboard/login access (the audiobook,
+   * streamed via /api/audiobook/stream after a gate check). When set, the myPOS
+   * notify webhook sends a Clerk account invite to new buyers. Everything else —
+   * live Zoom programs, email-delivered courses — omits it, so no account is
+   * created. Default (undefined) = no invite.
+   */
+  requiresAccount?: boolean;
   /** Filename in Bunny storage. Streamed via /api/audiobook/stream after gate check. */
   bunnyFile?: string;
 }
@@ -51,6 +59,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
   },
   audiobook: {
     slug: 'audiobook',
+    requiresAccount: true, // dashboard streaming — needs a Clerk account
     name: 'Аудиокнига Дигитален Успех',
     price: '25.00',
     currency: 'EUR',
@@ -97,6 +106,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
   },
   'audiobook-hot': {
     slug: 'audiobook-hot',
+    requiresAccount: true, // dashboard streaming — needs a Clerk account
     name: 'Аудиокнига Дигитален Успех (специална оферта)',
     price: '9.00',
     currency: 'EUR',

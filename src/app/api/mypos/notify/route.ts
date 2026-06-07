@@ -109,7 +109,12 @@ export async function POST(request: NextRequest) {
             orderId: OrderID,
           });
         }
-        await inviteIfNewBuyer(row.email);
+        // Only products that grant dashboard access (the audiobook) need a Clerk
+        // account, so invite only when the product opts in via `requiresAccount`.
+        // Live Zoom programs and email-delivered courses create no account.
+        if (product?.requiresAccount) {
+          await inviteIfNewBuyer(row.email);
+        }
       }
     } else if (IPCmethod === 'IPCPurchaseRollback' || IPCmethod === 'IPCPurchaseCancel') {
       try {
