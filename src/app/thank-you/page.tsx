@@ -113,7 +113,13 @@ export default async function ThankYouPage({
   const params = await searchParams;
   const orderId = typeof params.order === 'string' ? params.order : undefined;
   const order = await loadOrder(orderId);
-  const productSlug = order?.product;
+  // Preview: ?product=<slug> renders that product's copy when there's no real order,
+  // so any thank-you variant can be eyeballed. Pixel + buyer cookie stay gated to real orders.
+  const previewSlug =
+    !order && typeof params.product === 'string' && getProduct(params.product)
+      ? params.product
+      : undefined;
+  const productSlug = order?.product ?? previewSlug;
   const product = getProduct(productSlug);
   const copy = copyFor(productSlug);
   const purchaseValue = order ? parseFloat(order.amount) : product ? parseFloat(product.price) : 0;
@@ -121,8 +127,8 @@ export default async function ThankYouPage({
 
   return (
     <div style={{ fontFamily: 'var(--font-mv, sans-serif)', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      <TrackPurchase value={purchaseValue} currency={purchaseCurrency} />
-      {productSlug && <SetBuyerCookie product={productSlug} />}
+      {order && <TrackPurchase value={purchaseValue} currency={purchaseCurrency} />}
+      {order && productSlug && <SetBuyerCookie product={productSlug} />}
       <header style={{ padding: '20px 32px' }}>
         <a href="/">
           <Image src={LOGO_URL} alt="Coaching Real" width={0} height={0} sizes="100vw" style={{ height: '38px', width: 'auto' }} />
