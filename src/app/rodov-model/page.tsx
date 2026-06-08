@@ -38,7 +38,7 @@ const SERIF =
 /* ─── ICON COMPONENT ───────────────────────────────────────────────── */
 type IconName =
   | "heart" | "expand" | "shield" | "chain" | "flame" | "file"
-  | "check" | "user" | "arrow-down" | "question" | "star" | "eye";
+  | "check" | "user" | "arrow-down" | "question" | "star" | "eye" | "play";
 
 function Icon({
   name,
@@ -145,6 +145,12 @@ function Icon({
           <circle cx="12" cy="12" r="3" />
         </svg>
       );
+    case "play":
+      return (
+        <svg {...p}>
+          <polygon points="6 4 20 12 6 20 6 4" />
+        </svg>
+      );
     default:
       return null;
   }
@@ -161,11 +167,12 @@ const painPoints: { icon: IconName; text: string }[] = [
 ];
 
 const courseGoals: { icon: IconName; text: string }[] = [
-  { icon: "check", text: "Разпознаеш родовия модел зад любовния си избор" },
-  { icon: "check", text: "Видиш несъзнателните лоялности, които управляват връзките ти" },
-  { icon: "check", text: "Разбереш как страхът от изоставяне или трудността с близостта са свързани със системата ти" },
-  { icon: "check", text: "Намериш ресурсите в рода, които можеш да използваш като опора" },
-  { icon: "check", text: "Направиш първа реална крачка към нов модел на партньорство" },
+  { icon: "check", text: "Разпознаеш повтарящите се модели на партньорски отношения в любовта" },
+  { icon: "check", text: "Видиш как чрез ролите и динамиките, които несъзнателно заемаш и повтаряш, участваш в поддържането на тези модели" },
+  { icon: "check", text: "Разбереш защо ти е трудно да направиш нов избор и кое те задържа в стария модел" },
+  { icon: "check", text: "Осъзнаеш как лоялността към родовата система влияе на отношенията и избора ти на партньор" },
+  { icon: "check", text: "Откриеш ресурсите и вътрешните опори, които можеш да използваш като подкрепа" },
+  { icon: "check", text: "Поставиш основите на нов модел в любовта, основан на повече осъзнатост, вътрешна стабилност и личен избор" },
 ];
 
 const rodovModelExplanation = [
@@ -180,27 +187,34 @@ const weeks = [
   {
     num: "01",
     label: "Седмица 1",
-    title: "Разпознаване",
-    body: "Кой е повтарящият се сценарий във връзките ти?",
+    title: "Повтарящите се модели в любовта",
+    body: "Кои модели на партньорски отношения се повтарят в твоята родова система и как са свързани с твоята лична история?",
   },
   {
     num: "02",
     label: "Седмица 2",
-    title: "Родова динамика",
-    body: "Откъде идва този модел? Каква лоялност стои зад него?",
+    title: "Роли и динамики в любовта",
+    body: "Как чрез ролите и динамиките, които несъзнателно заемаш, участваш в поддържането на повтарящия се модел?",
   },
   {
     num: "03",
     label: "Седмица 3",
-    title: "Ресурс",
-    body: "Кои сили в рода ти можеш да използваш като опора?",
+    title: "Защо е трудно да промениш модела?",
+    body: "Как лоялността към родовата система те задържа в стария сценарий, дори когато искаш нещо различно?",
   },
   {
     num: "04",
     label: "Седмица 4",
-    title: "Нов избор",
-    body: "Как да изградиш вътрешна основа за различен тип връзка?",
+    title: "Нов избор в любовта",
+    body: "Как чрез ресурсите на родовата система да изградиш повече вътрешна стабилност и да поставиш основите на нов модел на партньорски отношения?",
   },
+];
+
+const videoLessons = [
+  "Повтарящите се модели в любовта",
+  "Повтарящи се ролеви динамики",
+  "Защо ти е трудно да промениш модела на отношения",
+  "Изграждане на нов модел в любовта и отношенията",
 ];
 
 const forWhom = [
@@ -213,11 +227,13 @@ const forWhom = [
 ];
 
 const results = [
-  "знаеш какъв е родовият ти сценарий",
-  "разпознаваш кога се активира",
-  "имаш език за това, което се случва",
-  "усещаш повече вътрешна стабилност",
-  "правиш по-осъзнат избор в любовта",
+  "Разбираш по-добре собствените си избори в любовта",
+  "Имаш повече яснота какво искаш и какво не искаш в една връзка",
+  "Разпознаваш кога старият модел започва да управлява решенията ти",
+  "Имаш повече свобода да избираш различно от познатия сценарий",
+  "Вземаш решения от място на по-голяма осъзнатост, а не само от страх, вина или лоялност",
+  "Използваш собствените си ресурси като опора при създаването на нови отношения",
+  "Поставяш основите на нов модел в любовта, основан на личен избор и вътрешна стабилност",
 ];
 
 const faqs = [
@@ -262,6 +278,7 @@ export default function RodovModelPage() {
       <TransitionSection />
       <CourseInfoSection />
       <WeeksSection />
+      <VideosSection />
       <ForWhomSection />
       <ResultsSection />
       <MentorSection />
@@ -850,6 +867,105 @@ function WeeksSection() {
         </div>
         <div className="mt-12 text-center">
           <PrimaryButton href="#enroll">Включи се — €97 →</PrimaryButton>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── VIDEO LESSONS ────────────────────────────────────────────────── */
+function VideosSection() {
+  return (
+    <section
+      className="px-6 md:px-12 lg:px-20 py-20 md:py-28"
+      style={{ backgroundColor: T.bgAlt }}
+    >
+      <div className="reveal max-w-4xl mx-auto">
+        <div className="text-center mb-12">
+          <SectionEyebrow>Видео уроците</SectionEyebrow>
+          <h2
+            style={{
+              fontSize: "clamp(1.9rem, 4vw, 3rem)",
+              fontWeight: 800,
+              color: T.textPrimary,
+              lineHeight: 1.15,
+              letterSpacing: "-0.02em",
+              margin: "12px 0 14px",
+            }}
+          >
+            Какво ще{" "}
+            <span style={{ fontFamily: SERIF, fontStyle: "italic", fontWeight: 500, color: T.accent }}>
+              гледаш
+            </span>
+          </h2>
+          <p
+            style={{
+              fontSize: "15px",
+              color: T.textBody,
+              lineHeight: 1.7,
+              maxWidth: "520px",
+              margin: "0 auto",
+            }}
+          >
+            4 видео урока — по един за всяка седмица. Гледаш в удобно за теб време, в затворената общност.
+          </p>
+        </div>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+          {videoLessons.map((title, i) => (
+            <div
+              key={title}
+              className="reveal"
+              style={{
+                display: "flex",
+                gap: "16px",
+                alignItems: "center",
+                background: T.bg,
+                border: `1px solid ${T.borderEditorial}`,
+                borderRadius: "8px",
+                padding: "18px 20px",
+              }}
+            >
+              <span
+                style={{
+                  width: "44px",
+                  height: "44px",
+                  borderRadius: "50%",
+                  background: T.accentLight,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexShrink: 0,
+                }}
+              >
+                <Icon name="play" size={18} stroke={T.accent} strokeWidth={2} />
+              </span>
+              <div>
+                <div
+                  style={{
+                    fontSize: "10px",
+                    fontWeight: 700,
+                    color: T.accentWarm,
+                    letterSpacing: "0.10em",
+                    textTransform: "uppercase",
+                    marginBottom: "4px",
+                  }}
+                >
+                  Видео {i + 1}
+                </div>
+                <div
+                  style={{
+                    fontSize: "16px",
+                    fontWeight: 600,
+                    color: T.textPrimary,
+                    lineHeight: 1.4,
+                  }}
+                >
+                  {title}
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
