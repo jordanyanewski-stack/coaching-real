@@ -38,7 +38,7 @@ async function loadOrder(orderId: string | undefined): Promise<OrderRow | null> 
 interface ProductCopy {
   title: string;
   body: string;
-  primaryCta?: { label: string; href: string; viber?: boolean };
+  primaryCta?: { label: string; href: string; viber?: boolean; external?: boolean };
   secondaryCtaHref: string;
 }
 
@@ -72,6 +72,23 @@ function copyFor(productSlug: string | undefined): ProductCopy {
           viber: true,
         },
         secondaryCtaHref: '/biznes-s-dusha',
+      };
+    case 'zhiva':
+      return {
+        title: 'Добре дошла!',
+        body: 'Плащането е успешно. Достъпът ти до 4-седмичния курс „ЖИВА“ е в нашата Skool общност — влез от бутона по-долу, за да започнеш.',
+        primaryCta: {
+          label: 'Влез в Skool общността',
+          href: 'https://www.skool.com/tanya-kasabova-5879/about?ref=307d82e69f7946efb3f50e830833489a',
+          external: true,
+        },
+        secondaryCtaHref: '/zhiva',
+      };
+    case 'rodov-model':
+      return {
+        title: 'Добре дошла!',
+        body: 'Плащането е успешно. Съвсем скоро ще получиш имейл с достъп до 4-седмичния курс „Прекъсни родовия модел в любовта“ и общността към него.',
+        secondaryCtaHref: '/rodov-model',
       };
     case 'masterclass':
     default:
@@ -162,8 +179,8 @@ export default async function ThankYouPage({
           {copy.primaryCta && (
             <a
               href={copy.primaryCta.href}
-              target={copy.primaryCta.viber ? '_blank' : undefined}
-              rel={copy.primaryCta.viber ? 'noopener noreferrer' : undefined}
+              target={copy.primaryCta.viber || copy.primaryCta.external ? '_blank' : undefined}
+              rel={copy.primaryCta.viber || copy.primaryCta.external ? 'noopener noreferrer' : undefined}
               style={{
                 display: 'flex',
                 alignItems: 'center',
