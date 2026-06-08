@@ -35,7 +35,7 @@ async function loadOrder(orderId: string | undefined): Promise<OrderRow | null> 
   }
 }
 
-type CtaBtn = { label: string; href: string; viber?: boolean; telegram?: boolean; external?: boolean };
+type CtaBtn = { label: string; href: string; viber?: boolean; telegram?: boolean; skool?: boolean; external?: boolean };
 
 interface ProductCopy {
   title: string;
@@ -83,6 +83,7 @@ function copyFor(productSlug: string | undefined): ProductCopy {
         primaryCta: {
           label: 'Влез в Skool общността',
           href: 'https://www.skool.com/tanya-kasabova-5879/about?ref=307d82e69f7946efb3f50e830833489a',
+          skool: true,
           external: true,
         },
         secondaryCtaHref: '/zhiva',
@@ -94,6 +95,7 @@ function copyFor(productSlug: string | undefined): ProductCopy {
         primaryCta: {
           label: 'Влез в Skool общността',
           href: 'https://www.skool.com/galyatodorova-1060/about',
+          skool: true,
           external: true,
         },
         extraCtas: [
@@ -250,8 +252,12 @@ export default async function ThankYouPage({
                 gap: '10px',
                 width: '100%',
                 padding: '16px 24px',
-                backgroundColor: copy.primaryCta.viber ? '#7360F2' : '#70150E',
-                color: '#ffffff',
+                backgroundColor: copy.primaryCta.viber
+                  ? '#7360F2'
+                  : copy.primaryCta.skool
+                    ? '#FFCC00'
+                    : '#70150E',
+                color: copy.primaryCta.skool ? '#1a1a1a' : '#ffffff',
                 fontSize: '15px',
                 fontWeight: 700,
                 borderRadius: '12px',
@@ -259,7 +265,9 @@ export default async function ThankYouPage({
                 marginBottom: '20px',
                 boxShadow: copy.primaryCta.viber
                   ? '0 4px 14px rgba(115,96,242,0.35)'
-                  : '0 4px 14px rgba(112,21,14,0.35)',
+                  : copy.primaryCta.skool
+                    ? '0 4px 14px rgba(255,204,0,0.40)'
+                    : '0 4px 14px rgba(112,21,14,0.35)',
                 transition: 'transform 0.15s, box-shadow 0.15s',
               }}
             >
