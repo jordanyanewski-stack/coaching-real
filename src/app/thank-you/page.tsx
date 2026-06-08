@@ -35,10 +35,13 @@ async function loadOrder(orderId: string | undefined): Promise<OrderRow | null> 
   }
 }
 
+type CtaBtn = { label: string; href: string; viber?: boolean; telegram?: boolean; external?: boolean };
+
 interface ProductCopy {
   title: string;
   body: string;
-  primaryCta?: { label: string; href: string; viber?: boolean; external?: boolean };
+  primaryCta?: CtaBtn;
+  extraCtas?: CtaBtn[];
   secondaryCtaHref: string;
 }
 
@@ -87,7 +90,19 @@ function copyFor(productSlug: string | undefined): ProductCopy {
     case 'rodov-model':
       return {
         title: 'Добре дошла!',
-        body: 'Плащането е успешно. Съвсем скоро ще получиш имейл с достъп до 4-седмичния курс „Прекъсни родовия модел в любовта“ и общността към него.',
+        body: 'Плащането е успешно. Достъпът ти до 4-седмичния курс „Прекъсни родовия модел в любовта“ е в общността ни — влез от бутоните по-долу, за да започнеш.',
+        primaryCta: {
+          label: 'Влез в Skool общността',
+          href: 'https://www.skool.com/galyatodorova-1060/about',
+          external: true,
+        },
+        extraCtas: [
+          {
+            label: 'Влез в Telegram групата',
+            href: 'https://t.me/+g7Q99S4mfZoxZjI0',
+            telegram: true,
+          },
+        ],
         secondaryCtaHref: '/rodov-model',
       };
     case 'masterclass':
@@ -103,6 +118,47 @@ function copyFor(productSlug: string | undefined): ProductCopy {
         secondaryCtaHref: '/masterclass',
       };
   }
+}
+
+function CtaButton({ cta }: { cta: CtaBtn }) {
+  const isExternal = !!(cta.viber || cta.telegram || cta.external);
+  const bg = cta.viber ? '#7360F2' : cta.telegram ? '#229ED9' : '#70150E';
+  const shadow = cta.viber
+    ? '0 4px 14px rgba(115,96,242,0.35)'
+    : cta.telegram
+      ? '0 4px 14px rgba(34,158,217,0.35)'
+      : '0 4px 14px rgba(112,21,14,0.35)';
+  return (
+    <a
+      href={cta.href}
+      target={isExternal ? '_blank' : undefined}
+      rel={isExternal ? 'noopener noreferrer' : undefined}
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '10px',
+        width: '100%',
+        padding: '16px 24px',
+        backgroundColor: bg,
+        color: '#ffffff',
+        fontSize: '15px',
+        fontWeight: 700,
+        borderRadius: '12px',
+        textDecoration: 'none',
+        marginBottom: '20px',
+        boxShadow: shadow,
+        transition: 'transform 0.15s, box-shadow 0.15s',
+      }}
+    >
+      {cta.telegram && (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z" />
+        </svg>
+      )}
+      {cta.label}
+    </a>
+  );
 }
 
 export default async function ThankYouPage({
@@ -215,6 +271,10 @@ export default async function ThankYouPage({
               {copy.primaryCta.label}
             </a>
           )}
+
+          {copy.extraCtas?.map((c) => (
+            <CtaButton key={c.href} cta={c} />
+          ))}
 
           <div
             style={{
