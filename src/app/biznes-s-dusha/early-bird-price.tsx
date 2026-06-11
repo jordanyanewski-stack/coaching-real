@@ -273,7 +273,7 @@ export function EarlyBirdPrice({ variant }: EarlyBirdPriceProps) {
       </div>
 
       <div className="flex flex-col items-center gap-4">
-        <EnrollForm product={isEarly ? 'biznes-dusha-early' : 'biznes-dusha'} />
+        <EnrollForm product={isEarly ? 'biznes-dusha-early' : 'biznes-dusha'} allowPromoCode />
       </div>
     </div>
   );

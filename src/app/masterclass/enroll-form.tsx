@@ -12,6 +12,11 @@ interface EnrollFormProps {
   cardOnly?: boolean;
   variant?: Variant;
   submitLabel?: string;
+  /**
+   * Shows an "Имаш промо код?" toggle + code input. A filled code submits to
+   * /api/checkout/free-code (free enrollment, no myPOS) instead of the paid flow.
+   */
+  allowPromoCode?: boolean;
 }
 
 // Color tokens keyed by variant. Light = warm-red on white (masterclass default).
@@ -137,10 +142,12 @@ async function postJson(url: string, payload: unknown, timeoutMs = 20000): Promi
   }
 }
 
-export function EnrollForm({ product = 'masterclass', cardOnly = false, variant = 'light', submitLabel }: EnrollFormProps) {
+export function EnrollForm({ product = 'masterclass', cardOnly = false, variant = 'light', submitLabel, allowPromoCode = false }: EnrollFormProps) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [method, setMethod] = useState<PaymentMethod>('card');
+  const [promoOpen, setPromoOpen] = useState(false);
+  const [promoCode, setPromoCode] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const formRef = useRef<HTMLFormElement>(null);
@@ -154,6 +161,21 @@ export function EnrollForm({ product = 'masterclass', cardOnly = false, variant 
     setLoading(true);
 
     try {
+      // A filled promo code wins over the payment method — free enrollment,
+      // no myPOS. An invalid code errors out instead of silently charging.
+      if (allowPromoCode && promoCode.trim()) {
+        const res = await postJson('/api/checkout/free-code', { name, email, code: promoCode });
+
+        if (!res.ok) {
+          const data = await res.json();
+          throw new Error(data.error ?? 'Нещо се обърка. Опитай отново.');
+        }
+
+        const { orderId } = await res.json() as { orderId: string };
+        window.location.href = `/thank-you?order=${orderId}`;
+        return;
+      }
+
       if (method === 'bank') {
         const res = await postJson('/api/checkout/bank-transfer', { name, email, product });
 
@@ -312,6 +334,43 @@ export function EnrollForm({ product = 'masterclass', cardOnly = false, variant 
           </fieldset>
         )}
 
+        {allowPromoCode && !promoOpen && (
+          <button
+            type="button"
+            onClick={() => setPromoOpen(true)}
+            disabled={loading}
+            style={{
+              background: 'none',
+              border: 'none',
+              padding: 0,
+              alignSelf: 'center',
+              fontSize: '13px',
+              fontWeight: 600,
+              color: t.hintText,
+              textDecoration: 'underline',
+              cursor: 'pointer',
+            }}
+          >
+            Имаш промо код?
+          </button>
+        )}
+
+        {allowPromoCode && promoOpen && (
+          <input
+            type="text"
+            placeholder="Промо код"
+            value={promoCode}
+            onChange={(e) => setPromoCode(e.target.value)}
+            disabled={loading}
+            autoCapitalize="characters"
+            autoCorrect="off"
+            spellCheck={false}
+            style={inputStyle}
+            onFocus={(e) => (e.target.style.borderColor = t.inputBorderFocus)}
+            onBlur={(e) => (e.target.style.borderColor = t.inputBorder)}
+          />
+        )}
+
         {error && (
           <p style={{ fontSize: '13px', color: t.errorText, margin: 0 }}>{error}</p>
         )}
@@ -324,16 +383,20 @@ export function EnrollForm({ product = 'masterclass', cardOnly = false, variant 
         >
           {loading
             ? 'Пренасочване...'
-            : method === 'bank'
-              ? 'Продължи към банковия превод →'
-              : submitLabel ?? 'Да - готов/а съм да вляза →'}
+            : allowPromoCode && promoCode.trim()
+              ? 'Запиши се с промо код →'
+              : method === 'bank'
+                ? 'Продължи към банковия превод →'
+                : submitLabel ?? 'Да - готов/а съм да вляза →'}
         </button>
       </div>
 
       <p style={{ fontSize: '12px', color: t.hintText, marginTop: '12px', textAlign: 'center' }}>
-        {method === 'bank'
-          ? 'След запис ще видиш IBAN, сума и основание за превода'
-          : 'Сигурна транзакция · Получаваш потвърждение с всички детайли'}
+        {allowPromoCode && promoCode.trim()
+          ? 'Безплатно записване с промо код · Получаваш имейл с детайлите'
+          : method === 'bank'
+            ? 'След запис ще видиш IBAN, сума и основание за превода'
+            : 'Сигурна транзакция · Получаваш потвърждение с всички детайли'}
       </p>
     </form>
   );

@@ -13,7 +13,7 @@
  * everything up here.
  */
 
-export type ProductSlug = 'masterclass' | 'audiobook' | 'audiobook-hot' | '12-izmerenia' | '12-izmerenia-promo' | 'career-course' | 'rodov-model' | 'zhiva' | 'biznes-dusha' | 'biznes-dusha-early';
+export type ProductSlug = 'masterclass' | 'audiobook' | 'audiobook-hot' | '12-izmerenia' | '12-izmerenia-promo' | 'career-course' | 'rodov-model' | 'zhiva' | 'biznes-dusha' | 'biznes-dusha-early' | 'biznes-dusha-day1';
 
 export interface Product {
   slug: ProductSlug;
@@ -190,6 +190,25 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     // No dedicated pending group yet — falls back to the legacy general pending group
     // so ad-captured leads are never lost if the dedicated var isn't set in time.
     mlPendingGroupIdEnv: 'MAILERLITE_PENDING_GROUP_ID',
+  },
+  // Free Day-1 tier — entered ONLY via promo code (NataliaK12) through
+  // /api/checkout/free-code; never sold, never reaches myPOS. Orders are
+  // recorded with amount 0 + status 'free' so they stay out of revenue queries.
+  // Subscribers land in a dedicated group (NOT the paid group) so Stasi can
+  // send them just the Day-1 Zoom link + an upsell to the full program.
+  'biznes-dusha-day1': {
+    slug: 'biznes-dusha-day1',
+    name: 'Бизнес с душа, без хаос — Ден 1 (промо код)',
+    price: '0.00',
+    currency: 'EUR',
+    supportsBankTransfer: false,
+    bankTransfer: {
+      referencePrefix: '',
+      productLabel: '',
+      nextStepCopy: '',
+    },
+    mlPaidGroupIdEnv: 'MAILERLITE_BIZNES_DUSHA_DAY1_GROUP_ID',
+    mlPendingGroupIdEnv: 'MAILERLITE_BIZNES_DUSHA_DAY1_GROUP_ID',
   },
   'biznes-dusha': {
     slug: 'biznes-dusha',

@@ -64,6 +64,15 @@ function copyFor(productSlug: string | undefined): ProductCopy {
         body: 'Плащането е успешно. Ще получиш имейл с достъп до пълния 4-седмичен курс и всички материали.',
         secondaryCtaHref: '/career-course',
       };
+    // Free Day-1 promo-code tier — deliberately NO Viber CTA: the participant
+    // Viber group shares the daily Zoom links, which would hand the free tier
+    // the whole program. They get only the Day-1 email from MailerLite.
+    case 'biznes-dusha-day1':
+      return {
+        title: 'Добре дошла!',
+        body: 'Записването е успешно. Ще получиш имейл със Zoom линка за първия мастърклас на „Бизнес с душа, без хаос“ — 17 юни, 17:00 ч.',
+        secondaryCtaHref: '/biznes-s-dusha',
+      };
     case 'biznes-dusha':
     case 'biznes-dusha-early':
       return {
@@ -185,7 +194,9 @@ export default async function ThankYouPage({
 
   return (
     <div style={{ fontFamily: 'var(--font-mv, sans-serif)', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      {order && <TrackPurchase value={purchaseValue} currency={purchaseCurrency} />}
+      {/* €0 promo-code signups must not fire a Purchase event — zero-value
+          purchases skew the pixel's conversion optimization. */}
+      {order && purchaseValue > 0 && <TrackPurchase value={purchaseValue} currency={purchaseCurrency} />}
       {order && productSlug && <SetBuyerCookie product={productSlug} />}
       <header style={{ padding: '20px 32px' }}>
         <a href="/">
