@@ -146,7 +146,6 @@ export function EnrollForm({ product = 'masterclass', cardOnly = false, variant 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [method, setMethod] = useState<PaymentMethod>('card');
-  const [promoOpen, setPromoOpen] = useState(false);
   const [promoCode, setPromoCode] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -334,31 +333,10 @@ export function EnrollForm({ product = 'masterclass', cardOnly = false, variant 
           </fieldset>
         )}
 
-        {allowPromoCode && !promoOpen && (
-          <button
-            type="button"
-            onClick={() => setPromoOpen(true)}
-            disabled={loading}
-            style={{
-              background: 'none',
-              border: 'none',
-              padding: 0,
-              alignSelf: 'center',
-              fontSize: '13px',
-              fontWeight: 600,
-              color: t.hintText,
-              textDecoration: 'underline',
-              cursor: 'pointer',
-            }}
-          >
-            Имаш промо код?
-          </button>
-        )}
-
-        {allowPromoCode && promoOpen && (
+        {allowPromoCode && (
           <input
             type="text"
-            placeholder="Промо код"
+            placeholder="Промо код (по избор)"
             value={promoCode}
             onChange={(e) => setPromoCode(e.target.value)}
             disabled={loading}
