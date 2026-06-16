@@ -26,17 +26,17 @@ const FD = {
 const FB_GROUP_URL = "https://www.facebook.com/groups/1648723652914690/";
 
 const meetings = [
-  { num: "Среща 1", date: "21", month: "май" },
-  { num: "Среща 2", date: "28", month: "май" },
-  { num: "Среща 3", date: "4", month: "юни" },
-  { num: "Среща 4", date: "11", month: "юни" },
+  { num: "Модул 1", date: "01", month: "Самооткриване" },
+  { num: "Модул 2", date: "02", month: "Анализ" },
+  { num: "Модул 3", date: "03", month: "Позициониране" },
+  { num: "Модул 4", date: "04", month: "Действие" },
 ];
 
 const nextSteps = [
-  "Провери имейла си — изпратих ти писмо с всичко необходимо за старта на 21 май.",
+  "Провери имейла си — ще намериш линк към всички записи и работни материали.",
   "Присъедини се към затворената група за подкрепа — линкът е по-долу. Там ще намериш останалите участници.",
-  "Запази датите в календара си: 21 май, 28 май, 4 юни, 11 юни — всеки четвъртък от 19:00 ч.",
-  "Подготви се с един въпрос, с който идваш на първата среща. Само един — но честен.",
+  "Започни с Модул 1 в удобно за теб време — препоръчваме по един модул на седмица.",
+  "Подготви си един въпрос преди всеки модул. Само един — но честен.",
 ];
 
 export default function FreeDayThankYouPage() {
@@ -229,21 +229,21 @@ export default function FreeDayThankYouPage() {
                 marginBottom: "6px",
               }}
             >
-              Час
+              Достъп
             </div>
             <div
               style={{
-                fontSize: "32px",
+                fontSize: "20px",
                 fontWeight: 900,
                 color: FD.textPrimary,
-                lineHeight: 1,
-                letterSpacing: "-0.03em",
+                lineHeight: 1.2,
+                letterSpacing: "-0.02em",
               }}
             >
-              19:00
+              Веднага
             </div>
             <div style={{ fontSize: "13px", color: FD.textMuted, marginTop: "4px" }}>
-              всеки четвъртък
+              при поискване
             </div>
           </div>
         </div>
