@@ -465,7 +465,7 @@ export default function FreeDayThankYouPage() {
               marginBottom: "26px",
             }}
           >
-            Сподели с него или нея — безплатното е по-ценно, когато се споделя.
+            Сподели с него или нея — доброто се споделя.
           </p>
           <ShareButtons />
         </div>
@@ -480,7 +480,7 @@ export default function FreeDayThankYouPage() {
 function ShareButtons() {
   const shareUrl = "https://coachingreallive.com/career-course";
   const shareText =
-    "Безплатен 4-седмичен курс „Моето кариерно развитие в ерата на AI“ — започва 21 май.";
+    “4-седмичен курс „Моето кариерно развитие в ерата на AI” с Магдалена Пенчева — виж повече на coachingreallive.com”;
 
   const fbHref = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
   const liHref = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;

@@ -551,7 +551,7 @@ function HeroSection() {
                 animation: "fdPulseDot 2s ease-in-out infinite",
               }}
             />
-            Безплатен курс · Старт 21 май, четвъртък 19:00 ч.
+            Курс · Старт 21 май, четвъртък 19:00 ч.
           </div>
 
           <h1
