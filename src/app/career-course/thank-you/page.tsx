@@ -243,7 +243,7 @@ export default function FreeDayThankYouPage() {
               Веднага
             </div>
             <div style={{ fontSize: "13px", color: FD.textMuted, marginTop: "4px" }}>
-              при поискване
+              на запис
             </div>
           </div>
         </div>
