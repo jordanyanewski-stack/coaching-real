@@ -141,8 +141,8 @@ const faqs = [
     a: "Да, записите са включени в цената. Присъствието на живо е много по-ценно — там се случват истинските промени. Но можеш да гледаш кога и колкото пъти искаш.",
   },
   {
-    q: "Какво е ранното записване и до кога важи?",
-    a: "До 15 юни 2026 цената е €37. След това тя се вдига на редовната цена от €97. Съдържанието е абсолютно същото — разликата е само в датата на записване.",
+    q: "Какво е специалната цена и до кога важи?",
+    a: "До 18 юни 2026 цената е €37. След това тя се вдига на редовната цена от €97. Съдържанието е абсолютно същото — разликата е само в датата на записване.",
   },
   {
     q: "Как работи гаранцията?",
@@ -425,7 +425,7 @@ function HeroSection() {
               boxShadow: "0 12px 32px rgba(0,0,0,0.35), 0 1px 2px rgba(0,0,0,0.1)",
             }}
           >
-            Запиши се на ранна цена
+            Запиши се на специална цена
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
               <path d="M5 12h14M13 5l7 7-7 7" />
             </svg>
@@ -520,7 +520,7 @@ function VSLSection() {
               gap: "10px",
             }}
           >
-            Запиши се на ранна цена
+            Запиши се на специална цена
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
               <path d="M5 12h14M13 5l7 7-7 7" />
             </svg>
@@ -741,7 +741,7 @@ function CurriculumSection() {
 
         <div className="text-center mt-14">
           <a href="#enroll" className="mv-btn mv-btn-primary" style={{ fontSize: "15px", padding: "16px 28px" }}>
-            Запиши се на ранна цена →
+            Запиши се на специална цена →
           </a>
         </div>
       </div>
@@ -1029,7 +1029,7 @@ function OfferSection() {
           >
             <span style={{ fontSize: "16px", lineHeight: 1.4 }} aria-hidden>⚡</span>
             <p style={{ fontSize: "13.5px", fontWeight: 600, color: "#70150E", lineHeight: 1.6, margin: 0 }}>
-              Запиши се до 15 юни и плащаш само €37 вместо редовната цена от €97. Спестяваш €60 — без да губиш
+              Запиши се до 18 юни и плащаш само €37 вместо редовната цена от €97. Спестяваш €60 — без да губиш
               нищо от програмата.
             </p>
           </div>

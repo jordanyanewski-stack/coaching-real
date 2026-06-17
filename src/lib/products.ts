@@ -172,17 +172,17 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
   // pending → MAILERLITE_PENDING_GROUP_ID). No separate „Бизнес с душа" group or
   // automation needed — leads & buyers land in the same lists the masterclass
   // page already feeds (both vars are already live on Vercel).
-  // `biznes-dusha-early` = €37 early-bird (до 15 юни), `biznes-dusha` = €97 regular.
+  // `biznes-dusha-early` = €37 special price (до 18 юни — 24h re-open), `biznes-dusha` = €97 regular.
   // The /biznes-s-dusha page auto-switches which slug renders based on the date.
   'biznes-dusha-early': {
     slug: 'biznes-dusha-early',
-    name: 'Бизнес с душа, без хаос (ранно записване)',
+    name: 'Бизнес с душа, без хаос (специална цена)',
     price: '37.00',
     currency: 'EUR',
     supportsBankTransfer: true,
     bankTransfer: {
       referencePrefix: 'Бизнес с душа',
-      productLabel: 'Бизнес с душа, без хаос · 12 мастъркласа (17–28 юни 2026) · ранно записване',
+      productLabel: 'Бизнес с душа, без хаос · 12 мастъркласа (17–28 юни 2026) · специална цена',
       nextStepCopy:
         'Имейлът съдържа Zoom линка, програмата и инструкциите за първия мастърклас (17 юни, 17:00 ч.).',
     },
