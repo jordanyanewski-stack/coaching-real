@@ -2,7 +2,6 @@ import Image from "next/image";
 import { T, GRADIENT_TEXT, LOGO_URL, SiteFooter } from "@/app/_shared";
 import { FAQAccordion } from "./faq-accordion";
 import { ScrollReveal } from "./scroll-reveal";
-import { EnrollForm } from "../masterclass/enroll-form";
 import { HeroVideo } from "./hero-video";
 import { StickyCTABar } from "./sticky-cta-bar";
 import { PromoPrice } from "./promo-price";

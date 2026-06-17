@@ -5,7 +5,7 @@ import type { NextRequest } from 'next/server';
 import { getDb } from '@/lib/db';
 import { getProduct } from '@/lib/products';
 import { checkRateLimit, clientIp, rateLimitResponse } from '@/lib/rate-limit';
-import { emailLooksValid, normalizeEmail } from '@/lib/validators';
+import { emailLooksValid, normalizeEmail, readJsonBody } from '@/lib/validators';
 
 export async function POST(request: NextRequest) {
   const ip = clientIp(request);
@@ -16,11 +16,16 @@ export async function POST(request: NextRequest) {
   });
   if (!rate.ok) return rateLimitResponse(rate.retryAfter);
 
-  const { name, email, product: productSlug } = await request.json() as {
+  const body = await readJsonBody<{
     name?: string;
     email?: string;
     product?: string;
-  };
+  }>(request);
+  if (!body) {
+    return Response.json({ error: 'Невалидни данни.' }, { status: 400 });
+  }
+
+  const { name, email, product: productSlug } = body;
 
   if (!name?.trim() || !email?.trim()) {
     return Response.json({ error: 'Името и имейлът са задължителни.' }, { status: 400 });

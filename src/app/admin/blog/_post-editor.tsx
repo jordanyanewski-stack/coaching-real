@@ -1,6 +1,7 @@
 'use client';
 
-import { useRef, useState, useTransition } from 'react';
+import { useMemo, useRef, useState, useTransition } from 'react';
+import { sanitizeBlogHtml } from '@/lib/sanitize';
 
 export interface PostFormDefaults {
   slug: string;
@@ -60,6 +61,7 @@ export function PostEditor({ defaults, submitLabel, onSubmit, onDelete }: PostEd
   const [isPending, startTransition] = useTransition();
   const contentRef = useRef<HTMLTextAreaElement | null>(null);
   const slugManuallyEdited = useRef(defaults.slug !== '');
+  const previewHtml = useMemo(() => sanitizeBlogHtml(content), [content]);
 
   function slugify(s: string): string {
     return s
@@ -374,7 +376,7 @@ export function PostEditor({ defaults, submitLabel, onSubmit, onDelete }: PostEd
             <div
               className="blog-content"
               style={{ fontSize: '15px', lineHeight: 1.85, color: '#0f131a' }}
-              dangerouslySetInnerHTML={{ __html: content }}
+              dangerouslySetInnerHTML={{ __html: previewHtml }}
             />
           </div>
         </div>

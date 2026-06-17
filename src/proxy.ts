@@ -35,7 +35,7 @@ function isAdminAuthorized(request: NextRequest): boolean {
 
 const isProtectedRoute = createRouteMatcher(['/dashboard(.*)']);
 
-export default clerkMiddleware(async (auth, request) => {
+export const proxy = clerkMiddleware(async (auth, request) => {
   const { pathname } = request.nextUrl;
 
   // myPOS posts back to URL_OK / URL_CANCEL with method POST. Static

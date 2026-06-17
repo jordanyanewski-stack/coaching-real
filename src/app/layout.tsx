@@ -19,6 +19,17 @@ export const metadata: Metadata = {
   title: "Станислава Павлова · Coaching Real",
   description:
     "Бизнес ментор, Ikigai стратег и основател на Coaching Real. Онлайн бизнес с душа – стратегия, видимост и устойчив растеж.",
+  icons: {
+    icon: [
+      { url: "/favicon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/favicon-48.png", sizes: "48x48", type: "image/png" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
   openGraph: {
     images: ["/stasi-1.jpg"],
   },
@@ -36,7 +47,6 @@ export default function RootLayout({
       appearance={{
         variables: {
           colorPrimary: "#70150E",
-          colorText: "#0f131a",
           colorBackground: "#faf8f5",
           fontFamily: "var(--font-mv, sans-serif)",
           borderRadius: "10px",

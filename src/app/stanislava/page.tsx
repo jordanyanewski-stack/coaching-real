@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { T, onDark, PHOTO_URL, stats, GRADIENT_TEXT, SiteNav, SiteFooter } from "@/app/_shared";
+import { T, onDark, stats, GRADIENT_TEXT, SiteNav, SiteFooter } from "@/app/_shared";
 
 const DARK_BG = {
   background:

@@ -8,6 +8,21 @@ import { verifyNotify } from '@/lib/mypos';
 import { getPaidGroupId, getPendingGroupId, getProduct, type ProductSlug } from '@/lib/products';
 import { cleanEnv } from '@/lib/validators';
 
+type PaidOrderRow = {
+  email: string;
+  product: string;
+  amount: string;
+  currency: string;
+  status: string;
+};
+
+function cents(amount: string | undefined): number | null {
+  if (!amount) return null;
+  const value = Number(amount);
+  if (!Number.isFinite(value)) return null;
+  return Math.round(value * 100);
+}
+
 async function inviteIfNewBuyer(email: string) {
   if (!email) return;
   try {
@@ -44,33 +59,20 @@ export async function POST(request: NextRequest) {
       return new Response('OK', { status: 200 });
     }
 
-    const { IPCmethod, OrderID, IPC_Trnref } = fields;
+    const { IPCmethod, OrderID, IPC_Trnref, Amount, Currency } = fields;
     console.log('[myPOS notify]', { IPCmethod, OrderID, IPC_Trnref });
 
     const sql = getDb();
 
     if (IPCmethod === 'IPCPurchaseNotify') {
-      try {
-        await sql`
-          UPDATE orders
-          SET status = 'paid',
-              mypos_transaction_id = ${IPC_Trnref ?? null},
-              updated_at = now()
-          WHERE mypos_order_id = ${OrderID}
-        `;
-      } catch (err) {
-        console.error('[myPOS notify] order UPDATE FAILED', {
-          orderId: OrderID,
-          error: (err as Error).message,
-        });
-        return new Response('OK', { status: 200 });
-      }
-
-      let row: { email: string; product: string } | undefined;
+      let row: PaidOrderRow | undefined;
       try {
         const rows = (await sql`
-          SELECT email, product FROM orders WHERE mypos_order_id = ${OrderID}
-        `) as { email: string; product: string }[];
+          SELECT email, product, amount::text AS amount, currency, status
+          FROM orders
+          WHERE mypos_order_id = ${OrderID}
+          LIMIT 1
+        `) as PaidOrderRow[];
         row = rows[0];
       } catch (err) {
         console.error('[myPOS notify] order SELECT FAILED', {
@@ -80,33 +82,80 @@ export async function POST(request: NextRequest) {
         return new Response('OK', { status: 200 });
       }
 
-      if (row?.email) {
-        const product = getProduct(row.product);
-        if (product) {
-          const paidGroupId = getPaidGroupId(product.slug as ProductSlug);
-          const pendingGroupId = getPendingGroupId(product.slug as ProductSlug);
-          if (paidGroupId) {
-            try {
-              await moveToPaid(row.email, paidGroupId, pendingGroupId || undefined);
-            } catch (err) {
-              console.error('[myPOS notify] MailerLite moveToPaid FAILED', {
-                email: row.email,
-                product: product.slug,
-                error: (err as Error).message,
-              });
-            }
-          } else {
-            console.error('[myPOS notify] Missing paid group id env var', {
+      if (!row) {
+        console.error('[myPOS notify] order not found', { orderId: OrderID });
+        return new Response('OK', { status: 200 });
+      }
+
+      const product = getProduct(row.product);
+      if (!product) {
+        console.error('[myPOS notify] Unknown product on paid order', {
+          email: row.email,
+          product: row.product,
+          orderId: OrderID,
+        });
+        return new Response('OK', { status: 200 });
+      }
+
+      if (row.status === 'paid') {
+        console.log('[myPOS notify] duplicate paid notification ignored', { orderId: OrderID });
+        return new Response('OK', { status: 200 });
+      }
+
+      if (row.status !== 'pending') {
+        console.error('[myPOS notify] order status is not payable by myPOS', {
+          orderId: OrderID,
+          status: row.status,
+        });
+        return new Response('OK', { status: 200 });
+      }
+
+      if (Currency !== row.currency || cents(Amount) !== cents(row.amount)) {
+        console.error('[myPOS notify] amount/currency mismatch', {
+          orderId: OrderID,
+          expectedAmount: row.amount,
+          expectedCurrency: row.currency,
+          receivedAmount: Amount,
+          receivedCurrency: Currency,
+        });
+        return new Response('OK', { status: 200 });
+      }
+
+      try {
+        await sql`
+          UPDATE orders
+          SET status = 'paid',
+              mypos_transaction_id = ${IPC_Trnref ?? null},
+              updated_at = now()
+          WHERE mypos_order_id = ${OrderID}
+            AND status = 'pending'
+        `;
+      } catch (err) {
+        console.error('[myPOS notify] order UPDATE FAILED', {
+          orderId: OrderID,
+          error: (err as Error).message,
+        });
+        return new Response('OK', { status: 200 });
+      }
+
+      if (row.email) {
+        const paidGroupId = getPaidGroupId(product.slug as ProductSlug);
+        const pendingGroupId = getPendingGroupId(product.slug as ProductSlug);
+        if (paidGroupId) {
+          try {
+            await moveToPaid(row.email, paidGroupId, pendingGroupId || undefined);
+          } catch (err) {
+            console.error('[myPOS notify] MailerLite moveToPaid FAILED', {
               email: row.email,
               product: product.slug,
-              envVar: product.mlPaidGroupIdEnv,
+              error: (err as Error).message,
             });
           }
         } else {
-          console.error('[myPOS notify] Unknown product on paid order', {
+          console.error('[myPOS notify] Missing paid group id env var', {
             email: row.email,
-            product: row.product,
-            orderId: OrderID,
+            product: product.slug,
+            envVar: product.mlPaidGroupIdEnv,
           });
         }
         // Only products that grant dashboard access (the audiobook) need a Clerk

@@ -19,3 +19,11 @@ export function normalizeEmail(s: string): string {
 export function cleanEnv(v: string | undefined): string {
   return (v ?? '').replace(/\\n/g, '').replace(/[\r\n]/g, '').trim();
 }
+
+export async function readJsonBody<T>(request: Request): Promise<T | null> {
+  try {
+    return await request.json() as T;
+  } catch {
+    return null;
+  }
+}
