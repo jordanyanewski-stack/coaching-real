@@ -61,7 +61,13 @@ function copyFor(productSlug: string | undefined): ProductCopy {
     case 'career-course':
       return {
         title: 'Добре дошла!',
-        body: 'Плащането е успешно. Ще получиш имейл с достъп до пълния 4-седмичен курс и всички материали.',
+        body: 'Плащането е успешно. Курсът „Кариерно развитие в ерата на AI“ се провежда в Skool общността „Career Compass“ — влез от бутона по-долу, за да започнеш. Ще получиш и имейл с достъп до всички материали.',
+        primaryCta: {
+          label: 'Влез в Skool общността',
+          href: 'https://www.skool.com/career-compass-7781/about',
+          skool: true,
+          external: true,
+        },
         secondaryCtaHref: '/career-course',
       };
     // Free Day-1 promo-code tier — deliberately NO Viber CTA: the participant
