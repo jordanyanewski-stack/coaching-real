@@ -127,7 +127,9 @@ function CTASection() {
           натиск, с ясен следващ план.
         </p>
         <a
-          href="/programs"
+          href="https://calendly.com/stanislavapavlova8/meet-with-me-1"
+          target="_blank"
+          rel="noopener noreferrer"
           className="mv-btn mv-btn-primary mt-10 inline-flex"
           style={{ fontSize: "16px", padding: "16px 40px" }}
         >

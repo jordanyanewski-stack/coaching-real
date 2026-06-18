@@ -4,6 +4,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { bgBG } from "@clerk/localizations";
 import "./globals.css";
 import { FacebookPixel } from "./pixel";
+import CookieBanner from "./cookie-banner";
 
 // Substituting Sharp Grotesk Cyr Medium 20 with Onest -
 // same geometric family, full Cyrillic support, closest available on Google Fonts.
@@ -61,6 +62,7 @@ export default function RootLayout({
         <body className="min-h-full flex flex-col antialiased">
           <FacebookPixel />
           {children}
+          <CookieBanner />
         </body>
       </html>
     </ClerkProvider>
