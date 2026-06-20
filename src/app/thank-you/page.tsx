@@ -52,6 +52,7 @@ function copyFor(productSlug: string | undefined): ProductCopy {
   switch (productSlug as ProductSlug) {
     case 'audiobook':
     case 'audiobook-hot':
+    case 'audiobook-72h':
       return {
         title: 'Добре дошла!',
         body: 'Плащането е успешно. Аудиокнигата вече е достъпна в твоя профил.',

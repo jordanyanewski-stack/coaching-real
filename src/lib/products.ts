@@ -13,7 +13,7 @@
  * everything up here.
  */
 
-export type ProductSlug = 'masterclass' | 'audiobook' | 'audiobook-hot' | '12-izmerenia' | '12-izmerenia-promo' | 'career-course' | 'rodov-model' | 'zhiva' | 'biznes-dusha' | 'biznes-dusha-early' | 'biznes-dusha-day1';
+export type ProductSlug = 'masterclass' | 'audiobook' | 'audiobook-hot' | 'audiobook-72h' | '12-izmerenia' | '12-izmerenia-promo' | 'career-course' | 'rodov-model' | 'zhiva' | 'biznes-dusha' | 'biznes-dusha-early' | 'biznes-dusha-day1';
 
 export interface Product {
   slug: ProductSlug;
@@ -114,6 +114,26 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     bankTransfer: {
       referencePrefix: 'Аудиокнига',
       productLabel: 'Аудиокнига: Дигитален Успех (специална оферта)',
+      nextStepCopy: '',
+    },
+    mlPaidGroupIdEnv: 'MAILERLITE_AUDIOBOOK_PAID_GROUP_ID',
+    mlPendingGroupIdEnv: 'MAILERLITE_FREEBIE_GROUP_ID',
+    bunnyFile: 'stasi-audiobook.mp3',
+  },
+  // €15 "72-hour" email tier — sits between the €9 thank-you hot offer and the
+  // €25 regular price. Delivered via the freebie nurture sequence (email ~72h
+  // after opt-in) and sold on the unlisted /audiobook-72h page. Same audiobook,
+  // same Bunny file + dashboard delivery as the others; card-only.
+  'audiobook-72h': {
+    slug: 'audiobook-72h',
+    requiresAccount: true, // dashboard streaming — needs a Clerk account
+    name: 'Аудиокнига Дигитален Успех (имейл оферта)',
+    price: '15.00',
+    currency: 'EUR',
+    supportsBankTransfer: false,
+    bankTransfer: {
+      referencePrefix: 'Аудиокнига',
+      productLabel: 'Аудиокнига: Дигитален Успех (имейл оферта)',
       nextStepCopy: '',
     },
     mlPaidGroupIdEnv: 'MAILERLITE_AUDIOBOOK_PAID_GROUP_ID',
