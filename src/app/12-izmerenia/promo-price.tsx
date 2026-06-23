@@ -3,26 +3,39 @@
 import { useState, useEffect } from 'react';
 import { EnrollForm } from '../masterclass/enroll-form';
 
-const TWENTY_DAYS = 20 * 24 * 60 * 60 * 1000;
+// €97 promo windows, derived from the actual email cadence (not the old 20-day
+// guess). Automation C closes ~8 days after a subscriber joins f1-nurture (E13 =
+// last chance). Buyers reach nurture faster (purchase +2d) than non-buyers
+// (opt-in +4d), so the buyer window is shorter. Each window expires right after
+// that path's final email, making the „краен срок" in E12/E13 real.
+const BUYER_WINDOW = 10 * 24 * 60 * 60 * 1000;   // audiobook buyers: ~purchase +10d
+const FUNNEL_WINDOW = 12 * 24 * 60 * 60 * 1000;  // freebie opt-ins:  ~opt-in +12d
 
-function getBuyerTimestamp(): number | null {
-  const match = document.cookie.match(/(?:^|;\s*)audiobook_buyer=(\d+)/);
+function getCookieTs(name: string): number | null {
+  const match = document.cookie.match(new RegExp(`(?:^|;\\s*)${name}=(\\d+)`));
   return match ? Number(match[1]) : null;
 }
 
-interface PromoPriceProps {
-  variant: 'hero' | 'value-stack' | 'final-cta';
+// €97 deadline for whichever applies: audiobook buyers (BUYER_WINDOW from
+// purchase) or any funnel opt-in (FUNNEL_WINDOW from opt-in). Buyer cookie wins.
+function getPromoDeadline(): number | null {
+  const buyerTs = getCookieTs('audiobook_buyer');
+  if (buyerTs) return buyerTs + BUYER_WINDOW;
+  const optinTs = getCookieTs('funnel_optin');
+  if (optinTs) return optinTs + FUNNEL_WINDOW;
+  return null;
 }
 
-export function PromoPrice({ variant }: PromoPriceProps) {
+/** Shared promo state — €97 if a buyer/funnel cookie is still live, else €197.
+ *  Used by both PromoPrice and the StickyCTABar so the page never contradicts itself. */
+export function usePromo() {
   const [isPromo, setIsPromo] = useState(false);
   const [daysLeft, setDaysLeft] = useState(0);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const ts = getBuyerTimestamp();
-    if (ts) {
-      const deadline = ts + TWENTY_DAYS;
+    const deadline = getPromoDeadline();
+    if (deadline) {
       const remaining = deadline - Date.now();
       if (remaining > 0) {
         setIsPromo(true);
@@ -31,6 +44,24 @@ export function PromoPrice({ variant }: PromoPriceProps) {
     }
     setReady(true);
   }, []);
+
+  return { isPromo, daysLeft, ready };
+}
+
+/** Inline price label that respects the promo cookies. Renders €197 on the
+ *  server + first paint (hydration-safe), flips to €97 after mount for funnel
+ *  leads. Drop it into any CTA text: „Запиши се - <PromoAmount />". */
+export function PromoAmount() {
+  const { isPromo, ready } = usePromo();
+  return <>{ready && isPromo ? '€97' : '€197'}</>;
+}
+
+interface PromoPriceProps {
+  variant: 'hero' | 'value-stack' | 'final-cta';
+}
+
+export function PromoPrice({ variant }: PromoPriceProps) {
+  const { isPromo, daysLeft, ready } = usePromo();
 
   if (!ready) return null;
 

@@ -162,15 +162,15 @@ export function Audiobook72Offer() {
               letterSpacing: '-0.03em',
             }}
           >
-            15.00 €
+            19.00 €
           </span>
-          <span style={{ fontSize: '16px', fontWeight: 600, color: 'var(--mv-text-secondary)' }}>/ 29.34 лв.</span>
+          <span style={{ fontSize: '16px', fontWeight: 600, color: 'var(--mv-text-secondary)' }}>/ 37.16 лв.</span>
         </div>
       </div>
 
       {/* Checkout */}
       <div className="max-w-sm mx-auto">
-        <EnrollForm product="audiobook-72h" cardOnly submitLabel="Да! Искам аудиокнигата за 15 €" />
+        <EnrollForm product="audiobook-72h" cardOnly submitLabel="Да! Искам аудиокнигата за 19 €" />
       </div>
     </div>
   );

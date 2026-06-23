@@ -3,6 +3,7 @@ import { auth, currentUser } from "@clerk/nextjs/server";
 import { UserButton } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import { getDb } from "@/lib/db";
+import { grantsAudiobookAccess } from "@/lib/products";
 import { SiteNav, SiteFooter } from "@/app/_shared";
 
 export const metadata = {
@@ -74,7 +75,7 @@ export default async function DashboardPage() {
 
   const orders = await loadOrdersForUser(userId, primaryEmail);
   const paidOrders = orders.filter(o => o.status === "paid");
-  const hasPaidAudiobook = paidOrders.some(o => o.product === "audiobook");
+  const hasPaidAudiobook = paidOrders.some(o => grantsAudiobookAccess(o.product));
 
   return (
     <div style={{ fontFamily: "var(--font-mv, sans-serif)" }}>

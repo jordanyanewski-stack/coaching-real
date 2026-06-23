@@ -22,7 +22,8 @@ export function Countdown({ expiresAt }: CountdownProps) {
   if (remaining <= 0) return null;
 
   const totalSec = Math.ceil(remaining / 1000);
-  const min = Math.floor(totalSec / 60);
+  const hours = Math.floor(totalSec / 3600);
+  const min = Math.floor((totalSec % 3600) / 60);
   const sec = totalSec % 60;
 
   return (
@@ -34,6 +35,12 @@ export function Countdown({ expiresAt }: CountdownProps) {
         fontVariantNumeric: 'tabular-nums',
       }}
     >
+      {hours > 0 && (
+        <>
+          <Digit value={hours} label="часа" />
+          <span style={{ fontSize: '28px', fontWeight: 800, color: '#70150E', lineHeight: 1 }}>:</span>
+        </>
+      )}
       <Digit value={min} label="мин" />
       <span style={{ fontSize: '28px', fontWeight: 800, color: '#70150E', lineHeight: 1 }}>:</span>
       <Digit value={sec} label="сек" />

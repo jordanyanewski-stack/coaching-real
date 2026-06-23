@@ -120,7 +120,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     mlPendingGroupIdEnv: 'MAILERLITE_FREEBIE_GROUP_ID',
     bunnyFile: 'stasi-audiobook.mp3',
   },
-  // €15 "72-hour" email tier — sits between the €9 thank-you hot offer and the
+  // €19 "72-hour" email tier — sits between the €9 thank-you hot offer and the
   // €25 regular price. Delivered via the freebie nurture sequence (email ~72h
   // after opt-in) and sold on the unlisted /audiobook-72h page. Same audiobook,
   // same Bunny file + dashboard delivery as the others; card-only.
@@ -128,7 +128,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     slug: 'audiobook-72h',
     requiresAccount: true, // dashboard streaming — needs a Clerk account
     name: 'Аудиокнига Дигитален Успех (имейл оферта)',
-    price: '15.00',
+    price: '19.00',
     currency: 'EUR',
     supportsBankTransfer: false,
     bankTransfer: {
@@ -258,4 +258,20 @@ export function getPaidGroupId(slug: ProductSlug): string {
 
 export function getPendingGroupId(slug: ProductSlug): string {
   return (process.env[PRODUCTS[slug].mlPendingGroupIdEnv] ?? '').trim();
+}
+
+/**
+ * Slugs that unlock the audiobook (dashboard player + /api/audiobook/stream).
+ * Every audiobook tier — €9 `audiobook-hot`, €19 `audiobook-72h`, €25
+ * `audiobook` — streams the same Bunny file, so a paid order under ANY of
+ * these must grant access. Derived from `bunnyFile` so a new audiobook tier
+ * is auto-included. (Previously both gates hard-coded the single `audiobook`
+ * slug, which locked out every funnel buyer of the €9/€19 tiers.)
+ */
+export const AUDIOBOOK_ACCESS_SLUGS: ProductSlug[] = Object.values(PRODUCTS)
+  .filter(p => p.bunnyFile)
+  .map(p => p.slug);
+
+export function grantsAudiobookAccess(slug: string | null | undefined): boolean {
+  return !!slug && (AUDIOBOOK_ACCESS_SLUGS as string[]).includes(slug);
 }

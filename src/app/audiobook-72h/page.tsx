@@ -175,7 +175,7 @@ function WhySection() {
     <section className="px-6 md:px-16 lg:px-24 py-20" style={{ backgroundColor: "#faf8f5" }}>
       <div className="max-w-xl mx-auto text-center">
         <p style={{ fontSize: "16px", color: T.textSecondary, lineHeight: 1.85, fontStyle: "italic" }}>
-          15 € не е покупка. Това е решение.
+          19 € не е покупка. Това е решение.
         </p>
         <p
           className="mt-4"

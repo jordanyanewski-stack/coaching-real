@@ -3,7 +3,7 @@ export const dynamic = 'force-dynamic';
 
 import { auth, currentUser } from '@clerk/nextjs/server';
 import { getDb } from '@/lib/db';
-import { PRODUCTS } from '@/lib/products';
+import { PRODUCTS, AUDIOBOOK_ACCESS_SLUGS } from '@/lib/products';
 import { cleanEnv, normalizeEmail } from '@/lib/validators';
 
 /**
@@ -33,7 +33,7 @@ export async function GET(request: Request) {
   const rows = (await sql`
     SELECT 1
     FROM orders
-    WHERE product = 'audiobook'
+    WHERE product = ANY(${AUDIOBOOK_ACCESS_SLUGS})
       AND status = 'paid'
       AND (
         user_id = ${userId}

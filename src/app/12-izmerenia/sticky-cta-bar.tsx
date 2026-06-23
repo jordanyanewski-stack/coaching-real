@@ -1,9 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePromo } from "./promo-price";
 
 export function StickyCTABar() {
   const [visible, setVisible] = useState(false);
+  const { isPromo } = usePromo();
 
   useEffect(() => {
     const heroEl = document.querySelector(".mc-hero");
@@ -96,6 +98,18 @@ export function StickyCTABar() {
                 flexShrink: 0,
               }}
             >
+              {isPromo && (
+                <span
+                  style={{
+                    fontSize: "14px",
+                    fontWeight: 600,
+                    color: "rgba(15,19,26,0.4)",
+                    textDecoration: "line-through",
+                  }}
+                >
+                  €197
+                </span>
+              )}
               <span
                 style={{
                   fontSize: "22px",
@@ -108,7 +122,7 @@ export function StickyCTABar() {
                   lineHeight: 1,
                 }}
               >
-                €197
+                {isPromo ? "€97" : "€197"}
               </span>
               <span
                 style={{
@@ -133,7 +147,7 @@ export function StickyCTABar() {
               whiteSpace: "nowrap",
             }}
           >
-            Запиши се - €197
+            Запиши се - {isPromo ? "€97" : "€197"}
           </a>
         </div>
       </div>

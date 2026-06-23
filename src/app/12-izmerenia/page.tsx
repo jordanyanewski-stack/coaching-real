@@ -4,7 +4,7 @@ import { FAQAccordion } from "./faq-accordion";
 import { ScrollReveal } from "./scroll-reveal";
 import { HeroVideo } from "./hero-video";
 import { StickyCTABar } from "./sticky-cta-bar";
-import { PromoPrice } from "./promo-price";
+import { PromoPrice, PromoAmount } from "./promo-price";
 
 export const metadata = {
   title: "12 Измерения на твоята мисия · Онлайн курс | Coaching Real",
@@ -145,7 +145,7 @@ function CampaignHeader() {
         className="mv-btn mv-btn-primary"
         style={{ padding: "10px 22px", fontSize: "14px", flexShrink: 0 }}
       >
-        Искам клиенти онлайн - €197
+        Искам клиенти онлайн - <PromoAmount />
       </a>
     </header>
   );
@@ -781,7 +781,7 @@ function OutcomesSection() {
 
         <div className="mt-10 text-center">
           <a href="#enroll" className="mv-btn mv-btn-primary" style={{ fontSize: "15px", padding: "16px 28px" }}>
-            Искам тези резултати — €197 →
+            Искам тези резултати — <PromoAmount /> →
           </a>
         </div>
       </div>
@@ -1058,7 +1058,7 @@ function TestimonialsSection() {
             className="mv-btn mv-btn-primary"
             style={{ fontSize: "15px", display: "inline-flex", alignItems: "center", gap: "10px" }}
           >
-            Искам същите резултати - €197
+            Искам същите резултати - <PromoAmount />
           </a>
         </div>
       </div>
@@ -1149,7 +1149,7 @@ function CurriculumSection() {
 
         <div className="text-center mt-14">
           <a href="#enroll" className="mv-btn mv-btn-primary" style={{ fontSize: "15px", padding: "16px 28px" }}>
-            Искам да разбера защо нямам клиенти — €197 →
+            Искам да разбера защо нямам клиенти — <PromoAmount /> →
           </a>
         </div>
       </div>
@@ -1244,7 +1244,7 @@ function ValueStackSection() {
                     whiteSpace: "nowrap",
                   }}
                 >
-                  {row.tag}
+                  {row.tag === "€197" ? <PromoAmount /> : row.tag}
                 </span>
               </li>
             ))}
