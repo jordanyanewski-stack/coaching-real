@@ -13,6 +13,8 @@
  * everything up here.
  */
 
+import { cleanEnv } from '@/lib/validators';
+
 export type ProductSlug = 'masterclass' | 'audiobook' | 'audiobook-hot' | 'audiobook-72h' | '12-izmerenia' | '12-izmerenia-promo' | 'career-course' | 'rodov-model' | 'zhiva' | 'biznes-dusha' | 'biznes-dusha-early' | 'biznes-dusha-day1';
 
 export interface Product {
@@ -252,12 +254,15 @@ export function getProduct(slug: string | undefined | null): Product | null {
   return slug in PRODUCTS ? PRODUCTS[slug as ProductSlug] : null;
 }
 
+// cleanEnv (not bare .trim()) strips the literal "\n" that Vercel can store in
+// an env value — otherwise a corrupted group id silently targets a nonexistent
+// MailerLite group and buyers never enter f1-audiobook-paid / f1-course-paid.
 export function getPaidGroupId(slug: ProductSlug): string {
-  return (process.env[PRODUCTS[slug].mlPaidGroupIdEnv] ?? '').trim();
+  return cleanEnv(process.env[PRODUCTS[slug].mlPaidGroupIdEnv]);
 }
 
 export function getPendingGroupId(slug: ProductSlug): string {
-  return (process.env[PRODUCTS[slug].mlPendingGroupIdEnv] ?? '').trim();
+  return cleanEnv(process.env[PRODUCTS[slug].mlPendingGroupIdEnv]);
 }
 
 /**

@@ -10,12 +10,15 @@ export const dynamic = 'force-dynamic';
 export const metadata = {
   title: 'Благодаря! | Coaching Real',
   description: 'Плащането е успешно. Ще получиш имейл с всички детайли.',
+  // Mid-funnel page reachable only post-checkout — keep it out of search.
+  robots: { index: false, follow: false },
 };
 
 type OrderRow = {
   amount: string;          // numeric — neon returns as string
   currency: string;
   product: string;
+  status: string;
 };
 
 async function loadOrder(orderId: string | undefined): Promise<OrderRow | null> {
@@ -23,7 +26,7 @@ async function loadOrder(orderId: string | undefined): Promise<OrderRow | null> 
   try {
     const sql = getDb();
     const rows = (await sql`
-      SELECT amount, currency, product FROM orders WHERE mypos_order_id = ${orderId} LIMIT 1
+      SELECT amount, currency, product, status FROM orders WHERE mypos_order_id = ${orderId} LIMIT 1
     `) as OrderRow[];
     return rows[0] ?? null;
   } catch (err) {
@@ -198,13 +201,18 @@ export default async function ThankYouPage({
   const copy = copyFor(productSlug);
   const purchaseValue = order ? parseFloat(order.amount) : product ? parseFloat(product.price) : 0;
   const purchaseCurrency = order?.currency ?? product?.currency ?? 'EUR';
+  // Only a genuinely PAID order may fire the Purchase pixel or set the buyer
+  // cookie. A pending/abandoned order (its id can land in the URL before the
+  // myPOS webhook flips it to 'paid') must do neither — it would pollute the
+  // pixel's optimization signal and hand out the €97 promo without payment.
+  const isPaid = order?.status === 'paid';
 
   return (
     <div style={{ fontFamily: 'var(--font-mv, sans-serif)', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       {/* €0 promo-code signups must not fire a Purchase event — zero-value
           purchases skew the pixel's conversion optimization. */}
-      {order && purchaseValue > 0 && <TrackPurchase value={purchaseValue} currency={purchaseCurrency} />}
-      {order && productSlug && <SetBuyerCookie product={productSlug} />}
+      {isPaid && purchaseValue > 0 && <TrackPurchase value={purchaseValue} currency={purchaseCurrency} />}
+      {isPaid && productSlug && <SetBuyerCookie product={productSlug} />}
       <header style={{ padding: '20px 32px' }}>
         <a href="/">
           <Image src={LOGO_URL} alt="Coaching Real" width={0} height={0} sizes="100vw" style={{ height: '38px', width: 'auto' }} />

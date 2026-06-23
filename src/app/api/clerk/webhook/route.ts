@@ -4,6 +4,7 @@ import type { NextRequest } from 'next/server';
 import { revalidatePath } from 'next/cache';
 import { Webhook } from 'svix';
 import { getDb } from '@/lib/db';
+import { normalizeEmail } from '@/lib/validators';
 
 type ClerkUserCreatedEvent = {
   type: 'user.created' | 'user.updated' | string;
@@ -51,7 +52,9 @@ export async function POST(request: NextRequest) {
   const { id: userId, email_addresses, primary_email_address_id } = event.data;
   const primary =
     email_addresses.find(e => e.id === primary_email_address_id) ?? email_addresses[0];
-  const email = primary?.email_address?.toLowerCase();
+  // normalizeEmail (trim + lowercase) — matches the order-insert + dashboard +
+  // stream normalization so the user_id backfill claim never misses on whitespace.
+  const email = normalizeEmail(primary?.email_address ?? '');
 
   if (!email) return new Response('OK', { status: 200 });
 

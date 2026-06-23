@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { LOGO_URL } from '@/app/_shared';
 import { getDb } from '@/lib/db';
+import { markBankOrderPaid } from './actions';
 
 export const dynamic = 'force-dynamic';
 
@@ -156,7 +157,7 @@ export default async function AdminBankOrdersPage() {
                 role="row"
                 style={{
                   display: 'grid',
-                  gridTemplateColumns: '150px 1.1fr 1.4fr 110px 100px',
+                  gridTemplateColumns: '140px 1fr 1.3fr 100px 90px 130px',
                   gap: '12px',
                   padding: '14px 20px',
                   backgroundColor: '#fbf6f5',
@@ -173,6 +174,7 @@ export default async function AdminBankOrdersPage() {
                 <div>Имейл</div>
                 <div>Основание</div>
                 <div style={{ textAlign: 'right' }}>Сума</div>
+                <div style={{ textAlign: 'right' }}>Действие</div>
               </div>
 
               {rows.map((row) => {
@@ -183,7 +185,7 @@ export default async function AdminBankOrdersPage() {
                     role="row"
                     style={{
                       display: 'grid',
-                      gridTemplateColumns: '150px 1.1fr 1.4fr 110px 100px',
+                      gridTemplateColumns: '140px 1fr 1.3fr 100px 90px 130px',
                       gap: '12px',
                       padding: '16px 20px',
                       borderBottom: '1px solid rgba(0,0,0,0.05)',
@@ -220,6 +222,28 @@ export default async function AdminBankOrdersPage() {
                     </div>
                     <div style={{ textAlign: 'right', fontWeight: 700 }}>
                       {formatAmount(row.amount, row.currency)}
+                    </div>
+                    <div style={{ textAlign: 'right' }}>
+                      <form action={markBankOrderPaid}>
+                        <input type="hidden" name="orderId" value={row.mypos_order_id} />
+                        <button
+                          type="submit"
+                          style={{
+                            fontFamily: 'inherit',
+                            fontSize: '12px',
+                            fontWeight: 700,
+                            color: '#ffffff',
+                            backgroundColor: '#1a7f3c',
+                            border: 'none',
+                            borderRadius: '8px',
+                            padding: '8px 12px',
+                            cursor: 'pointer',
+                            whiteSpace: 'nowrap',
+                          }}
+                        >
+                          Маркирай платена
+                        </button>
+                      </form>
                     </div>
                   </div>
                 );

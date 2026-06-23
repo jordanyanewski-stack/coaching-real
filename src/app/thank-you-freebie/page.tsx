@@ -5,6 +5,8 @@ import { HotOffer } from "./hot-offer";
 export const metadata = {
   title: "Благодарим ти! | Coaching Real",
   description: "Провери имейла си за безплатния гайд. Специална еднократна оферта за аудиокнигата.",
+  // Mid-funnel page reachable only after opt-in — keep it out of search (matches /audiobook-72h).
+  robots: { index: false, follow: false },
 };
 
 export default function ThankYouFreebieLP() {
@@ -78,7 +80,7 @@ function OfferSection() {
             className="mv-tag"
             style={{ backgroundColor: "rgba(112,21,14,0.08)", color: "#c94535" }}
           >
-            Специално предложение &middot; Валидно 30 минути
+            Специално предложение &middot; само за теб
           </span>
 
           <h2
@@ -215,7 +217,7 @@ function WhySection() {
             fontStyle: "italic",
           }}
         >
-          9 € не е покупка. Това е решение.
+          Това не е просто покупка. Това е решение.
         </p>
         <p
           className="mt-4"
@@ -237,7 +239,7 @@ function WhySection() {
         >
           Понякога Вселената не ти дава знак. Тя ти дава прозорец.
           <br />
-          Този прозорец е 30 минути.
+          А този прозорец е ограничен — виж таймера горе.
         </p>
       </div>
     </section>

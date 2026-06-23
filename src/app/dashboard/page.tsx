@@ -4,6 +4,7 @@ import { UserButton } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import { getDb } from "@/lib/db";
 import { grantsAudiobookAccess } from "@/lib/products";
+import { normalizeEmail } from "@/lib/validators";
 import { SiteNav, SiteFooter } from "@/app/_shared";
 
 export const metadata = {
@@ -40,7 +41,9 @@ function formatDate(d: string) {
 
 async function loadOrdersForUser(userId: string, email: string | null): Promise<Order[]> {
   const sql = getDb();
-  const e = email?.toLowerCase() ?? "";
+  // normalizeEmail (trim + lowercase) — same normalization used at order insert,
+  // in the stream route, and the Clerk webhook, so all claim sites match identically.
+  const e = normalizeEmail(email ?? "");
   // user_id is the primary key. Email is a fallback ONLY for orders not yet
   // claimed (user_id IS NULL) — prevents a new Clerk user verifying a prior
   // buyer's email from reading the buyer's orders.
@@ -216,6 +219,10 @@ export default async function DashboardPage() {
                 }}
               >
                 <strong style={{ color: "#70150E" }}>Скоро тук:</strong> директен достъп до аудиокниги и видео уроци за курсовете, които си закупил/а.
+                <br /><br />
+                Купил/а си аудиокнига, но не я виждаш тук? Възможно е да си използвал/а различен имейл при поръчката. Пиши ни на{" "}
+                <a href="mailto:info@coachingreallive.com" style={{ color: "#70150E", fontWeight: 600 }}>info@coachingreallive.com</a>{" "}
+                с имейла и името от поръчката и ще ти дадем достъп веднага.
               </div>
             </section>
           )}

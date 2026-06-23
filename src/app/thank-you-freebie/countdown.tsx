@@ -10,14 +10,16 @@ export function Countdown({ expiresAt }: CountdownProps) {
   const [remaining, setRemaining] = useState(() => Math.max(0, expiresAt - Date.now()));
 
   useEffect(() => {
-    if (remaining <= 0) return;
+    if (expiresAt - Date.now() <= 0) return;
     const id = setInterval(() => {
       const left = Math.max(0, expiresAt - Date.now());
       setRemaining(left);
       if (left <= 0) clearInterval(id);
     }, 1000);
     return () => clearInterval(id);
-  }, [expiresAt, remaining]);
+    // Depend only on expiresAt — `remaining` updates each tick, and including it
+    // here tore down + recreated the interval every second.
+  }, [expiresAt]);
 
   if (remaining <= 0) return null;
 

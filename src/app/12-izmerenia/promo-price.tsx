@@ -61,9 +61,11 @@ interface PromoPriceProps {
 }
 
 export function PromoPrice({ variant }: PromoPriceProps) {
-  const { isPromo, daysLeft, ready } = usePromo();
-
-  if (!ready) return null;
+  // Render the €197 (non-promo) card during SSR + first paint instead of null —
+  // avoids a blank price card + layout shift on the page's key element. The €97
+  // flip happens after mount once usePromo reads the cookies (isPromo starts
+  // false, so server HTML and first client render match — hydration-safe).
+  const { isPromo, daysLeft } = usePromo();
 
   if (variant === 'hero') {
     return (
