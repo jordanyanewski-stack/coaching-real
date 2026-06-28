@@ -173,7 +173,7 @@ function HeroSection() {
           <div className="animate-fade-up delay-400 flex flex-wrap gap-8 mt-14">
             {[
               { value: "12", label: "седмици" },
-              { value: "6", label: "модула" },
+              { value: "12", label: "модула" },
               { value: "3", label: "бонуса" },
             ].map((s) => (
               <div key={s.label}>
