@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const EARLY_BIRD_END = Date.parse("2026-06-19T00:00:00+03:00"); // end of 18 June, Sofia (24h re-open)
+const EARLY_BIRD_END = Date.parse("2026-07-16T00:00:00+03:00"); // end of 15 July, Sofia (early-bird)
 
 export function StickyCTABar() {
   const [visible, setVisible] = useState(false);

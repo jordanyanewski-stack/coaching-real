@@ -188,25 +188,25 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     mlPaidGroupIdEnv: 'MAILERLITE_RODOV_PAID_GROUP_ID',
     mlPendingGroupIdEnv: 'MAILERLITE_RODOV_PENDING_GROUP_ID',
   },
-  // ── „Бизнес с душа, без хаос" — June 2026 live masterclass (17–28 юни). ──
-  // The June run of the same 12-masterclass program as `/masterclass`, so both
+  // ── „Бизнес с душа, без хаос" — July 2026 live masterclass (22 юли–2 август). ──
+  // The July re-run of the same 12-masterclass program as `/masterclass`, so both
   // tiers reuse the masterclass MailerLite groups (paid → MAILERLITE_PAID_GROUP_ID,
   // pending → MAILERLITE_PENDING_GROUP_ID). No separate „Бизнес с душа" group or
   // automation needed — leads & buyers land in the same lists the masterclass
   // page already feeds (both vars are already live on Vercel).
-  // `biznes-dusha-early` = €37 special price (до 18 юни — 24h re-open), `biznes-dusha` = €97 regular.
+  // `biznes-dusha-early` = €37 early-bird price (до 15 юли), `biznes-dusha` = €97 regular.
   // The /biznes-s-dusha page auto-switches which slug renders based on the date.
   'biznes-dusha-early': {
     slug: 'biznes-dusha-early',
-    name: 'Бизнес с душа, без хаос (специална цена)',
+    name: 'Бизнес с душа, без хаос (ранна цена)',
     price: '37.00',
     currency: 'EUR',
     supportsBankTransfer: true,
     bankTransfer: {
       referencePrefix: 'Бизнес с душа',
-      productLabel: 'Бизнес с душа, без хаос · 12 мастъркласа (17–28 юни 2026) · специална цена',
+      productLabel: 'Бизнес с душа, без хаос · 12 мастъркласа (22 юли–2 август 2026) · ранна цена',
       nextStepCopy:
-        'Имейлът съдържа Zoom линка, програмата и инструкциите за първия мастърклас (17 юни, 17:00 ч.).',
+        'Имейлът съдържа Zoom линка, програмата и инструкциите за първия мастърклас (22 юли, 17:00 ч.).',
     },
     mlPaidGroupIdEnv: 'MAILERLITE_PAID_GROUP_ID',
     // No dedicated pending group yet — falls back to the legacy general pending group
@@ -240,9 +240,9 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     supportsBankTransfer: true,
     bankTransfer: {
       referencePrefix: 'Бизнес с душа',
-      productLabel: 'Бизнес с душа, без хаос · 12 мастъркласа (17–28 юни 2026)',
+      productLabel: 'Бизнес с душа, без хаос · 12 мастъркласа (22 юли–2 август 2026)',
       nextStepCopy:
-        'Имейлът съдържа Zoom линка, програмата и инструкциите за първия мастърклас (17 юни, 17:00 ч.).',
+        'Имейлът съдържа Zoom линка, програмата и инструкциите за първия мастърклас (22 юли, 17:00 ч.).',
     },
     mlPaidGroupIdEnv: 'MAILERLITE_PAID_GROUP_ID',
     mlPendingGroupIdEnv: 'MAILERLITE_PENDING_GROUP_ID',

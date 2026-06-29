@@ -5,8 +5,8 @@ import { EnrollForm } from '../masterclass/enroll-form';
 
 /**
  * Early-bird pricing for „Бизнес с душа, без хаос".
- * €37 until the end of 18 June 2026 (Sofia / EEST = UTC+3), then €97.
- * (Re-opened for a final 24h after the original 15 June early-bird closed.)
+ * €37 until the end of 15 July 2026 (Sofia / EEST = UTC+3), then €97.
+ * (July re-run of the masterclass: 22 July – 2 August 2026.)
  * A live countdown ticks every second to the deadline and auto-flips the price
  * to €97 when it reaches zero — no redeploy. Same calendar source as sticky-cta.tsx.
  *
@@ -15,7 +15,7 @@ import { EnrollForm } from '../masterclass/enroll-form';
  * after mount (remaining !== null), so there's no hydration mismatch; the price
  * spans use suppressHydrationWarning for the one-time post-deadline correction.
  */
-const EARLY_BIRD_END = Date.parse('2026-06-19T00:00:00+03:00'); // end of 18 June, Sofia (24h re-open)
+const EARLY_BIRD_END = Date.parse('2026-07-16T00:00:00+03:00'); // end of 15 July, Sofia (early-bird)
 const REGULAR = '€97';
 const EARLY = '€37';
 
@@ -93,7 +93,7 @@ export function EarlyBirdPrice({ variant }: EarlyBirdPriceProps) {
     if (remaining === null) {
       return (
         <span style={{ fontSize: '12px', fontWeight: 700, color: '#70150E', letterSpacing: '0.02em' }}>
-          Специална цена · до 18 юни
+          Ранно записване · до 15 юли
         </span>
       );
     }
@@ -109,7 +109,7 @@ export function EarlyBirdPrice({ variant }: EarlyBirdPriceProps) {
             color: '#70150E',
           }}
         >
-          ⚡ Специалната цена свършва след
+          ⚡ Ранната цена свършва след
         </span>
         <Countdown remaining={remaining} />
       </div>
