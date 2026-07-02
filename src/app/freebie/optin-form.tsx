@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from 'react';
 import { T } from '@/app/_shared';
+import { trackLead } from '@/app/pixel';
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
 
@@ -35,6 +36,7 @@ export function OptinForm() {
         return;
       }
       setStatus('success');
+      trackLead('freebie');
       window.location.href = '/thank-you-freebie';
     } catch {
       setStatus('error');
