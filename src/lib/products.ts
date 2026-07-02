@@ -178,9 +178,9 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
   // (supportsBankTransfer:false → EnrollForm автоматично скрива банковия превод).
   // Доставя се в ЗАТВОРЕНА Facebook група (без Clerk акаунт, без Bunny) →
   // requiresAccount пропуснат. Платените → специална MailerLite група
-  // (confirmation имейл автоматизацията се строи Христина-side). Pending пада към
-  // общата pending група, за да не се губят ad-lead-ове преди специалната
-  // променлива да е зададена (същият модел като career-course / biznes-dusha-early).
+  // (MAILERLITE_HRISTINA_PAID_GROUP_ID); чакащите/opt-in → специална pending група
+  // (MAILERLITE_HRISTINA_PENDING_GROUP_ID). Двете са dedicated групи на Христина —
+  // confirmation имейл автоматизацията се строи Христина-side (From = нейния имейл).
   'izlez-ot-zastoy': {
     slug: 'izlez-ot-zastoy',
     name: 'Излез от вътрешния застой',
@@ -193,7 +193,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
       nextStepCopy: '',
     },
     mlPaidGroupIdEnv: 'MAILERLITE_HRISTINA_PAID_GROUP_ID',
-    mlPendingGroupIdEnv: 'MAILERLITE_PENDING_GROUP_ID',
+    mlPendingGroupIdEnv: 'MAILERLITE_HRISTINA_PENDING_GROUP_ID',
   },
   'rodov-model': {
     slug: 'rodov-model',
