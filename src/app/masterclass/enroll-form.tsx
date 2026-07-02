@@ -5,7 +5,7 @@ import { trackInitiateCheckout } from '@/app/pixel';
 import { PRODUCTS, type ProductSlug } from '@/lib/products';
 
 type PaymentMethod = 'card' | 'bank';
-type Variant = 'light' | 'dark' | 'dark-warm' | 'dark-sage' | 'dark-rose';
+type Variant = 'light' | 'dark' | 'dark-warm' | 'dark-sage' | 'dark-rose' | 'dark-bordeaux';
 
 interface EnrollFormProps {
   product?: ProductSlug;
@@ -120,6 +120,24 @@ const THEME: Record<Variant, {
     paymentBgChecked: 'rgba(196,56,90,0.12)',
     paymentBorderChecked: '#e0728a',
     paymentAccent: '#e0728a',
+    paymentTitle: '#ffffff',
+    paymentSubtitle: 'rgba(255,255,255,0.62)',
+  },
+  // Deep bordeaux #a10406 — Христина / „Излез от вътрешния застой".
+  'dark-bordeaux': {
+    inputBg: 'rgba(255,255,255,0.08)',
+    inputBorder: 'rgba(255,255,255,0.18)',
+    inputBorderFocus: '#d6484b',
+    inputText: '#ffffff',
+    legendText: 'rgba(255,255,255,0.55)',
+    hintText: 'rgba(255,255,255,0.55)',
+    errorText: '#fca5a5',
+    buttonGradient: 'linear-gradient(135deg, #a10406 0%, #780304 100%)',
+    buttonShadow: '0 8px 22px rgba(161,4,6,0.32)',
+    paymentBg: 'rgba(255,255,255,0.04)',
+    paymentBgChecked: 'rgba(161,4,6,0.14)',
+    paymentBorderChecked: '#d6484b',
+    paymentAccent: '#d6484b',
     paymentTitle: '#ffffff',
     paymentSubtitle: 'rgba(255,255,255,0.62)',
   },

@@ -49,6 +49,18 @@ type CtaBtn = {
   bullets?: string[];
 };
 
+type CourseDetail = { label: string; value: string };
+
+type TyStep = {
+  badge: string;               // e.g. "Стъпка 1 — Задължително"
+  title: string;
+  body?: string;
+  cta?: CtaBtn;                // reuses CtaButton → FB-blue etc.
+  note?: string;              // important/warning callout under the CTA
+  details?: CourseDetail[];   // "Детайли за курса" key/value grid
+  checklist?: string[];
+};
+
 interface ProductCopy {
   title: string;
   body: string;
@@ -57,11 +69,21 @@ interface ProductCopy {
   secondaryCtaHref: string;
   whatNext?: string;
   ps?: string;
+  /**
+   * Additive (currently only izlez-ot-zastoy): a richer multi-step post-purchase
+   * layout for courses delivered via a closed group — numbered steps, a course-
+   * details grid, a checklist, a personal note from the coach + a contact line.
+   * Products that omit these render exactly as before.
+   */
+  steps?: TyStep[];
+  personalNote?: { heading: string; body: string };
+  contactLine?: string;
 }
 
 const MASTERCLASS_VIBER =
   'https://invite.viber.com/?g2=AQBBHCyONP2cNVPVyUuCy2RxRXH9Qe9wX18biT2LifkWu9sxYovJlzjCBPTGEtGQ';
 const BIZNES_FB_GROUP = 'https://www.facebook.com/groups/1641246887138088';
+const HRISTINA_FB_GROUP = 'https://www.facebook.com/groups/1497653248724998';
 
 function copyFor(productSlug: string | undefined): ProductCopy {
   switch (productSlug as ProductSlug) {
@@ -127,6 +149,49 @@ function copyFor(productSlug: string | undefined): ProductCopy {
           'До няколко минути ще получиш имейл с детайли за събитието и инструкции за подготовка. Ако не пристигне, провери папка Промоции или Спам.',
         ps: 'Благодаря ти за доверието. Този избор ще ти донесе яснота, растеж и реални резултати. Нямам търпение да те видя в процеса!\n— Стаси',
         secondaryCtaHref: '/biznes-s-dusha',
+      };
+    // „Излез от вътрешния застой" (Христина / ALIGN) — доставка в ЗАТВОРЕНА
+    // Facebook група, не Skool/Zoom. Двустъпков layout (steps): Стъпка 1 = влез
+    // в групата (задължително), Стъпка 2 = детайли + чеклист. Копи 1:1 от Христина.
+    case 'izlez-ot-zastoy':
+      return {
+        title: 'Записана си!',
+        body: 'Добре дошла в курса. Радвам се, че направи тази стъпка за себе си. Прочети внимателно какво те очаква.',
+        steps: [
+          {
+            badge: 'Стъпка 1 — Задължително',
+            title: 'Присъедини се към групата във Facebook',
+            body: 'Там ще получаваш всички материали, задачи и подкрепа по време на курса. Без групата нямаш достъп до съдържанието.',
+            cta: {
+              label: 'Влез в групата сега',
+              href: HRISTINA_FB_GROUP,
+              facebook: true,
+              external: true,
+            },
+            note: 'Присъединяването към групата е задължително условие за участие в курса. Ако не го направиш, ще пропуснеш материали и живи сесии.',
+          },
+          {
+            badge: 'Стъпка 2 — Запази си датите',
+            title: 'Детайли за курса',
+            details: [
+              { label: 'Старт', value: '23 юли 2026' },
+              { label: 'Продължителност', value: '4 седмици' },
+              { label: 'Формат', value: 'Онлайн, на живо' },
+              { label: 'Платформа', value: 'Facebook група' },
+            ],
+            checklist: [
+              'Провери имейла си — ще получиш потвърждение с всички детайли.',
+              'Включи известията в групата, за да не пропускаш нищо.',
+              'Запази 23 юли в календара си — живата сесия започва точно в обявения час.',
+            ],
+          },
+        ],
+        personalNote: {
+          heading: 'Лично от Христина',
+          body: 'Направи тази стъпка за себе си.\nРадвам се, че избра да излезеш от вътрешния застой. Следващите 4 седмици ще бъдат различни — не защото ще получиш още информация, а защото ще се видиш ясно.\nДо скоро,\nХристина',
+        },
+        contactLine: 'Въпроси? Пиши на info@coachingreallive.com',
+        secondaryCtaHref: '/izlez-ot-zastoy',
       };
     case 'zhiva':
       return {
@@ -249,6 +314,110 @@ function CtaButton({ cta }: { cta: CtaBtn }) {
                 •
               </span>
               <span>{b}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
+function TyStepCard({ step }: { step: TyStep }) {
+  return (
+    <div
+      style={{
+        padding: '24px',
+        backgroundColor: '#ffffff',
+        borderRadius: '14px',
+        border: '1px solid rgba(107,21,14,0.12)',
+        textAlign: 'left',
+        boxShadow: '0 2px 16px rgba(0,0,0,0.03)',
+      }}
+    >
+      <div
+        style={{
+          display: 'inline-block',
+          padding: '5px 12px',
+          borderRadius: '6px',
+          backgroundColor: 'rgba(112,21,14,0.08)',
+          color: '#70150E',
+          fontSize: '11px',
+          fontWeight: 700,
+          letterSpacing: '0.08em',
+          textTransform: 'uppercase',
+          marginBottom: '14px',
+        }}
+      >
+        {step.badge}
+      </div>
+
+      <h2 style={{ fontSize: '18px', fontWeight: 800, color: '#1a1a1a', letterSpacing: '-0.01em', marginBottom: step.body ? '8px' : '16px' }}>
+        {step.title}
+      </h2>
+
+      {step.body && (
+        <p style={{ fontSize: '14px', color: 'rgba(0,0,0,0.6)', lineHeight: 1.7, marginBottom: '16px' }}>
+          {step.body}
+        </p>
+      )}
+
+      {step.cta && <CtaButton cta={step.cta} />}
+
+      {step.note && (
+        <div
+          style={{
+            padding: '12px 16px',
+            backgroundColor: 'rgba(112,21,14,0.05)',
+            borderLeft: '3px solid #70150E',
+            borderRadius: '6px',
+            fontSize: '13px',
+            color: '#70150E',
+            lineHeight: 1.6,
+          }}
+        >
+          {step.note}
+        </div>
+      )}
+
+      {step.details && step.details.length > 0 && (
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gap: '12px',
+            marginBottom: step.checklist && step.checklist.length > 0 ? '20px' : 0,
+          }}
+        >
+          {step.details.map((d) => (
+            <div
+              key={d.label}
+              style={{
+                padding: '14px 16px',
+                backgroundColor: '#faf8f5',
+                borderRadius: '10px',
+                border: '1px solid rgba(107,21,14,0.08)',
+              }}
+            >
+              <div style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.45)', marginBottom: '4px' }}>
+                {d.label}
+              </div>
+              <div style={{ fontSize: '15px', fontWeight: 700, color: '#1a1a1a' }}>{d.value}</div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {step.checklist && step.checklist.length > 0 && (
+        <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          {step.checklist.map((c) => (
+            <li key={c} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start', fontSize: '13.5px', color: 'rgba(0,0,0,0.62)', lineHeight: 1.6 }}>
+              <span
+                aria-hidden
+                style={{ width: '18px', height: '18px', borderRadius: '5px', backgroundColor: 'rgba(112,21,14,0.10)', color: '#70150E', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '1px' }}
+              >
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+              </span>
+              <span>{c}</span>
             </li>
           ))}
         </ul>
@@ -385,6 +554,14 @@ export default async function ThankYouPage({
             <CtaButton key={c.href} cta={c} />
           ))}
 
+          {copy.steps && copy.steps.length > 0 && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '28px' }}>
+              {copy.steps.map((s) => (
+                <TyStepCard key={s.badge} step={s} />
+              ))}
+            </div>
+          )}
+
           {copy.whatNext ? (
             <div
               style={{
@@ -399,7 +576,7 @@ export default async function ThankYouPage({
               <p style={{ fontSize: '14px', fontWeight: 700, color: '#1a1a1a', marginBottom: '6px' }}>Какво следва?</p>
               <p style={{ fontSize: '13.5px', color: 'rgba(0,0,0,0.55)', lineHeight: 1.7 }}>{copy.whatNext}</p>
             </div>
-          ) : (
+          ) : copy.steps ? null : (
             <div
               style={{
                 padding: '20px 24px',
@@ -429,6 +606,32 @@ export default async function ThankYouPage({
               }}
             >
               {copy.ps}
+            </p>
+          )}
+
+          {copy.personalNote && (
+            <div
+              style={{
+                padding: '22px 24px',
+                backgroundColor: '#faf8f5',
+                borderRadius: '12px',
+                marginBottom: '20px',
+                border: '1px solid rgba(107,21,14,0.08)',
+                textAlign: 'left',
+              }}
+            >
+              <p style={{ fontSize: '12px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#70150E', marginBottom: '10px' }}>
+                {copy.personalNote.heading}
+              </p>
+              <p style={{ fontSize: '14px', color: 'rgba(0,0,0,0.62)', lineHeight: 1.75, whiteSpace: 'pre-line' }}>
+                {copy.personalNote.body}
+              </p>
+            </div>
+          )}
+
+          {copy.contactLine && (
+            <p style={{ fontSize: '13px', color: 'rgba(0,0,0,0.5)', marginBottom: '28px' }}>
+              {copy.contactLine}
             </p>
           )}
 
