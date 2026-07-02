@@ -454,7 +454,7 @@ function HeroSection() {
 /* ─── VSL VIDEO ─────────────────────────────────────────────────────── */
 const VSL_VIDEO = {
   libraryId: "653527",
-  videoId: "7ca34e85-dd7f-4509-8db5-7f39f4515674",
+  videoId: "e7bf28d3-917a-45c4-b1ff-42832af4b3b0",
 };
 
 function VSLSection() {
