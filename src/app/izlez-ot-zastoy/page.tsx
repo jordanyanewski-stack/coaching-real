@@ -214,7 +214,7 @@ function HeroSection() {
             }}
           >
             Излез от{" "}
-            <span style={{ fontFamily: SERIF, fontStyle: "italic", fontWeight: 500, color: H.accentWarm }}>
+            <span className="xl:whitespace-nowrap" style={{ fontFamily: SERIF, fontStyle: "italic", fontWeight: 500, color: H.accentWarm }}>
               вътрешния застой
             </span>
           </h1>
