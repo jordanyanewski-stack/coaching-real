@@ -174,7 +174,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     mlPendingGroupIdEnv: 'MAILERLITE_ZHIVA_PENDING_GROUP_ID',
   },
   // ── „Излез от вътрешния застой" — Христина Симеонова (метод ALIGN). ──
-  // 4-седмичен курс на живо за жени 25–44, старт 23 юли 2026. €37, card-only
+  // 4-седмичен курс на живо за жени 25–44, старт 24 юли 2026. €37, card-only
   // (supportsBankTransfer:false → EnrollForm автоматично скрива банковия превод).
   // Доставя се в ЗАТВОРЕНА Facebook група (без Clerk акаунт, без Bunny) →
   // requiresAccount пропуснат. Платените → специална MailerLite група

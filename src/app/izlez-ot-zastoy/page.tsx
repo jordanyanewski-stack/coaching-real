@@ -6,7 +6,7 @@ import { IzlezStickyCTA } from "./sticky-cta";
 export const metadata = {
   title: "Излез от вътрешния застой · 4-седмичен курс на живо €37 | Христина Симеонова",
   description:
-    "От прекалено мислене и отлагане към яснота и увереност при вземането на важни решения. 4-седмичен курс на живо за жени 25–44. Старт 23 юли 2026. €37.",
+    "От прекалено мислене и отлагане към яснота и увереност при вземането на важни решения. 4-седмичен курс на живо за жени 25–44. Старт 24 юли 2026. €37.",
 };
 
 /* ─── DESIGN TOKENS — deep bordeaux #a10406 (brand) на топъл фон ─────── */
@@ -200,7 +200,7 @@ function HeroSection() {
             }}
           >
             <span style={{ width: 6, height: 6, borderRadius: "50%", backgroundColor: H.accentWarm }} />
-            4-седмичен курс на живо · старт 23 юли · €37
+            4-седмичен курс на живо · старт 24 юли · €37
           </div>
 
           <h1
@@ -543,7 +543,7 @@ function FormatSection() {
           }}
         >
           <span style={{ fontSize: "11px", fontWeight: 700, color: H.accent, letterSpacing: "0.12em", textTransform: "uppercase" }}>Старт</span>
-          <span style={{ fontSize: "18px", fontWeight: 800, color: H.textPrimary, letterSpacing: "-0.01em" }}>23 юли 2026</span>
+          <span style={{ fontSize: "18px", fontWeight: 800, color: H.textPrimary, letterSpacing: "-0.01em" }}>24 юли 2026</span>
           <span style={{ color: H.textMuted }}>·</span>
           <span style={{ fontSize: "15px", color: H.textBody }}>4 седмици · Онлайн, на живо</span>
         </div>
@@ -612,13 +612,13 @@ function FinalCTASection() {
           Той няма да дойде сам. Но яснотата може.
         </p>
         <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.45)", maxWidth: "440px", margin: "0 auto 32px", lineHeight: 1.6 }}>
-          4-седмичен курс на живо · старт 23 юли · €37 еднократно
+          4-седмичен курс на живо · старт 24 юли · €37 еднократно
         </p>
         <div className="flex justify-center">
           <EnrollForm product="izlez-ot-zastoy" cardOnly variant="dark-bordeaux" submitLabel="Запиши се за 37 EUR →" />
         </div>
         <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.42)", marginTop: "24px", letterSpacing: "0.02em" }}>
-          Старт: 23 юли · Онлайн · На живо · 4 седмици
+          Старт: 24 юли · Онлайн · На живо · 4 седмици
         </p>
       </div>
     </section>
