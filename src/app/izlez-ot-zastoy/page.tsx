@@ -499,7 +499,7 @@ function MentorSection() {
             boxShadow: "0 14px 44px rgba(161,4,6,0.38)",
           }}
         >
-          <Image src="/izlez-ot-zastoy/hristina.jpg" alt="Христина Симеонова" fill sizes="140px" style={{ objectFit: "cover", objectPosition: "57% 30%" }} />
+          <Image src="/izlez-ot-zastoy/hristina.jpg" alt="Христина Симеонова" fill sizes="140px" style={{ objectFit: "cover", objectPosition: "50% 50%" }} />
         </div>
 
         <h2 style={{ fontSize: "clamp(1.9rem, 4vw, 2.6rem)", fontWeight: 800, color: "#ffffff", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "8px" }}>
