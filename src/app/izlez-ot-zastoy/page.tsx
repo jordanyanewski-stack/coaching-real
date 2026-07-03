@@ -180,7 +180,8 @@ function HeroSection() {
       <div aria-hidden style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(25,10,10,0.20) 0%, rgba(25,10,10,0.55) 62%, rgba(25,10,10,0.92) 100%)" }} />
 
       <div className="relative px-6 md:px-12 lg:px-20 py-24 md:py-32 w-full" style={{ zIndex: 1 }}>
-        <div className="max-w-3xl mx-auto text-center">
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-[1fr_400px] gap-12 lg:gap-16 items-center">
+        <div className="max-w-3xl mx-auto text-center lg:text-left lg:mx-0">
           <div
             style={{
               display: "inline-flex",
@@ -219,24 +220,26 @@ function HeroSection() {
           </h1>
 
           <p
+            className="mx-auto lg:mx-0"
             style={{
               fontSize: "18px",
               lineHeight: 1.6,
               color: "rgba(255,255,255,0.74)",
               maxWidth: "580px",
-              margin: "0 auto 14px",
+              marginBottom: "14px",
             }}
           >
             От прекалено мислене и отлагане към яснота и увереност при вземането на важни решения.
           </p>
 
           <p
+            className="mx-auto lg:mx-0"
             style={{
               fontSize: "14px",
               lineHeight: 1.65,
               color: "rgba(255,255,255,0.48)",
               maxWidth: "520px",
-              margin: "0 auto 32px",
+              marginBottom: "32px",
             }}
           >
             4-седмичен курс за жени на 25–44 години, които са изправени пред важно решение и искат да спрат да се колебаят, да чуят себе си и да направят следващата стъпка с увереност.
@@ -245,11 +248,9 @@ function HeroSection() {
           <PrimaryButton href="#enroll">Запиши се за 37 EUR</PrimaryButton>
 
           <div
+            className="flex flex-wrap justify-center lg:justify-start"
             style={{
               marginTop: "36px",
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "center",
               gap: "8px",
             }}
           >
@@ -275,6 +276,35 @@ function HeroSection() {
             ))}
           </div>
         </div>
+
+        {/* Портрет на Христина — дясна колона на desktop, под текста на mobile */}
+        <div
+          className="mx-auto lg:mx-0 w-full"
+          style={{
+            maxWidth: "400px",
+            aspectRatio: "3 / 4",
+            position: "relative",
+            borderRadius: "14px",
+            overflow: "hidden",
+            border: "1px solid rgba(240,184,182,0.30)",
+            boxShadow: "0 24px 70px rgba(0,0,0,0.45), 0 10px 30px rgba(161,4,6,0.25)",
+          }}
+        >
+          <Image
+            src="/izlez-ot-zastoy/hero-portrait.jpg"
+            alt="Христина Симеонова"
+            fill
+            priority
+            sizes="(min-width: 1024px) 400px, 90vw"
+            style={{ objectFit: "cover", objectPosition: "50% 18%" }}
+          />
+          <div aria-hidden style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, transparent 60%, rgba(25,10,10,0.55) 100%)" }} />
+          <div style={{ position: "absolute", left: "18px", bottom: "16px", zIndex: 1 }}>
+            <div style={{ fontSize: "15px", fontWeight: 700, color: "#ffffff", letterSpacing: "-0.01em" }}>Христина Симеонова</div>
+            <div style={{ fontSize: "12px", fontWeight: 600, color: H.accentWarm }}>Създател на метода ALIGN</div>
+          </div>
+        </div>
+        </div>
       </div>
     </section>
   );
@@ -299,25 +329,48 @@ function PainSection() {
           Не е мързел. Не е липса на воля. Нещо друго те задържа — и докато не го видиш ясно, ще продължаваш да чакаш момента, в който „ще бъдеш готова“.
         </p>
 
-        <div className="flex flex-col gap-3 max-w-xl mx-auto" style={{ textAlign: "left" }}>
-          {painPoints.map((p) => (
-            <div
-              key={p}
-              className="reveal"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "14px",
-                padding: "16px 20px",
-                background: H.bgAlt,
-                border: `1px solid ${H.borderEditorial}`,
-                borderRadius: "6px",
-              }}
-            >
-              <span style={{ width: 6, height: 6, borderRadius: "50%", backgroundColor: H.accentTerra, flexShrink: 0 }} />
-              <span style={{ fontSize: "15px", color: H.textPrimary, lineHeight: 1.45 }}>{p}</span>
-            </div>
-          ))}
+        <div className="grid md:grid-cols-[340px_1fr] gap-5 max-w-3xl mx-auto items-stretch" style={{ textAlign: "left" }}>
+          {/* „Прекалено мислене“ — снимка с ръка на брадичката */}
+          <div
+            className="reveal"
+            style={{
+              position: "relative",
+              borderRadius: "8px",
+              overflow: "hidden",
+              border: `1px solid ${H.borderEditorial}`,
+              minHeight: "300px",
+              boxShadow: "0 14px 40px rgba(42,20,20,0.14)",
+            }}
+          >
+            <Image
+              src="/izlez-ot-zastoy/pain-portrait.jpg"
+              alt="Христина Симеонова — замислена, с ръка на брадичката"
+              fill
+              sizes="(min-width: 768px) 340px, 90vw"
+              style={{ objectFit: "cover", objectPosition: "50% 22%" }}
+            />
+          </div>
+
+          <div className="flex flex-col gap-3 justify-center">
+            {painPoints.map((p) => (
+              <div
+                key={p}
+                className="reveal"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "14px",
+                  padding: "16px 20px",
+                  background: H.bgAlt,
+                  border: `1px solid ${H.borderEditorial}`,
+                  borderRadius: "6px",
+                }}
+              >
+                <span style={{ width: 6, height: 6, borderRadius: "50%", backgroundColor: H.accentTerra, flexShrink: 0 }} />
+                <span style={{ fontSize: "15px", color: H.textPrimary, lineHeight: 1.45 }}>{p}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -432,6 +485,27 @@ function FormatSection() {
           </h2>
         </div>
 
+        <div
+          className="reveal"
+          style={{
+            position: "relative",
+            aspectRatio: "16 / 9",
+            borderRadius: "10px",
+            overflow: "hidden",
+            border: `1px solid ${H.borderEditorial}`,
+            boxShadow: "0 16px 44px rgba(42,20,20,0.14)",
+            marginBottom: "24px",
+          }}
+        >
+          <Image
+            src="/izlez-ot-zastoy/format-desk.jpg"
+            alt="Жена си води записки в тетрадка по време на жива онлайн сесия"
+            fill
+            sizes="(min-width: 896px) 896px, 92vw"
+            style={{ objectFit: "cover" }}
+          />
+        </div>
+
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
           {formatItems.map((f) => (
             <div
@@ -489,17 +563,17 @@ function MentorSection() {
 
         <div
           style={{
-            width: "140px",
-            height: "140px",
-            borderRadius: "50%",
+            width: "min(240px, 64vw)",
+            aspectRatio: "3 / 4",
+            borderRadius: "12px",
             overflow: "hidden",
             position: "relative",
-            margin: "0 auto 24px",
+            margin: "0 auto 28px",
             border: "3px solid rgba(224,130,127,0.45)",
-            boxShadow: "0 14px 44px rgba(161,4,6,0.38)",
+            boxShadow: "0 18px 54px rgba(161,4,6,0.38)",
           }}
         >
-          <Image src="/izlez-ot-zastoy/hristina.jpg" alt="Христина Симеонова" fill sizes="140px" style={{ objectFit: "cover", objectPosition: "50% 50%" }} />
+          <Image src="/izlez-ot-zastoy/mentor-portrait.jpg" alt="Христина Симеонова" fill sizes="240px" style={{ objectFit: "cover", objectPosition: "50% 20%" }} />
         </div>
 
         <h2 style={{ fontSize: "clamp(1.9rem, 4vw, 2.6rem)", fontWeight: 800, color: "#ffffff", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: "8px" }}>
