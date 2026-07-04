@@ -319,7 +319,7 @@ function PainSection() {
         <h2 style={{ fontSize: "clamp(1.7rem, 3.6vw, 2.5rem)", fontWeight: 800, color: H.textPrimary, lineHeight: 1.14, letterSpacing: "-0.02em", margin: "12px 0 18px" }}>
           Докато мислиш —{" "}
           <span style={{ fontFamily: SERIF, fontStyle: "italic", fontWeight: 500, color: H.accent }}>
-            животът продължава без теб.
+            животът продължава без&nbsp;теб.
           </span>
         </h2>
         <p style={{ fontSize: "16px", color: H.textBody, lineHeight: 1.75, maxWidth: "580px", margin: "0 auto 14px" }}>
@@ -344,7 +344,7 @@ function PainSection() {
           >
             <Image
               src="/izlez-ot-zastoy/pain-portrait.jpg"
-              alt="Христина Симеонова — замислена, с ръка на брадичката"
+              alt="Замислена жена до прозорец, с ръка на брадичката — прекалено мислене"
               fill
               sizes="(min-width: 768px) 340px, 90vw"
               style={{ objectFit: "cover", objectPosition: "50% 22%" }}
