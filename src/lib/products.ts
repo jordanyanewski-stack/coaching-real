@@ -29,8 +29,12 @@ export interface Product {
     nextStepCopy: string;
   };
   mlPaidGroupIdEnv: string;
-  /** Env var name holding the MailerLite group ID for unpaid leads of this product. */
-  mlPendingGroupIdEnv: string;
+  /**
+   * Env var name holding the MailerLite group ID for unpaid leads of this product.
+   * Omit to skip pre-payment capture entirely (opt-in subscribes nobody until paid) —
+   * the checkout routes then skip MailerLite silently instead of logging an error.
+   */
+  mlPendingGroupIdEnv?: string;
   /**
    * True ONLY for products that grant dashboard/login access (the audiobook,
    * streamed via /api/audiobook/stream after a gate check). When set, the myPOS
@@ -178,9 +182,10 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
   // (supportsBankTransfer:false → EnrollForm автоматично скрива банковия превод).
   // Доставя се в ЗАТВОРЕНА Facebook група (без Clerk акаунт, без Bunny) →
   // requiresAccount пропуснат. Платените → специална MailerLite група
-  // (MAILERLITE_HRISTINA_PAID_GROUP_ID); чакащите/opt-in → специална pending група
-  // (MAILERLITE_HRISTINA_PENDING_GROUP_ID). Двете са dedicated групи на Христина —
+  // (MAILERLITE_HRISTINA_PAID_GROUP_ID) — dedicated група на Христина;
   // confirmation имейл автоматизацията се строи Христина-side (From = нейния имейл).
+  // БЕЗ pending група (премахната 2026-07-04): opt-in преди плащане не записва
+  // никого в MailerLite — capture-ва се само реално платен купувач.
   'izlez-ot-zastoy': {
     slug: 'izlez-ot-zastoy',
     name: 'Излез от вътрешния застой',
@@ -193,7 +198,6 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
       nextStepCopy: '',
     },
     mlPaidGroupIdEnv: 'MAILERLITE_HRISTINA_PAID_GROUP_ID',
-    mlPendingGroupIdEnv: 'MAILERLITE_HRISTINA_PENDING_GROUP_ID',
   },
   'rodov-model': {
     slug: 'rodov-model',
@@ -284,7 +288,8 @@ export function getPaidGroupId(slug: ProductSlug): string {
 }
 
 export function getPendingGroupId(slug: ProductSlug): string {
-  return cleanEnv(process.env[PRODUCTS[slug].mlPendingGroupIdEnv]);
+  const envVar = PRODUCTS[slug].mlPendingGroupIdEnv;
+  return envVar ? cleanEnv(process.env[envVar]) : '';
 }
 
 /**

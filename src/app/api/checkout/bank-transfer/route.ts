@@ -67,7 +67,9 @@ export async function POST(request: NextRequest) {
     try {
       if (pendingGroupId) {
         await addToPending(cleanEmail, name.trim(), pendingGroupId);
-      } else {
+      } else if (product.mlPendingGroupIdEnv) {
+        // Only an error when the product WANTS pending capture but the env is missing;
+        // products without mlPendingGroupIdEnv skip pre-payment capture by design.
         console.error('[MailerLite] Missing pending group id env var (bank-transfer)', {
           product: product.slug,
           envVar: product.mlPendingGroupIdEnv,
