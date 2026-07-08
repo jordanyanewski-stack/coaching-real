@@ -4,6 +4,7 @@ import { getDb } from '@/lib/db';
 import { getProduct, type ProductSlug } from '@/lib/products';
 import { TrackPurchase } from './track-purchase';
 import { SetBuyerCookie } from './set-buyer-cookie';
+import { PendingPaymentWatcher } from './pending-payment-watcher';
 
 export const dynamic = 'force-dynamic';
 
@@ -455,8 +456,13 @@ export default async function ThankYouPage({
     <div style={{ fontFamily: 'var(--font-mv, sans-serif)', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       {/* €0 promo-code signups must not fire a Purchase event — zero-value
           purchases skew the pixel's conversion optimization. */}
-      {isPaid && purchaseValue > 0 && <TrackPurchase value={purchaseValue} currency={purchaseCurrency} />}
+      {isPaid && purchaseValue > 0 && (
+        <TrackPurchase value={purchaseValue} currency={purchaseCurrency} eventId={orderId} />
+      )}
       {isPaid && productSlug && <SetBuyerCookie product={productSlug} />}
+      {/* Landed before the myPOS webhook flipped the order — wait for it, then
+          re-render so the Purchase pixel still fires for this real payment. */}
+      {orderId && order?.status === 'pending' && <PendingPaymentWatcher orderId={orderId} />}
       <header style={{ padding: '20px 32px' }}>
         <a href="/">
           <Image src={LOGO_URL} alt="Coaching Real" width={0} height={0} sizes="100vw" style={{ height: '38px', width: 'auto' }} />

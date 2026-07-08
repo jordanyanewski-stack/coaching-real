@@ -36,14 +36,23 @@ export async function addToPending(email: string, name: string, pendingGroupId: 
   });
 }
 
-export async function moveToPaid(email: string, paidGroupId: string, pendingGroupId?: string) {
+export async function moveToPaid(email: string, paidGroupId: string, pendingGroupId?: string, name?: string) {
   if (!paidGroupId) {
     throw new Error('moveToPaid called without a paid group id');
   }
 
-  const data = await request(`/subscribers/${encodeURIComponent(email)}`, 'GET');
-  const subscriberId = data.data?.id;
+  // Upsert first: products without a pending group (e.g. izlez-ot-zastoy) sell
+  // to buyers who were never captured pre-purchase, so the subscriber may not
+  // exist yet. POST /subscribers creates-or-updates and adds the paid group
+  // either way. No `status` is sent — an unsubscribed contact stays unsubscribed.
+  const [firstName, ...rest] = (name ?? '').trim().split(' ');
+  const data = await request('/subscribers', 'POST', {
+    email,
+    ...(firstName ? { fields: { name: firstName, last_name: rest.join(' ') } } : {}),
+    groups: [paidGroupId],
+  });
 
+  const subscriberId = data.data?.id;
   if (subscriberId && pendingGroupId) {
     try {
       await request(`/subscribers/${subscriberId}/groups/${pendingGroupId}`, 'DELETE');
@@ -51,9 +60,4 @@ export async function moveToPaid(email: string, paidGroupId: string, pendingGrou
       // subscriber may not be in the group — not fatal
     }
   }
-
-  await request('/subscribers', 'POST', {
-    email,
-    groups: [paidGroupId],
-  });
 }

@@ -10,6 +10,7 @@ import { cleanEnv } from '@/lib/validators';
 
 type PaidOrderRow = {
   email: string;
+  name: string | null;
   product: string;
   amount: string;
   currency: string;
@@ -68,7 +69,7 @@ export async function POST(request: NextRequest) {
       let row: PaidOrderRow | undefined;
       try {
         const rows = (await sql`
-          SELECT email, product, amount::text AS amount, currency, status
+          SELECT email, name, product, amount::text AS amount, currency, status
           FROM orders
           WHERE mypos_order_id = ${OrderID}
           LIMIT 1
@@ -143,7 +144,7 @@ export async function POST(request: NextRequest) {
         const pendingGroupId = getPendingGroupId(product.slug as ProductSlug);
         if (paidGroupId) {
           try {
-            await moveToPaid(row.email, paidGroupId, pendingGroupId || undefined);
+            await moveToPaid(row.email, paidGroupId, pendingGroupId || undefined, row.name ?? undefined);
           } catch (err) {
             console.error('[myPOS notify] MailerLite moveToPaid FAILED', {
               email: row.email,

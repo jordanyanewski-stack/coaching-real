@@ -55,8 +55,10 @@ export function trackInitiateCheckout(value: number, currency = 'EUR') {
   }
 }
 
-export function trackPurchase(value: number, currency = 'EUR') {
+export function trackPurchase(value: number, currency = 'EUR', eventId?: string) {
   if (typeof window !== 'undefined' && window.fbq) {
-    window.fbq('track', 'Purchase', { value, currency });
+    // eventID lets Meta dedupe repeat fires of the same order (thank-you page
+    // reloads/revisits) and any future server-side CAPI event for it.
+    window.fbq('track', 'Purchase', { value, currency }, eventId ? { eventID: eventId } : undefined);
   }
 }
