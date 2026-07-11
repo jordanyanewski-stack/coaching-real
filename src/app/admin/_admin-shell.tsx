@@ -40,6 +40,7 @@ export function AdminShell({
         </a>
         <nav style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
           <AdminNavLink href="/admin">Начало</AdminNavLink>
+          <AdminNavLink href="/admin/orders">Поръчки</AdminNavLink>
           <AdminNavLink href="/admin/blog">Блог</AdminNavLink>
           <AdminNavLink href="/admin/bank-orders">Банкови преводи</AdminNavLink>
         </nav>

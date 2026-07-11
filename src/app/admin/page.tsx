@@ -10,6 +10,11 @@ export default function AdminHomePage() {
     <AdminShell title="Admin">
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <Card
+          href="/admin/orders"
+          label="Поръчки"
+          description="Всички постъпващи поръчки · картови плащания, статуси, суми."
+        />
+        <Card
           href="/admin/blog"
           label="Блог"
           description="Управление на статиите · нова статия, редакция, премахване."
