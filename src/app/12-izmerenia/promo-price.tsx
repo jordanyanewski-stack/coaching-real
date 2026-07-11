@@ -34,9 +34,23 @@ export function usePromo() {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const deadline = getPromoDeadline();
+    const now = Date.now();
+    let deadline = getPromoDeadline();
+    // The cookies never travel across devices — a subscriber who opts in on
+    // desktop but opens the funnel emails on her phone (or in Gmail's in-app
+    // browser) has no cookie there and would wrongly see €197. Funnel emails
+    // therefore link with ?f1=1: when it's present and no live window exists,
+    // grant a fresh funnel window on this device. Only funnel subscribers
+    // ever receive links carrying the param.
+    if (
+      (!deadline || deadline <= now) &&
+      new URLSearchParams(window.location.search).get('f1') === '1'
+    ) {
+      document.cookie = `funnel_optin=${now};path=/;max-age=${60 * 60 * 24 * 30}`;
+      deadline = now + FUNNEL_WINDOW;
+    }
     if (deadline) {
-      const remaining = deadline - Date.now();
+      const remaining = deadline - now;
       if (remaining > 0) {
         setIsPromo(true);
         setDaysLeft(Math.ceil(remaining / (24 * 60 * 60 * 1000)));
