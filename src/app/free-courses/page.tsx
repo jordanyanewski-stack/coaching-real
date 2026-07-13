@@ -17,10 +17,42 @@ type Course = {
   mentor: string;
   photo: string;
   categories: string[];
+  overview?: string;
+  keyPoints?: string[];
+  forWhom?: string[];
+  closing?: string;
   href?: string;
 };
 
 const COURSES: Course[] = [
+  {
+    id: "az-buki-vedi",
+    title: "Аз Буки Веди – разбери езика, на който говори родът",
+    description:
+      "Ако в този момент от живота си мислиш „Защо така?“ или „Защо на мен?“, в края на това въведение ще си кажеш: „Сега вече разбирам защо се случва това.“",
+    mentor: "Лилия Бонева",
+    photo: "/free-courses/lilia-boneva.jpg",
+    categories: ["Родова терапия"],
+    overview:
+      "„Аз Буки Веди на рода“ не е курс по родова терапия. Това е ново възприятие и умение: как да мислиш и живееш родосъобразно.",
+    keyPoints: [
+      "Да започнеш да гледаш на живота си и на всяка ситуация в него през нова перспектива – тази на родовата ти система.",
+      "Да намираш смисъл във всичко, което се е случвало преди и се случва сега – в твоя живот и в живота на хората преди теб.",
+      "Да се чувстваш свързан/а с една невидима, но осезаема енергия – родовата.",
+      "Да осмислиш по нов начин своята родова принадлежност.",
+    ],
+    forWhom: [
+      "„Защо на мен?“",
+      "„Защо все така ми се случва?“",
+      "„Не е честно да плащам за греховете на тези преди мен!“",
+      "„Не искам децата ми да плащат чужди грехове!“",
+      "„Аз нищо не знам за моя род.“",
+      "„Какво ми има?“",
+      "„Кога най-после ще започне моят живот?“",
+    ],
+    closing:
+      "Това ниво е и за всеки, който е готов да премине от „Кой род? Не ми говори за тези хора!“ до „Искам да знам. Искам да опозная колкото се може повече хора от моя род.“",
+  },
   {
     id: "nevidima-vina",
     title: "В капана на невидимата вина",
@@ -326,36 +358,6 @@ function CoursesSection({ courses }: { courses: Course[] }) {
           <span style={{ ...GRADIENT_TEXT }}>KickSTART</span>
         </h2>
 
-        <div
-          className="mt-6 mx-auto flex items-center justify-center gap-3"
-          style={{
-            padding: "14px 28px",
-            backgroundColor: "rgba(107,21,14,0.06)",
-            borderRadius: "12px",
-            maxWidth: "fit-content",
-          }}
-        >
-          <span style={{ fontSize: "20px" }}>📅</span>
-          <p
-            style={{
-              fontSize: "15px",
-              fontWeight: 700,
-              color: T.textPrimary,
-            }}
-          >
-            09 Март – 05 Април 2026 г.
-          </p>
-          <span
-            style={{
-              fontSize: "13px",
-              color: T.textSecondary,
-              fontWeight: 500,
-            }}
-          >
-            · напълно безплатни
-          </span>
-        </div>
-
         <div className="grid md:grid-cols-2 gap-6 mt-14">
           {courses.map((course) => (
             <CourseCard key={course.id} course={course} />
@@ -452,6 +454,66 @@ function CourseCard({ course }: { course: Course }) {
         >
           {course.mentor}
         </p>
+
+        {course.overview && (
+          <details
+            style={{
+              marginBottom: "16px",
+              border: "1px solid rgba(107,21,14,0.12)",
+              borderRadius: "10px",
+              backgroundColor: "rgba(107,21,14,0.035)",
+            }}
+          >
+            <summary
+              style={{
+                padding: "12px 14px",
+                color: "#70150E",
+                fontSize: "14px",
+                fontWeight: 700,
+                cursor: "pointer",
+              }}
+            >
+              Прочети повече за курса
+            </summary>
+            <div
+              style={{
+                padding: "2px 14px 16px",
+                color: T.textSecondary,
+                fontSize: "14px",
+                lineHeight: 1.7,
+              }}
+            >
+              <p>{course.overview}</p>
+
+              {course.keyPoints && (
+                <ul className="mt-4 flex flex-col gap-2 pl-5" style={{ listStyle: "disc" }}>
+                  {course.keyPoints.map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
+              )}
+
+              {course.forWhom && (
+                <>
+                  <h4
+                    className="mt-5 mb-2"
+                    style={{ color: T.textPrimary, fontSize: "14px", fontWeight: 800 }}
+                  >
+                    За кого е курсът?
+                  </h4>
+                  <p>Това ниво е за всеки, който поне веднъж си е казвал:</p>
+                  <ul className="mt-3 flex flex-col gap-1.5 pl-5" style={{ listStyle: "disc" }}>
+                    {course.forWhom.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </>
+              )}
+
+              {course.closing && <p className="mt-4">{course.closing}</p>}
+            </div>
+          </details>
+        )}
 
         {/* CTA */}
         {course.href ? (
