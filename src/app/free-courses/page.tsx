@@ -22,6 +22,7 @@ type Course = {
   forWhom?: string[];
   closing?: string;
   href?: string;
+  ctaLabel?: string;
 };
 
 const COURSES: Course[] = [
@@ -52,6 +53,8 @@ const COURSES: Course[] = [
     ],
     closing:
       "Това ниво е и за всеки, който е готов да премине от „Кой род? Не ми говори за тези хора!“ до „Искам да знам. Искам да опозная колкото се може повече хора от моя род.“",
+    href: "https://docs.google.com/forms/d/e/1FAIpQLSd7QTqtRkkhAD2FvLP72nVtQJka6kwNhr4Qw2WFEHSXIhq1bA/viewform",
+    ctaLabel: "Запиши се безплатно",
   },
   {
     id: "nevidima-vina",
@@ -529,7 +532,7 @@ function CourseCard({ course }: { course: Course }) {
               width: "100%",
             }}
           >
-            Научи повече
+            {course.ctaLabel ?? "Научи повече"}
           </a>
         ) : (
           <span

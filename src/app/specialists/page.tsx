@@ -1,71 +1,13 @@
 import Image from "next/image";
+import Link from "next/link";
 import { T, GRADIENT_TEXT, SiteNav, SiteFooter } from "@/app/_shared";
+import { SPECIALISTS, type Specialist } from "@/lib/specialists";
 
 export const metadata = {
   title: "Специалисти – Coaching Real",
   description:
     "Запознай се с екипа от специалисти зад Coaching Real - бизнес коучове, терапевти и фасилитатори, посветени на твоята трансформация.",
 };
-
-type Specialist = {
-  id: string;
-  name: string;
-  role: string;
-  bio: string;
-  photo: string;
-};
-
-const SPECIALISTS: Specialist[] = [
-  {
-    id: "stanislava",
-    name: "Станислава Павлова",
-    role: "Сърцето на Coaching Real",
-    bio: "Обичам да превръщам хаоса в стратегия и мечтите – в работещи бизнеси. Аз съм бизнес коуч, първият български Ikigai коуч и CPD Provider. Подкрепям терапевти, коучове и специалисти, които искат да излязат онлайн и да живеят мисията си. С мен не само учиш – трансформираш.",
-    photo: "/specialists/stanislava.png",
-  },
-  {
-    id: "krasimira",
-    name: "Красимира Кондова",
-    role: "Хипнотерапевт",
-    bio: "Хипнотерапевт с над 10 години опит. Помагам на хора, които се чувстват блокирани или несигурни, да открият вътрешната си сила и да изградят увереност в себе си и своя бизнес.",
-    photo: "/specialists/krasimira.png",
-  },
-  {
-    id: "natalia",
-    name: "Наталия Накова",
-    role: "Трансперсонален терапевт",
-    bio: "Трансперсонален терапевт и експерт по взаимоотношения. Помагам на жените, които са уморени да се доказват и да спасяват всички, да се върнат към себе си.",
-    photo: "/specialists/natalia.png",
-  },
-  {
-    id: "nadezhda",
-    name: "Надежда Клисарска",
-    role: "Фасилитатор · 9D Breathwork България",
-    bio: "Първият български фасилитатор по 9D Breathwork – иновативен метод за дълбока вътрешна трансформация чрез дишане, звук и водена подсъзнателна работа. Освобождава емоционални блокажи, стрес и натрупани травми.",
-    photo: "/specialists/nadezhda.png",
-  },
-  {
-    id: "stefani",
-    name: "Стефани Булмез",
-    role: "Фасилитатор · Спинална Енергетика",
-    bio: "Фасилитатор по Spinal Energetics – иновативен метод за работа с тялото и нервната система, подпомагащ освобождаването на напрежение, емоции и блокажи чрез финна енергийна активация по гръбначния стълб.",
-    photo: "/specialists/stefani.png",
-  },
-  {
-    id: "galya",
-    name: "Галя Тодорова",
-    role: "Родов консултант и практик",
-    bio: "Помагам на жени, които преживяват повтарящи се сценарии в любовта, да освободят наследени емоции и модели. Работя през родовата терапия на три нива - личностно, енергийно и духовно.",
-    photo: "/specialists/galya.png",
-  },
-  {
-    id: "tanya",
-    name: "Таня Касабова",
-    role: "Експерт по подсъзнание и Род",
-    bio: "Работя с жени, които са силни за всички, но вътрешно са изтощени. Помагам им да излязат от невидимите родови роли и да заемат своята зряла позиция в живота.",
-    photo: "/specialists/tanya.png",
-  },
-];
 
 /* ─── PAGE ─────────────────────────────────────────────────────────── */
 export default function SpecialistsPage() {
@@ -163,16 +105,25 @@ function SpecialistCard({ specialist, priority = false }: { specialist: Speciali
       }}
     >
       {/* Photo */}
-      <div className="relative overflow-hidden" style={{ aspectRatio: "1/1" }}>
+      <Link
+        href={`/specialists/${specialist.id}`}
+        className="group relative block overflow-hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
+        style={{ aspectRatio: "1/1", outlineColor: T.textPrimary }}
+        aria-label={`Виж представянето на ${specialist.name}`}
+      >
         <Image
           src={specialist.photo}
           alt={specialist.name}
           fill
-          priority={priority}
+          loading={priority ? "eager" : "lazy"}
+          className="transition duration-500 group-hover:scale-[1.025] group-focus-visible:scale-[1.025]"
           style={{ objectFit: "cover", objectPosition: "center top" }}
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
-      </div>
+        <span className="absolute inset-x-4 bottom-4 translate-y-0 rounded-full bg-white/95 px-4 py-2 text-center text-xs font-extrabold opacity-100 shadow-lg transition duration-300 md:translate-y-2 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 md:group-focus-visible:translate-y-0 md:group-focus-visible:opacity-100" style={{ color: T.textPrimary }}>
+          Представяне и безплатен ресурс →
+        </span>
+      </Link>
 
       {/* Body */}
       <div className="flex flex-col flex-1 p-6">
