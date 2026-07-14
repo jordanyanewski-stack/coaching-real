@@ -5,6 +5,7 @@ import { ScrollReveal } from "../masterclass/scroll-reveal";
 import { EarlyBirdPrice } from "./early-bird-price";
 import { StickyCTABar } from "./sticky-cta";
 import { HeroVideo } from "./hero-video";
+import { EARLY_BIRD_LAST_DAY } from "./campaign";
 
 export const metadata = {
   title: "Бизнес с душа, без хаос · 12 Мастъркласове · Юли 2026 | Coaching Real",
@@ -142,7 +143,7 @@ const faqs = [
   },
   {
     q: "Какво е ранното записване и до кога важи?",
-    a: "До 15 юли 2026 цената е €37. След това тя се вдига на редовната цена от €97. Съдържанието е абсолютно същото — разликата е само в датата на записване.",
+    a: `До ${EARLY_BIRD_LAST_DAY} цената е €37. След това тя се вдига на редовната цена от €97. Съдържанието е абсолютно същото — разликата е само в датата на записване.`,
   },
   {
     q: "Как работи гаранцията?",
@@ -1029,7 +1030,7 @@ function OfferSection() {
           >
             <span style={{ fontSize: "16px", lineHeight: 1.4 }} aria-hidden>⚡</span>
             <p style={{ fontSize: "13.5px", fontWeight: 600, color: "#70150E", lineHeight: 1.6, margin: 0 }}>
-              Запиши се до 15 юли и плащаш само €37 вместо редовната цена от €97. Спестяваш €60 — без да губиш
+              Запиши се до 20 юли и плащаш само €37 вместо редовната цена от €97. Спестяваш €60 — без да губиш
               нищо от програмата.
             </p>
           </div>

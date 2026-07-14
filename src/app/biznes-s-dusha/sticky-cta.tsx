@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
-const EARLY_BIRD_END = Date.parse("2026-07-16T00:00:00+03:00"); // end of 15 July, Sofia (early-bird)
+import { EARLY_BIRD_END } from "./campaign";
 
 export function StickyCTABar() {
   const [visible, setVisible] = useState(false);

@@ -220,7 +220,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
   // pending → MAILERLITE_PENDING_GROUP_ID). No separate „Бизнес с душа" group or
   // automation needed — leads & buyers land in the same lists the masterclass
   // page already feeds (both vars are already live on Vercel).
-  // `biznes-dusha-early` = €37 early-bird price (до 15 юли), `biznes-dusha` = €97 regular.
+  // `biznes-dusha-early` = €37 early-bird price (до 20 юли), `biznes-dusha` = €97 regular.
   // The /biznes-s-dusha page auto-switches which slug renders based on the date.
   'biznes-dusha-early': {
     slug: 'biznes-dusha-early',

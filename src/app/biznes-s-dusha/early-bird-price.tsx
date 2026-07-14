@@ -2,20 +2,20 @@
 
 import { useState, useEffect } from 'react';
 import { EnrollForm } from '../masterclass/enroll-form';
+import { EARLY_BIRD_END, EARLY_BIRD_LAST_DAY_SHORT } from './campaign';
 
 /**
  * Early-bird pricing for „Бизнес с душа, без хаос".
- * €37 until the end of 15 July 2026 (Sofia / EEST = UTC+3), then €97.
+ * €37 until the end of 20 July 2026 (Sofia / EEST = UTC+3), then €97.
  * (July re-run of the masterclass: 22 July – 2 August 2026.)
  * A live countdown ticks every second to the deadline and auto-flips the price
  * to €97 when it reaches zero — no redeploy. Same calendar source as sticky-cta.tsx.
  *
  * SSR renders the early-bird state (€37) — the truth for the whole launch window —
- * so there's no layout flash before June 15. The countdown numbers only render
+ * so there's no layout flash before the cutoff. The countdown numbers only render
  * after mount (remaining !== null), so there's no hydration mismatch; the price
  * spans use suppressHydrationWarning for the one-time post-deadline correction.
  */
-const EARLY_BIRD_END = Date.parse('2026-07-16T00:00:00+03:00'); // end of 15 July, Sofia (early-bird)
 const REGULAR = '€97';
 const EARLY = '€37';
 
@@ -93,7 +93,7 @@ export function EarlyBirdPrice({ variant }: EarlyBirdPriceProps) {
     if (remaining === null) {
       return (
         <span style={{ fontSize: '12px', fontWeight: 700, color: '#70150E', letterSpacing: '0.02em' }}>
-          Ранно записване · до 15 юли
+          Ранно записване · до {EARLY_BIRD_LAST_DAY_SHORT}
         </span>
       );
     }
