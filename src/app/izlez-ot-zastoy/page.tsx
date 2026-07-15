@@ -116,6 +116,39 @@ const formatItems = [
   { icon: "heart" as IconName, title: "Отчетност и подкрепа" },
 ];
 
+const testimonials = [
+  {
+    src: "/izlez-ot-zastoy/testimonials/testimonial-01.jpg",
+    alt: "Анонимен отзив за подкрепата, мотивацията и яснотата, получени в работата с Христина",
+    width: 609,
+    height: 900,
+  },
+  {
+    src: "/izlez-ot-zastoy/testimonials/testimonial-02.jpg",
+    alt: "Анонимен отзив за усещането да бъдеш разбрана и подкрепена от Христина",
+    width: 900,
+    height: 569,
+  },
+  {
+    src: "/izlez-ot-zastoy/testimonials/testimonial-03.jpg",
+    alt: "Анонимен отзив за връщането към автентичното аз и вътрешния баланс",
+    width: 547,
+    height: 900,
+  },
+  {
+    src: "/izlez-ot-zastoy/testimonials/testimonial-04.jpg",
+    alt: "Анонимен отзив за нова енергия, важни осъзнавания и действие",
+    width: 492,
+    height: 900,
+  },
+  {
+    src: "/izlez-ot-zastoy/testimonials/testimonial-05.jpg",
+    alt: "Анонимен отзив за яснота и точни отговори след работа с Христина",
+    width: 620,
+    height: 900,
+  },
+];
+
 const bio = [
   "Работя с жени, които усещат, че животът им е стигнал до момент на промяна — жени, които знаят, че са способни на повече, но не са сигурни накъде да поемат или как да направят следващата крачка.",
   "Чрез метода ALIGN им помагам да разберат по-добре себе си, да разпознаят собствените си ресурси, да освободят ограничаващите модели и да намерят яснота за своята следваща посока.",
@@ -134,6 +167,7 @@ export default function IzlezPage() {
       <WeeksSection />
       <FormatSection />
       <MentorSection />
+      <TestimonialsSection />
       <FinalCTASection />
       <LegalFooter />
       <IzlezStickyCTA />
@@ -586,6 +620,92 @@ function MentorSection() {
         <div style={{ display: "flex", flexDirection: "column", gap: "18px", fontSize: "16px", color: "rgba(255,255,255,0.74)", lineHeight: 1.85, maxWidth: "62ch", margin: "0 auto" }}>
           {bio.map((para, i) => (
             <p key={i}>{para}</p>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── TESTIMONIALS ────────────────────────────────────────────────── */
+function TestimonialsSection() {
+  return (
+    <section
+      className="relative overflow-hidden px-6 py-20 md:px-12 md:py-28 lg:px-20"
+      style={{ backgroundColor: H.bgAlt, borderTop: "1px solid " + H.borderEditorial }}
+    >
+      <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          top: "-70px",
+          left: "clamp(-20px, 4vw, 70px)",
+          fontFamily: SERIF,
+          fontSize: "clamp(12rem, 24vw, 22rem)",
+          lineHeight: 1,
+          color: "rgba(161,4,6,0.055)",
+          pointerEvents: "none",
+        }}
+      >
+        “
+      </div>
+
+      <div className="reveal relative mx-auto max-w-6xl">
+        <div className="mx-auto mb-12 max-w-3xl text-center md:mb-16">
+          <SectionEyebrow>Отзиви</SectionEyebrow>
+          <h2
+            style={{
+              fontSize: "clamp(2rem, 4.3vw, 3.25rem)",
+              fontWeight: 800,
+              color: H.textPrimary,
+              lineHeight: 1.12,
+              letterSpacing: "-0.025em",
+              margin: "12px 0 18px",
+            }}
+          >
+            Думи след срещата{" "}
+            <span style={{ fontFamily: SERIF, fontStyle: "italic", fontWeight: 500, color: H.accent }}>
+              със себе си
+            </span>
+          </h2>
+          <p style={{ fontSize: "16px", lineHeight: 1.7, color: H.textMuted, maxWidth: "640px", margin: "0 auto" }}>
+            Лични съобщения, изпратени след работа с Христина. Отвори всеки отзив, за да го прочетеш в пълен размер.
+          </p>
+        </div>
+
+        <div className="mc-testimonials-grid">
+          {testimonials.map(({ src, alt, width, height }, index) => (
+            <figure
+              key={src}
+              className="reveal"
+              style={{
+                margin: "0 0 20px",
+                breakInside: "avoid",
+                borderRadius: "10px",
+                overflow: "hidden",
+                boxShadow: "0 18px 46px rgba(42,20,20,0.10)",
+                border: "1px solid " + H.borderEditorial,
+                backgroundColor: H.bgDark,
+              }}
+            >
+              <a
+                href={src}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={"Отвори отзив " + (index + 1) + " в пълен размер"}
+                style={{ display: "block", color: "inherit", textDecoration: "none" }}
+              >
+                <Image
+                  src={src}
+                  alt={alt}
+                  width={width}
+                  height={height}
+                  loading="lazy"
+                  sizes="(max-width: 768px) 88vw, 540px"
+                  style={{ width: "100%", height: "auto", objectFit: "contain", display: "block" }}
+                />
+              </a>
+            </figure>
           ))}
         </div>
       </div>
