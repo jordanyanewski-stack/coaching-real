@@ -1,12 +1,12 @@
 import Image from "next/image";
 import { ScrollReveal } from "../masterclass/scroll-reveal";
-import { EnrollForm } from "../masterclass/enroll-form";
+import { HristinaEnrollmentOffer, HristinaPriceText } from "./price-offer";
 import { IzlezStickyCTA } from "./sticky-cta";
 
 export const metadata = {
-  title: "Излез от вътрешния застой · 4-седмичен курс на живо €37 | Христина Симеонова",
+  title: "Излез от вътрешния застой · 4-седмичен курс на живо | Христина Симеонова",
   description:
-    "От прекалено мислене и отлагане към яснота и увереност при вземането на важни решения. 4-седмичен курс на живо за жени 25–44. Старт 24 юли 2026. €37.",
+    "От прекалено мислене и отлагане към яснота и увереност при вземането на важни решения. 4-седмичен курс на живо за жени 25–44. Старт 24 юли 2026.",
 };
 
 /* ─── DESIGN TOKENS — deep bordeaux #a10406 (brand) на топъл фон ─────── */
@@ -162,7 +162,7 @@ function IzlezHeader() {
         whiteSpace: "nowrap",
       }}
     >
-      Запиши се — €37 →
+      Запиши се — <HristinaPriceText /> →
     </a>
   );
 }
@@ -200,7 +200,7 @@ function HeroSection() {
             }}
           >
             <span style={{ width: 6, height: 6, borderRadius: "50%", backgroundColor: H.accentWarm }} />
-            4-седмичен курс на живо · старт 24 юли · €37
+            4-седмичен курс на живо · старт 24 юли · <HristinaPriceText />
           </div>
 
           <h1
@@ -245,7 +245,7 @@ function HeroSection() {
             4-седмичен курс за жени на 25–44 години, които са изправени пред важно решение и искат да спрат да се колебаят, да чуят себе си и да направят следващата стъпка с увереност.
           </p>
 
-          <PrimaryButton href="#enroll">Запиши се за 37 EUR</PrimaryButton>
+          <PrimaryButton href="#enroll">Запиши се за <HristinaPriceText format="amount" /> EUR</PrimaryButton>
 
           <div
             className="flex flex-wrap justify-center lg:justify-start"
@@ -465,7 +465,7 @@ function WeeksSection() {
           ))}
         </div>
         <div className="mt-12 text-center">
-          <PrimaryButton href="#enroll">Запиши се за 37 EUR →</PrimaryButton>
+          <PrimaryButton href="#enroll">Запиши се за <HristinaPriceText format="amount" /> EUR →</PrimaryButton>
         </div>
       </div>
     </section>
@@ -611,12 +611,7 @@ function FinalCTASection() {
         <p style={{ fontFamily: SERIF, fontSize: "clamp(1.1rem, 2.2vw, 1.4rem)", fontStyle: "italic", color: "rgba(255,255,255,0.70)", margin: "0 auto 10px", maxWidth: "520px" }}>
           Той няма да дойде сам. Но яснотата може.
         </p>
-        <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.45)", maxWidth: "440px", margin: "0 auto 32px", lineHeight: 1.6 }}>
-          4-седмичен курс на живо · старт 24 юли · €37 еднократно
-        </p>
-        <div className="flex justify-center">
-          <EnrollForm product="izlez-ot-zastoy" cardOnly variant="dark-bordeaux" submitLabel="Запиши се за 37 EUR →" />
-        </div>
+        <HristinaEnrollmentOffer />
         <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.42)", marginTop: "24px", letterSpacing: "0.02em" }}>
           Старт: 24 юли · Онлайн · На живо · 4 седмици
         </p>

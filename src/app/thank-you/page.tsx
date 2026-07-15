@@ -154,6 +154,7 @@ function copyFor(productSlug: string | undefined): ProductCopy {
     // „Излез от вътрешния застой" (Христина / ALIGN) — доставка в ЗАТВОРЕНА
     // Facebook група, не Skool/Zoom. Двустъпков layout (steps): Стъпка 1 = влез
     // в групата (задължително), Стъпка 2 = детайли + чеклист. Копи 1:1 от Христина.
+    case 'izlez-ot-zastoy-regular':
     case 'izlez-ot-zastoy':
       return {
         title: 'Записана си!',

@@ -15,7 +15,7 @@
 
 import { cleanEnv } from '@/lib/validators';
 
-export type ProductSlug = 'masterclass' | 'audiobook' | 'audiobook-hot' | 'audiobook-72h' | '12-izmerenia' | '12-izmerenia-promo' | 'career-course' | 'rodov-model' | 'zhiva' | 'biznes-dusha' | 'biznes-dusha-early' | 'biznes-dusha-day1' | 'izlez-ot-zastoy';
+export type ProductSlug = 'masterclass' | 'audiobook' | 'audiobook-hot' | 'audiobook-72h' | '12-izmerenia' | '12-izmerenia-promo' | 'career-course' | 'rodov-model' | 'zhiva' | 'biznes-dusha' | 'biznes-dusha-early' | 'biznes-dusha-day1' | 'izlez-ot-zastoy' | 'izlez-ot-zastoy-regular';
 
 export interface Product {
   slug: ProductSlug;
@@ -178,7 +178,8 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     mlPendingGroupIdEnv: 'MAILERLITE_ZHIVA_PENDING_GROUP_ID',
   },
   // ── „Излез от вътрешния застой" — Христина Симеонова (метод ALIGN). ──
-  // 4-седмичен курс на живо за жени 25–44, старт 24 юли 2026. €37, card-only
+  // 4-седмичен курс на живо за жени 25–44, старт 24 юли 2026. Card-only.
+  // Ранна цена €37 до края на 24 юли; редовна цена €97 от 25 юли 00:00 EEST.
   // (supportsBankTransfer:false → EnrollForm автоматично скрива банковия превод).
   // Доставя се в ЗАТВОРЕНА Facebook група (без Clerk акаунт, без Bunny) →
   // requiresAccount пропуснат. Платените → специална MailerLite група
@@ -190,6 +191,19 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     slug: 'izlez-ot-zastoy',
     name: 'Излез от вътрешния застой',
     price: '37.00',
+    currency: 'EUR',
+    supportsBankTransfer: false,
+    bankTransfer: {
+      referencePrefix: 'Излез от застоя',
+      productLabel: 'Излез от вътрешния застой · 4-седмичен курс с Христина Симеонова',
+      nextStepCopy: '',
+    },
+    mlPaidGroupIdEnv: 'MAILERLITE_HRISTINA_PAID_GROUP_ID',
+  },
+  'izlez-ot-zastoy-regular': {
+    slug: 'izlez-ot-zastoy-regular',
+    name: 'Излез от вътрешния застой',
+    price: '97.00',
     currency: 'EUR',
     supportsBankTransfer: false,
     bankTransfer: {
