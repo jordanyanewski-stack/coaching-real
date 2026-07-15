@@ -20,12 +20,31 @@ type Course = {
   overview?: string;
   keyPoints?: string[];
   forWhom?: string[];
+  forWhomIntro?: string;
   closing?: string;
   href?: string;
   ctaLabel?: string;
 };
 
 const COURSES: Course[] = [
+  {
+    id: "razvidelyavane",
+    title: "Развиделяване",
+    description: "От вътрешна мъгла към яснота и спокойствие.",
+    mentor: "Деница Донева",
+    photo: "/free-courses/denitsa-doneva.jpg",
+    categories: ["Мислене/личностно развитие", "Връзки/любов"],
+    overview:
+      "„Развиделяване“ е четириседмично преживяване за жени, които са изгубили връзката със себе си в отношения, силно привличане или житейска несигурност. Чрез практики, осъзнавания и нежно пространство за подкрепа участничките постепенно се освобождават от вътрешната мъгла, успокояват нервната си система и изграждат по-дълбока връзка със себе си. Целта не е да променят другия, а да си върнат вътрешната яснота, спокойствието и способността да избират живота си от любов към себе си.",
+    forWhomIntro: "Курсът е за:",
+    forWhom: [
+      "Жени, които усещат, че са изгубили себе си в любовта.",
+      "Жени, които постоянно мислят за един човек и живеят в очакване и несигурност.",
+      "Жени, които искат да се върнат към вътрешната си опора, спокойствие и яснота.",
+    ],
+    href: "https://www.beataspace.com/",
+    ctaLabel: "Запиши се",
+  },
   {
     id: "az-buki-vedi",
     title: "Аз Буки Веди – разбери езика, на който говори родът",
@@ -504,7 +523,7 @@ function CourseCard({ course }: { course: Course }) {
                   >
                     За кого е курсът?
                   </h4>
-                  <p>Това ниво е за всеки, който поне веднъж си е казвал:</p>
+                  <p>{course.forWhomIntro ?? "Това ниво е за всеки, който поне веднъж си е казвал:"}</p>
                   <ul className="mt-3 flex flex-col gap-1.5 pl-5" style={{ listStyle: "disc" }}>
                     {course.forWhom.map((item) => (
                       <li key={item}>{item}</li>
@@ -603,7 +622,13 @@ function KickstartCTA() {
         <a
           href="/kickstart#waitlist"
           className="mv-btn mv-btn-white mt-10 inline-flex"
-          style={{ fontSize: "16px", padding: "16px 40px" }}
+          style={{
+            fontSize: "16px",
+            padding: "16px 40px",
+            maxWidth: "100%",
+            whiteSpace: "normal",
+            textAlign: "center",
+          }}
         >
           Присъедини се към KickSTART списъка
         </a>
