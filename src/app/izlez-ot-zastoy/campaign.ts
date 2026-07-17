@@ -1,3 +1,4 @@
+export const COURSE_START = Date.parse("2026-07-24T00:00:00+03:00");
 export const REGULAR_PRICE_START = Date.parse("2026-07-25T00:00:00+03:00");
 
 export const EARLY_PRICE = {

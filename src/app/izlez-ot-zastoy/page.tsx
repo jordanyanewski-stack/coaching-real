@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { ScrollReveal } from "../masterclass/scroll-reveal";
-import { HristinaEnrollmentOffer, HristinaPriceText } from "./price-offer";
+import { HristinaEnrollmentOffer, HristinaPriceText, HristinaUrgencyBlock } from "./price-offer";
 import { IzlezStickyCTA } from "./sticky-cta";
 
 export const metadata = {
@@ -280,6 +280,7 @@ function HeroSection() {
           </p>
 
           <PrimaryButton href="#enroll">Запиши се за <HristinaPriceText format="amount" /> EUR</PrimaryButton>
+          <HristinaUrgencyBlock />
 
           <div
             className="flex flex-wrap justify-center lg:justify-start"
