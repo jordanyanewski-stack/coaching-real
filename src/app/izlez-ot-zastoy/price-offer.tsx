@@ -162,6 +162,79 @@ export function HristinaUrgencyBlock() {
   );
 }
 
+function HristinaCheckoutCountdown() {
+  const [now, setNow] = useState<number | null>(null);
+
+  useEffect(() => {
+    const tick = () => setNow(Date.now());
+    tick();
+    const interval = window.setInterval(tick, 1_000);
+
+    return () => window.clearInterval(interval);
+  }, []);
+
+  if (now !== null && now >= REGULAR_PRICE_START) return null;
+
+  const remaining = now === null ? null : Math.max(0, COURSE_START - now);
+  const units = remaining === null
+    ? []
+    : [
+        { value: Math.floor(remaining / 86_400_000), label: "д" },
+        { value: Math.floor((remaining % 86_400_000) / 3_600_000), label: "ч" },
+        { value: Math.floor((remaining % 3_600_000) / 60_000), label: "м" },
+        { value: Math.floor((remaining % 60_000) / 1_000), label: "с" },
+      ];
+
+  return (
+    <div
+      className="mx-auto mb-6 flex w-full max-w-[520px] flex-wrap items-center justify-center gap-x-3 gap-y-1 px-4 py-2.5"
+      role="timer"
+      aria-live="off"
+      aria-label="Оставащо време за ранната цена"
+      style={{
+        borderRadius: "6px",
+        border: "1px solid rgba(255,255,255,0.09)",
+        backgroundColor: "rgba(255,255,255,0.025)",
+      }}
+    >
+      <span
+        style={{
+          color: "rgba(255,255,255,0.42)",
+          fontSize: "10px",
+          fontWeight: 700,
+          letterSpacing: "0.06em",
+          textTransform: "uppercase",
+        }}
+      >
+        Ранната цена приключва
+      </span>
+
+      <span
+        style={{
+          color: "rgba(255,255,255,0.72)",
+          fontSize: "12px",
+          fontWeight: 700,
+          fontVariantNumeric: "tabular-nums",
+          letterSpacing: "0.01em",
+        }}
+      >
+        {remaining === null ? (
+          <>на 24 юли</>
+        ) : remaining === 0 ? (
+          <>днес</>
+        ) : (
+          units.map(({ value, label }, index) => (
+            <span key={label}>
+              {index > 0 ? " · " : ""}
+              {String(value).padStart(2, "0")}{label}
+            </span>
+          ))
+        )}
+      </span>
+    </div>
+  );
+}
+
 export function HristinaEnrollmentOffer() {
   const price = useCurrentPrice();
   const isEarly = price.product === EARLY_PRICE.product;
@@ -179,6 +252,7 @@ export function HristinaEnrollmentOffer() {
           <>4-седмичен курс на живо · редовна цена {price.display}</>
         )}
       </p>
+      <HristinaCheckoutCountdown />
       <div className="flex justify-center">
         <EnrollForm
           product={price.product}
