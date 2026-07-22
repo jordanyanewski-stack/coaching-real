@@ -1,5 +1,6 @@
 import { AdminShell } from '../_admin-shell';
 import { getDb } from '@/lib/db';
+import { shortOrderCode } from '@/lib/payment-attempts';
 import { PRODUCTS, type ProductSlug } from '@/lib/products';
 
 export const dynamic = 'force-dynamic';
@@ -34,8 +35,8 @@ type Stats = {
 
 const STATUS_BADGES: Record<string, { label: string; color: string; bg: string }> = {
   paid: { label: 'Платена', color: '#1a7f3c', bg: 'rgba(26,127,60,0.09)' },
-  pending: { label: 'Чакаща', color: '#9a6b00', bg: 'rgba(200,150,20,0.12)' },
-  awaiting_bank_transfer: { label: 'Банков превод', color: '#1e5a96', bg: 'rgba(30,90,150,0.09)' },
+  pending: { label: 'Незавършена карта', color: '#9a6b00', bg: 'rgba(200,150,20,0.12)' },
+  awaiting_bank_transfer: { label: 'Чака банков превод', color: '#1e5a96', bg: 'rgba(30,90,150,0.09)' },
   free: { label: 'Промо код', color: 'rgba(0,0,0,0.55)', bg: 'rgba(0,0,0,0.06)' },
 };
 
@@ -175,7 +176,7 @@ export default async function AdminOrdersPage() {
             <div>Имейл</div>
             <div style={{ textAlign: 'right' }}>Сума</div>
             <div>Статус</div>
-            <div>Транзакция</div>
+            <div>Транзакция / основание</div>
           </div>
 
           {rows.map((row) => {
@@ -237,7 +238,7 @@ export default async function AdminOrdersPage() {
                     wordBreak: 'break-all',
                   }}
                 >
-                  {row.mypos_transaction_id || '—'}
+                  {row.mypos_transaction_id || shortOrderCode(row.mypos_order_id)}
                 </div>
               </div>
             );
@@ -247,9 +248,10 @@ export default async function AdminOrdersPage() {
 
       <p style={{ marginTop: '24px', fontSize: '12px', color: 'rgba(0,0,0,0.45)', lineHeight: 1.7 }}>
         Показани са последните {ROW_LIMIT} поръчки. „Платена" = завършено картово плащане
-        (номерът на транзакцията идва от myPOS). „Чакаща" = започнато, но незавършено
-        плащане с карта. „Банков превод" = чака потвърждение — управлява се от страницата
-        „Банкови преводи". Сумите в картите горе включват само платени поръчки.
+        (номерът на транзакцията идва от myPOS). „Незавършена карта" = започнат, но
+        непотвърден myPOS checkout. „Чака банков превод" = записано намерение без банково
+        потвърждение — управлява се от „Плащания за проверка". Сумите в картите горе включват
+        само платени поръчки.
       </p>
     </AdminShell>
   );

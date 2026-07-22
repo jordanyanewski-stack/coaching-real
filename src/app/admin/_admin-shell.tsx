@@ -42,7 +42,7 @@ export function AdminShell({
           <AdminNavLink href="/admin">Начало</AdminNavLink>
           <AdminNavLink href="/admin/orders">Поръчки</AdminNavLink>
           <AdminNavLink href="/admin/blog">Блог</AdminNavLink>
-          <AdminNavLink href="/admin/bank-orders">Банкови преводи</AdminNavLink>
+          <AdminNavLink href="/admin/bank-orders">Плащания за проверка</AdminNavLink>
         </nav>
       </header>
       <main style={{ padding: '40px 32px 80px', maxWidth: '1200px', margin: '0 auto' }}>
