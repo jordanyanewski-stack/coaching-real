@@ -86,6 +86,51 @@ const offerItems = [
   "Запис от срещите, достъпен за ограничен период",
 ];
 
+const testimonials = [
+  {
+    src: "/zhiva/testimonials/testimonial-01.jpg",
+    width: 1200,
+    height: 382,
+    alt: "Анонимен отзив за осъзнаването, че заслужава пълноценен живот",
+  },
+  {
+    src: "/zhiva/testimonials/testimonial-02.jpg",
+    width: 1190,
+    height: 365,
+    alt: "Анонимен отзив за ценни и понякога болезнени осъзнавания",
+  },
+  {
+    src: "/zhiva/testimonials/testimonial-03.jpg",
+    width: 1200,
+    height: 1320,
+    alt: "Анонимен отзив за вътрешна стойност, кураж и важни житейски решения",
+  },
+  {
+    src: "/zhiva/testimonials/testimonial-04.jpg",
+    width: 815,
+    height: 340,
+    alt: "Анонимен отзив за усещане за живот и свобода след първия урок",
+  },
+  {
+    src: "/zhiva/testimonials/testimonial-05.jpg",
+    width: 1190,
+    height: 360,
+    alt: "Анонимен отзив за вдъхновение, самонаблюдение и търсене на отговори",
+  },
+  {
+    src: "/zhiva/testimonials/testimonial-06.jpg",
+    width: 1200,
+    height: 240,
+    alt: "Анонимен отзив за личните ограничения и отношението на другите",
+  },
+  {
+    src: "/zhiva/testimonials/testimonial-07.jpg",
+    width: 1200,
+    height: 430,
+    alt: "Анонимен отзив за собствената стойност и ролята на грижата за всички",
+  },
+];
+
 function ArrowIcon() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -320,7 +365,7 @@ export default function ZhivaVol2Page() {
           <div className={styles.mentorGrid}>
             <div className={styles.mentorImageWrap}>
               <Image
-                src="/zhiva/tanya-bio.jpg"
+                src="/zhiva/tanya-zhiva-vol2-white-framed.jpg"
                 alt="Таня Касабова"
                 fill
                 sizes="(max-width: 900px) 100vw, 44vw"
@@ -379,6 +424,47 @@ export default function ZhivaVol2Page() {
                 собствената си история и да започне да изгражда нов начин на
                 живот, основан на осъзнат избор, а не на стар страх.
               </p>
+            </div>
+          </div>
+        </section>
+
+        <section
+          className={styles.testimonials}
+          aria-labelledby="zhiva-testimonials-title"
+        >
+          <div className={styles.testimonialsInner}>
+            <div className={styles.testimonialsHeader}>
+              <p className={styles.eyebrow}>Истински думи</p>
+              <h2 id="zhiva-testimonials-title">
+                Какво се променя, когато се обърнеш към себе си
+              </h2>
+              <p>
+                Споделяния от жени след срещи и практики с Таня. Личните данни
+                са скрити, а думите са запазени без редакция.
+              </p>
+            </div>
+
+            <div className={styles.testimonialGrid}>
+              {testimonials.map(({ src, width, height, alt }, index) => (
+                <figure className={styles.testimonialCard} key={src}>
+                  <a
+                    href={src}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Отвори отзив ${index + 1} в пълен размер`}
+                  >
+                    <Image
+                      src={src}
+                      width={width}
+                      height={height}
+                      alt={alt}
+                      loading="lazy"
+                      sizes="(max-width: 720px) calc(100vw - 32px), 550px"
+                      className={styles.testimonialImage}
+                    />
+                  </a>
+                </figure>
+              ))}
             </div>
           </div>
         </section>
