@@ -15,7 +15,7 @@
 
 import { cleanEnv } from '@/lib/validators';
 
-export type ProductSlug = 'masterclass' | 'audiobook' | 'audiobook-hot' | 'audiobook-72h' | '12-izmerenia' | '12-izmerenia-promo' | 'career-course' | 'rodov-model' | 'zhiva' | 'biznes-dusha' | 'biznes-dusha-early' | 'biznes-dusha-day1' | 'izlez-ot-zastoy' | 'izlez-ot-zastoy-regular';
+export type ProductSlug = 'masterclass' | 'audiobook' | 'audiobook-hot' | 'audiobook-72h' | '12-izmerenia' | '12-izmerenia-promo' | 'career-course' | 'rodov-model' | 'zhiva' | 'zhiva-vol-2' | 'biznes-dusha' | 'biznes-dusha-early' | 'biznes-dusha-day1' | 'izlez-ot-zastoy' | 'izlez-ot-zastoy-regular';
 
 export interface Product {
   slug: ProductSlug;
@@ -176,6 +176,23 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     },
     mlPaidGroupIdEnv: 'MAILERLITE_ZHIVA_PAID_GROUP_ID',
     mlPendingGroupIdEnv: 'MAILERLITE_ZHIVA_PENDING_GROUP_ID',
+  },
+  // ── „ЖИВА vol. 2: Съживи се!" — 3 онлайн срещи, 21–23 август 2026. ──
+  // Card-only event delivered inside a dedicated closed Facebook group.
+  // Buyers enter only the dedicated paid MailerLite group; there is no pending
+  // capture group and no Clerk/Bunny entitlement.
+  'zhiva-vol-2': {
+    slug: 'zhiva-vol-2',
+    name: 'ЖИВА vol. 2: Съживи се!',
+    price: '37.01',
+    currency: 'EUR',
+    supportsBankTransfer: false,
+    bankTransfer: {
+      referencePrefix: 'ЖИВА vol. 2',
+      productLabel: 'ЖИВА vol. 2: Съживи се! · 21–23 август 2026',
+      nextStepCopy: '',
+    },
+    mlPaidGroupIdEnv: 'MAILERLITE_ZHIVA_VOL2_PAID_GROUP_ID',
   },
   // ── „Излез от вътрешния застой" — Христина Симеонова (метод ALIGN). ──
   // 4-седмичен курс на живо за жени 25–44, старт 24 юли 2026. Card-only.

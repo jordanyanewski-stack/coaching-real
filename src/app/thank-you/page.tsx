@@ -63,6 +63,7 @@ type TyStep = {
 };
 
 interface ProductCopy {
+  eyebrow?: string;
   title: string;
   body: string;
   primaryCta?: CtaBtn;
@@ -79,12 +80,16 @@ interface ProductCopy {
   steps?: TyStep[];
   personalNote?: { heading: string; body: string };
   contactLine?: string;
+  theme?: 'zhiva-vol-2';
 }
 
 const MASTERCLASS_VIBER =
   'https://invite.viber.com/?g2=AQBBHCyONP2cNVPVyUuCy2RxRXH9Qe9wX18biT2LifkWu9sxYovJlzjCBPTGEtGQ';
 const BIZNES_FB_GROUP = 'https://www.facebook.com/groups/1641246887138088';
 const HRISTINA_FB_GROUP = 'https://www.facebook.com/groups/1497653248724998';
+const ZHIVA_VOL2_FB_GROUP = 'https://www.facebook.com/groups/2047210579211062/';
+const ZHIVA_VOL2_CALENDAR =
+  'https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D0%96%D0%98%D0%92%D0%90+vol.+2%3A+%D0%A1%D1%8A%D0%B6%D0%B8%D0%B2%D0%B8+%D1%81%D0%B5%21&dates=20260821%2F20260824&details=%D0%A2%D1%80%D0%B8+%D0%BE%D0%BD%D0%BB%D0%B0%D0%B9%D0%BD+%D1%81%D1%80%D0%B5%D1%89%D0%B8+%D0%BD%D0%B0+%D0%B6%D0%B8%D0%B2%D0%BE+%D1%81+%D0%A2%D0%B0%D0%BD%D1%8F+%D0%9A%D0%B0%D1%81%D0%B0%D0%B1%D0%BE%D0%B2%D0%B0.&location=https%3A%2F%2Fwww.facebook.com%2Fgroups%2F2047210579211062%2F';
 
 function copyFor(productSlug: string | undefined): ProductCopy {
   switch (productSlug as ProductSlug) {
@@ -207,6 +212,68 @@ function copyFor(productSlug: string | undefined): ProductCopy {
         },
         secondaryCtaHref: '/zhiva',
       };
+    case 'zhiva-vol-2':
+      return {
+        eyebrow: 'Регистрацията е потвърдена',
+        title: 'Мястото ти е запазено.',
+        body: 'Благодарим ти, че избра себе си. До 21 август остава съвсем малко — ето какво следва.',
+        extraCtas: [
+          {
+            label: 'Влез във Facebook групата — задължително',
+            href: ZHIVA_VOL2_FB_GROUP,
+            facebook: true,
+            external: true,
+            bullets: ['Там ще се проведат и трите срещи на живо.'],
+          },
+        ],
+        steps: [
+          {
+            badge: 'Събитие',
+            title: 'ЖИВА vol. 2: Съживи се!',
+            details: [
+              { label: 'Дати', value: '21–23 август' },
+              { label: 'Формат', value: 'Онлайн на живо' },
+              { label: 'Платено', value: '37.01 €' },
+              { label: 'Водеща', value: 'Таня Касабова' },
+            ],
+          },
+          {
+            badge: 'Стъпка 1',
+            title: 'Провери имейла си',
+            body: 'Изпратихме ти потвърждение с детайлите за трите онлайн срещи. Ако не го виждаш до 10 минути, провери папка „Спам“ или „Промоции“.',
+          },
+          {
+            badge: 'Стъпка 2',
+            title: 'Добави датите в календара си',
+            body: '21, 22 и 23 август — онлайн срещи на живо. Дай си дума, че тези три дни са само твои.',
+            cta: {
+              label: 'Добави в календара',
+              href: ZHIVA_VOL2_CALENDAR,
+              external: true,
+            },
+          },
+          {
+            badge: 'Стъпка 3',
+            title: 'Присъедини се към групата преди старта',
+            body: 'Затворена общност само за участничките — за въпроси, настройка и малко спокойствие преди първата среща.',
+            cta: {
+              label: 'Влез в групата',
+              href: ZHIVA_VOL2_FB_GROUP,
+              facebook: true,
+              external: true,
+            },
+          },
+        ],
+        personalNote: {
+          heading: 'Кратко напомняне какво ще преживееш',
+          body:
+            'Три срещи, всяка с различна, но свързана тема — от разпознаване на режима на оцеляване, през разбиране на подсъзнателната програма, до първата ти различна стъпка.\n\n21 август — Кога спрях да бъда жива?\n22 август — Защо винаги очаквам болката да се повтори?\n23 август — Връщам се в живота си',
+        },
+        ps:
+          'Между другото — на втория ден Таня ще ти покаже и следващата стъпка.\n\nЖИВА VOL. 2: СЪЖИВИ СЕ! — ТАНЯ КАСАБОВА',
+        secondaryCtaHref: '/zhiva-vol-2',
+        theme: 'zhiva-vol-2',
+      };
     case 'rodov-model':
       return {
         title: 'Добре дошла!',
@@ -324,16 +391,16 @@ function CtaButton({ cta }: { cta: CtaBtn }) {
   );
 }
 
-function TyStepCard({ step }: { step: TyStep }) {
+function TyStepCard({ step, warm = false }: { step: TyStep; warm?: boolean }) {
   return (
     <div
       style={{
         padding: '24px',
-        backgroundColor: '#ffffff',
+        backgroundColor: warm ? '#FFFDF8' : '#ffffff',
         borderRadius: '14px',
-        border: '1px solid rgba(107,21,14,0.12)',
+        border: warm ? '1px solid rgba(36,22,17,0.12)' : '1px solid rgba(107,21,14,0.12)',
         textAlign: 'left',
-        boxShadow: '0 2px 16px rgba(0,0,0,0.03)',
+        boxShadow: warm ? '0 12px 34px rgba(36,22,17,0.045)' : '0 2px 16px rgba(0,0,0,0.03)',
       }}
     >
       <div
@@ -341,8 +408,8 @@ function TyStepCard({ step }: { step: TyStep }) {
           display: 'inline-block',
           padding: '5px 12px',
           borderRadius: '6px',
-          backgroundColor: 'rgba(112,21,14,0.08)',
-          color: '#70150E',
+          backgroundColor: warm ? '#F1E3CE' : 'rgba(112,21,14,0.08)',
+          color: warm ? '#8A6420' : '#70150E',
           fontSize: '11px',
           fontWeight: 700,
           letterSpacing: '0.08em',
@@ -353,12 +420,12 @@ function TyStepCard({ step }: { step: TyStep }) {
         {step.badge}
       </div>
 
-      <h2 style={{ fontSize: '18px', fontWeight: 800, color: '#1a1a1a', letterSpacing: '-0.01em', marginBottom: step.body ? '8px' : '16px' }}>
+      <h2 style={{ fontSize: '18px', fontWeight: 800, color: warm ? '#241611' : '#1a1a1a', letterSpacing: '-0.01em', marginBottom: step.body ? '8px' : '16px' }}>
         {step.title}
       </h2>
 
       {step.body && (
-        <p style={{ fontSize: '14px', color: 'rgba(0,0,0,0.6)', lineHeight: 1.7, marginBottom: '16px' }}>
+        <p style={{ fontSize: '14px', color: warm ? '#6B5A4C' : 'rgba(0,0,0,0.6)', lineHeight: 1.7, marginBottom: '16px' }}>
           {step.body}
         </p>
       )}
@@ -369,11 +436,11 @@ function TyStepCard({ step }: { step: TyStep }) {
         <div
           style={{
             padding: '12px 16px',
-            backgroundColor: 'rgba(112,21,14,0.05)',
-            borderLeft: '3px solid #70150E',
+            backgroundColor: warm ? '#FBF5EC' : 'rgba(112,21,14,0.05)',
+            borderLeft: warm ? '3px solid #B9862E' : '3px solid #70150E',
             borderRadius: '6px',
             fontSize: '13px',
-            color: '#70150E',
+            color: warm ? '#8A6420' : '#70150E',
             lineHeight: 1.6,
           }}
         >
@@ -395,15 +462,15 @@ function TyStepCard({ step }: { step: TyStep }) {
               key={d.label}
               style={{
                 padding: '14px 16px',
-                backgroundColor: '#faf8f5',
+                backgroundColor: warm ? '#FBF5EC' : '#faf8f5',
                 borderRadius: '10px',
                 border: '1px solid rgba(107,21,14,0.08)',
               }}
             >
-              <div style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.45)', marginBottom: '4px' }}>
+              <div style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: warm ? '#8A6420' : 'rgba(0,0,0,0.45)', marginBottom: '4px' }}>
                 {d.label}
               </div>
-              <div style={{ fontSize: '15px', fontWeight: 700, color: '#1a1a1a' }}>{d.value}</div>
+              <div style={{ fontSize: '15px', fontWeight: 700, color: warm ? '#241611' : '#1a1a1a' }}>{d.value}</div>
             </div>
           ))}
         </div>
@@ -412,10 +479,10 @@ function TyStepCard({ step }: { step: TyStep }) {
       {step.checklist && step.checklist.length > 0 && (
         <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
           {step.checklist.map((c) => (
-            <li key={c} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start', fontSize: '13.5px', color: 'rgba(0,0,0,0.62)', lineHeight: 1.6 }}>
+            <li key={c} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start', fontSize: '13.5px', color: warm ? '#6B5A4C' : 'rgba(0,0,0,0.62)', lineHeight: 1.6 }}>
               <span
                 aria-hidden
-                style={{ width: '18px', height: '18px', borderRadius: '5px', backgroundColor: 'rgba(112,21,14,0.10)', color: '#70150E', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '1px' }}
+                style={{ width: '18px', height: '18px', borderRadius: '5px', backgroundColor: warm ? '#F1E3CE' : 'rgba(112,21,14,0.10)', color: warm ? '#8A6420' : '#70150E', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '1px' }}
               >
                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
               </span>
@@ -445,6 +512,7 @@ export default async function ThankYouPage({
   const productSlug = order?.product ?? previewSlug;
   const product = getProduct(productSlug);
   const copy = copyFor(productSlug);
+  const warmThankYou = copy.theme === 'zhiva-vol-2';
   const purchaseValue = order ? parseFloat(order.amount) : product ? parseFloat(product.price) : 0;
   const purchaseCurrency = order?.currency ?? product?.currency ?? 'EUR';
   // Only a genuinely PAID order may fire the Purchase pixel or set the buyer
@@ -477,19 +545,19 @@ export default async function ThankYouPage({
           alignItems: 'center',
           justifyContent: 'center',
           padding: '48px 24px',
-          backgroundColor: '#faf8f5',
+          backgroundColor: warmThankYou ? '#FBF5EC' : '#faf8f5',
         }}
       >
         <div
           style={{
-            maxWidth: '520px',
+            maxWidth: warmThankYou ? '720px' : '520px',
             width: '100%',
             textAlign: 'center',
             padding: '56px 40px',
-            backgroundColor: '#ffffff',
+            backgroundColor: warmThankYou ? '#FFFDF8' : '#ffffff',
             borderRadius: '20px',
-            border: '1px solid rgba(107,21,14,0.08)',
-            boxShadow: '0 4px 40px rgba(0,0,0,0.06)',
+            border: warmThankYou ? '1px solid rgba(36,22,17,0.10)' : '1px solid rgba(107,21,14,0.08)',
+            boxShadow: warmThankYou ? '0 24px 70px rgba(36,22,17,0.08)' : '0 4px 40px rgba(0,0,0,0.06)',
           }}
         >
           <div
@@ -497,7 +565,9 @@ export default async function ThankYouPage({
               width: '64px',
               height: '64px',
               borderRadius: '50%',
-              background: 'linear-gradient(135deg, #70150E 0%, #c94535 100%)',
+              background: warmThankYou
+                ? 'linear-gradient(135deg, #B9862E 0%, #8A6420 100%)'
+                : 'linear-gradient(135deg, #70150E 0%, #c94535 100%)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -509,11 +579,26 @@ export default async function ThankYouPage({
             </svg>
           </div>
 
-          <h1 style={{ fontSize: '28px', fontWeight: 900, color: '#1a1a1a', letterSpacing: '-0.02em', marginBottom: '16px' }}>
+          {copy.eyebrow && (
+            <p
+              style={{
+                color: warmThankYou ? '#A63F48' : '#70150E',
+                fontSize: '11px',
+                fontWeight: 800,
+                letterSpacing: '0.13em',
+                textTransform: 'uppercase',
+                marginBottom: '12px',
+              }}
+            >
+              {copy.eyebrow}
+            </p>
+          )}
+
+          <h1 style={{ fontSize: warmThankYou ? '34px' : '28px', fontWeight: 900, color: warmThankYou ? '#241611' : '#1a1a1a', letterSpacing: '-0.02em', marginBottom: '16px', textWrap: 'balance' }}>
             {copy.title}
           </h1>
 
-          <p style={{ fontSize: '16px', color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: '28px' }}>
+          <p style={{ fontSize: '16px', color: warmThankYou ? '#6B5A4C' : 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: '28px', textWrap: 'pretty' }}>
             {copy.body}
           </p>
 
@@ -564,7 +649,7 @@ export default async function ThankYouPage({
           {copy.steps && copy.steps.length > 0 && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '28px' }}>
               {copy.steps.map((s) => (
-                <TyStepCard key={s.badge} step={s} />
+                <TyStepCard key={s.badge} step={s} warm={warmThankYou} />
               ))}
             </div>
           )}
@@ -573,10 +658,10 @@ export default async function ThankYouPage({
             <div
               style={{
                 padding: '20px 24px',
-                backgroundColor: '#faf8f5',
+                backgroundColor: warmThankYou ? '#FBF5EC' : '#faf8f5',
                 borderRadius: '12px',
                 marginBottom: copy.ps ? '20px' : '32px',
-                border: '1px solid rgba(107,21,14,0.08)',
+                border: warmThankYou ? '1px solid rgba(36,22,17,0.10)' : '1px solid rgba(107,21,14,0.08)',
                 textAlign: 'left',
               }}
             >
@@ -605,7 +690,7 @@ export default async function ThankYouPage({
             <p
               style={{
                 fontSize: '13.5px',
-                color: 'rgba(0,0,0,0.5)',
+                color: warmThankYou ? '#6B5A4C' : 'rgba(0,0,0,0.5)',
                 lineHeight: 1.7,
                 fontStyle: 'italic',
                 marginBottom: '28px',
@@ -620,17 +705,17 @@ export default async function ThankYouPage({
             <div
               style={{
                 padding: '22px 24px',
-                backgroundColor: '#faf8f5',
+                backgroundColor: warmThankYou ? '#F1E3CE' : '#faf8f5',
                 borderRadius: '12px',
                 marginBottom: '20px',
-                border: '1px solid rgba(107,21,14,0.08)',
+                border: warmThankYou ? '1px solid rgba(36,22,17,0.10)' : '1px solid rgba(107,21,14,0.08)',
                 textAlign: 'left',
               }}
             >
-              <p style={{ fontSize: '12px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#70150E', marginBottom: '10px' }}>
+              <p style={{ fontSize: '12px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: warmThankYou ? '#A63F48' : '#70150E', marginBottom: '10px' }}>
                 {copy.personalNote.heading}
               </p>
-              <p style={{ fontSize: '14px', color: 'rgba(0,0,0,0.62)', lineHeight: 1.75, whiteSpace: 'pre-line' }}>
+              <p style={{ fontSize: '14px', color: warmThankYou ? '#6B5A4C' : 'rgba(0,0,0,0.62)', lineHeight: 1.75, whiteSpace: 'pre-line' }}>
                 {copy.personalNote.body}
               </p>
             </div>
@@ -642,7 +727,7 @@ export default async function ThankYouPage({
             </p>
           )}
 
-          <a href={copy.secondaryCtaHref} style={{ fontSize: '14px', color: '#70150E', fontWeight: 600, textDecoration: 'none' }}>
+          <a href={copy.secondaryCtaHref} style={{ fontSize: '14px', color: warmThankYou ? '#A63F48' : '#70150E', fontWeight: 600, textDecoration: 'none' }}>
             Обратно към страницата
           </a>
         </div>

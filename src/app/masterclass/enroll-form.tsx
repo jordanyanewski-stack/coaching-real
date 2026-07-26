@@ -5,7 +5,7 @@ import { trackInitiateCheckout } from '@/app/pixel';
 import { PRODUCTS, type ProductSlug } from '@/lib/products';
 
 type PaymentMethod = 'card' | 'bank';
-type Variant = 'light' | 'dark' | 'dark-warm' | 'dark-sage' | 'dark-rose' | 'dark-bordeaux';
+type Variant = 'light' | 'light-gold' | 'dark' | 'dark-warm' | 'dark-sage' | 'dark-rose' | 'dark-bordeaux';
 
 interface EnrollFormProps {
   product?: ProductSlug;
@@ -54,6 +54,23 @@ const THEME: Record<Variant, {
     paymentAccent: '#70150E',
     paymentTitle: '#1a1a1a',
     paymentSubtitle: 'rgba(0,0,0,0.55)',
+  },
+  'light-gold': {
+    inputBg: '#FFFDF8',
+    inputBorder: 'rgba(36,22,17,0.16)',
+    inputBorderFocus: '#B9862E',
+    inputText: '#241611',
+    legendText: '#6B5A4C',
+    hintText: '#6B5A4C',
+    errorText: '#A63F48',
+    buttonGradient: 'linear-gradient(135deg, #B9862E 0%, #8A6420 100%)',
+    buttonShadow: '0 12px 28px rgba(185,134,46,0.28)',
+    paymentBg: '#FFFDF8',
+    paymentBgChecked: '#FBF5EC',
+    paymentBorderChecked: '#B9862E',
+    paymentAccent: '#B9862E',
+    paymentTitle: '#241611',
+    paymentSubtitle: '#6B5A4C',
   },
   dark: {
     inputBg: 'rgba(255,255,255,0.08)',
