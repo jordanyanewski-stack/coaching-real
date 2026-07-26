@@ -23,14 +23,14 @@ const zhivaSans = Montserrat({
 export const metadata: Metadata = {
   title: "ЖИВА vol. 2: Съживи се! · 21–23 август | Таня Касабова",
   description:
-    "Три онлайн срещи на живо с Таня Касабова. Разпознай режима на оцеляване, подсъзнателната програма зад него и направи първия си жив избор. 21–23 август 2026 · 37.01 €.",
+    "Три онлайн срещи на живо с Таня Касабова. Разпознай режима на оцеляване, подсъзнателната програма зад него и направи първия си жив избор. 21–23 август 2026 · 37 €.",
   alternates: {
     canonical: "/zhiva-vol-2",
   },
   openGraph: {
     title: "ЖИВА vol. 2: Съживи се!",
     description:
-      "Три онлайн срещи на живо с Таня Касабова · 21–23 август 2026 · 37.01 €.",
+      "Три онлайн срещи на живо с Таня Касабова · 21–23 август 2026 · 37 €.",
     images: ["/zhiva/hero.jpg"],
   },
 };
@@ -191,7 +191,7 @@ export default function ZhivaVol2Page() {
     },
     offers: {
       "@type": "Offer",
-      price: "37.01",
+      price: "37",
       priceCurrency: "EUR",
       url: "https://coachingreallive.com/zhiva-vol-2#enroll",
       availability: "https://schema.org/LimitedAvailability",
@@ -219,7 +219,7 @@ export default function ZhivaVol2Page() {
             />
           </a>
           <div className={styles.topMeta}>
-            <strong>37.01 €</strong>
+            <strong>37 €</strong>
             <span>21–23 август · онлайн на живо</span>
           </div>
           <a className={styles.topCta} href="#enroll">
@@ -251,7 +251,7 @@ export default function ZhivaVol2Page() {
               </p>
               <div className={styles.heroActions}>
                 <a className={styles.primaryCta} href="#enroll">
-                  Запази мястото си за 37.01 €
+                  Запази мястото си за 37 €
                   <ArrowIcon />
                 </a>
                 <p>21–23 август 2026 · онлайн на живо</p>
@@ -479,7 +479,7 @@ export default function ZhivaVol2Page() {
             <div className={styles.offerCopy}>
               <p className={styles.eyebrow}>Твоето място</p>
               <h2>ЖИВА vol. 2: Съживи се!</h2>
-              <div className={styles.price}>37.01 €</div>
+              <div className={styles.price}>37 €</div>
               <p className={styles.offerDate}>
                 21–23 август · три онлайн срещи на живо
               </p>
@@ -507,7 +507,7 @@ export default function ZhivaVol2Page() {
                 product="zhiva-vol-2"
                 cardOnly
                 variant="light-gold"
-                submitLabel="Запази мястото си за 37.01 €"
+                submitLabel="Запази мястото си за 37 €"
               />
             </div>
           </div>

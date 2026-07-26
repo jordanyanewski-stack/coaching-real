@@ -184,7 +184,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
   'zhiva-vol-2': {
     slug: 'zhiva-vol-2',
     name: 'ЖИВА vol. 2: Съживи се!',
-    price: '37.01',
+    price: '37',
     currency: 'EUR',
     supportsBankTransfer: false,
     bankTransfer: {

@@ -5,7 +5,7 @@ describe("ЖИВА vol. 2 campaign configuration", () => {
   it("uses the exact event price and a card-only checkout", () => {
     const product = PRODUCTS["zhiva-vol-2"];
 
-    expect(product.price).toBe("37.01");
+    expect(product.price).toBe("37");
     expect(product.currency).toBe("EUR");
     expect(product.supportsBankTransfer).toBe(false);
   });

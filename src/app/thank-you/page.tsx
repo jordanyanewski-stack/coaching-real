@@ -233,7 +233,7 @@ function copyFor(productSlug: string | undefined): ProductCopy {
             details: [
               { label: 'Дати', value: '21–23 август' },
               { label: 'Формат', value: 'Онлайн на живо' },
-              { label: 'Платено', value: '37.01 €' },
+              { label: 'Платено', value: '37 €' },
               { label: 'Водеща', value: 'Таня Касабова' },
             ],
           },

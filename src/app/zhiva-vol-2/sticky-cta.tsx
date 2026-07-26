@@ -47,7 +47,7 @@ export function ZhivaVol2StickyCTA() {
       aria-hidden={!visible}
     >
       <div>
-        <strong>37.01 €</strong>
+        <strong>37 €</strong>
         <span>21–23 август</span>
       </div>
       <a href="#enroll" tabIndex={visible ? 0 : -1}>
