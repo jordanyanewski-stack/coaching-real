@@ -6,7 +6,7 @@ export const metadata = {
   description:
     "Безплатни 4-седмични онлайн курсове, създадени от реални специалисти в KickSTART. Реална стойност. Безплатно участие.",
   openGraph: {
-    images: ["/free-courses-hero.png"],
+    images: ["/free-courses-hero-2026.jpg"],
   },
 };
 
@@ -255,19 +255,18 @@ function HeroSection() {
 
       {/* Hero banner image */}
       <div
-        className="relative max-w-4xl mx-auto mt-12 overflow-hidden"
+        className="relative max-w-4xl mx-auto mt-12 overflow-hidden aspect-[4/3] sm:aspect-[1366/600]"
         style={{ borderRadius: "14px" }}
       >
         <Image
-          src="/free-courses-hero.png"
-          alt="Избери курс от участниците в KickSTART"
-          width={1370}
-          height={500}
+          src="/free-courses-hero-2026.jpg"
+          alt="Избери курс от участниците в KickSTART — 2026 г."
+          fill
           priority
+          sizes="(max-width: 639px) calc(100vw - 32px), 896px"
           style={{
-            width: "100%",
-            height: "auto",
-            display: "block",
+            objectFit: "cover",
+            objectPosition: "center",
           }}
         />
       </div>
