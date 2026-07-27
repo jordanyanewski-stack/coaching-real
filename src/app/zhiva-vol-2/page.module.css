@@ -674,7 +674,9 @@
 
 .mentorImage {
   object-fit: cover;
-  object-position: 40% center;
+  object-position: left 45%;
+  transform: scale(1.55);
+  transform-origin: left center;
 }
 
 .mentorBadge {

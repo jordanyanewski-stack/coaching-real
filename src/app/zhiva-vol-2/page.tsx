@@ -21,14 +21,14 @@ const zhivaSans = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "ЖИВА vol. 2: Съживи се! · 21–23 август | Таня Касабова",
+  title: "ЖИВА 2: Съживи се! · 21–23 август | Таня Касабова",
   description:
     "Три онлайн срещи на живо с Таня Касабова. Разпознай режима на оцеляване, подсъзнателната програма зад него и направи първия си жив избор. 21–23 август 2026 · 37 €.",
   alternates: {
     canonical: "/zhiva-vol-2",
   },
   openGraph: {
-    title: "ЖИВА vol. 2: Съживи се!",
+    title: "ЖИВА 2: Съживи се!",
     description:
       "Три онлайн срещи на живо с Таня Касабова · 21–23 август 2026 · 37 €.",
     images: ["/zhiva/hero.jpg"],
@@ -169,7 +169,7 @@ export default function ZhivaVol2Page() {
   const eventSchema = {
     "@context": "https://schema.org",
     "@type": "Event",
-    name: "ЖИВА vol. 2: Съживи се!",
+    name: "ЖИВА 2: Съживи се!",
     description:
       "Три онлайн срещи на живо с Таня Касабова за излизане от режима на оцеляване и първи осъзнат избор към повече живот.",
     startDate: "2026-08-21",
@@ -237,7 +237,7 @@ export default function ZhivaVol2Page() {
           </div>
           <div className={styles.heroGrid}>
             <div className={styles.heroCopy}>
-              <p className={styles.eyebrow}>ЖИВА vol. 2 · Три онлайн срещи</p>
+              <p className={styles.eyebrow}>ЖИВА 2: Съживи се! · Три онлайн срещи</p>
               <h1>
                 Кога спря да бъдеш <em>жива?</em>
               </h1>
@@ -478,7 +478,7 @@ export default function ZhivaVol2Page() {
           <div className={styles.enrollGrid}>
             <div className={styles.offerCopy}>
               <p className={styles.eyebrow}>Твоето място</p>
-              <h2>ЖИВА vol. 2: Съживи се!</h2>
+              <h2>ЖИВА 2: Съживи се!</h2>
               <div className={styles.price}>37 €</div>
               <p className={styles.offerDate}>
                 21–23 август · три онлайн срещи на живо

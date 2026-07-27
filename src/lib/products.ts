@@ -177,19 +177,19 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     mlPaidGroupIdEnv: 'MAILERLITE_ZHIVA_PAID_GROUP_ID',
     mlPendingGroupIdEnv: 'MAILERLITE_ZHIVA_PENDING_GROUP_ID',
   },
-  // ── „ЖИВА vol. 2: Съживи се!" — 3 онлайн срещи, 21–23 август 2026. ──
+  // ── „ЖИВА 2: Съживи се!" — 3 онлайн срещи, 21–23 август 2026. ──
   // Card-only event delivered inside a dedicated closed Facebook group.
   // Buyers enter only the dedicated paid MailerLite group; there is no pending
   // capture group and no Clerk/Bunny entitlement.
   'zhiva-vol-2': {
     slug: 'zhiva-vol-2',
-    name: 'ЖИВА vol. 2: Съживи се!',
+    name: 'ЖИВА 2: Съживи се!',
     price: '37',
     currency: 'EUR',
     supportsBankTransfer: false,
     bankTransfer: {
-      referencePrefix: 'ЖИВА vol. 2',
-      productLabel: 'ЖИВА vol. 2: Съживи се! · 21–23 август 2026',
+      referencePrefix: 'ЖИВА 2',
+      productLabel: 'ЖИВА 2: Съживи се! · 21–23 август 2026',
       nextStepCopy: '',
     },
     mlPaidGroupIdEnv: 'MAILERLITE_ZHIVA_VOL2_PAID_GROUP_ID',

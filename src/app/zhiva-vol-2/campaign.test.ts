@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { PRODUCTS } from "@/lib/products";
 
-describe("ЖИВА vol. 2 campaign configuration", () => {
+describe("ЖИВА 2: Съживи се! campaign configuration", () => {
   it("uses the exact event price and a card-only checkout", () => {
     const product = PRODUCTS["zhiva-vol-2"];
 
