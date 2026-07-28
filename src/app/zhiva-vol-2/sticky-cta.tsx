@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { ZhivaVol2PriceText } from "./price-offer";
 import styles from "./page.module.css";
 
 export function ZhivaVol2StickyCTA() {
@@ -47,8 +48,10 @@ export function ZhivaVol2StickyCTA() {
       aria-hidden={!visible}
     >
       <div>
-        <strong>37 €</strong>
-        <span>21–23 август</span>
+        <strong>
+          <ZhivaVol2PriceText />
+        </strong>
+        <span>21–23 август · 19:00</span>
       </div>
       <a href="#enroll" tabIndex={visible ? 0 : -1}>
         Резервирай място

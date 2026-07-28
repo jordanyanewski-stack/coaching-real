@@ -91,7 +91,10 @@ const ZHIVA_VOL2_FB_GROUP = 'https://www.facebook.com/groups/2047210579211062/';
 const ZHIVA_VOL2_CALENDAR =
   'https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D0%96%D0%98%D0%92%D0%90+vol.+2%3A+%D0%A1%D1%8A%D0%B6%D0%B8%D0%B2%D0%B8+%D1%81%D0%B5%21&dates=20260821%2F20260824&details=%D0%A2%D1%80%D0%B8+%D0%BE%D0%BD%D0%BB%D0%B0%D0%B9%D0%BD+%D1%81%D1%80%D0%B5%D1%89%D0%B8+%D0%BD%D0%B0+%D0%B6%D0%B8%D0%B2%D0%BE+%D1%81+%D0%A2%D0%B0%D0%BD%D1%8F+%D0%9A%D0%B0%D1%81%D0%B0%D0%B1%D0%BE%D0%B2%D0%B0.&location=https%3A%2F%2Fwww.facebook.com%2Fgroups%2F2047210579211062%2F';
 
-function copyFor(productSlug: string | undefined): ProductCopy {
+function copyFor(
+  productSlug: string | undefined,
+  paidDisplay?: string,
+): ProductCopy {
   switch (productSlug as ProductSlug) {
     case 'audiobook':
     case 'audiobook-hot':
@@ -213,6 +216,7 @@ function copyFor(productSlug: string | undefined): ProductCopy {
         secondaryCtaHref: '/zhiva',
       };
     case 'zhiva-vol-2':
+    case 'zhiva-vol-2-regular':
       return {
         eyebrow: 'Регистрацията е потвърдена',
         title: 'Мястото ти е запазено.',
@@ -233,7 +237,7 @@ function copyFor(productSlug: string | undefined): ProductCopy {
             details: [
               { label: 'Дати', value: '21–23 август' },
               { label: 'Формат', value: 'Онлайн на живо' },
-              { label: 'Платено', value: '37 €' },
+              { label: 'Платено', value: paidDisplay ?? '37 €' },
               { label: 'Водеща', value: 'Таня Касабова' },
             ],
           },
@@ -511,10 +515,13 @@ export default async function ThankYouPage({
       : undefined;
   const productSlug = order?.product ?? previewSlug;
   const product = getProduct(productSlug);
-  const copy = copyFor(productSlug);
-  const warmThankYou = copy.theme === 'zhiva-vol-2';
   const purchaseValue = order ? parseFloat(order.amount) : product ? parseFloat(product.price) : 0;
   const purchaseCurrency = order?.currency ?? product?.currency ?? 'EUR';
+  const paidDisplay = `${purchaseValue.toLocaleString('bg-BG', {
+    maximumFractionDigits: 2,
+  })} €`;
+  const copy = copyFor(productSlug, paidDisplay);
+  const warmThankYou = copy.theme === 'zhiva-vol-2';
   // Only a genuinely PAID order may fire the Purchase pixel or set the buyer
   // cookie. A pending/abandoned order (its id can land in the URL before the
   // myPOS webhook flips it to 'paid') must do neither — it would pollute the

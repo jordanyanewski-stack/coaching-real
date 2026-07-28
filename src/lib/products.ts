@@ -15,7 +15,7 @@
 
 import { cleanEnv } from '@/lib/validators';
 
-export type ProductSlug = 'masterclass' | 'audiobook' | 'audiobook-hot' | 'audiobook-72h' | '12-izmerenia' | '12-izmerenia-promo' | 'career-course' | 'rodov-model' | 'zhiva' | 'zhiva-vol-2' | 'biznes-dusha' | 'biznes-dusha-early' | 'biznes-dusha-day1' | 'izlez-ot-zastoy' | 'izlez-ot-zastoy-regular';
+export type ProductSlug = 'masterclass' | 'audiobook' | 'audiobook-hot' | 'audiobook-72h' | '12-izmerenia' | '12-izmerenia-promo' | 'career-course' | 'rodov-model' | 'zhiva' | 'zhiva-vol-2' | 'zhiva-vol-2-regular' | 'biznes-dusha' | 'biznes-dusha-early' | 'biznes-dusha-day1' | 'izlez-ot-zastoy' | 'izlez-ot-zastoy-regular';
 
 export interface Product {
   slug: ProductSlug;
@@ -180,11 +180,25 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
   // ── „ЖИВА 2: Съживи се!" — 3 онлайн срещи, 21–23 август 2026. ──
   // Card-only event delivered inside a dedicated closed Facebook group.
   // Buyers enter only the dedicated paid MailerLite group; there is no pending
-  // capture group and no Clerk/Bunny entitlement.
+  // capture group and no Clerk/Bunny entitlement. Early price is €37 through
+  // 17 August; the regular €97 price starts at midnight on 18 August.
   'zhiva-vol-2': {
     slug: 'zhiva-vol-2',
     name: 'ЖИВА 2: Съживи се!',
     price: '37',
+    currency: 'EUR',
+    supportsBankTransfer: false,
+    bankTransfer: {
+      referencePrefix: 'ЖИВА 2',
+      productLabel: 'ЖИВА 2: Съживи се! · 21–23 август 2026',
+      nextStepCopy: '',
+    },
+    mlPaidGroupIdEnv: 'MAILERLITE_ZHIVA_VOL2_PAID_GROUP_ID',
+  },
+  'zhiva-vol-2-regular': {
+    slug: 'zhiva-vol-2-regular',
+    name: 'ЖИВА 2: Съживи се!',
+    price: '97',
     currency: 'EUR',
     supportsBankTransfer: false,
     bankTransfer: {

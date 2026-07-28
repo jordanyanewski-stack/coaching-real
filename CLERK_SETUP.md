@@ -26,7 +26,7 @@ In Vercel **Settings → Environment Variables**, verify those are set for **Pro
 Then pull them locally:
 
 ```bash
-cd "/Users/georgiganchev/Documents/1. WEBSITES/6. STASI/coaching-real"
+cd "/home/yordan/work/coaching-real"
 vercel env pull .env.local
 ```
 
@@ -35,7 +35,7 @@ vercel env pull .env.local
 The Clerk webhook needs the `user_id` column on the `orders` table:
 
 ```bash
-cd "/Users/georgiganchev/Documents/1. WEBSITES/6. STASI/coaching-real"
+cd "/home/yordan/work/coaching-real"
 # Source the unpooled URL for DDL
 source <(grep -E '^DATABASE_URL_UNPOOLED=' .env.local | sed 's/^/export /')
 psql "$DATABASE_URL_UNPOOLED" -f migrations/001-add-user-id-to-orders.sql

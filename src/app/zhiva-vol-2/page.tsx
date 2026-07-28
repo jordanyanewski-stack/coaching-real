@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Cormorant_Garamond, Montserrat } from "next/font/google";
 import { LOGO_URL, SiteFooter } from "@/app/_shared";
-import { EnrollForm } from "@/app/masterclass/enroll-form";
+import {
+  ZhivaVol2EnrollForm,
+  ZhivaVol2PriceNote,
+  ZhivaVol2PriceText,
+} from "./price-offer";
 import { ZhivaVol2StickyCTA } from "./sticky-cta";
 import styles from "./page.module.css";
 
@@ -23,14 +27,14 @@ const zhivaSans = Montserrat({
 export const metadata: Metadata = {
   title: "ЖИВА 2: Съживи се! · 21–23 август | Таня Касабова",
   description:
-    "Три онлайн срещи на живо с Таня Касабова. Разпознай режима на оцеляване, подсъзнателната програма зад него и направи първия си жив избор. 21–23 август 2026 · 37 €.",
+    "Три онлайн срещи на живо с Таня Касабова. 21–23 август 2026 от 19:00 часа. Ранна цена 37 € до 17 август включително; след това 97 €.",
   alternates: {
     canonical: "/zhiva-vol-2",
   },
   openGraph: {
     title: "ЖИВА 2: Съживи се!",
     description:
-      "Три онлайн срещи на живо с Таня Касабова · 21–23 август 2026 · 37 €.",
+      "Три онлайн срещи на живо с Таня Касабова · 21–23 август 2026 от 19:00 часа · 37 € до 17 август, след това 97 €.",
     images: ["/zhiva/hero.jpg"],
   },
 };
@@ -46,24 +50,27 @@ const recognitionLines = [
 const days = [
   {
     number: "01",
-    label: "Ден 1 · Утро",
+    label: "Ден 1",
     date: "21 август",
+    time: "19:00 часа",
     title: "Кога спрях да бъда жива?",
     body:
       "Разпознаваш разликата между това да функционираш и това да живееш. Изграждаш своята лична „карта на угасването“ — къде даваш всичко на другите и нищо не остава за теб.",
   },
   {
     number: "02",
-    label: "Ден 2 · Следобед",
+    label: "Ден 2",
     date: "22 август",
+    time: "19:00 часа",
     title: "Защо винаги очаквам болката да се повтори?",
     body:
       "Виждаш как едно старо болезнено преживяване се е превърнало в подсъзнателна програма, защитна роля и повтарящ се сценарий — в любовта, границите, парите и работата.",
   },
   {
     number: "03",
-    label: "Ден 3 · Вечер",
+    label: "Ден 3",
     date: "23 август",
+    time: "19:00 часа",
     title: "Връщам се в живота си",
     body:
       "От автоматична защита към осъзнат избор. Правиш своя първи „жив избор“ — конкретна стъпка за следващите 72 часа, различна от старата реакция.",
@@ -189,13 +196,24 @@ export default function ZhivaVol2Page() {
       "@type": "Person",
       name: "Таня Касабова",
     },
-    offers: {
-      "@type": "Offer",
-      price: "37",
-      priceCurrency: "EUR",
-      url: "https://coachingreallive.com/zhiva-vol-2#enroll",
-      availability: "https://schema.org/LimitedAvailability",
-    },
+    offers: [
+      {
+        "@type": "Offer",
+        price: "37",
+        priceCurrency: "EUR",
+        priceValidUntil: "2026-08-17T23:59:59+03:00",
+        url: "https://coachingreallive.com/zhiva-vol-2#enroll",
+        availability: "https://schema.org/LimitedAvailability",
+      },
+      {
+        "@type": "Offer",
+        price: "97",
+        priceCurrency: "EUR",
+        validFrom: "2026-08-18T00:00:00+03:00",
+        url: "https://coachingreallive.com/zhiva-vol-2#enroll",
+        availability: "https://schema.org/LimitedAvailability",
+      },
+    ],
   };
 
   return (
@@ -219,8 +237,13 @@ export default function ZhivaVol2Page() {
             />
           </a>
           <div className={styles.topMeta}>
-            <strong>37 €</strong>
-            <span>21–23 август · онлайн на живо</span>
+            <strong>
+              <ZhivaVol2PriceText />
+            </strong>
+            <span className={styles.topSchedule}>
+              <span>21–23 август · онлайн на живо</span>
+              <small>19:00 часа</small>
+            </span>
           </div>
           <a className={styles.topCta} href="#enroll">
             Резервирай място
@@ -251,10 +274,13 @@ export default function ZhivaVol2Page() {
               </p>
               <div className={styles.heroActions}>
                 <a className={styles.primaryCta} href="#enroll">
-                  Запази мястото си за 37 €
+                  Запази мястото си за <ZhivaVol2PriceText />
                   <ArrowIcon />
                 </a>
-                <p>21–23 август 2026 · онлайн на живо</p>
+                <p>
+                  21–23 август 2026 · онлайн на живо
+                  <span className={styles.heroTime}>19:00 часа</span>
+                </p>
               </div>
             </div>
 
@@ -328,6 +354,7 @@ export default function ZhivaVol2Page() {
                     <div>
                       <p>{day.label}</p>
                       <time>{day.date}</time>
+                      <span className={styles.dayTime}>{day.time}</span>
                     </div>
                   </div>
                   <h3>{day.title}</h3>
@@ -479,9 +506,15 @@ export default function ZhivaVol2Page() {
             <div className={styles.offerCopy}>
               <p className={styles.eyebrow}>Твоето място</p>
               <h2>ЖИВА 2: Съживи се!</h2>
-              <div className={styles.price}>37 €</div>
+              <div className={styles.price}>
+                <ZhivaVol2PriceText />
+              </div>
               <p className={styles.offerDate}>
                 21–23 август · три онлайн срещи на живо
+                <br />
+                19:00 часа
+                <br />
+                <ZhivaVol2PriceNote />
               </p>
               <ul>
                 {offerItems.map((item) => (
@@ -503,12 +536,7 @@ export default function ZhivaVol2Page() {
                 Въведи името и имейла си. След плащането ще видиш точните
                 следващи стъпки и линка към затворената Facebook група.
               </p>
-              <EnrollForm
-                product="zhiva-vol-2"
-                cardOnly
-                variant="light-gold"
-                submitLabel="Запази мястото си за 37 €"
-              />
+              <ZhivaVol2EnrollForm />
             </div>
           </div>
         </section>

@@ -1,21 +1,39 @@
 import { describe, expect, it } from "vitest";
 import { PRODUCTS } from "@/lib/products";
+import { isEarlyPriceAt, REGULAR_PRICE_START } from "./campaign";
 
 describe("ЖИВА 2: Съживи се! campaign configuration", () => {
-  it("uses the exact event price and a card-only checkout", () => {
-    const product = PRODUCTS["zhiva-vol-2"];
+  it("keeps the €37 early price through 17 August in Sofia", () => {
+    const earlyProduct = PRODUCTS["zhiva-vol-2"];
 
-    expect(product.price).toBe("37");
-    expect(product.currency).toBe("EUR");
-    expect(product.supportsBankTransfer).toBe(false);
+    expect(isEarlyPriceAt(REGULAR_PRICE_START - 1)).toBe(true);
+    expect(earlyProduct.price).toBe("37");
+    expect(earlyProduct.currency).toBe("EUR");
+    expect(earlyProduct.supportsBankTransfer).toBe(false);
   });
 
-  it("routes paid buyers to the dedicated MailerLite group", () => {
-    const product = PRODUCTS["zhiva-vol-2"];
+  it("switches to the €97 regular price at midnight on 18 August in Sofia", () => {
+    const regularProduct = PRODUCTS["zhiva-vol-2-regular"];
 
-    expect(product.mlPaidGroupIdEnv).toBe(
+    expect(isEarlyPriceAt(REGULAR_PRICE_START)).toBe(false);
+    expect(new Date(REGULAR_PRICE_START).toISOString()).toBe(
+      "2026-08-17T21:00:00.000Z",
+    );
+    expect(regularProduct.price).toBe("97");
+    expect(regularProduct.supportsBankTransfer).toBe(false);
+  });
+
+  it("routes both price points to the dedicated MailerLite group", () => {
+    const earlyProduct = PRODUCTS["zhiva-vol-2"];
+    const regularProduct = PRODUCTS["zhiva-vol-2-regular"];
+
+    expect(earlyProduct.mlPaidGroupIdEnv).toBe(
       "MAILERLITE_ZHIVA_VOL2_PAID_GROUP_ID",
     );
-    expect(product.mlPendingGroupIdEnv).toBeUndefined();
+    expect(regularProduct.mlPaidGroupIdEnv).toBe(
+      "MAILERLITE_ZHIVA_VOL2_PAID_GROUP_ID",
+    );
+    expect(earlyProduct.mlPendingGroupIdEnv).toBeUndefined();
+    expect(regularProduct.mlPendingGroupIdEnv).toBeUndefined();
   });
 });
