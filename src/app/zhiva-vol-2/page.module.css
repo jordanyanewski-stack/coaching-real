@@ -694,7 +694,7 @@
 
 .mentorImageWrap {
   position: relative;
-  min-height: 680px;
+  aspect-ratio: 5 / 7;
   border-radius: 220px 220px 28px 28px;
   overflow: hidden;
   background: var(--plum-2);
@@ -703,9 +703,7 @@
 
 .mentorImage {
   object-fit: cover;
-  object-position: left 45%;
-  transform: scale(1.55);
-  transform-origin: left center;
+  object-position: center;
 }
 
 .mentorBadge {
@@ -1148,7 +1146,8 @@
   }
 
   .mentorImageWrap {
-    min-height: 620px;
+    width: min(100%, 620px);
+    justify-self: center;
   }
 
   .enrollGrid {
@@ -1316,7 +1315,7 @@
   }
 
   .mentorImageWrap {
-    min-height: 480px;
+    width: 100%;
     border-radius: 180px 180px 24px 24px;
   }
 
