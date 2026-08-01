@@ -87,9 +87,9 @@ const MASTERCLASS_VIBER =
   'https://invite.viber.com/?g2=AQBBHCyONP2cNVPVyUuCy2RxRXH9Qe9wX18biT2LifkWu9sxYovJlzjCBPTGEtGQ';
 const BIZNES_FB_GROUP = 'https://www.facebook.com/groups/1641246887138088';
 const HRISTINA_FB_GROUP = 'https://www.facebook.com/groups/1497653248724998';
-const ZHIVA_VOL2_FB_GROUP = 'https://www.facebook.com/groups/2047210579211062/';
+const ZHIVA_VOL2_FB_GROUP = 'https://www.facebook.com/share/g/1FnSUJWntE/?mibextid=wwXIfr';
 const ZHIVA_VOL2_CALENDAR =
-  'https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D0%96%D0%98%D0%92%D0%90+vol.+2%3A+%D0%A1%D1%8A%D0%B6%D0%B8%D0%B2%D0%B8+%D1%81%D0%B5%21&dates=20260821%2F20260824&details=%D0%A2%D1%80%D0%B8+%D0%BE%D0%BD%D0%BB%D0%B0%D0%B9%D0%BD+%D1%81%D1%80%D0%B5%D1%89%D0%B8+%D0%BD%D0%B0+%D0%B6%D0%B8%D0%B2%D0%BE+%D1%81+%D0%A2%D0%B0%D0%BD%D1%8F+%D0%9A%D0%B0%D1%81%D0%B0%D0%B1%D0%BE%D0%B2%D0%B0.&location=https%3A%2F%2Fwww.facebook.com%2Fgroups%2F2047210579211062%2F';
+  'https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D0%96%D0%98%D0%92%D0%90+vol.+2%3A+%D0%A1%D1%8A%D0%B6%D0%B8%D0%B2%D0%B8+%D1%81%D0%B5%21&dates=20260821%2F20260824&details=%D0%A2%D1%80%D0%B8+%D0%BE%D0%BD%D0%BB%D0%B0%D0%B9%D0%BD+%D1%81%D1%80%D0%B5%D1%89%D0%B8+%D0%BD%D0%B0+%D0%B6%D0%B8%D0%B2%D0%BE+%D1%81+%D0%A2%D0%B0%D0%BD%D1%8F+%D0%9A%D0%B0%D1%81%D0%B0%D0%B1%D0%BE%D0%B2%D0%B0.&location=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fg%2F1FnSUJWntE%2F%3Fmibextid%3DwwXIfr';
 
 function copyFor(
   productSlug: string | undefined,
