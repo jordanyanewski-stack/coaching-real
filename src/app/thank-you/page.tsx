@@ -80,7 +80,7 @@ interface ProductCopy {
   steps?: TyStep[];
   personalNote?: { heading: string; body: string };
   contactLine?: string;
-  theme?: 'zhiva-vol-2';
+  theme?: 'zhiva-vol-2' | 'magi-leadership';
 }
 
 const MASTERCLASS_VIBER =
@@ -88,6 +88,9 @@ const MASTERCLASS_VIBER =
 const BIZNES_FB_GROUP = 'https://www.facebook.com/groups/1641246887138088';
 const HRISTINA_FB_GROUP = 'https://www.facebook.com/groups/1497653248724998';
 const ZHIVA_VOL2_FB_GROUP = 'https://www.facebook.com/share/g/1FnSUJWntE/?mibextid=wwXIfr';
+const MAGI_LEADERSHIP_FB_GROUP = 'https://www.facebook.com/groups/890676327000259/';
+const MAGI_LEADERSHIP_CALENDAR =
+  'https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D0%A0%D0%BE%D0%BB%D0%B5%D0%B2%D0%B8%D1%8F%D1%82+%D0%BC%D0%BE%D0%B4%D0%B5%D0%BB+%D0%B2+%D0%B5%D1%80%D0%B0%D1%82%D0%B0+%D0%BD%D0%B0+AI&dates=20260824T150000Z%2F20260824T160000Z&recur=RRULE%3AFREQ%3DDAILY%3BCOUNT%3D6&details=6+%D0%BC%D0%B0%D1%81%D1%82%D1%8A%D1%80%D0%BA%D0%BB%D0%B0%D1%81%D0%B0+%D0%BD%D0%B0+%D0%B6%D0%B8%D0%B2%D0%BE+%D1%81+%D0%9C%D0%B0%D0%B3%D0%B8+%D0%9F%D0%B5%D0%BD%D1%87%D0%B5%D0%B2%D0%B0.+%D0%92%D1%81%D1%8F%D0%BA%D0%B0+%D0%B2%D0%B5%D1%87%D0%B5%D1%80+%D0%BE%D1%82+18%3A00+%D0%B4%D0%BE+19%3A00+%D1%87.&location=Zoom';
 const ZHIVA_VOL2_CALENDAR =
   'https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D0%96%D0%98%D0%92%D0%90+vol.+2%3A+%D0%A1%D1%8A%D0%B6%D0%B8%D0%B2%D0%B8+%D1%81%D0%B5%21&dates=20260821%2F20260824&details=%D0%A2%D1%80%D0%B8+%D0%BE%D0%BD%D0%BB%D0%B0%D0%B9%D0%BD+%D1%81%D1%80%D0%B5%D1%89%D0%B8+%D0%BD%D0%B0+%D0%B6%D0%B8%D0%B2%D0%BE+%D1%81+%D0%A2%D0%B0%D0%BD%D1%8F+%D0%9A%D0%B0%D1%81%D0%B0%D0%B1%D0%BE%D0%B2%D0%B0.&location=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fg%2F1FnSUJWntE%2F%3Fmibextid%3DwwXIfr';
 
@@ -116,6 +119,64 @@ function copyFor(
           external: true,
         },
         secondaryCtaHref: '/career-course',
+      };
+    case 'magi-leadership-live':
+      return {
+        eyebrow: 'Регистрацията е успешна',
+        title: 'Мястото ти е запазено.',
+        body: 'Добре дошъл/дошла на борда. Регистрацията ти за шестте мастъркласа „Ролевият модел, който бизнесът ти заслужава в ерата на AI“ е потвърдена.',
+        extraCtas: [
+          {
+            label: 'Влез в затворената Facebook група',
+            href: MAGI_LEADERSHIP_FB_GROUP,
+            facebook: true,
+            external: true,
+            bullets: ['Там ще получаваш напомняния и работни материали между сесиите.'],
+          },
+        ],
+        steps: [
+          {
+            badge: 'Формат',
+            title: '6 мастъркласа на живо в Zoom',
+            details: [
+              { label: 'Дати', value: '24–29 август' },
+              { label: 'Час', value: '18:00–19:00 ч.' },
+              { label: 'Продължителност', value: '60 минути всяка вечер' },
+              { label: 'Платено', value: paidDisplay ?? '36 €' },
+            ],
+          },
+          {
+            badge: 'Стъпка 1',
+            title: 'Присъедини се към Facebook групата',
+            body: 'Там ще получаваш напомняния, работни материали между сесиите и достъп до другите участници.',
+            cta: {
+              label: 'Влез в групата',
+              href: MAGI_LEADERSHIP_FB_GROUP,
+              facebook: true,
+              external: true,
+            },
+          },
+          {
+            badge: 'Стъпка 2',
+            title: 'Добави шестте вечери в календара си',
+            body: '24–29 август, всяка вечер от 18:00 до 19:00 часа. Zoom линкът ще пристигне по имейл преди първата сесия.',
+            cta: {
+              label: 'Добави в календара',
+              href: MAGI_LEADERSHIP_CALENDAR,
+              external: true,
+            },
+          },
+          {
+            badge: 'Стъпка 3',
+            title: 'Подготви 5 минути тишина преди Вечер 1',
+            body: 'Първата вечер започва с честен поглед към теб като лидер. Ела без бързане, с чаша нещо топло и отворен ум.',
+          },
+        ],
+        whatNext:
+          'Провери имейла си за потвърждението. Ако не го виждаш до 10 минути, погледни в папка „Спам“ или „Промоции“.',
+        contactLine: 'Въпроси? Пиши на info@coachingreallive.com',
+        secondaryCtaHref: '/career-course',
+        theme: 'magi-leadership',
       };
     // Free Day-1 promo-code tier — deliberately NO Viber CTA: the participant
     // Viber group shares the daily Zoom links, which would hand the free tier
@@ -522,6 +583,7 @@ export default async function ThankYouPage({
   })} €`;
   const copy = copyFor(productSlug, paidDisplay);
   const warmThankYou = copy.theme === 'zhiva-vol-2';
+  const magiThankYou = copy.theme === 'magi-leadership';
   // Only a genuinely PAID order may fire the Purchase pixel or set the buyer
   // cookie. A pending/abandoned order (its id can land in the URL before the
   // myPOS webhook flips it to 'paid') must do neither — it would pollute the
@@ -552,19 +614,19 @@ export default async function ThankYouPage({
           alignItems: 'center',
           justifyContent: 'center',
           padding: '48px 24px',
-          backgroundColor: warmThankYou ? '#FBF5EC' : '#faf8f5',
+          backgroundColor: warmThankYou ? '#FBF5EC' : magiThankYou ? '#edf3ff' : '#faf8f5',
         }}
       >
         <div
           style={{
-            maxWidth: warmThankYou ? '720px' : '520px',
+            maxWidth: warmThankYou || magiThankYou ? '720px' : '520px',
             width: '100%',
             textAlign: 'center',
             padding: '56px 40px',
             backgroundColor: warmThankYou ? '#FFFDF8' : '#ffffff',
             borderRadius: '20px',
-            border: warmThankYou ? '1px solid rgba(36,22,17,0.10)' : '1px solid rgba(107,21,14,0.08)',
-            boxShadow: warmThankYou ? '0 24px 70px rgba(36,22,17,0.08)' : '0 4px 40px rgba(0,0,0,0.06)',
+            border: warmThankYou ? '1px solid rgba(36,22,17,0.10)' : magiThankYou ? '1px solid rgba(60,130,246,0.16)' : '1px solid rgba(107,21,14,0.08)',
+            boxShadow: warmThankYou ? '0 24px 70px rgba(36,22,17,0.08)' : magiThankYou ? '0 24px 70px rgba(7,17,31,0.10)' : '0 4px 40px rgba(0,0,0,0.06)',
           }}
         >
           <div
@@ -574,7 +636,9 @@ export default async function ThankYouPage({
               borderRadius: '50%',
               background: warmThankYou
                 ? 'linear-gradient(135deg, #B9862E 0%, #8A6420 100%)'
-                : 'linear-gradient(135deg, #70150E 0%, #c94535 100%)',
+                : magiThankYou
+                  ? 'linear-gradient(135deg, #3C82F6 0%, #2466D6 100%)'
+                  : 'linear-gradient(135deg, #70150E 0%, #c94535 100%)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -589,7 +653,7 @@ export default async function ThankYouPage({
           {copy.eyebrow && (
             <p
               style={{
-                color: warmThankYou ? '#A63F48' : '#70150E',
+                color: warmThankYou ? '#A63F48' : magiThankYou ? '#3C82F6' : '#70150E',
                 fontSize: '11px',
                 fontWeight: 800,
                 letterSpacing: '0.13em',
@@ -601,11 +665,11 @@ export default async function ThankYouPage({
             </p>
           )}
 
-          <h1 style={{ fontSize: warmThankYou ? '34px' : '28px', fontWeight: 900, color: warmThankYou ? '#241611' : '#1a1a1a', letterSpacing: '-0.02em', marginBottom: '16px', textWrap: 'balance' }}>
+          <h1 style={{ fontSize: warmThankYou || magiThankYou ? '34px' : '28px', fontWeight: 900, color: warmThankYou ? '#241611' : magiThankYou ? '#07111f' : '#1a1a1a', letterSpacing: '-0.02em', marginBottom: '16px', textWrap: 'balance' }}>
             {copy.title}
           </h1>
 
-          <p style={{ fontSize: '16px', color: warmThankYou ? '#6B5A4C' : 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: '28px', textWrap: 'pretty' }}>
+          <p style={{ fontSize: '16px', color: warmThankYou ? '#6B5A4C' : magiThankYou ? '#637083' : 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: '28px', textWrap: 'pretty' }}>
             {copy.body}
           </p>
 
