@@ -121,6 +121,7 @@ function copyFor(
         secondaryCtaHref: '/career-course',
       };
     case 'magi-leadership-live':
+    case 'magi-leadership-live-regular':
       return {
         eyebrow: 'Регистрацията е успешна',
         title: 'Мястото ти е запазено.',
@@ -175,7 +176,7 @@ function copyFor(
         whatNext:
           'Провери имейла си за потвърждението. Ако не го виждаш до 10 минути, погледни в папка „Спам“ или „Промоции“.',
         contactLine: 'Въпроси? Пиши на info@coachingreallive.com',
-        secondaryCtaHref: '/career-course',
+        secondaryCtaHref: '/leadership',
         theme: 'magi-leadership',
       };
     // Free Day-1 promo-code tier — deliberately NO Viber CTA: the participant

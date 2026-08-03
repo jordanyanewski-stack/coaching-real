@@ -15,7 +15,7 @@
 
 import { cleanEnv } from '@/lib/validators';
 
-export type ProductSlug = 'masterclass' | 'audiobook' | 'audiobook-hot' | 'audiobook-72h' | '12-izmerenia' | '12-izmerenia-promo' | 'career-course' | 'magi-leadership-live' | 'rodov-model' | 'zhiva' | 'zhiva-vol-2' | 'zhiva-vol-2-regular' | 'biznes-dusha' | 'biznes-dusha-early' | 'biznes-dusha-day1' | 'izlez-ot-zastoy' | 'izlez-ot-zastoy-regular';
+export type ProductSlug = 'masterclass' | 'audiobook' | 'audiobook-hot' | 'audiobook-72h' | '12-izmerenia' | '12-izmerenia-promo' | 'career-course' | 'magi-leadership-live' | 'magi-leadership-live-regular' | 'rodov-model' | 'zhiva' | 'zhiva-vol-2' | 'zhiva-vol-2-regular' | 'biznes-dusha' | 'biznes-dusha-early' | 'biznes-dusha-day1' | 'izlez-ot-zastoy' | 'izlez-ot-zastoy-regular';
 
 export interface Product {
   slug: ProductSlug;
@@ -162,12 +162,28 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     // No dedicated pending group yet — falls back to the legacy general pending group.
     mlPendingGroupIdEnv: 'MAILERLITE_PENDING_GROUP_ID',
   },
-  // August 2026 live campaign with Маги Пенчева. This stays isolated from
-  // the evergreen €97 Career Compass course and its Skool delivery group.
+  // August 2026 live campaign with Маги Пенчева. Promotional price is €36
+  // through 17 August; the €97 regular product starts at midnight on 18 August.
+  // Both price tiers share the same delivery group and stay isolated from the
+  // evergreen Career Compass course and its Skool delivery group.
   'magi-leadership-live': {
     slug: 'magi-leadership-live',
     name: 'Ролевият модел, който бизнесът ти заслужава в ерата на AI',
     price: '36.00',
+    currency: 'EUR',
+    supportsBankTransfer: true,
+    bankTransfer: {
+      referencePrefix: 'Маги лидерство',
+      productLabel: '6 мастъркласа с Маги Пенчева · 24–29 август 2026',
+      nextStepCopy:
+        'След потвърждение ще получиш имейл с Facebook групата и детайлите за шестте онлайн срещи.',
+    },
+    mlPaidGroupIdEnv: 'MAILERLITE_MAGI_LEADERSHIP_PAID_GROUP_ID',
+  },
+  'magi-leadership-live-regular': {
+    slug: 'magi-leadership-live-regular',
+    name: 'Ролевият модел, който бизнесът ти заслужава в ерата на AI',
+    price: '97.00',
     currency: 'EUR',
     supportsBankTransfer: true,
     bankTransfer: {

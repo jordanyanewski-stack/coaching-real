@@ -585,6 +585,15 @@ html {
   }
 }
 
+/* Career-course voices: keep the editorial split on larger screens, but
+   give every quote the full reading width on phones. */
+@media (max-width: 767px) {
+  .fd-voices-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 32px !important;
+  }
+}
+
 /* ── Pricing card polish ───────────────────────────────────────────── */
 .mc-pricing-card {
   transition: box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
