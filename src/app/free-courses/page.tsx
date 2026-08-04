@@ -649,7 +649,7 @@ function CourseCard({ course }: { course: Course }) {
               width: "100%",
             }}
           >
-            {course.ctaLabel ?? "Научи повече"}
+            Включи се тук
           </a>
         ) : (
           <span
