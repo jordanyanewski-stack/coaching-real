@@ -108,6 +108,7 @@ const NEW_COURSES: Course[] = [
 ];
 
 const COURSES: Course[] = [
+  ...NEW_COURSES,
   {
     id: "pozvolenie",
     title: "Позволение",
@@ -250,7 +251,6 @@ const COURSES: Course[] = [
     ],
     href: "https://docs.google.com/forms/d/e/1FAIpQLSf-XLDfVqpdruX70N0-pGS2AlGGW7uaV0DYHNa0IzwCTBKuCg/viewform",
   },
-  ...NEW_COURSES,
 ];
 
 export default function FreeCoursesPage() {
