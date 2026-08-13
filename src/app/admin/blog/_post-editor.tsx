@@ -56,10 +56,8 @@ export function PostEditor({ defaults, submitLabel, onSubmit, onDelete }: PostEd
   const [content, setContent] = useState(defaults.content);
   const [published, setPublished] = useState(defaults.published);
   const [coverUploading, setCoverUploading] = useState(false);
-  const [bodyUploading, setBodyUploading] = useState(false);
   const [submitError, setSubmitError] = useState('');
   const [isPending, startTransition] = useTransition();
-  const contentRef = useRef<HTMLTextAreaElement | null>(null);
   const slugManuallyEdited = useRef(defaults.slug !== '');
   const previewHtml = useMemo(() => sanitizeBlogHtml(content), [content]);
 
@@ -115,33 +113,6 @@ export function PostEditor({ defaults, submitLabel, onSubmit, onDelete }: PostEd
       alert(`Cover upload: ${(err as Error).message}`);
     } finally {
       setCoverUploading(false);
-    }
-  }
-
-  async function onBodyImageUpload(file: File) {
-    setBodyUploading(true);
-    try {
-      const url = await uploadFile(file);
-      const ta = contentRef.current;
-      const tag = `<p><img src="${url}" alt="" style="width:100%;border-radius:8px;margin:16px 0;" /></p>\n`;
-      if (ta) {
-        const start = ta.selectionStart ?? content.length;
-        const end = ta.selectionEnd ?? content.length;
-        const next = content.slice(0, start) + tag + content.slice(end);
-        setContent(next);
-        // Restore cursor after the inserted tag
-        requestAnimationFrame(() => {
-          ta.focus();
-          const pos = start + tag.length;
-          ta.setSelectionRange(pos, pos);
-        });
-      } else {
-        setContent(content + '\n' + tag);
-      }
-    } catch (err) {
-      alert(`Image upload: ${(err as Error).message}`);
-    } finally {
-      setBodyUploading(false);
     }
   }
 
@@ -293,41 +264,7 @@ export function PostEditor({ defaults, submitLabel, onSubmit, onDelete }: PostEd
           </label>
 
           <Field label="HTML съдържание">
-            <div style={{ display: 'flex', gap: '8px', marginBottom: '6px' }}>
-              <label
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  padding: '6px 12px',
-                  fontSize: '12px',
-                  fontWeight: 700,
-                  color: '#70150E',
-                  backgroundColor: '#fbf6f5',
-                  border: '1.5px solid rgba(107,21,14,0.2)',
-                  borderRadius: '6px',
-                  cursor: bodyUploading ? 'wait' : 'pointer',
-                  opacity: bodyUploading ? 0.6 : 1,
-                }}
-              >
-                {bodyUploading ? 'Качване...' : '+ Вмъкни изображение'}
-                <input
-                  type="file"
-                  accept="image/*"
-                  style={{ display: 'none' }}
-                  disabled={bodyUploading}
-                  onChange={e => {
-                    const f = e.target.files?.[0];
-                    if (f) onBodyImageUpload(f);
-                    e.target.value = '';
-                  }}
-                />
-              </label>
-              <span style={{ fontSize: '11px', color: 'rgba(0,0,0,0.45)', alignSelf: 'center' }}>
-                Курсорът в textarea определя къде се вмъква.
-              </span>
-            </div>
             <textarea
-              ref={contentRef}
               name="content"
               value={content}
               onChange={e => setContent(e.target.value)}
