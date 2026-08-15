@@ -22,7 +22,7 @@ export const onDark = {
   accent:    "#70150E",
 } as const;
 
-export const PHOTO_URL = "/stasi-1.jpg";
+export const PHOTO_URL = "/stanislava-home.png";
 
 export const LOGO_URL = "/CR-logo.png";
 

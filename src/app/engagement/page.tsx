@@ -4,7 +4,7 @@ import { T, onDark, PHOTO_URL, GRADIENT_TEXT, SiteNav, SiteFooter } from "@/app/
 export const metadata = {
   title: "Ангажираност и развитие – Coaching Real | Станислава Павлова",
   description:
-    "Практическа програма за завършили KickSTART - изгради freebie, висококонвертираща фуния и растящ имейл списък. 5 фази, 6 месеца, €702.",
+    "Практическа програма за завършили KickSTART - изгради freebie, висококонвертираща фуния и растящ имейл списък. 5 фази, 6 месеца.",
 };
 
 /* ─── DATA ──────────────────────────────────────────────────────────── */
@@ -116,7 +116,6 @@ const programIncludes = [
   'Бонус: Пакет с 1500+ вайръл текста',
   'Бонус: Достъп до Business Bootcamp',
   '12 месеца достъп до всички ресурси',
-  'Разсрочено плащане чрез TBI Bank',
 ];
 
 /* ─── ICONS ──────────────────────────────────────────────────────────── */
@@ -299,7 +298,7 @@ function HeroSection() {
 
           <div className="animate-fade-up delay-300 flex flex-col sm:flex-row flex-wrap gap-4 mt-9">
             <a href="#order" className="mv-btn mv-btn-primary" style={{ fontSize: '15px', padding: '14px 28px' }}>
-              Присъедини се към програмата →
+              Кандидатствай за участие →
             </a>
             <a href="#phases" className="mv-btn mv-btn-outline-light" style={{ fontSize: '15px', padding: '14px 28px' }}>
               Виж как работи
@@ -374,17 +373,6 @@ function HeroSection() {
               </div>
             </div>
 
-            <div className="mt-6 pt-5" style={{ borderTop: '1px solid rgba(112,21,14,0.07)' }}>
-              <p style={{ fontSize: '11px', color: onDark.muted, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '6px' }}>
-                Инвестиция
-              </p>
-              <p style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 900, color: 'var(--mv-text-primary)', lineHeight: 1, letterSpacing: '-0.03em' }}>
-                €702
-              </p>
-              <p style={{ fontSize: '12px', color: onDark.muted, marginTop: '4px' }}>
-                Месечни плащания · Разсрочване с TBI Bank
-              </p>
-            </div>
           </div>
         </div>
       </div>
@@ -532,7 +520,7 @@ function PhasesSection() {
 
         <div className="mt-8">
           <a href="#order" className="mv-btn mv-btn-outline-light inline-flex">
-            Присъедини се към програмата →
+            Кандидатствай за участие →
           </a>
         </div>
       </div>
@@ -653,7 +641,7 @@ function SupportSection() {
           </p>
 
           <a href="#order" className="mv-btn mv-btn-outline-light mt-10 inline-flex">
-            Присъедини се →
+            Кандидатствай за участие →
           </a>
         </div>
 
@@ -807,14 +795,14 @@ function PricingSection() {
               lineHeight: 1.1, letterSpacing: '-0.02em',
             }}
           >
-            Присъедини се сега &amp;{' '}
+            Кандидатствай &amp;{' '}
             <span style={{ ...GRADIENT_TEXT }}>започни своя растеж</span>
           </h2>
           <p
             className="mt-4 mx-auto"
             style={{ fontSize: '16px', color: T.textSecondary, lineHeight: 1.8, maxWidth: '500px' }}
           >
-            6 месеца програма · 12 месеца достъп · Разсрочено плащане с TBI Bank
+            6 месеца програма · 12 месеца достъп
           </p>
         </div>
 
@@ -843,18 +831,6 @@ function PricingSection() {
             </div>
 
             <div className="p-7">
-              <div className="flex items-end gap-3 mb-2">
-                <span style={{
-                  fontSize: 'clamp(2rem, 4vw, 2.8rem)', fontWeight: 900, color: T.textPrimary,
-                  lineHeight: 1, letterSpacing: '-0.03em',
-                }}>
-                  €702
-                </span>
-              </div>
-              <p style={{ fontSize: '13px', color: T.textSecondary, lineHeight: 1.6, marginBottom: '20px' }}>
-                Месечни плащания · Налична е възможност за разсрочено плащане чрез TBI Bank.
-              </p>
-
               <p style={{ fontSize: '12px', fontWeight: 700, color: 'rgba(0,0,0,0.32)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '12px' }}>
                 Включва:
               </p>
@@ -878,7 +854,7 @@ function PricingSection() {
                 className="mv-btn mv-btn-primary"
                 style={{ fontSize: '15px', padding: '14px 24px', display: 'flex', justifyContent: 'center' }}
               >
-                Присъедини се сега и започни своя растеж →
+                Кандидатствай за участие →
               </a>
               <p className="text-center mt-3" style={{ fontSize: '11px', color: T.textSecondary }}>
                 6 месеца програма · 12 месеца достъп
@@ -906,39 +882,6 @@ function PricingSection() {
               </p>
             </div>
 
-            <div
-              className="p-6"
-              style={{
-                backgroundColor: T.surfaceRaised,
-                borderRadius: '14px',
-                border: '1px solid rgba(107,21,14,0.1)',
-              }}
-            >
-              <h3 style={{ fontSize: '15px', fontWeight: 700, color: T.textPrimary, marginBottom: '10px', letterSpacing: '-0.01em' }}>
-                TBI Bank разсрочване
-              </h3>
-              <p style={{ fontSize: '13px', color: T.textSecondary, lineHeight: 1.75 }}>
-                Налична е възможност за удобно разсрочено плащане. Свържи се с нас за
-                повече информация и условия.
-              </p>
-            </div>
-
-            <div
-              className="p-6"
-              style={{
-                backgroundColor: 'rgba(107,21,14,0.06)',
-                borderRadius: '14px',
-                border: '1px solid rgba(107,21,14,0.15)',
-              }}
-            >
-              <p style={{ fontSize: '13px', fontWeight: 700, color: '#70150E', marginBottom: '6px' }}>
-                Специален бонус при пълно плащане
-              </p>
-              <p style={{ fontSize: '13px', color: T.textSecondary, lineHeight: 1.75 }}>
-                Получаваш модул „Продавай с увереност" - как да опаковаш и промотираш
-                курса си напълно органично.
-              </p>
-            </div>
           </div>
         </div>
       </div>
@@ -1019,31 +962,13 @@ function FinalCTASection() {
             fontSize: 'clamp(1.8rem, 4vw, 3rem)', fontWeight: 900, color: 'var(--mv-text-primary)',
             lineHeight: 1.15, letterSpacing: '-0.02em',
           }}>
-            Присъедини се сега и{' '}
+            Кандидатствай сега и{' '}
             <span style={{ color: '#e85050' }}>започни своя растеж.</span>
           </h2>
 
-          <p className="mt-5" style={{ fontSize: '16px', color: onDark.secondary, lineHeight: 1.8 }}>
-            6 месеца програма · 12 месеца достъп · Разсрочване с TBI Bank
+          <p className="mt-5 mb-10" style={{ fontSize: '16px', color: onDark.secondary, lineHeight: 1.8 }}>
+            6 месеца програма · 12 месеца достъп
           </p>
-
-          <div
-            className="mt-10 mb-10 inline-flex flex-col items-center gap-4 px-10 py-6"
-            style={{
-              backgroundColor: 'rgba(112,21,14,0.05)', borderRadius: '14px',
-              border: '1px solid rgba(112,21,14,0.08)',
-            }}
-          >
-            <p style={{ fontSize: '11px', color: onDark.muted, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-              Инвестиция
-            </p>
-            <span style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: 900, color: 'var(--mv-text-primary)', lineHeight: 1, letterSpacing: '-0.03em' }}>
-              €702
-            </span>
-            <p style={{ fontSize: '13px', color: onDark.muted }}>
-              Месечни плащания · Разсрочване с TBI Bank
-            </p>
-          </div>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <a
@@ -1051,11 +976,11 @@ function FinalCTASection() {
               className="mv-btn mv-btn-primary"
               style={{ fontSize: '17px', padding: '18px 44px' }}
             >
-              Присъедини се сега и започни своя растеж →
+              Кандидатствай за участие →
             </a>
           </div>
           <p className="mt-4" style={{ fontSize: '13px', color: onDark.muted }}>
-            Сигурна транзакция · 12 месеца достъп до всички ресурси
+            Кандидатурите се разглеждат индивидуално
           </p>
         </div>
       </div>

@@ -299,7 +299,7 @@ function HeroSection() {
           {/* CTAs */}
           <div className="animate-fade-up delay-300 flex flex-col sm:flex-row flex-wrap gap-4 mt-9">
             <a href="#order" className="mv-btn mv-btn-primary" style={{ fontSize: '15px', padding: '14px 28px' }}>
-              Резервирай на живо (€77) →
+              Резервирай на живо (€150) →
             </a>
             <a href="#order" className="mv-btn mv-btn-outline-light" style={{ fontSize: '15px', padding: '14px 28px' }}>
               Резервирай онлайн (€50)
@@ -309,7 +309,7 @@ function HeroSection() {
             className="animate-fade-up delay-300 mt-3"
             style={{ fontSize: '12px', color: onDark.muted }}
           >
-            Ранна цена за живо &nbsp;·&nbsp; Редовна цена €128
+            На живо €150 &nbsp;·&nbsp; Онлайн €50
           </p>
         </div>
 
@@ -903,15 +903,7 @@ function PricingSection() {
                   fontSize: 'clamp(2rem, 4vw, 2.8rem)', fontWeight: 900, color: T.textPrimary,
                   lineHeight: 1, letterSpacing: '-0.03em',
                 }}>
-                  €77
-                </span>
-              </div>
-              <div className="flex items-center gap-3 mb-5">
-                <span style={{ fontSize: '14px', color: T.textSecondary, textDecoration: 'line-through', fontWeight: 500 }}>
-                  €128
-                </span>
-                <span style={{ fontSize: '11px', fontWeight: 700, color: '#70150E', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
-                  Ранна цена
+                  €150
                 </span>
               </div>
               <p style={{ fontSize: '13px', color: T.textSecondary, lineHeight: 1.6, marginBottom: '20px' }}>
@@ -942,10 +934,10 @@ function PricingSection() {
                 className="mv-btn mv-btn-primary"
                 style={{ fontSize: '15px', padding: '14px 24px', display: 'flex', justifyContent: 'center' }}
               >
-                Резервирай място на живо (€77) →
+                Резервирай място на живо (€150) →
               </a>
               <p className="text-center mt-3" style={{ fontSize: '11px', color: T.textSecondary }}>
-                Редовна цена €128 · Ограничени места
+                Ограничени места на живо
               </p>
             </div>
           </div>
@@ -1124,10 +1116,9 @@ function FinalCTASection() {
             }}
           >
             <div className="text-center">
-              <p style={{ fontSize: '11px', color: onDark.muted, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '4px' }}>На живо · Ранна цена</p>
+              <p style={{ fontSize: '11px', color: onDark.muted, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '4px' }}>На живо</p>
               <div className="flex items-baseline justify-center gap-2">
-                <span style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 900, color: 'var(--mv-text-primary)', lineHeight: 1, letterSpacing: '-0.03em' }}>€77</span>
-                <span style={{ fontSize: '14px', fontWeight: 600, color: onDark.muted, textDecoration: 'line-through', textDecorationColor: 'rgba(255,255,255,0.25)' }}>€128</span>
+                <span style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 900, color: 'var(--mv-text-primary)', lineHeight: 1, letterSpacing: '-0.03em' }}>€150</span>
               </div>
             </div>
             <div style={{ width: '1px', height: '48px', backgroundColor: 'rgba(112,21,14,0.09)' }} className="hidden sm:block" />

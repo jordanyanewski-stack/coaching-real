@@ -19,7 +19,6 @@ function getOptinTimestamp(): number | null {
 interface Tier {
   product: 'audiobook-hot' | 'audiobook-72h' | 'audiobook';
   price: string;
-  priceLv: string;
   submitLabel: string;
   deadline: number | null; // ms epoch for the countdown, or null at regular price
 }
@@ -30,7 +29,6 @@ function tierFor(optinTs: number): Tier {
     return {
       product: 'audiobook-hot',
       price: '9.00',
-      priceLv: '17.60',
       submitLabel: 'Да! Искам аудиокнигата за 9 €',
       deadline: optinTs + THIRTY_MINUTES,
     };
@@ -39,7 +37,6 @@ function tierFor(optinTs: number): Tier {
     return {
       product: 'audiobook-72h',
       price: '19.00',
-      priceLv: '37.16',
       submitLabel: 'Да! Искам аудиокнигата за 19 €',
       deadline: optinTs + SEVENTY_TWO_HOURS,
     };
@@ -47,7 +44,6 @@ function tierFor(optinTs: number): Tier {
   return {
     product: 'audiobook',
     price: '25.00',
-    priceLv: '48.90',
     submitLabel: 'Да! Искам аудиокнигата за 25 €',
     deadline: null,
   };
@@ -108,7 +104,7 @@ export function HotOffer() {
                 textDecoration: 'line-through',
               }}
             >
-              25.00 € / 48.90 лв.
+              25.00 €
             </span>
           </div>
         )}
@@ -123,9 +119,6 @@ export function HotOffer() {
             }}
           >
             {tier.price} €
-          </span>
-          <span style={{ fontSize: '16px', fontWeight: 600, color: 'var(--mv-text-secondary)' }}>
-            / {tier.priceLv} лв.
           </span>
         </div>
       </div>

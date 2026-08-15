@@ -76,7 +76,6 @@ const bonuses = [
       "Създаване на грабващо и конвертиращо маркетингово послание",
     ],
     regularEur: "500 €",
-    regularBgn: "977.91 лв.",
   },
   {
     Icon: IconCompass,
@@ -86,7 +85,6 @@ const bonuses = [
       "Цялостен бизнес план, адаптиран специално за твоите продукти и услуги",
     ],
     regularEur: "127.83 €",
-    regularBgn: "250.00 лв.",
   },
 ];
 
@@ -339,7 +337,6 @@ function HeroSection() {
               >
                 25.00 €
               </span>
-              <span style={{ fontSize: "18px", fontWeight: 600, color: onDark.secondary }}>/ 48.90 лв.</span>
             </div>
             <a
               href="#buy"
@@ -522,8 +519,7 @@ function LearnSection() {
             className="mt-5 mx-auto"
             style={{ fontSize: "16px", color: onDark.secondary, lineHeight: 1.8, maxWidth: "560px" }}
           >
-            Само СЕГА за <strong style={{ color: "var(--mv-text-primary)" }}>25.00 €</strong>{" "}
-            <span style={{ color: onDark.muted, fontSize: "14px" }}>/ 48.90 лв.</span> ще научиш:
+            Само СЕГА за <strong style={{ color: "var(--mv-text-primary)" }}>25.00 €</strong> ще научиш:
           </p>
         </div>
 
@@ -579,7 +575,7 @@ function LearnSection() {
             className="mv-btn mv-btn-primary"
             style={{ fontSize: "16px", padding: "16px 44px" }}
           >
-            Добавяне в количката - 25.00 € / 48.90 лв.
+            Добавяне в количката - 25.00 €
           </a>
         </div>
       </div>
@@ -1086,7 +1082,7 @@ function BonusesSection() {
                       textDecorationColor: "rgba(107,21,14,0.4)",
                     }}
                   >
-                    {b.regularEur} / {b.regularBgn}
+                    {b.regularEur}
                   </span>
                 </div>
               </div>
@@ -1115,7 +1111,6 @@ function BonusesSection() {
             <p style={{ fontSize: "clamp(2rem, 4vw, 2.8rem)", fontWeight: 900, color: "#ffffff", lineHeight: 1, letterSpacing: "-0.03em" }}>
               25.00 €
             </p>
-            <p style={{ fontSize: "14px", color: "rgba(255,255,255,0.65)", marginTop: "3px" }}>/ 48.90 лв.</p>
           </div>
         </div>
       </div>
@@ -1188,7 +1183,6 @@ function FinalCTASection() {
             >
               25.00 €
             </span>
-            <span style={{ fontSize: "20px", fontWeight: 600, color: onDark.secondary }}>/ 48.90 лв.</span>
           </div>
         </div>
 

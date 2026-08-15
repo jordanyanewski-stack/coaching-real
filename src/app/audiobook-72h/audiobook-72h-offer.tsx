@@ -150,7 +150,7 @@ export function Audiobook72Offer() {
             textDecoration: 'line-through',
           }}
         >
-          25.00 € / 48.90 лв.
+          25.00 €
         </span>
         <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: '8px', marginTop: '4px' }}>
           <span
@@ -164,7 +164,6 @@ export function Audiobook72Offer() {
           >
             19.00 €
           </span>
-          <span style={{ fontSize: '16px', fontWeight: 600, color: 'var(--mv-text-secondary)' }}>/ 37.16 лв.</span>
         </div>
       </div>
 
