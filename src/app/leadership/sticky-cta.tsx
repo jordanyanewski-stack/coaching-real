@@ -11,7 +11,9 @@ export function FreeDayStickyCTA() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const heroEl = document.querySelector(".fd-hero");
+    const stickyBoundaryEl =
+      document.querySelector(".fd-problem-mobile") ||
+      document.querySelector(".fd-hero");
     const enrollEl = document.getElementById("enroll");
 
     let pastHero = false;
@@ -21,10 +23,10 @@ export function FreeDayStickyCTA() {
     const heroObs = new IntersectionObserver(
       ([entry]) => {
         if (!entry) return;
-        pastHero = !entry.isIntersecting;
+        pastHero = entry.boundingClientRect.bottom <= 0;
         update();
       },
-      { threshold: 0, rootMargin: "0px 0px -80% 0px" }
+      { threshold: 0 }
     );
     const enrollObs = new IntersectionObserver(
       ([entry]) => {
@@ -35,7 +37,7 @@ export function FreeDayStickyCTA() {
       { threshold: 0.05 }
     );
 
-    if (heroEl) heroObs.observe(heroEl);
+    if (stickyBoundaryEl) heroObs.observe(stickyBoundaryEl);
     if (enrollEl) enrollObs.observe(enrollEl);
 
     return () => {

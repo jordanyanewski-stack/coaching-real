@@ -575,6 +575,12 @@ html {
   right: 16px !important;
   z-index: 50 !important;
 }
+
+/* Leadership landing: keep the conversion-first split on larger screens,
+   but let phone visitors understand the problem before seeing a form. */
+.fd-problem-mobile {
+  display: none;
+}
 @media (max-width: 767px) {
   .fd-top-cta {
     position: absolute !important;
@@ -582,6 +588,13 @@ html {
     right: 14px !important;
     padding: 9px 14px !important;
     font-size: 12px !important;
+  }
+  .fd-hero-form,
+  .fd-problem-desktop {
+    display: none !important;
+  }
+  .fd-problem-mobile {
+    display: block;
   }
 }
 

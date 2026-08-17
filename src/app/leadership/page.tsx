@@ -471,9 +471,14 @@ export default function FreeDayPage() {
         <FormCueHandler />
         <FreeDayHeader />
         <HeroSection />
+        <div className="fd-problem-mobile">
+          <ProblemSection />
+        </div>
         <MarqueeStrip />
         <ScheduleSection />
-        <ProblemSection />
+        <div className="fd-problem-desktop">
+          <ProblemSection />
+        </div>
         <WeeksProgramSection />
         <WhatYouGetSection />
         <MaterialsSection />
@@ -620,7 +625,7 @@ function HeroSection() {
         </div>
 
         {/* Right — sign-up form + format pills */}
-        <aside style={{ position: "relative" }}>
+        <aside className="fd-hero-form" style={{ position: "relative" }}>
           <div
             style={{
               fontSize: "10px",
