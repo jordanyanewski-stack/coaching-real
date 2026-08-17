@@ -54,7 +54,7 @@ export function ZhivaVol2StickyCTA() {
         <span>21–23 август · 19:00</span>
       </div>
       <a href="#enroll" tabIndex={visible ? 0 : -1}>
-        Резервирай място
+        Искам да участвам
       </a>
     </div>
   );

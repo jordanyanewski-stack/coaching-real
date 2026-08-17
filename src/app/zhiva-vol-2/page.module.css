@@ -174,7 +174,7 @@
 .heroCopy {
   position: relative;
   z-index: 2;
-  max-width: 680px;
+  max-width: 720px;
   animation: heroEnter 900ms var(--ease-alive) both;
 }
 
@@ -192,7 +192,7 @@
   margin-top: 22px;
   color: var(--mist);
   font-family: var(--font-zhiva-display), Georgia, "Times New Roman", serif;
-  font-size: clamp(58px, 6.4vw, 98px);
+  font-size: clamp(54px, 5.35vw, 82px);
   font-weight: 600;
   line-height: 1.06;
   letter-spacing: -0.045em;
@@ -361,6 +361,54 @@
   line-height: 1.75;
 }
 
+.knowledgeGrid {
+  margin: 46px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  list-style: none;
+}
+
+.knowledgeGrid li {
+  min-height: 70px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--mist-dim);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--ink);
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.45;
+}
+
+.knowledgeGrid svg,
+.audienceList svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: var(--rose);
+  stroke-width: 2.4;
+}
+
+.recognitionBridge {
+  margin-top: 82px;
+  text-align: center;
+}
+
+.recognitionBridge h3 {
+  margin-top: 12px;
+  color: var(--mist);
+  font-family: var(--font-zhiva-display), Georgia, "Times New Roman", serif;
+  font-size: clamp(36px, 4vw, 56px);
+  font-weight: 600;
+  line-height: 1.08;
+}
+
 .quoteGrid {
   margin-top: 62px;
   display: grid;
@@ -507,7 +555,7 @@
 
 .dayCard {
   position: relative;
-  min-height: 480px;
+  min-height: 680px;
   padding: 34px;
   display: flex;
   flex-direction: column;
@@ -591,12 +639,53 @@
   letter-spacing: -0.035em;
 }
 
-.dayCard > p {
-  margin-top: auto;
-  padding-top: 34px;
+.dayQuestion {
+  margin-top: 16px !important;
   color: var(--mist-dim);
-  font-size: 15px;
-  line-height: 1.75;
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.6;
+}
+
+.dayPoints {
+  margin: 26px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  list-style: none;
+}
+
+.dayPoints li {
+  position: relative;
+  padding-left: 18px;
+  color: var(--mist-dim);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.dayPoints li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.64em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--amber);
+}
+
+.dayResult {
+  margin-top: auto !important;
+  padding: 24px 0 0;
+  color: var(--mist-dim);
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+  line-height: 1.62;
+}
+
+.dayResult strong {
+  color: var(--rose);
 }
 
 .outcomes {
@@ -672,6 +761,82 @@
   fill: none;
   stroke: currentColor;
   stroke-width: 2.6;
+}
+
+.audience {
+  padding: 124px 0;
+  background: var(--plum-2);
+}
+
+.audienceGrid {
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  align-items: start;
+  gap: clamp(54px, 7vw, 96px);
+}
+
+.audienceList {
+  margin: 42px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  list-style: none;
+}
+
+.audienceList li {
+  padding: 18px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  color: var(--mist-dim);
+  border-bottom: 1px solid var(--line);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.choicePanel {
+  padding: clamp(32px, 4vw, 52px);
+  border-radius: 30px;
+  background: var(--plum);
+  box-shadow: 0 28px 70px rgba(36, 22, 17, 0.09);
+}
+
+.choicePanel h3 {
+  margin-top: 16px;
+  color: var(--mist);
+  font-family: var(--font-zhiva-display), Georgia, "Times New Roman", serif;
+  font-size: clamp(34px, 3.8vw, 52px);
+  font-weight: 600;
+  line-height: 1.08;
+}
+
+.choicePanel ul {
+  margin: 34px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  list-style: none;
+}
+
+.choicePanel li {
+  padding-left: 20px;
+  color: var(--mist-dim);
+  border-left: 2px solid var(--amber);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.choicePanel > p:last-child {
+  margin-top: 34px;
+  padding-top: 26px;
+  color: var(--rose);
+  border-top: 1px solid var(--line);
+  font-family: var(--font-zhiva-display), Georgia, "Times New Roman", serif;
+  font-size: 22px;
+  font-style: italic;
+  line-height: 1.45;
 }
 
 .mentor {
@@ -779,6 +944,61 @@
   padding: 120px 0;
   overflow: hidden;
   background: var(--ink);
+}
+
+.decision {
+  padding: 132px 24px;
+  background: var(--plum-2);
+}
+
+.decisionInner {
+  width: min(960px, 100%);
+  margin-inline: auto;
+  text-align: center;
+}
+
+.decision h2 {
+  margin-top: 18px;
+  color: var(--mist);
+  font-family: var(--font-zhiva-display), Georgia, "Times New Roman", serif;
+  font-size: clamp(46px, 6vw, 78px);
+  font-weight: 600;
+  line-height: 1.06;
+  letter-spacing: -0.035em;
+}
+
+.decisionQuestions {
+  margin-top: 54px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  text-align: left;
+}
+
+.decisionQuestions p {
+  min-height: 112px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  color: var(--mist-dim);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--plum) 72%, transparent);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.decisionLead {
+  max-width: 720px;
+  margin: 42px auto 0 !important;
+  color: var(--mist);
+  font-size: 19px;
+  font-weight: 650;
+  line-height: 1.65;
+}
+
+.decision .primaryCta {
+  margin-top: 32px;
 }
 
 .testimonials::before {
@@ -936,13 +1156,15 @@
   background: var(--amber);
 }
 
-.limited {
+.offerClosing {
   margin-top: 30px !important;
-  color: var(--amber-ink);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  max-width: 520px;
+  color: var(--rose);
+  font-family: var(--font-zhiva-display), Georgia, "Times New Roman", serif;
+  font-size: 22px;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.45;
 }
 
 .formCard {
@@ -1134,13 +1356,9 @@
     min-height: auto;
   }
 
-  .dayCard > p {
-    margin-top: 34px;
-    padding-top: 0;
-  }
-
   .outcomesGrid,
-  .whyBlock {
+  .whyBlock,
+  .audienceGrid {
     grid-template-columns: 1fr;
     gap: 48px;
   }
@@ -1247,6 +1465,7 @@
 
   .recognition,
   .program,
+  .audience,
   .mentor,
   .testimonials {
     padding: 82px 0;
@@ -1261,6 +1480,15 @@
 
   .sectionIntro {
     font-size: 15px;
+  }
+
+  .knowledgeGrid {
+    margin-top: 34px;
+    grid-template-columns: 1fr;
+  }
+
+  .recognitionBridge {
+    margin-top: 62px;
   }
 
   .quoteGrid {
@@ -1294,6 +1522,13 @@
     padding: 28px;
   }
 
+  .dayPoints li,
+  .dayResult,
+  .choicePanel li,
+  .audienceList li {
+    font-size: 14px;
+  }
+
   .outcomes {
     padding: 84px 16px;
   }
@@ -1308,6 +1543,37 @@
 
   .outcomeList li {
     min-height: auto;
+  }
+
+  .choicePanel {
+    padding: 30px 26px;
+    border-radius: 24px;
+  }
+
+  .decision {
+    padding: 88px 16px;
+  }
+
+  .decision h2 {
+    font-size: 46px;
+  }
+
+  .decisionQuestions {
+    margin-top: 38px;
+    grid-template-columns: 1fr;
+  }
+
+  .decisionQuestions p {
+    min-height: auto;
+  }
+
+  .decisionLead {
+    font-size: 17px;
+  }
+
+  .decision .primaryCta {
+    width: 100%;
+    padding-inline: 18px;
   }
 
   .mentorGrid {

@@ -47,7 +47,7 @@ export function ZhivaVol2EnrollForm() {
       product={offer.product}
       cardOnly
       variant="light-gold"
-      submitLabel={`Запази мястото си за ${offer.display}`}
+      submitLabel={`Искам да се включа · ${offer.display}`}
     />
   );
 }
