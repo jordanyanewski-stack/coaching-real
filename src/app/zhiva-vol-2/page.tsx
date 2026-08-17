@@ -275,9 +275,6 @@ export default function ZhivaVol2Page() {
             />
           </a>
           <div className={styles.topMeta}>
-            <strong>
-              <ZhivaVol2PriceText />
-            </strong>
             <span className={styles.topSchedule}>
               <span>21–23 август · онлайн на живо</span>
               <small>19:00 часа</small>
