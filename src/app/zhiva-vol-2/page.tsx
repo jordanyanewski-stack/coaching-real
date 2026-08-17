@@ -27,14 +27,14 @@ const zhivaSans = Montserrat({
 export const metadata: Metadata = {
   title: "ЖИВА 2: Съживи се! · 21–23 август | Таня Касабова",
   description:
-    "Три онлайн срещи на живо с Таня Касабова. 21–23 август 2026 от 19:00 часа. Ранна цена 37 € до 17 август включително; след това 97 €.",
+    "Три онлайн срещи на живо с Таня Касабова. 21–23 август 2026 от 19:00 часа. Ранна цена 37 € до 21 август включително; след това 97 €.",
   alternates: {
     canonical: "/zhiva-vol-2",
   },
   openGraph: {
     title: "ЖИВА 2: Съживи се!",
     description:
-      "Три онлайн срещи на живо с Таня Касабова · 21–23 август 2026 от 19:00 часа · 37 € до 17 август, след това 97 €.",
+      "Три онлайн срещи на живо с Таня Касабова · 21–23 август 2026 от 19:00 часа · 37 € до 21 август, след това 97 €.",
     images: ["/zhiva/hero.jpg"],
   },
 };
@@ -201,7 +201,7 @@ export default function ZhivaVol2Page() {
         "@type": "Offer",
         price: "37",
         priceCurrency: "EUR",
-        priceValidUntil: "2026-08-17T23:59:59+03:00",
+        priceValidUntil: "2026-08-21T23:59:59+03:00",
         url: "https://coachingreallive.com/zhiva-vol-2#enroll",
         availability: "https://schema.org/LimitedAvailability",
       },
@@ -209,7 +209,7 @@ export default function ZhivaVol2Page() {
         "@type": "Offer",
         price: "97",
         priceCurrency: "EUR",
-        validFrom: "2026-08-18T00:00:00+03:00",
+        validFrom: "2026-08-22T00:00:00+03:00",
         url: "https://coachingreallive.com/zhiva-vol-2#enroll",
         availability: "https://schema.org/LimitedAvailability",
       },

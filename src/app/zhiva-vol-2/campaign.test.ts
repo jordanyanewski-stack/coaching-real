@@ -3,7 +3,7 @@ import { PRODUCTS } from "@/lib/products";
 import { isEarlyPriceAt, REGULAR_PRICE_START } from "./campaign";
 
 describe("ЖИВА 2: Съживи се! campaign configuration", () => {
-  it("keeps the €37 early price through 17 August in Sofia", () => {
+  it("keeps the €37 early price through the 21 August start date in Sofia", () => {
     const earlyProduct = PRODUCTS["zhiva-vol-2"];
 
     expect(isEarlyPriceAt(REGULAR_PRICE_START - 1)).toBe(true);
@@ -12,12 +12,12 @@ describe("ЖИВА 2: Съживи се! campaign configuration", () => {
     expect(earlyProduct.supportsBankTransfer).toBe(false);
   });
 
-  it("switches to the €97 regular price at midnight on 18 August in Sofia", () => {
+  it("switches to the €97 regular price at midnight on 22 August in Sofia", () => {
     const regularProduct = PRODUCTS["zhiva-vol-2-regular"];
 
     expect(isEarlyPriceAt(REGULAR_PRICE_START)).toBe(false);
     expect(new Date(REGULAR_PRICE_START).toISOString()).toBe(
-      "2026-08-17T21:00:00.000Z",
+      "2026-08-21T21:00:00.000Z",
     );
     expect(regularProduct.price).toBe("97");
     expect(regularProduct.supportsBankTransfer).toBe(false);

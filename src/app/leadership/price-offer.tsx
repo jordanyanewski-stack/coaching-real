@@ -53,7 +53,7 @@ export function MagiCtaLabel() {
 export function MagiOfferSentence() {
   const { offer } = useMagiOffer();
   return offer.product === EARLY_PRICE.product ? (
-    <>Промоционална цена {offer.display} до 17 август включително · след това €97.</>
+    <>Промоционална цена {offer.display} до 24 август включително · след това €97.</>
   ) : (
     <>Редовна цена {offer.display}.</>
   );
@@ -186,13 +186,13 @@ export function MagiUrgencyBlock() {
           Промоционална цена
         </span>
         <span style={{ color: "rgba(255,255,255,0.76)", fontSize: "12px", fontWeight: 700 }}>
-          €36 до 17 август · след това €97
+          €36 до 24 август · след това €97
         </span>
       </div>
 
       {remaining === null ? (
         <div style={{ color: "rgba(255,255,255,0.62)", fontSize: "12px", textAlign: "center", padding: "7px 0" }}>
-          Офертата е валидна до 17 август включително
+          Офертата е валидна до 24 август включително
         </div>
       ) : (
         <Countdown remaining={remaining} />

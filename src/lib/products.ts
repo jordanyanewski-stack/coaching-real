@@ -163,7 +163,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     mlPendingGroupIdEnv: 'MAILERLITE_PENDING_GROUP_ID',
   },
   // August 2026 live campaign with Маги Пенчева. Promotional price is €36
-  // through 17 August; the €97 regular product starts at midnight on 18 August.
+  // through 24 August; the €97 regular product starts at midnight on 25 August.
   // Both price tiers share the same delivery group and stay isolated from the
   // evergreen Career Compass course and its Skool delivery group.
   'magi-leadership-live': {
@@ -213,7 +213,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
   // Card-only event delivered inside a dedicated closed Facebook group.
   // Buyers enter only the dedicated paid MailerLite group; there is no pending
   // capture group and no Clerk/Bunny entitlement. Early price is €37 through
-  // 17 August; the regular €97 price starts at midnight on 18 August.
+  // 21 August; the regular €97 price starts at midnight on 22 August.
   'zhiva-vol-2': {
     slug: 'zhiva-vol-2',
     name: 'ЖИВА 2: Съживи се!',

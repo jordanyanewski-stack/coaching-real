@@ -1,4 +1,4 @@
-export const REGULAR_PRICE_START = Date.parse("2026-08-18T00:00:00+03:00");
+export const REGULAR_PRICE_START = Date.parse("2026-08-22T00:00:00+03:00");
 
 export const EARLY_PRICE = {
   amount: "37",
