@@ -18,7 +18,7 @@ describe("Magi August 2026 leadership campaign configuration", () => {
     expect(regular.supportsBankTransfer).toBe(true);
   });
 
-  it("routes confirmed buyers to a dedicated MailerLite group", () => {
+  it("routes confirmed buyers and bank-transfer intents to separate dedicated MailerLite groups", () => {
     const early = PRODUCTS["magi-leadership-live"];
     const regular = PRODUCTS["magi-leadership-live-regular"];
 
@@ -26,6 +26,16 @@ describe("Magi August 2026 leadership campaign configuration", () => {
       "MAILERLITE_MAGI_LEADERSHIP_PAID_GROUP_ID",
     );
     expect(regular.mlPaidGroupIdEnv).toBe(early.mlPaidGroupIdEnv);
+    expect(early.mlBankTransferGroupIdEnv).toBe(
+      "MAILERLITE_MAGI_LEADERSHIP_BANK_GROUP_ID",
+    );
+    expect(regular.mlBankTransferGroupIdEnv).toBe(
+      early.mlBankTransferGroupIdEnv,
+    );
+    expect(early.mlBankTransferGroupId).toBe("196250105173509588");
+    expect(regular.mlBankTransferGroupId).toBe(
+      early.mlBankTransferGroupId,
+    );
     expect(early.mlPendingGroupIdEnv).toBeUndefined();
     expect(regular.mlPendingGroupIdEnv).toBeUndefined();
   });

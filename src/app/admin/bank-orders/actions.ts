@@ -3,7 +3,7 @@
 import { revalidatePath } from 'next/cache';
 import { getDb } from '@/lib/db';
 import { moveToPaid } from '@/lib/mailerlite';
-import { getPaidGroupId, getPendingGroupId, getProduct } from '@/lib/products';
+import { getBankTransferGroupId, getPaidGroupId, getProduct } from '@/lib/products';
 
 /**
  * Admin: confirm a bank-transfer order as paid.
@@ -45,9 +45,9 @@ export async function markBankOrderPaid(formData: FormData) {
   if (product) {
     try {
       const paidGroupId = getPaidGroupId(product.slug);
-      const pendingGroupId = getPendingGroupId(product.slug);
+      const bankTransferGroupId = getBankTransferGroupId(product.slug);
       if (paidGroupId) {
-        await moveToPaid(order.email, paidGroupId, pendingGroupId || undefined);
+        await moveToPaid(order.email, paidGroupId, bankTransferGroupId || undefined, order.name);
       } else {
         console.error('[admin mark-paid] missing paid group id', { orderId, product: product.slug });
       }

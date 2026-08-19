@@ -36,6 +36,18 @@ export interface Product {
    */
   mlPendingGroupIdEnv?: string;
   /**
+   * Optional dedicated MailerLite group for customers who choose bank transfer.
+   * When omitted, bank-transfer intents keep using the product's regular pending
+   * group. This must stay separate from `mlPendingGroupIdEnv` so card checkout
+   * attempts never enter a bank-transfer follow-up group.
+   */
+  mlBankTransferGroupIdEnv?: string;
+  /**
+   * Optional non-secret fallback group ID. Useful for a dedicated campaign group
+   * that is shared across deployments; an environment value still takes priority.
+   */
+  mlBankTransferGroupId?: string;
+  /**
    * True ONLY for products that grant dashboard/login access (the audiobook,
    * streamed via /api/audiobook/stream after a gate check). When set, the myPOS
    * notify webhook sends a Clerk account invite to new buyers. Everything else —
@@ -179,6 +191,8 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
         'След потвърждение ще получиш имейл с Facebook групата и детайлите за шестте онлайн срещи.',
     },
     mlPaidGroupIdEnv: 'MAILERLITE_MAGI_LEADERSHIP_PAID_GROUP_ID',
+    mlBankTransferGroupIdEnv: 'MAILERLITE_MAGI_LEADERSHIP_BANK_GROUP_ID',
+    mlBankTransferGroupId: '196250105173509588',
   },
   'magi-leadership-live-regular': {
     slug: 'magi-leadership-live-regular',
@@ -193,6 +207,8 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
         'След потвърждение ще получиш имейл с Facebook групата и детайлите за шестте онлайн срещи.',
     },
     mlPaidGroupIdEnv: 'MAILERLITE_MAGI_LEADERSHIP_PAID_GROUP_ID',
+    mlBankTransferGroupIdEnv: 'MAILERLITE_MAGI_LEADERSHIP_BANK_GROUP_ID',
+    mlBankTransferGroupId: '196250105173509588',
   },
   zhiva: {
     slug: 'zhiva',
@@ -367,6 +383,13 @@ export function getPaidGroupId(slug: ProductSlug): string {
 export function getPendingGroupId(slug: ProductSlug): string {
   const envVar = PRODUCTS[slug].mlPendingGroupIdEnv;
   return envVar ? cleanEnv(process.env[envVar]) : '';
+}
+
+export function getBankTransferGroupId(slug: ProductSlug): string {
+  const product = PRODUCTS[slug];
+  const envVar = product.mlBankTransferGroupIdEnv ?? product.mlPendingGroupIdEnv;
+  const configuredId = envVar ? cleanEnv(process.env[envVar]) : '';
+  return configuredId || product.mlBankTransferGroupId || '';
 }
 
 /**
