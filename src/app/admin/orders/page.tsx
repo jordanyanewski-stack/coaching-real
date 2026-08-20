@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { AdminShell } from '../_admin-shell';
 import { getDb } from '@/lib/db';
 import { shortOrderCode } from '@/lib/payment-attempts';
@@ -33,6 +34,22 @@ type Stats = {
   today_total: string;
 };
 
+type OrderFilter = 'all' | 'complete' | 'pending' | 'bank';
+
+type StatusCounts = {
+  all_count: number;
+  complete_count: number;
+  pending_count: number;
+  bank_count: number;
+};
+
+const ORDER_FILTERS: Array<{ value: OrderFilter; label: string }> = [
+  { value: 'all', label: 'Всички' },
+  { value: 'complete', label: 'Завършени' },
+  { value: 'pending', label: 'Чакащи' },
+  { value: 'bank', label: 'Банков превод' },
+];
+
 const STATUS_BADGES: Record<string, { label: string; color: string; bg: string }> = {
   paid: { label: 'Платена', color: '#1a7f3c', bg: 'rgba(26,127,60,0.09)' },
   pending: { label: 'Незавършена карта', color: '#9a6b00', bg: 'rgba(200,150,20,0.12)' },
@@ -61,9 +78,21 @@ function formatDate(iso: string): string {
   });
 }
 
-async function loadData(): Promise<{ rows: Row[]; stats: Stats }> {
+function statusForFilter(filter: OrderFilter): string | null {
+  if (filter === 'complete') return 'paid';
+  if (filter === 'pending') return 'pending';
+  if (filter === 'bank') return 'awaiting_bank_transfer';
+  return null;
+}
+
+async function loadData(filter: OrderFilter): Promise<{
+  rows: Row[];
+  stats: Stats;
+  statusCounts: StatusCounts;
+}> {
   const sql = getDb();
-  const [rows, statsRows] = await Promise.all([
+  const selectedStatus = statusForFilter(filter);
+  const [rows, statsRows, statusCountRows] = await Promise.all([
     sql`
       SELECT
         name,
@@ -76,6 +105,7 @@ async function loadData(): Promise<{ rows: Row[]; stats: Stats }> {
         mypos_transaction_id,
         created_at
       FROM orders
+      WHERE (${selectedStatus}::text IS NULL OR status = ${selectedStatus})
       ORDER BY created_at DESC
       LIMIT ${ROW_LIMIT}
     `,
@@ -95,8 +125,20 @@ async function loadData(): Promise<{ rows: Row[]; stats: Stats }> {
         COALESCE(SUM(amount) FILTER (WHERE status = 'paid' AND created_at >= day_start), 0)::text AS today_total
       FROM orders, bounds
     `,
+    sql`
+      SELECT
+        COUNT(*)::int AS all_count,
+        COUNT(*) FILTER (WHERE status = 'paid')::int AS complete_count,
+        COUNT(*) FILTER (WHERE status = 'pending')::int AS pending_count,
+        COUNT(*) FILTER (WHERE status = 'awaiting_bank_transfer')::int AS bank_count
+      FROM orders
+    `,
   ]);
-  return { rows: rows as Row[], stats: statsRows[0] as Stats };
+  return {
+    rows: rows as Row[],
+    stats: statsRows[0] as Stats,
+    statusCounts: statusCountRows[0] as StatusCounts,
+  };
 }
 
 function StatCard({ label, count, total }: { label: string; count: number; total: string }) {
@@ -133,8 +175,23 @@ function StatCard({ label, count, total }: { label: string; count: number; total
   );
 }
 
-export default async function AdminOrdersPage() {
-  const { rows, stats } = await loadData();
+export default async function AdminOrdersPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ status?: string | string[] }>;
+}) {
+  const rawStatus = (await searchParams).status;
+  const requestedFilter = Array.isArray(rawStatus) ? rawStatus[0] : rawStatus;
+  const activeFilter = ORDER_FILTERS.some(({ value }) => value === requestedFilter)
+    ? (requestedFilter as OrderFilter)
+    : 'all';
+  const { rows, stats, statusCounts } = await loadData(activeFilter);
+  const countForFilter: Record<OrderFilter, number> = {
+    all: statusCounts.all_count,
+    complete: statusCounts.complete_count,
+    pending: statusCounts.pending_count,
+    bank: statusCounts.bank_count,
+  };
 
   return (
     <AdminShell title="Поръчки">
@@ -143,6 +200,51 @@ export default async function AdminOrdersPage() {
         <StatCard label="Този месец" count={stats.month_count} total={stats.month_total} />
         <StatCard label="Общо" count={stats.paid_count} total={stats.paid_total} />
       </div>
+
+      <nav
+        aria-label="Филтриране на поръчките по статус"
+        style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '16px' }}
+      >
+        {ORDER_FILTERS.map(({ value, label }) => {
+          const isActive = activeFilter === value;
+          return (
+            <Link
+              key={value}
+              href={value === 'all' ? '/admin/orders' : `/admin/orders?status=${value}`}
+              aria-current={isActive ? 'page' : undefined}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                minHeight: '40px',
+                padding: '8px 14px',
+                border: `1px solid ${isActive ? '#70150E' : 'rgba(112,21,14,0.14)'}`,
+                borderRadius: '999px',
+                backgroundColor: isActive ? '#70150E' : '#ffffff',
+                color: isActive ? '#ffffff' : '#4a302d',
+                fontSize: '13px',
+                fontWeight: 700,
+                textDecoration: 'none',
+                boxShadow: isActive ? '0 4px 12px rgba(112,21,14,0.16)' : 'none',
+              }}
+            >
+              <span>{label}</span>
+              <span
+                style={{
+                  minWidth: '22px',
+                  padding: '2px 6px',
+                  borderRadius: '999px',
+                  backgroundColor: isActive ? 'rgba(255,255,255,0.18)' : '#fbf6f5',
+                  fontSize: '11px',
+                  textAlign: 'center',
+                }}
+              >
+                {countForFilter[value]}
+              </span>
+            </Link>
+          );
+        })}
+      </nav>
 
       <div
         style={{
@@ -178,6 +280,20 @@ export default async function AdminOrdersPage() {
             <div>Статус</div>
             <div>Транзакция / основание</div>
           </div>
+
+          {rows.length === 0 && (
+            <div
+              role="row"
+              style={{
+                padding: '34px 20px',
+                color: 'rgba(0,0,0,0.55)',
+                fontSize: '13px',
+                textAlign: 'center',
+              }}
+            >
+              Няма поръчки с този статус.
+            </div>
+          )}
 
           {rows.map((row) => {
             const badge = STATUS_BADGES[row.status] ?? {
