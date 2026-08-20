@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from 'react';
 import { T } from '@/app/_shared';
 import { trackLead } from '@/app/pixel';
+import { CampaignContact } from '@/components/campaign-contact';
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
 
@@ -113,6 +114,7 @@ export function OptinForm() {
           ? 'Изпращане...'
           : 'Да! Искам мини-гайда!'}
       </button>
+      <CampaignContact color="var(--mv-text-secondary)" />
     </form>
   );
 }

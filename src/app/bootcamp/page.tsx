@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { T, onDark, PHOTO_URL, GRADIENT_TEXT, SiteNav, SiteFooter } from "@/app/_shared";
+import { CampaignContact } from "@/components/campaign-contact";
 
 export const metadata = {
   title: "Business Bootcamp: Ikigai Marketing – Coaching Real | Станислава Павлова",
@@ -1252,6 +1253,7 @@ function WaitlistSection() {
             <p style={{ fontSize: '11px', color: onDark.muted, textAlign: 'center' }}>
               Без спам. Само важни новини за следващото издание.
             </p>
+            <CampaignContact color={onDark.muted} />
           </div>
         </form>
       </div>

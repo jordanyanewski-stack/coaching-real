@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, type FormEvent } from 'react';
+import { CampaignContact } from '@/components/campaign-contact';
 import styles from './stuck.module.css';
 
 type Status = 'idle' | 'submitting' | 'error';
@@ -56,6 +57,7 @@ export function SignupForm({ compact = false }: { compact?: boolean }) {
         <span aria-hidden="true">→</span>
       </button>
       <p className={styles.formNote}>Starts 26 August · 19:00 CET · Private Facebook group</p>
+      <CampaignContact language="en" color="#596261" />
     </form>
   );
 }

@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from 'react';
 import { T } from '@/app/_shared';
+import { CampaignContact } from '@/components/campaign-contact';
 
 interface Tokens {
   primary: string;
@@ -140,6 +141,7 @@ export function WaitlistForm({ onDark }: Props) {
       >
         {status === 'submitting' ? 'Записване...' : 'Запиши се →'}
       </button>
+      <CampaignContact color={onDark.secondary} />
     </form>
   );
 }

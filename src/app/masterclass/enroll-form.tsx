@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react';
 import { trackInitiateCheckout } from '@/app/pixel';
+import { CampaignContact } from '@/components/campaign-contact';
 import { PRODUCTS, type ProductSlug } from '@/lib/products';
 
 type PaymentMethod = 'card' | 'bank';
@@ -411,6 +412,7 @@ export function EnrollForm({ product = 'masterclass', cardOnly = false, variant 
             ? 'След запис ще видиш IBAN, сума и основание за превода'
             : 'Сигурна транзакция · Получаваш потвърждение с всички детайли'}
       </p>
+      <CampaignContact color={t.legendText} style={{ marginTop: '8px' }} />
     </form>
   );
 }
