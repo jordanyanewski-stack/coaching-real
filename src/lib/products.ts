@@ -2,7 +2,8 @@
  * Source of truth for every purchasable product on coachingreallive.com.
  *
  * Adding a product is a 4-step change:
- *   1. Add an entry below + set its MailerLite paid + pending group env vars on Vercel.
+ *   1. Add an entry below + set its MailerLite paid, checkout pending, and
+ *      bank-transfer group env vars on Vercel as applicable.
  *   2. Run a DB migration if the new product needs extra columns (rare).
  *   3. Render `<EnrollForm product="<slug>" />` on the product page.
  *   4. Add a `copyFor()` case in `src/app/thank-you/page.tsx` — otherwise the
@@ -74,6 +75,8 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     },
     mlPaidGroupIdEnv: 'MAILERLITE_PAID_GROUP_ID',
     mlPendingGroupIdEnv: 'MAILERLITE_PENDING_GROUP_ID',
+    mlBankTransferGroupIdEnv: 'MAILERLITE_MASTERCLASS_BANK_GROUP_ID',
+    mlBankTransferGroupId: '196303703489119258',
   },
   audiobook: {
     slug: 'audiobook',
@@ -90,6 +93,8 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     },
     mlPaidGroupIdEnv: 'MAILERLITE_AUDIOBOOK_PAID_GROUP_ID',
     mlPendingGroupIdEnv: 'MAILERLITE_AUDIOBOOK_PENDING_GROUP_ID',
+    mlBankTransferGroupIdEnv: 'MAILERLITE_AUDIOBOOK_BANK_GROUP_ID',
+    mlBankTransferGroupId: '196303703628580012',
     bunnyFile: 'stasi-audiobook.mp3',
   },
   '12-izmerenia': {
@@ -106,6 +111,8 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     },
     mlPaidGroupIdEnv: 'MAILERLITE_12IZMERENIA_PAID_GROUP_ID',
     mlPendingGroupIdEnv: 'MAILERLITE_12IZMERENIA_PENDING_GROUP_ID',
+    mlBankTransferGroupIdEnv: 'MAILERLITE_12IZMERENIA_BANK_GROUP_ID',
+    mlBankTransferGroupId: '196303703753360706',
   },
   '12-izmerenia-promo': {
     slug: '12-izmerenia-promo',
@@ -121,6 +128,8 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     },
     mlPaidGroupIdEnv: 'MAILERLITE_12IZMERENIA_PAID_GROUP_ID',
     mlPendingGroupIdEnv: 'MAILERLITE_12IZMERENIA_PENDING_GROUP_ID',
+    mlBankTransferGroupIdEnv: 'MAILERLITE_12IZMERENIA_BANK_GROUP_ID',
+    mlBankTransferGroupId: '196303703753360706',
   },
   'audiobook-hot': {
     slug: 'audiobook-hot',
@@ -171,8 +180,9 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
         'Имейлът съдържа достъп до пълния 4-седмичен курс и материалите.',
     },
     mlPaidGroupIdEnv: 'MAILERLITE_CAREER_PAID_GROUP_ID',
-    // No dedicated pending group yet — falls back to the legacy general pending group.
     mlPendingGroupIdEnv: 'MAILERLITE_PENDING_GROUP_ID',
+    mlBankTransferGroupIdEnv: 'MAILERLITE_CAREER_BANK_GROUP_ID',
+    mlBankTransferGroupId: '196303703892821481',
   },
   // August 2026 live campaign with Маги Пенчева. Promotional price is €36
   // through 24 August; the €97 regular product starts at midnight on 25 August.
@@ -224,6 +234,8 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     },
     mlPaidGroupIdEnv: 'MAILERLITE_ZHIVA_PAID_GROUP_ID',
     mlPendingGroupIdEnv: 'MAILERLITE_ZHIVA_PENDING_GROUP_ID',
+    mlBankTransferGroupIdEnv: 'MAILERLITE_ZHIVA_BANK_GROUP_ID',
+    mlBankTransferGroupId: '196303704034379371',
   },
   // ── „ЖИВА 2: Съживи се!" — 3 онлайн срещи, 21–23 август 2026. ──
   // Card-only event delivered inside a dedicated closed Facebook group.
@@ -306,6 +318,8 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     },
     mlPaidGroupIdEnv: 'MAILERLITE_RODOV_PAID_GROUP_ID',
     mlPendingGroupIdEnv: 'MAILERLITE_RODOV_PENDING_GROUP_ID',
+    mlBankTransferGroupIdEnv: 'MAILERLITE_RODOV_BANK_GROUP_ID',
+    mlBankTransferGroupId: '196303704159160022',
   },
   // ── „Бизнес с душа, без хаос" — July 2026 live masterclass (22 юли–2 август). ──
   // The July re-run of the same 12-masterclass program as `/masterclass`, so both
@@ -328,9 +342,9 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
         'Имейлът съдържа Zoom линка, програмата и инструкциите за първия мастърклас (22 юли, 17:00 ч.).',
     },
     mlPaidGroupIdEnv: 'MAILERLITE_PAID_GROUP_ID',
-    // No dedicated pending group yet — falls back to the legacy general pending group
-    // so ad-captured leads are never lost if the dedicated var isn't set in time.
     mlPendingGroupIdEnv: 'MAILERLITE_PENDING_GROUP_ID',
+    mlBankTransferGroupIdEnv: 'MAILERLITE_BIZNES_DUSHA_BANK_GROUP_ID',
+    mlBankTransferGroupId: '196303704280794918',
   },
   // Free Day-1 tier — entered ONLY via promo code (NataliaK12) through
   // /api/checkout/free-code; never sold, never reaches myPOS. Orders are
@@ -365,6 +379,8 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
     },
     mlPaidGroupIdEnv: 'MAILERLITE_PAID_GROUP_ID',
     mlPendingGroupIdEnv: 'MAILERLITE_PENDING_GROUP_ID',
+    mlBankTransferGroupIdEnv: 'MAILERLITE_BIZNES_DUSHA_BANK_GROUP_ID',
+    mlBankTransferGroupId: '196303704280794918',
   },
 };
 
@@ -387,7 +403,7 @@ export function getPendingGroupId(slug: ProductSlug): string {
 
 export function getBankTransferGroupId(slug: ProductSlug): string {
   const product = PRODUCTS[slug];
-  const envVar = product.mlBankTransferGroupIdEnv ?? product.mlPendingGroupIdEnv;
+  const envVar = product.mlBankTransferGroupIdEnv;
   const configuredId = envVar ? cleanEnv(process.env[envVar]) : '';
   return configuredId || product.mlBankTransferGroupId || '';
 }

@@ -56,9 +56,8 @@ export async function POST(request: NextRequest) {
     VALUES (${orderId}, ${cleanEmail}, ${name.trim()}, ${parseFloat(product.price)}, ${product.currency}, 'awaiting_bank_transfer', ${product.slug})
   `;
 
-  // Add the bank-intent lead to a dedicated bank-transfer group when configured,
-  // otherwise fall back to the product's regular pending group. This keeps card
-  // checkout attempts out of bank-transfer follow-up segments.
+  // Add the bank-intent lead only to the campaign's dedicated bank-transfer
+  // group. Card checkout attempts remain in the regular pending group.
   // Runs after the response; failures are logged, not surfaced.
   // NOTE: bank orders are not auto-confirmed — moving them to the PAID group +
   // (for the audiobook) granting access still requires a manual mark-paid step
@@ -68,10 +67,10 @@ export async function POST(request: NextRequest) {
     try {
       if (bankTransferGroupId) {
         await addToPending(cleanEmail, name.trim(), bankTransferGroupId);
-      } else if (product.mlBankTransferGroupIdEnv || product.mlPendingGroupIdEnv) {
+      } else {
         console.error('[MailerLite] Missing bank-transfer group id env var', {
           product: product.slug,
-          envVar: product.mlBankTransferGroupIdEnv ?? product.mlPendingGroupIdEnv,
+          envVar: product.mlBankTransferGroupIdEnv,
         });
       }
     } catch (err) {
