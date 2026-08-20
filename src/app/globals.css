@@ -581,6 +581,15 @@ html {
 .fd-problem-mobile {
   display: none;
 }
+
+/* Leadership hero offer: one disciplined width and one compact component rhythm. */
+.fd-offer-stack {
+  width: 100%;
+  max-width: 440px;
+}
+.fd-format-row > * {
+  width: 100%;
+}
 @media (max-width: 767px) {
   .fd-top-cta {
     position: absolute !important;

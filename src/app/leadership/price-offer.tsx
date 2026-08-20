@@ -67,14 +67,17 @@ export function MagiPricePill() {
       style={{
         display: "inline-flex",
         alignItems: "center",
+        justifyContent: "center",
         gap: "8px",
-        padding: "7px 12px",
-        borderRadius: "4px",
+        minHeight: "36px",
+        padding: "7px 8px",
+        borderRadius: "8px",
         background: "rgba(255,255,255,0.05)",
         border: "1px solid rgba(255,255,255,0.10)",
-        fontSize: "12px",
+        fontSize: "11px",
         fontWeight: 500,
         color: "rgba(255,255,255,0.78)",
+        whiteSpace: "nowrap",
       }}
     >
       <span
@@ -167,8 +170,8 @@ export function MagiUrgencyBlock() {
       role="timer"
       aria-live="off"
       style={{
-        padding: "14px",
-        borderRadius: "7px",
+        padding: "12px",
+        borderRadius: "8px",
         border: "1px solid rgba(147,197,253,0.22)",
         backgroundColor: "rgba(37,99,235,0.08)",
       }}

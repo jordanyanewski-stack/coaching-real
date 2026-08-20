@@ -626,6 +626,7 @@ function HeroSection() {
 
         {/* Right — sign-up form + format pills */}
         <aside className="fd-hero-form" style={{ position: "relative" }}>
+          <div className="fd-offer-stack">
           <div
             style={{
               fontSize: "10px",
@@ -648,33 +649,37 @@ function HeroSection() {
 
           {/* Format pills — below the form */}
           <div
+            className="fd-format-row"
             style={{
-              marginTop: "28px",
-              paddingTop: "24px",
+              marginTop: "20px",
+              paddingTop: "20px",
               borderTop: "1px solid rgba(255,255,255,0.16)",
-              display: "flex",
-              flexWrap: "wrap",
+              display: "grid",
+              gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
               gap: "8px",
             }}
           >
             {[
-              "6 срещи на живо",
-              "60 минути вечер",
-              "Работни материали",
+              "6 срещи",
+              "60 мин",
+              "Материали",
             ].map((p) => (
               <span
                 key={p}
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
+                  justifyContent: "center",
                   gap: "8px",
-                  padding: "7px 12px",
-                  borderRadius: "4px",
+                  minHeight: "36px",
+                  padding: "7px 8px",
+                  borderRadius: "8px",
                   background: "rgba(255,255,255,0.05)",
                   border: "1px solid rgba(255,255,255,0.10)",
-                  fontSize: "12px",
+                  fontSize: "11px",
                   fontWeight: 500,
                   color: "rgba(255,255,255,0.78)",
+                  whiteSpace: "nowrap",
                 }}
               >
                 <span
@@ -689,6 +694,7 @@ function HeroSection() {
               </span>
             ))}
             <MagiPricePill />
+          </div>
           </div>
         </aside>
       </div>
