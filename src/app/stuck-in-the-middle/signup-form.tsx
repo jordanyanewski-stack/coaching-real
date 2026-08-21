@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, type FormEvent } from 'react';
+import { trackLead } from '@/app/pixel';
 import { CampaignContact } from '@/components/campaign-contact';
 import styles from './stuck.module.css';
 
@@ -34,6 +35,7 @@ export function SignupForm({ compact = false }: { compact?: boolean }) {
         setMessage(body?.error || 'Something went wrong. Please try again.');
         return;
       }
+      trackLead('stuck-in-the-middle');
       window.location.href = '/stuck-in-the-middle/thank-you';
     } catch {
       setStatus('error');
