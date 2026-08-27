@@ -9,7 +9,7 @@ import { StickyCTABar } from "./sticky-cta-bar";
 export const metadata = {
   title: "Дипломата ти виси на стената. А клиентите не идват. · 12 дни Мастъркласове® | Coaching Real",
   description:
-    "12 дни мастъркласове за терапевти, коучове и лечители — спри да чакаш препоръки, започни да привличаш клиенти онлайн. €67 за всички 12 дни. 18-29 май 2026.",
+    "12 дни мастъркласове за терапевти, коучове и лечители — спри да чакаш препоръки, започни да привличаш клиенти онлайн. €97 за всички 12 дни. 18-29 май 2026.",
 };
 
 /* ─── DATA ──────────────────────────────────────────────────────────── */
@@ -145,7 +145,7 @@ function CampaignHeader() {
         className="mv-btn mv-btn-primary"
         style={{ padding: "10px 22px", fontSize: "14px", flexShrink: 0 }}
       >
-        Искам клиенти онлайн - €67
+        Искам клиенти онлайн - €97
       </a>
     </header>
   );
@@ -411,7 +411,7 @@ function HeroSection() {
                   letterSpacing: "-0.04em",
                 }}
               >
-                €67
+                €97
               </span>
               <span
                 style={{
@@ -828,7 +828,7 @@ function OutcomesSection() {
 
         <div className="mt-10 text-center">
           <a href="#enroll" className="mv-btn mv-btn-primary" style={{ fontSize: "15px", padding: "16px 28px" }}>
-            Искам тези резултати — €67 →
+            Искам тези резултати — €97 →
           </a>
         </div>
       </div>
@@ -1105,7 +1105,7 @@ function TestimonialsSection() {
             className="mv-btn mv-btn-primary"
             style={{ fontSize: "15px", display: "inline-flex", alignItems: "center", gap: "10px" }}
           >
-            Искам същите резултати - €67
+            Искам същите резултати - €97
           </a>
         </div>
       </div>
@@ -1208,7 +1208,7 @@ function CurriculumSection() {
 
         <div className="text-center mt-14">
           <a href="#enroll" className="mv-btn mv-btn-primary" style={{ fontSize: "15px", padding: "16px 28px" }}>
-            Искам да разбера защо нямам клиенти — €67 →
+            Искам да разбера защо нямам клиенти — €97 →
           </a>
         </div>
       </div>
@@ -1355,7 +1355,7 @@ function ValueStackSection() {
                   lineHeight: 1,
                 }}
               >
-                €67
+                €97
               </span>
               <span
                 style={{
@@ -1680,7 +1680,7 @@ function FinalCTASection() {
                 letterSpacing: "-0.03em",
               }}
             >
-              €67
+              €97
             </span>
             <span
               style={{

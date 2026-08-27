@@ -64,7 +64,7 @@ export const PRODUCTS: Record<ProductSlug, Product> = {
   masterclass: {
     slug: 'masterclass',
     name: '12 дни Мастъркласове',
-    price: '67.00',
+    price: '97.00',
     currency: 'EUR',
     supportsBankTransfer: true,
     bankTransfer: {
