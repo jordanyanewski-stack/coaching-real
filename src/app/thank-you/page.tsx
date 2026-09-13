@@ -1,3 +1,4 @@
+import { EXPERT_CAMPAIGN, EXPERT_DAYS, EXPERT_CALENDAR } from '@/app/ot-ekspert-kam-online-biznes/campaign';
 import { LOGO_URL, SiteFooter } from '@/app/_shared';
 import Image from 'next/image';
 import { getDb } from '@/lib/db';
@@ -80,7 +81,7 @@ interface ProductCopy {
   steps?: TyStep[];
   personalNote?: { heading: string; body: string };
   contactLine?: string;
-  theme?: 'zhiva-vol-2' | 'magi-leadership';
+  theme?: 'zhiva-vol-2' | 'magi-leadership' | 'expert-online-business';
 }
 
 const MASTERCLASS_VIBER =
@@ -99,6 +100,22 @@ function copyFor(
   paidDisplay?: string,
 ): ProductCopy {
   switch (productSlug as ProductSlug) {
+    case 'expert-online-business':
+      return {
+        theme: 'expert-online-business',
+        eyebrow: 'От експерт към онлайн бизнес',
+        title: 'Регистрира се успешно',
+        body: 'Регистрацията ти е потвърдена. Предстоят 5 интензивни дни, в които ще работим върху това как да превърнеш знанията, опита и експертността си в по-структуриран и предвидим онлайн бизнес.',
+        extraCtas: [{ label: 'Влез във Facebook групата', href: EXPERT_CAMPAIGN.facebook, facebook: true, external: true }],
+        secondaryCtaHref: EXPERT_CAMPAIGN.path,
+        steps: [
+          { badge: 'Кога започваме?', title: '23–27 септември 2026', body: 'Всеки ден от 17:00 до 19:00 ч. българско време. Онлайн на живо.', cta: { label: 'Запази петте срещи в календара', href: EXPERT_CALENDAR, external: true } },
+          { badge: 'Какво ще преминем заедно', title: 'Петте стъпки на твоя онлайн бизнес', checklist: EXPERT_DAYS.map((day, i) => `Ден ${i + 1} — ${day.title}`) },
+          { badge: 'Преди старта', title: 'Провери имейла си', body: 'Ще получиш потвърждение с детайлите за участието. Ако не го виждаш, провери папките „Спам“, „Промоции“ и „Актуализации“. Линкът за срещите на живо ще получиш допълнително по имейл.' },
+          { badge: 'Ела с конкретен бизнес', title: 'Подготви се за работа', checklist: ['Текущото си позициониране.', 'Услугата или програмата, която предлагаш.', 'Идеята си за онлайн продукт.', 'Тетрадка или работен файл и въпросите, по които търсиш яснота.'] },
+        ],
+        personalNote: { heading: 'Един въпрос преди старта', body: 'Какво искаш да бъде различно в онлайн бизнеса ти след тези 5 дни? Запиши си отговора. Ще се върнем към него по време на интензива.\n\nИмаш експертността. Сега е време да подредиш бизнеса около нея.\n\nЩе се видим на 23 септември.\nСтанислава Павлова · Coaching Real' },
+      };
     case 'audiobook':
     case 'audiobook-hot':
     case 'audiobook-72h':
@@ -582,8 +599,11 @@ export default async function ThankYouPage({
   const paidDisplay = `${purchaseValue.toLocaleString('bg-BG', {
     maximumFractionDigits: 2,
   })} €`;
-  const copy = copyFor(productSlug, paidDisplay);
-  const warmThankYou = copy.theme === 'zhiva-vol-2';
+  const awaitingExpertPayment = productSlug === 'expert-online-business' && !!order && order.status !== 'paid';
+  const copy: ProductCopy = awaitingExpertPayment
+    ? { theme: 'expert-online-business', title: 'Очакваме потвърждение за плащането.', body: 'Регистрацията ти ще бъде потвърдена след успешно плащане. При потвърждение ще получиш имейл с програмата и достъп до групата.', secondaryCtaHref: EXPERT_CAMPAIGN.path, whatNext: 'Ако плащането е завършено, изчакай потвърждението. При въпроси пиши на info@coachingreallive.com.' }
+    : copyFor(productSlug, paidDisplay);
+  const warmThankYou = copy.theme === 'zhiva-vol-2' || copy.theme === 'expert-online-business';
   const magiThankYou = copy.theme === 'magi-leadership';
   // Only a genuinely PAID order may fire the Purchase pixel or set the buyer
   // cookie. A pending/abandoned order (its id can land in the URL before the

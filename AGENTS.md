@@ -58,3 +58,7 @@ The development command intentionally uses Webpack. Read relevant Next.js docume
 Run checks proportional to the change. For shared integration or production-flow changes, require lint, tests, build, and a targeted browser flow. Verify at 1440px and 390px for meaningful UI work, check console errors, and inspect actual interaction states.
 
 Deployment is via `main` to Vercel. Do not push or deploy unless requested. When deployment is requested, use production, verify the final domain, and record the verified result in LifeOS.
+
+## Campaign enrollment default
+
+Every new paid campaign requires dedicated Pending and Paid MailerLite groups. Capture valid checkout starts in Pending; after verified payment add Paid first, then remove only that campaign’s Pending membership. Do not reuse another campaign’s group. Pending reminders require a separate explicit setup; creating a group alone must not send email.

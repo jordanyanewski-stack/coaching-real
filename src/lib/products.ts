@@ -16,7 +16,7 @@
 
 import { cleanEnv } from '@/lib/validators';
 
-export type ProductSlug = 'masterclass' | 'audiobook' | 'audiobook-hot' | 'audiobook-72h' | '12-izmerenia' | '12-izmerenia-promo' | 'career-course' | 'magi-leadership-live' | 'magi-leadership-live-regular' | 'rodov-model' | 'zhiva' | 'zhiva-vol-2' | 'zhiva-vol-2-regular' | 'biznes-dusha' | 'biznes-dusha-early' | 'biznes-dusha-day1' | 'izlez-ot-zastoy' | 'izlez-ot-zastoy-regular';
+export type ProductSlug = 'expert-online-business' | 'masterclass' | 'audiobook' | 'audiobook-hot' | 'audiobook-72h' | '12-izmerenia' | '12-izmerenia-promo' | 'career-course' | 'magi-leadership-live' | 'magi-leadership-live-regular' | 'rodov-model' | 'zhiva' | 'zhiva-vol-2' | 'zhiva-vol-2-regular' | 'biznes-dusha' | 'biznes-dusha-early' | 'biznes-dusha-day1' | 'izlez-ot-zastoy' | 'izlez-ot-zastoy-regular';
 
 export interface Product {
   slug: ProductSlug;
@@ -61,6 +61,20 @@ export interface Product {
 }
 
 export const PRODUCTS: Record<ProductSlug, Product> = {
+  'expert-online-business': {
+    slug: 'expert-online-business',
+    name: 'От експерт към онлайн бизнес',
+    price: '47.00',
+    currency: 'EUR',
+    supportsBankTransfer: false,
+    bankTransfer: {
+      referencePrefix: 'Онлайн бизнес',
+      productLabel: 'От експерт към онлайн бизнес · 23–27 септември 2026',
+      nextStepCopy: '',
+    },
+    mlPendingGroupIdEnv: 'MAILERLITE_EXPERT_ONLINE_BUSINESS_PENDING_GROUP_ID',
+    mlPaidGroupIdEnv: 'MAILERLITE_EXPERT_ONLINE_BUSINESS_PAID_GROUP_ID',
+  },
   masterclass: {
     slug: 'masterclass',
     name: '12 дни Мастъркласове',
