@@ -153,8 +153,9 @@
 .weekCard { padding: clamp(24px, 2.4vw, 32px) clamp(28px, 4vw, 48px); border-right: 1px solid rgba(255, 255, 255, 0.18); border-bottom: 1px solid rgba(255, 255, 255, 0.18); position: relative; }
 .weekCard::after { content: ''; position: absolute; left: 0; top: 0; width: 0; height: 3px; background: #e5c87e; transition: width 0.62s var(--ease-book); }
 .weekCard:hover::after { width: 100%; }
-.weekTop { display: flex; align-items: center; }
+.weekTop { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .weekTop span { color: #e5c87e; font-family: var(--font-mv), sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+.weekTop time { color: #d5dedd; font-size: 13px; font-weight: 650; letter-spacing: 0.06em; text-transform: uppercase; }
 .weekCard h3 { color: #fff; font-size: clamp(40px, 4vw, 58px); line-height: 1.02; margin: 18px 0 16px; max-width: 820px; }
 .weekCard > p { color: #d5dedd; font-size: clamp(17px, 1.35vw, 19px); line-height: 1.6; margin: 0 0 26px; max-width: 820px; }
 .weekCard dl { margin: 0; }
@@ -226,7 +227,8 @@
 
 .closingSection { background: var(--powder); padding: clamp(76px, 8vw, 112px) clamp(24px, 7vw, 112px); text-align: center; }
 .closingSection h2 { color: var(--ink); font-size: clamp(56px, 7vw, 100px); }
-.closingSection > p:not(.eyebrow) { color: var(--muted); font-size: 15px; margin: 31px 0 40px; }
+.closingSection .closingLead { color: var(--green); font-size: clamp(19px, 1.8vw, 26px); line-height: 1.5; margin: 32px auto 0; max-width: 780px; }
+.closingSection .closingSchedule { color: var(--muted); font-size: 15px; line-height: 1.6; margin: 18px 0 40px; }
 .closingSection .primaryButton { margin: auto; }
 
 .thankPage { min-height: 100svh; }
@@ -292,6 +294,7 @@
   .systemSteps li:nth-child(even) { padding-left: 0; }
   .programSection { padding-left: 20px; padding-right: 20px; }
   .weekCard { padding: 24px; }
+  .weekTop { align-items: flex-start; flex-direction: column; gap: 6px; }
   .weekCard dl > div { grid-template-columns: 1fr; gap: 8px; }
   .includedGrid { grid-template-columns: 1fr; }
   .includedGrid article { min-height: 250px; }

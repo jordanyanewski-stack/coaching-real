@@ -16,6 +16,7 @@ export function GlobalContactFooter() {
   }
 
   const isEnglish = pathname.startsWith("/stuck-in-the-middle");
+  const isFullCalendar = pathname.startsWith("/palen-grafik-postoyanni-klienti");
 
   return (
     <footer
@@ -32,32 +33,39 @@ export function GlobalContactFooter() {
           minHeight: "76px",
           margin: "0 auto",
           display: "flex",
-          flexWrap: "wrap",
+          flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          gap: "10px 24px",
+          gap: isFullCalendar ? "14px" : "10px",
           padding: "20px 0",
           fontSize: "14px",
           lineHeight: 1.5,
           textAlign: "center",
         }}
       >
-        <strong style={{ fontWeight: 700 }}>
-          {isEnglish ? "Contact us" : "Контакти"}
-        </strong>
-        <a
-          href={`mailto:${CONTACT_EMAIL}`}
-          style={{ color: "inherit", textDecoration: "none" }}
-        >
-          {CONTACT_EMAIL}
-        </a>
-        <a
-          href={`tel:${CONTACT_PHONE_LINK}`}
-          aria-label={`${isEnglish ? "Telephone" : "Телефон"} ${CONTACT_PHONE_DISPLAY}`}
-          style={{ color: "inherit", textDecoration: "none" }}
-        >
-          {isEnglish ? "Tel:" : "Тел:"} {CONTACT_PHONE_DISPLAY}
-        </a>
+        {isFullCalendar && (
+          <p style={{ maxWidth: "760px", margin: 0, color: "#173f3e", fontWeight: 650 }}>
+            Превърни уменията си като Nail специалист в система за повече постоянни клиенти и по-предвидим график
+          </p>
+        )}
+        <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "center", gap: "10px 24px" }}>
+          <strong style={{ fontWeight: 700 }}>
+            {isEnglish ? "Contact us" : "Контакти"}
+          </strong>
+          <a
+            href={`mailto:${CONTACT_EMAIL}`}
+            style={{ color: "inherit", textDecoration: "none" }}
+          >
+            {CONTACT_EMAIL}
+          </a>
+          <a
+            href={`tel:${CONTACT_PHONE_LINK}`}
+            aria-label={`${isEnglish ? "Telephone" : "Телефон"} ${CONTACT_PHONE_DISPLAY}`}
+            style={{ color: "inherit", textDecoration: "none" }}
+          >
+            {isEnglish ? "Tel:" : "Тел:"} {CONTACT_PHONE_DISPLAY}
+          </a>
+        </div>
       </div>
     </footer>
   );

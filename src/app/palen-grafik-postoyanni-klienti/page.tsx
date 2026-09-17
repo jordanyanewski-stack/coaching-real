@@ -14,6 +14,7 @@ const display = Cormorant_Garamond({
 const weeks = [
   {
     number: 'Седмица 1',
+    date: '10 октомври',
     title: 'Къде губиш постоянния клиент?',
     intro: 'Преди да търсим още клиенти, трябва да разберем какво се случва с хората, които вече идват.',
     focus: 'Техника · материали · издръжливост · отношение · комуникация · клиентско преживяване',
@@ -21,6 +22,7 @@ const weeks = [
   },
   {
     number: 'Седмица 2',
+    date: '17 октомври',
     title: 'От нов клиент към постоянен клиент',
     intro: 'Какво кара една жена не просто да остане доволна, а да си каже: „Тук искам да се върна.“',
     focus: 'Преди посещението → по време на услугата → след посещението → следващо записване',
@@ -28,6 +30,7 @@ const weeks = [
   },
   {
     number: 'Седмица 3',
+    date: '24 октомври',
     title: 'Как да те изберат, преди да са седнали на стола ти',
     intro: 'Не преследваме „перфектния Instagram“. Използваме реалната работа, присъствието и доверието.',
     focus: 'Какво да показвам → как да го снимам → какво да кажа → как да насоча към записване',
@@ -35,6 +38,7 @@ const weeks = [
   },
   {
     number: 'Седмица 4',
+    date: '31 октомври',
     title: 'Твоята система за постоянни клиенти',
     intro: 'Събираме техниката, преживяването, съдържанието и препоръките в една работеща последователност.',
     focus: 'Привличам → обслужвам → задържам → презаписвам → получавам препоръки → привличам',
@@ -140,9 +144,9 @@ export default function FullCalendarPage() {
             <h1>Пълен график.<br /><em>Постоянни клиенти.</em></h1>
             <p className={styles.heroLead}>Превърни уменията си като Nail специалист в система за повече постоянни клиенти и по-предвидим график.</p>
             <ul className={styles.heroFacts} aria-label="Формат на курса">
-              <li><span>04</span> седмици</li>
-              <li><span>04</span> срещи на живо</li>
-              <li><span>90</span> минути практика</li>
+              <li><span>10–31</span> октомври</li>
+              <li><span>Всяка</span> събота</li>
+              <li><span>19:00</span> до 20:30 ч.</li>
             </ul>
             <div className={styles.heroActions}>
               <a className={styles.primaryButton} href="#registration">Запиши се безплатно <span aria-hidden="true">→</span></a>
@@ -194,7 +198,7 @@ export default function FullCalendarPage() {
           <div className={styles.weeksGrid}>
             {weeks.map(week => (
               <article className={styles.weekCard} key={week.number}>
-                <div className={styles.weekTop}><span>{week.number}</span></div>
+                <div className={styles.weekTop}><span>{week.number}</span><time>{week.date}</time></div>
                 <h3>{week.title}</h3>
                 <p>{week.intro}</p>
                 <dl>
@@ -257,7 +261,7 @@ export default function FullCalendarPage() {
           <div className={styles.registrationCopy}>
             <p className={styles.eyebrow}>Пилотно участие · безплатно</p>
             <h2>Изгради причина правилните клиенти да <em>поискат да останат.</em></h2>
-            <p>Четири практически срещи на живо, реални примери и малки задачи за твоята работа. Датата, часът и платформата ще получиш по имейл веднага щом бъдат потвърдени.</p>
+            <p>Четири практически срещи на живо, реални примери и малки задачи за твоята работа. Срещите са всяка събота — от 10 до 31 октомври, от 19:00 до 20:30 ч.</p>
           </div>
           <div className={styles.formPanel}>
             <p className={styles.formEyebrow}>Запази своето място</p>
@@ -285,7 +289,8 @@ export default function FullCalendarPage() {
         <section className={styles.closingSection}>
           <p className={styles.eyebrow}>Пълен график. Постоянни клиенти.</p>
           <h2>Имаш уменията.<br /><em>Изгради системата.</em></h2>
-          <p>4 седмици · 4 практически срещи на живо · пилотно участие безплатно</p>
+          <p className={styles.closingLead}>Превърни уменията си като Nail специалист в система за повече постоянни клиенти и по-предвидим график</p>
+          <p className={styles.closingSchedule}>10–31 октомври · всяка събота · 19:00–20:30 ч. · пилотно участие безплатно</p>
           <a className={styles.primaryButton} href="#registration">Искам място в безплатната група <span aria-hidden="true">↑</span></a>
         </section>
       </div>
