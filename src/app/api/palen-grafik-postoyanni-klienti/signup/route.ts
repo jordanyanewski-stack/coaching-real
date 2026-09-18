@@ -36,9 +36,12 @@ export async function POST(request: Request) {
   }
 
   const [firstName, ...rest] = name.split(/\s+/);
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 8000);
   try {
     const response = await fetch(MAILERLITE_SUBSCRIBERS, {
       method: 'POST',
+      signal: controller.signal,
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
@@ -51,14 +54,15 @@ export async function POST(request: Request) {
         status: 'active',
       }),
     });
-    if (!response.ok && response.status !== 422) {
+    if (!response.ok) {
       console.error('[full-calendar signup] MailerLite subscribe failed', response.status);
       return NextResponse.json({ error: 'Не успяхме да завършим регистрацията. Опитай отново.' }, { status: 502 });
     }
     return NextResponse.json({ ok: true });
-  } catch (error) {
-    console.error('[full-calendar signup] MailerLite request failed', (error as Error).message);
+  } catch {
+    console.error('[full-calendar signup] MailerLite request failed');
     return NextResponse.json({ error: 'Няма връзка със системата. Опитай отново след малко.' }, { status: 502 });
+  } finally {
+    clearTimeout(timeout);
   }
 }
-

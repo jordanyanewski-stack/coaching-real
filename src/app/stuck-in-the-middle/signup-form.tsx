@@ -30,7 +30,7 @@ export function SignupForm({ compact = false }: { compact?: boolean }) {
         body: JSON.stringify(payload),
       });
       const body = await response.json().catch(() => ({}));
-      if (!response.ok) {
+      if (!response.ok || body?.ok !== true) {
         setStatus('error');
         setMessage(body?.error || 'Something went wrong. Please try again.');
         return;

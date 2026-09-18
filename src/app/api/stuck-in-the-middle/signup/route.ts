@@ -36,9 +36,12 @@ export async function POST(request: Request) {
   }
 
   const [firstName, ...rest] = name.split(/\s+/);
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 8000);
   try {
     const response = await fetch(MAILERLITE_SUBSCRIBERS, {
       method: 'POST',
+      signal: controller.signal,
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
@@ -51,13 +54,15 @@ export async function POST(request: Request) {
         status: 'active',
       }),
     });
-    if (!response.ok && response.status !== 422) {
+    if (!response.ok) {
       console.error('[stuck-middle signup] MailerLite subscribe failed', response.status);
       return NextResponse.json({ error: 'We could not complete your registration. Please try again.' }, { status: 502 });
     }
     return NextResponse.json({ ok: true });
-  } catch (error) {
-    console.error('[stuck-middle signup] MailerLite request failed', (error as Error).message);
+  } catch {
+    console.error('[stuck-middle signup] MailerLite request failed');
     return NextResponse.json({ error: 'Connection error. Please try again in a moment.' }, { status: 502 });
+  } finally {
+    clearTimeout(timeout);
   }
 }

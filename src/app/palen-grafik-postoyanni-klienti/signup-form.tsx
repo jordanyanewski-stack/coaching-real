@@ -30,7 +30,7 @@ export function SignupForm({ compact = false }: { compact?: boolean }) {
         body: JSON.stringify(payload),
       });
       const body = await response.json().catch(() => ({}));
-      if (!response.ok) {
+      if (!response.ok || body?.ok !== true) {
         setStatus('error');
         setMessage(body?.error || 'Възникна грешка. Опитай отново.');
         return;
@@ -65,4 +65,3 @@ export function SignupForm({ compact = false }: { compact?: boolean }) {
     </form>
   );
 }
-
