@@ -57,10 +57,10 @@ export function SignupForm({ compact = false }: { compact?: boolean }) {
       </div>
       {status === 'error' && <p className={styles.formError} role="alert">{message}</p>}
       <button className={styles.primaryButton} type="submit" disabled={status === 'submitting'}>
-        {status === 'submitting' ? 'Запазваме мястото ти…' : 'Запиши се безплатно'}
+        {status === 'submitting' ? 'Запазваме мястото ти…' : 'Искам място в безплатния курс'}
         <span aria-hidden="true">→</span>
       </button>
-      <p className={styles.formNote}>Ще получиш датата и подробностите за първата среща по имейл.</p>
+      <p className={styles.formNote}>Отнема под 1 минута. Ще получиш потвърждение и информация за първата среща по имейл.</p>
       <CampaignContact language="bg" color="#5d6865" />
     </form>
   );

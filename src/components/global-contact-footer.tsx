@@ -45,7 +45,7 @@ export function GlobalContactFooter() {
       >
         {isFullCalendar && (
           <p style={{ maxWidth: "760px", margin: 0, color: "#173f3e", fontWeight: 650 }}>
-            Превърни уменията си като Nail специалист в система за повече постоянни клиенти и по-предвидим график
+            Изгради система, която помага на правилните клиенти да те изберат, да се върнат и да те препоръчат
           </p>
         )}
         <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "center", gap: "10px 24px" }}>
